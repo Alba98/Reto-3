@@ -1,5 +1,9 @@
 import _ from 'lodash';
-window._ = _;
+//window._ = _;
+window._ = loadash
+import * as Popper from '@popperjs/core'
+window.Popper = Popper
+
 
 import 'bootstrap';
 
@@ -13,6 +17,7 @@ import axios from 'axios';
 window.axios = axios;
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.withCredentials = true;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
