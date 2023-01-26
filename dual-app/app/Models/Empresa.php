@@ -18,4 +18,9 @@ class Empresa extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function personas()
+    {
+        return $this->hasMany(Persona::class, 'id_empresa');
+    }
 }

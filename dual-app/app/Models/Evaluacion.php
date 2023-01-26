@@ -17,4 +17,8 @@ class Evaluacion extends Model
         'created_at',
         'updated_at'
     ];
+    public function calificaciones()
+    {
+        return $this->hasMany(Calificaciones::class, 'id_evaluacion');
+    }
 }

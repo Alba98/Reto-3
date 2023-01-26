@@ -13,4 +13,9 @@ class Grado extends Model
         'id',
         'nombre'
     ];
+
+    public function coordinadores()
+    {
+        return $this->hasMany(Coordinador::class, 'id_grado');
+    }
 }

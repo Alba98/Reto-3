@@ -26,4 +26,9 @@ class Tempresa extends Model
     {
         return $this->belongsTo(Empresa::class, 'id_empresa');
     }
+
+    public function fichas()
+    {
+        return $this->hasMany(FichaDual::class, 'id_tempresa');
+    }
 }

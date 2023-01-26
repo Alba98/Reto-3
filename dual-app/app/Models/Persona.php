@@ -24,8 +24,6 @@ class Persona extends Model
     {
         return $this->hasOne(Grado::class);
     }
-
-    // Estas 2 nose si iran
     public function tuniversidad()
     {
         return $this->hasOne(Tuniversidad::class);
@@ -34,6 +32,4 @@ class Persona extends Model
     {
         return $this->hasOne(Tempresa::class);
     }
-    
-
 }

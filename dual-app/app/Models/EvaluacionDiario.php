@@ -20,4 +20,9 @@ class EvaluacionDiario extends Model
     {
         return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
     }
+
+    public function diarioAprendizaje()
+    {
+        return $this->hasOne(DiarioAprendizaje::class, 'id_evaluacion_diario');
+    }
 }

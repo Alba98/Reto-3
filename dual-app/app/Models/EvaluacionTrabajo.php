@@ -20,4 +20,5 @@ class EvaluacionTrabajo extends Model
     {
         return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
     }
+    
 }

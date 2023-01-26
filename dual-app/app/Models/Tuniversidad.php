@@ -20,4 +20,9 @@ class Tuniversidad extends Model
     {
         return $this->belongsTo(Persona::class, 'id_persona');
     }
+
+    public function fichas()
+    {
+        return $this->hasMany(FichaDual::class, 'id_tuniversidad');
+    }
 }
