@@ -21,3 +21,6 @@ Route::get('/', function () {
 Route::get('/app', function () {
     return view('layouts.app');
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
