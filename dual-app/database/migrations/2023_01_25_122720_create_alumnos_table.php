@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('alumnos', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('id_persona')->constrained('personas')->primary();
             $table->string('curso');
             $table->boolean('dual');

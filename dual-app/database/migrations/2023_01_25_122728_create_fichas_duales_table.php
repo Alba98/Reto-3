@@ -13,9 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tuniversidad', function (Blueprint $table) {
-            $table->foreignId('id_docente')->constrained('docentes')->primary();
+        Schema::create('fichas_duales', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
+            $table->foreignId('id_persona')->constrained('alumnos');
+            $table->foreignId('id_empresa')->constrained('empresas');
+            $table->foreignId('id_tempresa')->constrained('tempresa');
+            $table->foreignId('id_tuniversidad')->constrained('tuniversidad');
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tuniversidad');
+        Schema::dropIfExists('fichas_duales');
     }
 };
