@@ -17,6 +17,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@vitejs/plugin-vue": "^4.0.0",
         "vue-axios": "^3.5.2"
     }
 }
