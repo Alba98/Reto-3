@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('clave');
             $table->enum('tipo_usuario', ['alumno', 'coordinador', 'tempresa', 'tuniversidad']);
-            $table->foreignId('id_persona')->constrained('personas');
+            $table->foreignId('id_persona')->constrained('personas')->onDelete('cascade');
         });
     }
 
