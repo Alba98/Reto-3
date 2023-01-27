@@ -1,9 +1,15 @@
-
 <meta charset="utf-8">
 <meta name="description" content="">
-<meta name="author" content="Scotch">
+<meta name="author" content="WAT2023">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Super Cool Layouts</title>
+<!-- CSRF Token -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
-<!-- load bootstrap from a cdn -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/3.0.3/css/bootstrap-combined.min.css">
+<title>{{ config('app.name', 'Laravel') }}</title>
+
+<!-- Fonts -->
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+@vite(['resources/js/app.js'])
