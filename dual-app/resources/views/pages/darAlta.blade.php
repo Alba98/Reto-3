@@ -1,5 +1,4 @@
-@extends('layouts.head')
-@extends('layouts.sidebar')
+@extends('layouts.default')
 @section('content')
 <body>
     <div class="col-md-12 col-lg-8 offset-lg-2" style="text-align: center">

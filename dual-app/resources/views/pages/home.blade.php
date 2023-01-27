@@ -1,6 +1,4 @@
-@extends('layouts.head')
-@extends('layouts.sidebar')
+@extends('layouts.default')
 @section('content')
     Pagina Principal
 @stop
-@extends('layouts.footer')
