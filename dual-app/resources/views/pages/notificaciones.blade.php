@@ -1,5 +1,4 @@
-@extends('layouts.head')
-@extends('layouts.sidebar')
+@extends('layouts.default')
 @section('content')
     Notificaciones
 @stop
