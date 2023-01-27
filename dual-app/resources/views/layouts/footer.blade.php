@@ -1,1 +1,1 @@
-<div id="copyright text-right">© Copyright 2023 Universidad de Deusto</div>
+<div class="text-center" id="copyright text-right">© Copyright 2023 WAT development</div>

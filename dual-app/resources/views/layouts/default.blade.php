@@ -18,19 +18,25 @@
 
                 </div>
 
-                <div class="col py-3">
-
-                    @yield('content')
-
+                <div class="col">
+                    <div class="row">
+                        <div class="col-12 py-3">
+                            @yield('content')
+                        </div>
+                        
+                        <div class="col-12 fixed-bottom justify-content-center align-items-center ">
+                                @include('layouts.footer')
+                        </div>
+                    </div>
                 </div>
             
             </main>
 
-            <footer class="row justify-content-center align-items-center">
-
-                @include('layouts.footer')
-
-            </footer>
+            <!-- <footer class="row justify-content-center align-items-center">
+                <div class="col-auto justify-content-center align-items-center">
+                    @include('layouts.footer')
+                </div>
+            </footer> -->
 
         </div>
 
