@@ -24,7 +24,7 @@
                             @yield('content')
                         </div>
                         
-                        <div class="col-12 fixed-bottom justify-content-center align-items-center ">
+                        <div class="col-12 fixed-bottom">
                                 @include('layouts.footer')
                         </div>
                     </div>
@@ -38,6 +38,7 @@
                 </div>
             </footer> -->
 
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         </div>
 
     </body>

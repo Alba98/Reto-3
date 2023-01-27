@@ -1,55 +1,72 @@
 <div id="sidebar">
-    <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+    <div class="d-flex flex-sm-column flex-row align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+        <button type="button" class="btn btn-primary btn-lg float-end align-items-sm-start" aria-label="Left Align">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+        </button>
+        <button class="btn btn-primary float-end" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" role="button">
+            <i class="bi bi-arrow-right-square-fill fs-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"></i>
+        </button>
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-        <span class="fs-4">{{ config('app.name', 'FormacionDual') }}</span>
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">{{ config('app.name', 'FormacionDual') }}</span>
         </a>
         <hr>
-        <hr class="sidebar-divider my-0">
-        <ul class="nav nav-pills flex-column mb-auto">
+        <hr class="sidebar-divider my-0 bg-light">
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0" id="menu">
             @if (Route::has('principal'))
                 <li class="nav-item">
                     <a href="{{ route('principal') }}" class="nav-link active" aria-current="page">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                    Home
+                        <i class="fs-4 bi-house"></i>
+                        <span class="ms-1 d-none d-sm-inline">Home</span>
                     </a>
                 </li>
             @endif
             @if (Route::has('darAlta'))
                 <li>
                     <a href="{{ route('darAlta') }}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-                    Dar de alta
+                        <i class="fs-4 bi-speedometer2"></i>
+                        <span class="ms-1 d-none d-sm-inline">Dar de alta</span>
                     </a>
                 </li>
             @endif
             @if (Route::has('asignarDual'))
                 <li>
                     <a href="{{ route('asignarDual') }}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-                    Asignar Dual
+                        <i class="fs-4 bi-table"></i>
+                        <span class="ms-1 d-none d-sm-inline">Asignar Dual</span>
                     </a>
                 </li>
             @endif
             @if (Route::has('registros'))
                 <li>
                     <a href="{{ route('registros') }}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Registros anteriores
+                        <i class="fs-4 bi-grid"></i>
+                        <span class="ms-1 d-none d-sm-inline">Registros anteriores</span>
                     </a>
                 </li>
             @endif
             @if (Route::has('notificaciones'))
                 <li>
                     <a href="{{ route('notificaciones') }}" class="nav-link text-white">
-                    <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-                    Notificaciones
+                        <i class="fs-4 bi-bell-fill"></i>
+                        <span class="ms-1 d-none d-sm-inline">Notificaciones</span>
+                    </a>
+                </li>
+            @endif
+            @if (Route::has('estadisticas'))
+                <li>
+                    <a href="{{ route('estadisticas') }}" class="nav-link text-white">
+                        <i class="fs-4 bi-graph-up"></i>
+                        <span class="ms-1 d-none d-sm-inline">Estadisticas</span>
                     </a>
                 </li>
             @endif
         </ul>
         <hr>
-        <div>
+        <div class="text-center">
+            <span class="fs-5 d-none d-sm-inline">Coordinador</span>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto">
                 <!-- Authentication Links -->
