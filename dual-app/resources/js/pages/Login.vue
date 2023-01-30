@@ -26,9 +26,16 @@
                           <input type="password" id="form2Example27" class="form-control form-control-lg"/>
                         </div>
       
-                        <div class="pt-1 mb-4">
-                          <button class="btn btn-dark btn-lg btn-block" type="button">LOG IN</button>
+                          <div class="pt-1 mb-4">
+                          <button class="btn btn-dark btn-lg btn-block" type="button">
+                          <router-link
+                             class="inline-block align-baseline"
+                          to="">LOG IN
+                          </router-link>
+                          
+                          </button>
                         </div>
+                  
                        <a class="small text-muted" href="#!">Forgot password?</a>
                              
                       </form>

@@ -13,9 +13,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Vue:
+
+
+
 Route::get('home', function () {
     return view('home');
-   })->where('vue_capture', '[\/\w\.-]*');
+})->where('vue_capture', '[\/\w\.-]*');
+
+Route::get('darAlta', function () {
+    return view('pages.darAlta');
+})->where('vue_capture', '[\/\w\.-]*');
+
+Route::get('asignarDual', function()
+{
+    return View::make('pages.asignarDual');
+})->where('vue_capture', '[\/\w\.-]*');
+
+Route::get('registros', function()
+{
+    return View::make('pages.registros');
+})->where('vue_capture', '[\/\w\.-]*');
+
+
+
+
 
 Route::get('{any}', function () {
     return view('app');
