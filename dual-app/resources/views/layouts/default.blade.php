@@ -7,7 +7,7 @@
 
     </head>
 
-    <body>
+    <body class="bg-light">
 
         <div class="container-fluid">
 
