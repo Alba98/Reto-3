@@ -17,7 +17,7 @@
     <hr class="sidebar-divider my-0 color-light">
     
     {{-- @include('layouts.nav.coordinador') --}}
-    @include('layouts.nav.coordinador')
+    @include('layouts.nav.alumno')
     
     <hr>
     <div class="text-center nav-item">
