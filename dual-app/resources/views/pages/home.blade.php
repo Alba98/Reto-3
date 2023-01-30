@@ -1,147 +1,56 @@
 @extends('layouts.default')
 @section('content')
-<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
+    <h1>Acciones rapidas</h1>
 
-<div class="col-lg-8 grid-margin stretch-card">
-              <div class="card">
-                <div class="card-header">
-                    <h1>Listado alumnos</h1>
-                    <div class="input-group">
-                        <input type="search" class="form-control rounded" placeholder="Busqueda por nombre" aria-label="Search" aria-describedby="search-addon" />
-                        <button type="button" class="btn btn-primary">Buscar</button>
-                      </div>
-                </div>
-                <div class="card-body">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th>Nombre</th>
-                          <th>Empresa</th>
-                          <th>Curso</th>
-                          <th>Grado</th>
-                          <th>Calificación</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Samso Park</td>
-                          <td>Mercedes-Benz</td>
-                          <td>2017-2018</td>
-                          <td>Ingenieria informatica</td>
-                          <td>7</td>
-                        </tr>
-                        <tr>
-                          <td>Marlo Sanki</td>
-                          <td>Mercedes-Benz</td>
-                          <td>2014-2015</td>
-                          <td>Historia del arte</td>
-                          <td>8</td>
-                        </tr>
-                        <tr>
-                          <td>John ryte</td>
-                          <td>Mercedes-Benz</td>
-                          <td>2016-2017</td>
-                          <td>Ingenieria industrial</td>
-                          <td>9</td>
-                        </tr>
-                        <tr>
-                          <td>Peter mark</td>
-                          <td>Mercedes-Benz</td>
-                          <td>2022-2023</td>
-                          <td>Ingenieria informatica</td>
-                          <td>10</td>
-                        </tr>
-                        <tr>
-                          <td>Dave</td>
-                          <td>Mercedes-Benz</td>
-                          <td>2021-2022</td>
-                          <td>Historia del arte</td>
-                          <td>7</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary">Ver más</button>
-                </div>
-              </div>
-            </div>
+    <div class="container">
+      <div class="row justify-content-md-center">
+        <div class="col col-md-5">
+          <button class="btn btn-primary bg-primary bg-gradient border-0 fs-2 w-100 h-100" type="button">Empresa</button>
         </div>
+        <div class="col col-md-5">
+          <button class="btn btn-primary bg-primary bg-gradient border-0 fs-2 w-100 h-100" type="button">Grado</button>
+        </div>
+      </div>
 
-
-    <!-- VISTA DE PERFIL -->
-        <div class="container bootstrap snippets bootdey">
-            <h1 class="text-primary">Editar Perfil</h1>
-              <hr>
-            <div class="row">
-              <!-- left column -->
-              <div class="col-md-3">
-                <div class="text-center">
-                  <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="avatar img-circle img-thumbnail" alt="avatar">
-                  <h6>Upload a different photo...</h6>
-                  
-                  <input type="file" class="form-control">
-                </div>
-              </div>
-              
-              <!-- edit form column -->
-              <div class="col-md-9 personal-info">
-                <div class="alert alert-info alert-dismissable">
-                  <a class="panel-close close" data-dismiss="alert">×</a> 
-                  <i class="fa fa-coffee"></i>
-                  This is an <strong>.alert</strong>. Use this to show important messages to the user.
-                </div>
-                <h3>Personal info</h3>
-                
-                <form class="form-horizontal" role="form">
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">First name:</label>
-                    <div class="col-lg-8">
-                      <input class="form-control" type="text" value="dey-dey">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Last name:</label>
-                    <div class="col-lg-8">
-                      <input class="form-control" type="text" value="bootdey">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Company:</label>
-                    <div class="col-lg-8">
-                      <input class="form-control" type="text" value="">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Email:</label>
-                    <div class="col-lg-8">
-                      <input class="form-control" type="text" value="janesemail@gmail.com">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="col-lg-3 control-label">Time Zone:</label>
-                    <div class="col-lg-8">
-                      <div class="ui-select">
-                        <select id="user_time_zone" class="form-control">
-                          <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                          <option value="Alaska">(GMT-09:00) Alaska</option>
-                          <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                          <option value="Arizona">(GMT-07:00) Arizona</option>
-                          <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                          <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                          <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                          <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
+      <div class="row justify-content-md-center mt-3">
+          <div class="col col-md-5">
+              <button class="btn btn-primary bg-primary bg-gradient border-0 fs-2 w-100 h-100" type="button">Alumno</button>
           </div>
+          <div class="col col-md-5">
+              <button class="btn btn-primary bg-primary bg-gradient border-0 fs-2 w-100 h-100" type="button">Tutor Empresa</button>
+          </div>
+      </div>
+
+      <div class="row justify-content-md-center mt-3">
+          <div class="col col-md-5">
+              <button class="btn btn-primary bg-primary bg-gradient border-0 fs-2 w-100 h-100" type="button">Tutor Universidad</button>
+          </div>
+          <div class="col col-md-5">
+              <button class="btn btn-primary bg-primary bg-gradient border-0 fs-2 w-100 h-100" type="button">Coordinador</button>
+          </div>
+      </div>
+  </div>
+    <div class="container mt-3">
+      <h2>Card Image</h2>
+      <p>Image at the top (card-img-top):</p>
+      <div class="card" style="width:400px">
+        <img class="card-img-top" src="../bootstrap4/img_avatar1.png" alt="Card image" style="width:100%">
+        <div class="card-body">
+          <h4 class="card-title">John Doe</h4>
+          <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+          <a href="#" class="btn btn-primary">See Profile</a>
         </div>
-        <hr>
+      </div>
+      <br>
+      
+      <p>Image at the bottom (card-img-bottom):</p>
+      <div class="card" style="width:400px">
+        <div class="card-body">
+          <h4 class="card-title">Jane Doe</h4>
+          <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
+          <a href="#" class="btn btn-primary">See Profile</a>
+        </div>
+        <img class="card-img-bottom" src="../bootstrap4/img_avatar6.png" alt="Card image" style="width:100%">
+      </div>
+    </div>
 @stop
