@@ -120,6 +120,7 @@ class ComposerStaticInitd27c0ef63dcca79335c11ed8ac6d669a
             'Laravel\\SerializableClosure\\' => 28,
             'Laravel\\Sanctum\\' => 16,
             'Laravel\\Sail\\' => 13,
+            'Laravel\\Breeze\\' => 15,
         ),
         'I' => 
         array (
@@ -403,6 +404,10 @@ class ComposerStaticInitd27c0ef63dcca79335c11ed8ac6d669a
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
+        'Laravel\\Breeze\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravel/breeze/src',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -511,6 +516,7 @@ class ComposerStaticInitd27c0ef63dcca79335c11ed8ac6d669a
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/UserController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -542,6 +548,7 @@ class ComposerStaticInitd27c0ef63dcca79335c11ed8ac6d669a
         'App\\Models\\FichaSeguimiento' => __DIR__ . '/../..' . '/app/Models/FichaSeguimiento.php',
         'App\\Models\\Grado' => __DIR__ . '/../..' . '/app/Models/Grado.php',
         'App\\Models\\Persona' => __DIR__ . '/../..' . '/app/Models/Persona.php',
+        'App\\Models\\Posts' => __DIR__ . '/../..' . '/app/Models/Posts.php',
         'App\\Models\\Tempresa' => __DIR__ . '/../..' . '/app/Models/Tempresa.php',
         'App\\Models\\Tuniversidad' => __DIR__ . '/../..' . '/app/Models/Tuniversidad.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
@@ -2684,6 +2691,11 @@ class ComposerStaticInitd27c0ef63dcca79335c11ed8ac6d669a
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'Laravel\\Breeze\\BreezeServiceProvider' => __DIR__ . '/..' . '/laravel/breeze/src/BreezeServiceProvider.php',
+        'Laravel\\Breeze\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallCommand.php',
+        'Laravel\\Breeze\\Console\\InstallsApiStack' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsApiStack.php',
+        'Laravel\\Breeze\\Console\\InstallsBladeStack' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsBladeStack.php',
+        'Laravel\\Breeze\\Console\\InstallsInertiaStacks' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsInertiaStacks.php',
         'Laravel\\Sail\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/InstallCommand.php',
         'Laravel\\Sail\\Console\\PublishCommand' => __DIR__ . '/..' . '/laravel/sail/src/Console/PublishCommand.php',
         'Laravel\\Sail\\SailServiceProvider' => __DIR__ . '/..' . '/laravel/sail/src/SailServiceProvider.php',
