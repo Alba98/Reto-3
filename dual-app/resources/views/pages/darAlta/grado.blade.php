@@ -4,6 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <h1 class="display-3 text-center">NUEVO GRADO</h1>
+            <div class="card-header">{{ __('Nuevo grado') }}</div>
             <div class="card">
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
