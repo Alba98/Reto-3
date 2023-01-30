@@ -17,11 +17,29 @@
     <hr class="sidebar-divider my-0 color-light">
     
     {{-- @include('layouts.nav.coordinador') --}}
-    @include('layouts.nav.alumno')
-    
+    {{-- @include('layouts.nav.alumno') --}}
+    @switch(Auth::user()->rol)
+        @case('Coordinador')
+            @include('layouts.nav.coordinador')
+            @break
+
+        @case('Alumno')
+            @include('layouts.nav.alumno')
+            @break
+        
+        @case('Tutor')
+            @include('layouts.nav.tutor')
+            @break
+
+        @default
+            <span>Something went wrong, please try again</span>
+    @endswitch
+
     <hr>
     <div class="text-center nav-item">
-        <span class="fs-4 d-none d-sm-inline nav_name">Coordinador {{Auth::user()->rol}}</span>
+        @auth
+            <span class="fs-4 d-none d-sm-inline nav_name">{{Auth::user()->rol}}</span>
+        @endauth
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ms-auto">
             <!-- Authentication Links -->
@@ -29,7 +47,10 @@
                 <p> Imposible </p>
             @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <a id="navbarDropdown" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
+                        href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">>
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="navbarDropdown">

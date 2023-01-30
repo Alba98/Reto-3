@@ -1,6 +1,7 @@
 
  <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 
                 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
+        <!-- <nav-item name="principal" icon="house" link="{{ route('principal') }}"></nav-item> -->
         @if (Route::has('principal'))
             <li class="nav-item">
                 <a href="{{ route('principal') }}" class="nav-link px-sm-0 px-2 text-white nav_link" aria-current="page">

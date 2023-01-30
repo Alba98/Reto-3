@@ -3,7 +3,7 @@
                 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
         @if (Route::has('principal_a'))
             <li class="nav-item">
-                <a href="{{ route('principal_a') }}" class="nav-link px-sm-0 px-2 text-white nav_link active" aria-current="page">
+                <a href="{{ route('principal_a') }}" class="nav-link px-sm-0 px-2 text-white nav_link" aria-current="page">
                     <i class="fs-4 bi-house nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Principal</span>
                 </a>
@@ -11,7 +11,7 @@
         @endif
         @if (Route::has('diario_a'))
             <li class="nav-item">
-                <a href="{{ route('diario_a') }}" class="nav-link px-sm-0 px-2 text-white nav_link active" aria-current="page">
+                <a href="{{ route('diario_a') }}" class="nav-link px-sm-0 px-2 text-white nav_link" aria-current="page">
                     <i class="fs-4 bi-house nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Diario Aprendizaje</span>
                 </a>

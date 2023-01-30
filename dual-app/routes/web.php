@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/nav', function () {
     return view('layouts.default');
 });
-
 //
 
 Route::get('/app', function () {
@@ -38,7 +37,7 @@ Route::get('home', function()
     return View::make('pages.home');
 })->name('principal');
 
-
+//coordinador
 Route::get('darAlta', function()
 {
     return View::make('pages.darAlta');
@@ -58,3 +57,29 @@ Route::get('notificaciones', function()
 {
     return View::make('pages.notificaciones');
 })->name('notificaciones');
+
+//alumno
+Route::get('home', function()
+{
+    return View::make('pages.alumno.home');
+})->name('principal_a');
+
+Route::get('diarioAprendizaje', function()
+{
+    return View::make('pages.darAlta');
+})->name('diario_a');
+
+Route::get('notas', function()
+{
+    return View::make('pages.alumno.notas');
+})->name('notas_a');
+
+Route::get('resgistros', function()
+{
+    return View::make('pages.registros');
+})->name('registros_a');
+
+Route::get('notificaciones', function()
+{
+    return View::make('pages.notificaciones');
+})->name('notificaciones_a');

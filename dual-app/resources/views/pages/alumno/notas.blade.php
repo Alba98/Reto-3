@@ -1,3 +1,5 @@
+@extends('layouts.default')
+@section('content')
 <div class="padding">
     <div class="row container d-flex justify-content-center">
     <div class="col-lg-8 grid-margin stretch-card">
