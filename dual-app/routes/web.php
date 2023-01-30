@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('home', function () {
+    return view('home');
+   })->where('vue_capture', '[\/\w\.-]*');
+
 Route::get('{any}', function () {
     return view('app');
 })->where('any','.*');
