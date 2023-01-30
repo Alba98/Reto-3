@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 //mio
 Route::get('/nav', function () {
-    return view('layouts.sidebar');
+    return view('layouts.default');
 });
 
 //

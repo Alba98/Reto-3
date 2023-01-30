@@ -11,33 +11,39 @@
 
         <div class="container-fluid overflow-hidden">
 
-            <main class="row vh-100 overflow-auto">
+            <div class="row vh-100 overflow-auto">
 
-                <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
+                <nav class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top" id="nav-bar">
 
                     @include('layouts.sidebar')
 
-                </div>
+                </nav>
 
-                <div class="col">
-                    <div class="row">
-                        <div class="col-12 py-3">
+                <div class="col d-flex flex-column h-sm-100">
+
+                    <main class="row overflow-auto">
+
+                        <div class="col pt-4">
+
                             @yield('content')
+
+                        </div>
+
+                    </main>
+
+                    <footer class="row bg-light py-4 mt-auto">
+
+                        <div class="col pt-4">
+
+                            @include('layouts.footer')
+
                         </div>
                         
-                        <div class="col-12 fixed-bottom">
-                                @include('layouts.footer')
-                        </div>
-                    </div>
+                    </footer>
+                      
                 </div>
             
-            </main>
-
-            <!-- <footer class="row justify-content-center align-items-center">
-                <div class="col-auto justify-content-center align-items-center">
-                    @include('layouts.footer')
-                </div>
-            </footer> -->
+            </div>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         </div>
