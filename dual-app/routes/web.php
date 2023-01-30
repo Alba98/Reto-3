@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,48 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//mio
-Route::get('/nav', function () {
-    return view('layouts.default');
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-//
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/app', function () {
-    return view('layouts.app');
-});
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/', function()
-{
-    return View::make('welcome');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('home', function()
-{
-    return View::make('pages.home');
-})->name('principal');
-
-
-Route::get('darAlta', function()
-{
-    return View::make('pages.darAlta');
-})->name('darAlta');
-
-Route::get('asignarDual', function()
-{
-    return View::make('pages.asignarDual');
-})->name('asignarDual');
-
-Route::get('registros', function()
-{
-    return View::make('pages.registros');
-})->name('registros');
-
-Route::get('notificaciones', function()
-{
-    return View::make('pages.notificaciones');
-})->name('notificaciones');
+require __DIR__.'/auth.php';

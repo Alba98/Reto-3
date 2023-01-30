@@ -30,6 +30,7 @@ Homestead.json
 
 # End of https://www.toptal.com/developers/gitignore/api/laravel
 
+/bootstrap/ssr
 /node_modules
 /public/build
 /public/hot
