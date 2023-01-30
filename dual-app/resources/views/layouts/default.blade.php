@@ -9,11 +9,11 @@
 
     <body>
 
-        <div class="container-fluid">
+        <div class="container-fluid overflow-hidden">
 
-            <main class="row flex-nowrap">
+            <main class="row vh-100 overflow-auto">
 
-                <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
 
                     @include('layouts.sidebar')
 
