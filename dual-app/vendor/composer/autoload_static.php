@@ -511,6 +511,7 @@ class ComposerStaticInitd27c0ef63dcca79335c11ed8ac6d669a
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\API\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/API/UserController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -542,6 +543,7 @@ class ComposerStaticInitd27c0ef63dcca79335c11ed8ac6d669a
         'App\\Models\\FichaSeguimiento' => __DIR__ . '/../..' . '/app/Models/FichaSeguimiento.php',
         'App\\Models\\Grado' => __DIR__ . '/../..' . '/app/Models/Grado.php',
         'App\\Models\\Persona' => __DIR__ . '/../..' . '/app/Models/Persona.php',
+        'App\\Models\\Posts' => __DIR__ . '/../..' . '/app/Models/Posts.php',
         'App\\Models\\Tempresa' => __DIR__ . '/../..' . '/app/Models/Tempresa.php',
         'App\\Models\\Tuniversidad' => __DIR__ . '/../..' . '/app/Models/Tuniversidad.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
