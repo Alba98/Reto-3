@@ -1,13 +1,14 @@
 <template>
-    @{{ message }}
-    <router-link to=""><a>url to example</a></router-link>
-   
-</template><script>
-export default {
-  data () {
-    return {
-      message: 'This is the home component!'
-    };
-  }
-};
+   <div><button @click = "ruta">Boton que lleva al home.blade</button></div>
+</template>
+<script>
+    export default {
+      methods: {
+            ruta(){
+                window.location.href = "home";
+                
+            }
+        },
+    }
+
 </script>
