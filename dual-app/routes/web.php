@@ -37,7 +37,6 @@ Route::get('home', function()
     return View::make('pages.home');
 })->name('principal');
 
-
 Route::get('darAlta', function()
 {
     return View::make('pages.darAlta');
