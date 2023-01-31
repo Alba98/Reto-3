@@ -30,7 +30,7 @@ class UserController extends Controller
                 break;
             
             default:
-                return view('pages.home');
+                return view('pages.coordinador.home');
                 break;
         }
     }
