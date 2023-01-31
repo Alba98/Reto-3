@@ -18,6 +18,7 @@
     
     {{-- @include('layouts.nav.coordinador') --}}
     {{-- @include('layouts.nav.alumno') --}}
+    @if(Auth::user()->rol)
     @switch(Auth::user()->rol)
         @case('Coordinador')
             @include('layouts.nav.coordinador')
@@ -35,7 +36,7 @@
             <span>Something went wrong, please try again</span>
             @include('layouts.nav.coordinador')
     @endswitch
-
+    @endif
     <hr>
     <div class="text-center nav-item">
         @auth
