@@ -61,6 +61,9 @@ Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estad
 
 //alumno
 Route::get('diarioAprendizaje', [UserController::class, 'diario'])->name('diarioAprendizaje');
+Route::get('diarioAprendizaje/nuevo', function () {
+    return view('pages.alumno.creardiario');
+})->name('nuevaEntradaDiario');
 Route::get('notas', [UserController::class, 'notas'])->name('notas');
 
 //tutor universidad

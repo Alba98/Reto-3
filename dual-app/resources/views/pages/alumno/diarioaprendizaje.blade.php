@@ -38,7 +38,7 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Nueva entrada</a>
+                            <a href="{{ route('nuevaEntradaDiario') }}" class="btn btn-primary">Nueva entrada</a>
                         </div>
                       </div>
                     </div>

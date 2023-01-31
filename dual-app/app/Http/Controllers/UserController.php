@@ -54,24 +54,6 @@ class UserController extends Controller
 
         }
     }
-
-    public function registros()
-    {
-        switch (Auth::user()->rol) {
-            case 'Coordinador':
-                return view('pages.coordinador.registros');
-                break;
-            
-            case 'Alumno':
-                return view('pages.alumno.registros');
-                break;
-            
-            case 'Tutor':
-                return view('pages.tutor.registros');
-                break;
-            
-        }
-    }
     
     public function asignarDual()
     {
@@ -106,7 +88,7 @@ class UserController extends Controller
     public function notas()
     {
         switch (Auth::user()->rol) {
-            case 'Alumnos':
+            case 'Alumno':
                 return view('pages.alumno.notas');
                 break;   
         }
