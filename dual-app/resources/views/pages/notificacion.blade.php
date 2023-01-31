@@ -1,5 +1,4 @@
-@extends('layouts.default')
-@section('content')
+
 <div class="container mt-4">
     <h2 class="text-muted"><i class="bi bi-bell-fill"></i> Notificaciones</h2>
     <div class="row">
@@ -31,4 +30,3 @@
         </div>
       </div>
     </div>
-@stop

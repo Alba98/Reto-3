@@ -37,6 +37,8 @@ class UserController extends Controller
 
     public function notificaciones()
     {
+        return view('pages.notificaciones');
+
         switch (Auth::user()->rol) {
             case 'Coordinador':
                 return view('pages.coordinador.notificaciones');
@@ -84,7 +86,7 @@ class UserController extends Controller
     {
         switch (Auth::user()->rol) {
             case 'Coordinador':
-                return view('pages.coordinador.estadisticas');
+                return view('pages.coordinador.estadisticas.stats');
                 break;   
         }
     }
@@ -93,11 +95,20 @@ class UserController extends Controller
     {
         switch (Auth::user()->rol) {
             case 'Alumno':
-                return view('pages.alumno.diario');
+                return view('pages.alumno.diarioaprendizaje');
                 break;  
             case 'Tutor':
                 #return view('pages.alumno.diario');
                 break; 
+        }
+    }
+
+    public function notas()
+    {
+        switch (Auth::user()->rol) {
+            case 'Alumnos':
+                return view('pages.alumno.notas');
+                break;   
         }
     }
 
@@ -114,7 +125,7 @@ class UserController extends Controller
     {
         switch (Auth::user()->rol) {
             case 'Tutor':
-                return view('pages.alumno.alumnos');
+                return view('pages.tutor.listarAlumnos');
                 break; 
         }
     }
