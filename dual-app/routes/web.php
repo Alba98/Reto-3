@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RegistrarController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +41,14 @@ Route::get('notificaciones', [UserController::class, 'notificaciones'])->name('n
 Route::get('registros', [UserController::class, 'registros'])->name('registros');
 
 //coordinador
-Route::get('registrar', [UserController::class, 'darAlta'])->name('darAlta');
+Route::get('registrar', [RegistrarController::class, 'index'])->name('darAlta');
+    Route::get('registrar/grado', [RegistrarController::class, 'grado'])->name('registrarGrado');
+    Route::get('registrar/alumno', [RegistrarController::class, 'alumno'])->name('registrarAlumno');
+    Route::get('registrar/empresa', [RegistrarController::class, 'empresa'])->name('registrarEmpresa');
+    Route::get('registrar/tutorEmpresa', [RegistrarController::class, 'tutorEmpresa'])->name('registrarTutorEmpresa');
+    Route::get('registrar/tutorUniversidad', [RegistrarController::class, 'tutorUniversidad'])->name('registrarTutorUniversidad');
+    Route::get('registrar/coordinador', [RegistrarController::class, 'coordinador'])->name('registrarCoordinador');
+
 Route::get('asignarDual', [UserController::class, 'asignarDual'])->name('asignarDual'); //registrar ?
 Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estadisticas');
 

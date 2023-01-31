@@ -70,15 +70,6 @@ class UserController extends Controller
             
         }
     }
-
-    public function darAlta()
-    {
-        switch (Auth::user()->rol) {
-            case 'Coordinador':
-                return view('pages.coordinador.darAlta');
-                break;   
-        }
-    }
     
     public function asignarDual()
     {
