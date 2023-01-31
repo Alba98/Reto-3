@@ -33,6 +33,7 @@
 
         @default
             <span>Something went wrong, please try again</span>
+            @include('layouts.nav.coordinador')
     @endswitch
 
     <hr>

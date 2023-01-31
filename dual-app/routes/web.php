@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,10 +33,7 @@ Route::get('/', function()
     return View::make('welcome');
 });
 
-Route::get('home', function()
-{
-    return View::make('pages.home');
-})->name('principal');
+Route::get('home/', [UserController::class, 'home'])->name('principal');
 
 //coordinador
 Route::get('darAlta', function()
@@ -59,11 +57,6 @@ Route::get('notificaciones', function()
 })->name('notificaciones');
 
 //alumno
-Route::get('home', function()
-{
-    return View::make('pages.alumno.home');
-})->name('principal_a');
-
 Route::get('diarioAprendizaje', function()
 {
     return View::make('pages.darAlta');
@@ -74,7 +67,7 @@ Route::get('notas', function()
     return View::make('pages.alumno.notas');
 })->name('notas_a');
 
-Route::get('resgistros', function()
+Route::get('registros', function()
 {
     return View::make('pages.registros');
 })->name('registros_a');
