@@ -33,46 +33,20 @@ Route::get('/', function()
     return View::make('welcome');
 });
 
-Route::get('home/', [UserController::class, 'home'])->name('principal');
+Route::get('home', [UserController::class, 'home'])->name('principal');
+Route::get('notificaciones', [UserController::class, 'notificaciones'])->name('notificaciones');
+Route::get('registros', [UserController::class, 'registros'])->name('registros');
 
 //coordinador
-Route::get('darAlta', function()
-{
-    return View::make('pages.darAlta');
-})->name('darAlta');
-
-Route::get('asignarDual', function()
-{
-    return View::make('pages.asignarDual');
-})->name('asignarDual');
-
-Route::get('registros', function()
-{
-    return View::make('pages.registros');
-})->name('registros');
-
-Route::get('notificaciones', function()
-{
-    return View::make('pages.notificaciones');
-})->name('notificaciones');
+Route::get('registrar', [UserController::class, 'darAlta'])->name('darAlta');
+Route::get('asignarDual', [UserController::class, 'asignarDual'])->name('asignarDual'); //registrar ?
+Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estadisticas');
 
 //alumno
-Route::get('diarioAprendizaje', function()
-{
-    return View::make('pages.darAlta');
-})->name('diario_a');
+Route::get('diarioAprendizaje', [UserController::class, 'diario'])->name('diarioAprendizaje');
+Route::get('notas', [UserController::class, 'notas'])->name('notas');
 
-Route::get('notas', function()
-{
-    return View::make('pages.alumno.notas');
-})->name('notas_a');
-
-Route::get('registros', function()
-{
-    return View::make('pages.registros');
-})->name('registros_a');
-
-Route::get('notificaciones', function()
-{
-    return View::make('pages.notificaciones');
-})->name('notificaciones_a');
+//tutor universidad
+Route::get('fichaSeguimiento', [UserController::class, 'fichaSeg'])->name('fichaSeg');
+Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
+Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');

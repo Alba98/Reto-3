@@ -5,31 +5,39 @@
         @if (Route::has('principal'))
             <li class="nav-item">
                 <a href="{{ route('principal') }}" class="nav-link px-sm-0 px-2 text-white nav_link" aria-current="page">
-                    <i class="fs-4 bi-house nav_icon"></i>
+                    <i class="fs-4 bi-house-fill nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Principal</span>
                 </a>
             </li>
         @endif
-        @if (Route::has('darAlta'))    
+        @if (Route::has('fichaSeg'))   
             <li class="nav-item">
-                <a href="{{ route('darAlta') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
-                    <i class="fs-4 bi-speedometer2 nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Dar de alta</span>
+                <a href="{{ route('fichaSeg') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                    <i class="fs-4 bi-file-earmark-text-fill nav_icon"></i>
+                    <span class="ms-1 d-none d-sm-inline nav_name">Ficha seguiminto</span>
                 </a>
             </li>
         @endif
-        @if (Route::has('asignarDual'))
+        @if (Route::has('evaluar'))
             <li class="nav-item">
-                <a href="{{ route('asignarDual') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
-                    <i class="fs-4 bi-table nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Asignar Dual</span>
+                <a href="{{ route('evaluar') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                    <i class="fs-4 bi-file-ruled-fill nav_icon"></i>
+                    <span class="ms-1 d-none d-sm-inline nav_name">Evaluar</span>
+                </a>
+            </li>
+        @endif
+        @if (Route::has('alumnos'))
+            <li class="nav-item">
+                <a href="{{ route('alumnos') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                    <i class="fs-4 bi-person-lines-fill nav_icon"></i>
+                    <span class="ms-1 d-none d-sm-inline nav_name">Alumnos</span>
                 </a>
             </li>
         @endif
         @if (Route::has('registros'))
             <li class="nav-item">
                 <a href="{{ route('registros') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
-                    <i class="fs-4 bi-grid nav_icon"></i>
+                    <i class="fs-4 bi-archive-fill nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Registros anteriores</span>
                 </a>
             </li>
@@ -39,14 +47,6 @@
                 <a href="{{ route('notificaciones') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
                     <i class="fs-4 bi-bell-fill nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Notificaciones</span>
-                </a>
-            </li>
-        @endif
-        @if (Route::has('estadisticas'))
-            <li class="nav-item">
-                <a href="{{ route('estadisticas') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
-                    <i class="fs-4 bi-graph-up nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Estadisticas</span>
                 </a>
             </li>
         @endif
