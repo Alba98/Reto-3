@@ -12,7 +12,7 @@
                   <div class="col-md-6 col-lg-7 d-flex align-items-center">
                     <div class="card-body p-4 p-lg-5 text-black">
       
-                       <form>
+                       <form action="home">
                           <div class="d-flex align-items-center mb-3 pb-1">
                               <span class="h1 fw-bold mb-0">DeustoDual</span>
                           </div>
@@ -24,16 +24,13 @@
                           <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example27">Contraseña</label>
                             <input type="password" id="form2Example27" class="form-control form-control-lg"/>
-                          </div>
-        
-                          <div class="pt-1 mb-4">
-                              <div><button id='Blog' @click = "ruta" class="btn btn-dark btn-lg btn-block" onclick="click()">Log In</button></div>
-                          </div>
-                    
-                        <a class="small text-muted" href="#!">Forgot password?</a>
-                              
-                      </form>
-      
+                          </div>                              
+                        <a class="small text-muted" href="#!">Forgot password?</a>         
+                         <button id="submit" type="submit"  class="d-none"></button>                    
+                      </form>            
+                      <div class="pt-1 mb-4">
+                              <div><button id='Blog' @click = "ruta" class="btn btn-dark btn-lg btn-block" onclick="document.getElementById('submit').click()">Log In</button></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -44,18 +41,8 @@
     </section>
 </template>
 <script>
-  const elemento = document.getElementById('Blog');
-  if(elemento) 
-    elemento.addEventListener("click",click);
-
-  function click(event){
-    debugger
-        event.preventDefault();
-    console.log(event)
-    };
     
-
-    export default {
+  export default {
       methods: {
             ruta(){
                 window.location.href = "home";
