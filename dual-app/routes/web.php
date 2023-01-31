@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrarController;
+use App\Http\Controllers\RegistrosController;
 
 
 /*
@@ -38,7 +39,13 @@ Route::get('/', function()
 
 Route::get('home', [UserController::class, 'home'])->name('principal');
 Route::get('notificaciones', [UserController::class, 'notificaciones'])->name('notificaciones');
-Route::get('registros', [UserController::class, 'registros'])->name('registros');
+
+Route::get('registros', [RegistrosController::class, 'index'])->name('registros');
+    Route::get('registros/alumno', [RegistrosController::class, 'alumno'])->name('registrosAlumno');
+    Route::get('registros/empresa', [RegistrosController::class, 'empresa'])->name('registrosEmpresa');
+    Route::get('registros/tutorEmpresa', [RegistrosController::class, 'tutorEmpresa'])->name('registrosTutorEmpresa');
+    Route::get('registros/tutorUniversidad', [RegistrosController::class, 'tutorUniversidad'])->name('registrosTutorUniversidad');
+    Route::get('registros/coordinador', [RegistrosController::class, 'coordinador'])->name('registrosCoordinador');
 
 //coordinador
 Route::get('registrar', [RegistrarController::class, 'index'])->name('darAlta');

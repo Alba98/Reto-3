@@ -6,4 +6,4 @@ npm install
 npm run dev
 
 #migration
-artisan migrate:fresh
+artisan migrate:fresh --seed
