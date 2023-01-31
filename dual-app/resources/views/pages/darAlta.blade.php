@@ -70,17 +70,5 @@
           </div>
         </div>
     </div>
-
-    <!--
-    <div class="col-md-12 col-lg-8 offset-lg-2 mt-4" style="text-align: center">
-        <button class="btn btn-primary bg-primary bg-gradient border-0 fs-2" style="width: 45%;height: 200px" type="button">Empresa</button>
-        <button class="btn btn-primary ms-4 bg-primary bg-gradient border-0 fs-2" style="width: 45%;height: 200px" type="button">Grado</button><br>
-        <button class="btn btn-primary mt-3 bg-primary bg-gradient border-0 fs-2" style="width: 45%;height: 200px" type="button">Alumno</button>
-        <button class="btn btn-primary ms-4 mt-3 bg-primary bg-gradient border-0 fs-2" style="width: 45%;height: 200px" type="button">Tutor Empresa</button><br>
-        <button class="btn btn-primary mt-3 bg-primary bg-gradient border-0 fs-2" style="width: 45%;height: 200px" type="button">Tutor Universidad</button>
-        <button class="btn btn-primary ms-4 mt-3 bg-primary bg-gradient fs-2" border-0 style="width: 45%;height: 200px" type="button">Coordinador</button>
-    </div> -->
-
-    
 </body>
 @stop
