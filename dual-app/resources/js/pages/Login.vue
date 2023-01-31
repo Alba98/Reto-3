@@ -19,7 +19,7 @@
                           <div class="form-outline mb-4">
                               <label class="form-label" for="form2Example17">Nombre del usuario</label>
                               <input type="email" id="form2Example17" class="form-control form-control-lg" />
-                          </div>
+                          </div>>
         
                           <div class="form-outline mb-4">
                             <label class="form-label" for="form2Example27">Contraseña</label>
