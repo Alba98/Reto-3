@@ -1,49 +1,45 @@
+import { createApp } from 'vue';
+import * as VueRouter from 'vue-router';
+import Home from '../pages/About.vue'
 
-import {createWebHistory, createRouter} from "vue-router";
+Vue.use(VueRouter)
 
-import Home from '../pages/Home';
-import Login from '../pages/Login';
-import Dashboard from '../pages/Dashboard';
-import Posts from '../components/Posts';
-import EditPost from '../components/EditPost';
-import AddPost from '../components/AddPost';
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/about',
+    name: 'About',
+    meta:{
+      auth: true
+    },
+    component: () => import(/* webpackChunkName: "about" */ '../pages/About.vue')
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "login" */ '../pages/Login.vue')
+  }
+]
 
-export const routes = [
-    {
-        name: 'home',
-        path: '/',
-        component: Home
-    },
-    {
-        name: 'login',
-        path: '/login',
-        component: Login
-    },
-    {
-        name: 'dashboard',
-        path: '/dashboard',
-        component: Dashboard
-    },
-    {
-        name: 'posts',
-        path: '/posts',
-        component: Posts
-    },
-    {
-        name: 'addpost',
-        path: '/posts/add',
-        component: AddPost
-    },
-    {
-        name: 'editpost',
-        path: '/posts/edit/:id',
-        component: EditPost
-    }
-];
+const router = new VueRouter({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
 
-const router = createRouter({
-    history: createWebHistory(),
-    routes: routes,
-});
 
-export default router;
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem('user')
+
+  if (to.matched.some(record => record.meta.auth) && !loggedIn) {
+    next('/login')
+    return
+  }
+  next()
+})
+
+export default router

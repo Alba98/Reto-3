@@ -17,7 +17,38 @@ use Illuminate\Support\Facades\Route;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::post('login', [UserController::class, 'login']);
+Route::post('login', [UserController::class, 'login'],function(Request $request){
+    $data = $request->validate([
+        'email' => 'required|email',
+        'clave' => 'required',
+    ]);
+
+    $user = Usuario::where('email',$request->clave)->first();
+
+    if(!$user || !Hash::check($request->clave,$user->clave)){
+        return response([
+            'message'=>['Credenciales incorrectas']
+        ],404);
+    }
+    $token = $user->createToken('my-app-token')->plainTextToken;
+
+    $response = [
+        'user' => $user,
+        'token' => $token
+    ];
+    return response($response, 201);
+
+});
+
+//middleware
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+
+
+
 Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::group(['prefix' => 'posts','middleware' => 'auth:sanctum'], function() {
