@@ -71,7 +71,7 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-primary">Ver más</button>
+                            <a href="{{ route('registros') }}" class="btn btn-primary">Ver más</a>
                         </div>
                       </div>
                     </div>

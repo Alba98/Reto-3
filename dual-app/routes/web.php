@@ -70,3 +70,9 @@ Route::get('notas', [UserController::class, 'notas'])->name('notas');
 Route::get('fichaSeguimiento', [UserController::class, 'fichaSeg'])->name('fichaSeg');
 Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
 Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
+Route::get('fichaAlumno', function () {
+    return view('pages.tutor.formaciondual');
+})->name('fichaAlumno');
+Route::get('diarioAlumno', function () {
+    return view('pages.tutor.diarioaprendizaje');
+})->name('diarioAlumno');
