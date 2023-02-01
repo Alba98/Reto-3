@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+// Grado
+use App\Models\Grado;
+
 class RegistrarController extends Controller
 {
 
@@ -29,7 +32,10 @@ class RegistrarController extends Controller
 
     public function alumno()
     {
-        return view('pages.coordinador.darAlta.alumno');
+        $grados = Grado::all();
+        return view('pages.coordinador.darAlta.alumno', [
+            'grados' => $grados
+        ]);
     }
 
     public function empresa()

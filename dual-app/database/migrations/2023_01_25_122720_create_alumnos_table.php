@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_persona')->constrained('personas')->primary();
             $table->string('curso');
-            $table->boolean('dual');
+            $table->integer('dual');
             $table->foreignId('id_grado')->constrained('grados');
             $table->timestamps();
         });
