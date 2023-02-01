@@ -38,6 +38,7 @@ Route::get('/', function()
 
 Route::get('home', [UserController::class, 'home'])->name('principal');
 Route::get('notificaciones', [NotificacionesController::class, 'index'])->name('notificaciones');
+Route::get('perfil', [UserController::class, 'perfil'])->name('perfil');
 
 Route::get('registros', [RegistrosController::class, 'index'])->name('registros');
     Route::get('registros/alumno', [AlumnoController::class, 'index'])->name('registrosAlumno');

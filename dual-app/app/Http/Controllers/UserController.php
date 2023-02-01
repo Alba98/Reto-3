@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Notificaciones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -17,8 +18,7 @@ class UserController extends Controller
     public function home()
     {
         $id = Auth::user()->id; //id_persona->alumno->id_diario
-        // $notificaciones = Notificaciones::all()->where('id_usuario', $id);
-        $notificaciones = [];
+        $notificaciones = Notificaciones::all()->where('id_usuario', $id);
 
         switch (Auth::user()->rol) {
             case 'Coordinador':
@@ -40,11 +40,16 @@ class UserController extends Controller
                 break;
             
             default:
-                return view('pages.coordinador.home', [
+                return view('home', [
                     'notificaciones' => $notificaciones
                 ]);
                 break;
         }
+    }
+
+    public function perfil()
+    {
+        return view('pages.perfil');
     }
 
     public function notificaciones()
