@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Usuario extends Model
+class Usuario  extends Authenticatable 
 {
     use HasFactory;
     protected $table = 'usuarios';
@@ -26,4 +26,10 @@ class Usuario extends Model
     {
         return $this->hasMany(Notificaciones::class);
     }
+
+    //Scopes:
+    public function scopeIsCoordinador($query){ 
+        return $this->tipo_person == 'coordinador' ? true : false ;
+    }
+
 }

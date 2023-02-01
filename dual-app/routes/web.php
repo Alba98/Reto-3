@@ -1,14 +1,9 @@
 <?php
 
-use App\Http\Controllers\AlumnoController;
-use App\Http\Controllers\GradoController;
-use App\Http\Controllers\EmpresaController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\RegistrarController;
-use App\Http\Controllers\RegistrosController;
-
+use Inertia\Inertia;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,64 +16,23 @@ use App\Http\Controllers\RegistrosController;
 |
 */
 
-//mio
-Route::get('/nav', function () {
-    return view('layouts.default');
-});
-//
-
-Route::get('/app', function () {
-    return view('layouts.app');
-});
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/', function()
-{
-    return View::make('welcome');
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
 });
 
-Route::get('home', [UserController::class, 'home'])->name('principal');
-Route::get('notificaciones', [UserController::class, 'notificaciones'])->name('notificaciones');
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('registros', [RegistrosController::class, 'index'])->name('registros');
-    Route::get('registros/alumno', [AlumnoController::class, 'index'])->name('registrosAlumno');
-    Route::get('registros/empresa', [RegistrosController::class, 'empresa'])->name('registrosEmpresa');
-    Route::get('registros/tutorEmpresa', [RegistrosController::class, 'tutorEmpresa'])->name('registrosTutorEmpresa');
-    Route::get('registros/tutorUniversidad', [RegistrosController::class, 'tutorUniversidad'])->name('registrosTutorUniversidad');
-    Route::get('registros/coordinador', [RegistrosController::class, 'coordinador'])->name('registrosCoordinador');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
-//coordinador
-Route::get('registrar', [RegistrarController::class, 'index'])->name('darAlta');
-    Route::get('registrar/grado', [RegistrarController::class, 'grado'])->name('registrarGrado');
-    Route::get('registrar/alumno', [RegistrarController::class, 'alumno'])->name('registrarAlumno');
-    Route::get('registrar/empresa', [RegistrarController::class, 'empresa'])->name('registrarEmpresa');
-    Route::get('registrar/tutorEmpresa', [RegistrarController::class, 'tutorEmpresa'])->name('registrarTutorEmpresa');
-    Route::get('registrar/tutorUniversidad', [RegistrarController::class, 'tutorUniversidad'])->name('registrarTutorUniversidad');
-    Route::get('registrar/coordinador', [RegistrarController::class, 'coordinador'])->name('registrarCoordinador');
-
-Route::get('asignarDual', [UserController::class, 'asignarDual'])->name('asignarDual'); //registrar ?
-Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estadisticas');
-
-//alumno
-Route::get('diarioAprendizaje', [UserController::class, 'diario'])->name('diarioAprendizaje');
-Route::get('diarioAprendizaje/nuevo', function () {
-    return view('pages.alumno.creardiario');
-})->name('nuevaEntradaDiario');
-Route::get('notas', [UserController::class, 'notas'])->name('notas');
-
-//tutor universidad
-Route::get('fichaSeguimiento', [UserController::class, 'fichaSeg'])->name('fichaSeg');
-Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
-Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
-
-// Crear un nuevo grado
-Route::post('registrar/grado', [GradoController::class, 'store'])->name('grado.store');
-
-// Crear un nuevo alumno
-Route::post('registrar/alumno', [AlumnoController::class, 'store'])->name('alumno.store');
-
-// Crear una nueva empresa
-Route::post('registrar/empresa', [EmpresaController::class, 'store'])->name('empresa.store');
+require __DIR__.'/auth.php';

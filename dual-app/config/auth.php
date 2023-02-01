@@ -36,6 +36,7 @@ return [
     */
 
     'guards' => [
+        //web es un tipo de guard
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -62,7 +63,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Usuario::class,
         ],
 
         // 'users' => [
@@ -107,5 +108,13 @@ return [
     */
 
     'password_timeout' => 10800,
+     
+
+
+
+
+
+
+
 
 ];
