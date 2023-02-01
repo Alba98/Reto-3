@@ -20,8 +20,8 @@ class DiarioController extends Controller
     public function show($id)
     {
         $diario = DiarioAprendizaje::find($id);
-        return view('articulos.show', [
-            'articulo' => $diario
+        return view('pages.tutor.diarioaprendizaje', [
+            'diario' => $diario
         ]);
     }
 

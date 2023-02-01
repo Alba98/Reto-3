@@ -24,7 +24,7 @@
               <div class="card-body">
                
                 <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac.</p>
-                <a href="{{ route('diarioAlumno') }}" class="btn btn-primary">Ver Diario aprendizaje</a>
+                <a href="{{ route('diarioAlumno', 1) }}" class="btn btn-primary">Ver Diario aprendizaje</a>
               </div>
             </div>
           </div>
