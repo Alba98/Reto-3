@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\RegistrosController;
+use App\Http\Controllers\DiarioController;
 
 
 /*
@@ -60,10 +61,8 @@ Route::get('asignarDual', [UserController::class, 'asignarDual'])->name('asignar
 Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estadisticas');
 
 //alumno
-Route::get('diarioAprendizaje', [UserController::class, 'diario'])->name('diarioAprendizaje');
-Route::get('diarioAprendizaje/nuevo', function () {
-    return view('pages.alumno.creardiario');
-})->name('nuevaEntradaDiario');
+Route::get('diarioAprendizaje', [DiarioController::class, 'index'])->name('diarioAprendizaje');
+Route::get('diarioAprendizaje/nuevo', [DiarioController::class, 'add'])->name('nuevaEntradaDiario');
 Route::get('notas', [UserController::class, 'notas'])->name('notas');
 
 //tutor universidad
@@ -73,6 +72,4 @@ Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
 Route::get('fichaAlumno', function () {
     return view('pages.tutor.formaciondual');
 })->name('fichaAlumno');
-Route::get('diarioAlumno', function () {
-    return view('pages.tutor.diarioaprendizaje');
-})->name('diarioAlumno');
+Route::get('diarioAlumno/{id}', [DiarioController::class, 'show'])->name('diarioAlumno');

@@ -73,18 +73,6 @@ class UserController extends Controller
         }
     }
 
-    public function diario()
-    {
-        switch (Auth::user()->rol) {
-            case 'Alumno':
-                return view('pages.alumno.diarioaprendizaje');
-                break;  
-            case 'Tutor':
-                #return view('pages.alumno.diario');
-                break; 
-        }
-    }
-
     public function notas()
     {
         switch (Auth::user()->rol) {
