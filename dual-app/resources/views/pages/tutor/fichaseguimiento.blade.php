@@ -1,11 +1,9 @@
 @extends('layouts.default')
 @section('content')
-
 <div class="container">
         <div class="d-flex justify-content-center align-items-center" style="height: 148px;">
           <div class="text-center">
-         
-            <h1 class="display-4 text-dark">Diario aprendizaje<button class="btn btn-primary pull-right">Evaluar Ficha</button></h1>
+          <h1 class="display-4 text-dark">Ficha de seguimiento <button class="btn btn-primary pull-right">Evaluar Ficha</button></h1>
             <p class="lead text-muted">At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus vestibulum, facilisi ac, sed faucibus.</p>
           </div>
         </div>
@@ -13,7 +11,7 @@
 
 
 <div class="card-body">
-                              <div class="table-responsive">
+                <div class="table-responsive">
                                 <table class="table">
                                   <thead>
                                     <tr>
@@ -42,10 +40,11 @@
       <table class="table">
         <thead>
           <tr>
-            <th><i class="bi bi-person"></i> Periodo</th>
-            <th><i class="bi bi-building"></i> Actividades desarrolladas</th>
-            <th><i class="bi bi-justify-left"></i> Reflexion y progreso</th>
-            <th><i class="bi bi-justify-left"></i> Problemas o dificultades</th>
+            <th><i class="bi bi-person"></i> Fecha</th>
+            <th><i class="bi bi-building"></i> Asistentes</th>
+            <th><i class="bi bi-justify-left"></i> Tipo de tutoria</th>
+            <th><i class="bi bi-justify-left"></i> Objetivos de la tutoria</th>
+            <th><i class="bi bi-justify-left"></i> Resumen</th>
           </tr>
         </thead>
         <tbody>
@@ -54,16 +53,19 @@
             <td>Fire&Blood</td>
             <td>George</td>
             <td>George</td>
+            <td>George</td>
           </tr>
           <tr>
             <td>22/12/22</td>
             <td>Fire&Blood</td>
             <td>George</td>
             <td>George</td>
+            <td>George</td>
           </tr>
           <tr>
             <td>22/12/22</td>
             <td>Fire&Blood</td>
+            <td>George</td>
             <td>George</td>
             <td>George</td>
           </tr>
@@ -71,7 +73,6 @@
         </tbody>
       </table>
     </div>
-  </div>
+</div>
 
-           
 @stop
