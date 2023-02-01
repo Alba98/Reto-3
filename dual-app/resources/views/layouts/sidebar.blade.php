@@ -2,11 +2,8 @@
                         
     <header id="header">
         <div class="header_toggle">
-            <button type="button" class="btn btn-primary btn float-end align-items-sm-start d-none d-sm-inline" aria-label="Left Align">
-                <i class="fs-4 bi-x" id="header-toggle"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn float-end align-items-sm-start d-none d-sm-inline" aria-label="Left Align">
-                <i class="fs-4 bi-arrow-right-square-fill" id="header-toggle"></i>
+            <button type="button" class="btn text-white float-end align-items-sm-start d-none d-sm-inline" aria-label="Left Align">
+                <i class="fs-4 bi-x toggle"></i>
             </button>
         </div>
     </header>

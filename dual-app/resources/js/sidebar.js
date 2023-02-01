@@ -1,24 +1,34 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     /*===== TOGGLE NAV =====*/
-    // const showNavbar = (toggleId, navId, bodyId, headerId) => {
-    //     const toggle = document.getElementById(toggleId),
-    //           nav = document.getElementById(navId),
-    //           headerpd = document.getElementById(headerId);
-    //     // Validate that all variables exist
-    //     if (toggle && nav && headerpd) {
-    //         toggle.addEventListener("click", () => {
-    //             // show navbar
-    //             nav.classList.toggle("show");
-    //             // change icon
-    //             toggle.classList.toggle("bx-x");
-    //             // add padding to body
-    //             bodypd.classList.toggle("body-pd");
-    //             // add padding to header
-    //             headerpd.classList.toggle("body-pd");
-    //         });
-    //     }
-    // };
-    // showNavbar("header-toggle", "nav-bar", "body-pd", "header");
+    var btn = document.querySelector('.toggle');
+    var btnst = false;
+    btn.onclick = function() {
+        const nav_name = document.querySelectorAll('.nav_name');
+        if(btnst == true) {
+          if (nav_name)
+            nav_name.forEach((l) => l.classList.add('d-sm-inline'));
+
+          btn.classList.remove('bi-arrow-right-square-fill');
+          btn.classList.add('bi-x');
+
+          document.getElementById('nav-bar').classList.remove('col-sm-1');
+          document.getElementById('nav-bar').classList.add('col-sm-3');
+          
+          btnst = false;
+        }else if(btnst == false) {
+          if (nav_name)
+            nav_name.forEach((l) => l.classList.remove('d-sm-inline'));
+
+          btn.classList.remove('bi-x');
+          btn.classList.add('bi-arrow-right-square-fill');
+
+          document.getElementById('nav-bar').classList.add('col-sm-1');
+          document.getElementById('nav-bar').classList.remove('col-sm-3');
+
+          btnst = true;
+        }
+    }
+
     /*===== LINK ACTIVE =====*/
     const linkColor = document.querySelectorAll(".nav_link");
     function colorLink() {
