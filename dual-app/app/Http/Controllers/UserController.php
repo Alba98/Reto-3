@@ -16,21 +16,33 @@ class UserController extends Controller
 
     public function home()
     {
+        $id = Auth::user()->id; //id_persona->alumno->id_diario
+        // $notificaciones = Notificaciones::all()->where('id_usuario', $id);
+        $notificaciones = [];
+
         switch (Auth::user()->rol) {
             case 'Coordinador':
-                return view('pages.coordinador.home');
+                return view('pages.coordinador.home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
             
             case 'Alumno':
-                return view('pages.alumno.home');
+                return view('pages.alumno.home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
             
             case 'Tutor':
-                return view('pages.tutor.home');
+                return view('pages.tutor.home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
             
             default:
-                return view('pages.coordinador.home');
+                return view('pages.coordinador.home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
         }
     }

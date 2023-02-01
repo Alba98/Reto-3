@@ -21,6 +21,14 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach ($diarios as $diario)
+                                <tr>
+                                    <td>{{ ($diario->periodo) }}</td>
+                                    <td>{{ ($diario->actividades) }}</td>
+                                    <td>{{ ($diario->reflexion) }}</td>
+                                    <td>{{ ($diario->problemas) }}</td>
+                                </tr>
+                                @endforeach
                                 <tr>
                                   <td>31/02/2022</td>
                                   <td>Muchas</td>

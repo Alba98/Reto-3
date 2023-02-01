@@ -6,6 +6,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\RegistrosController;
 use App\Http\Controllers\DiarioController;
+use App\Http\Controllers\NotificacionesController;
+use App\Http\Controllers\NotasController;
 
 
 /*
@@ -32,7 +34,7 @@ Route::get('/', function()
 });
 
 Route::get('home', [UserController::class, 'home'])->name('principal');
-Route::get('notificaciones', [UserController::class, 'notificaciones'])->name('notificaciones');
+Route::get('notificaciones', [NotificacionesController::class, 'index'])->name('notificaciones');
 
 Route::get('registros', [RegistrosController::class, 'index'])->name('registros');
     Route::get('registros/alumno', [RegistrosController::class, 'alumno'])->name('registrosAlumno');
@@ -58,7 +60,7 @@ Route::get('diarioAprendizaje', [DiarioController::class, 'index'])->name('diari
     Route::get('diarioAprendizaje/nuevo', [DiarioController::class, 'add'])->name('nuevaEntradaDiario');
     Route::get('diarioAlumno/{id}', [DiarioController::class, 'show'])->name('diarioAlumno'); //tutor
 
-Route::get('notas', [UserController::class, 'notas'])->name('notas');
+Route::get('notas', [NotasController::class, 'index'])->name('notas');
 
 //tutor universidad
 Route::get('fichaSeguimiento', [UserController::class, 'fichaSeg'])->name('fichaSeg');
