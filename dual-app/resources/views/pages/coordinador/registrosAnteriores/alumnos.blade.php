@@ -26,46 +26,16 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach ($alumnos as $alumno)
                                 <tr>
-                                  <td>Samso Park</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2017-2018</td>
-                                  <td>Ingenieria informatica</td>
-                                  <td>7</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
+                                  <td>{{$alumno->persona->nombre}}</td>
+                                  <td>{{$alumno->fichaDual}}</td>
+                                  <td>{{$alumno->curso}}</td>
+                                  <td>{{$alumno->grado->nombre}}</td>
+                                  <td>{{$alumno->fichaDual}}</td>
+                                  <td><a href="?id={{$alumno->id_persona}}" class="btn btn-danger">Eliminar</a></td>
                                 </tr>
-                                <tr>
-                                  <td>Marlo Sanki</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2014-2015</td>
-                                  <td>Historia del arte</td>
-                                  <td>8</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
-                                <tr>
-                                  <td>John ryte</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2016-2017</td>
-                                  <td>Ingenieria industrial</td>
-                                  <td>9</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
-                                <tr>
-                                  <td>Peter mark</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2022-2023</td>
-                                  <td>Ingenieria informatica</td>
-                                  <td>10</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
-                                <tr>
-                                  <td>Dave</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2021-2022</td>
-                                  <td>Historia del arte</td>
-                                  <td>7</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
+                                @endforeach
                               </tbody>
                             </table>
                           </div>

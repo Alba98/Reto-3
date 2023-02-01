@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Nuevo alumno') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('alumno.store') }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
@@ -40,28 +40,29 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="tel" class="col-md-4 col-form-label text-md-end">{{ __('Teléfono') }}</label>
+                            <label for="telefono" class="col-md-4 col-form-label text-md-end">{{ __('Teléfono') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Número de teléfono" name="tel" id="tel">
+                                    <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" id="telefono">
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="grado" class="col-md-4 col-form-label text-md-end">{{ __('Grado') }}</label>
+                            <label for="id_grado" class="col-md-4 col-form-label text-md-end">{{ __('Grado') }}</label>
                             <div class="col-md-6">
-                                    <select id="grado" class="form-select">
-                                      <option>Ingenieria informatica</option>
-                                      <option>Ingenieria industrial</option>
+                                    <select id="id_grado" name="id_grado" class="form-select">
+                                        @foreach ($grados as $grado)
+                                        <option value="{{ $grado->id }}">{{ $grado->nombre }}</option>
+                                        @endforeach
                                     </select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="curso" class="col-md-4 col-form-label text-md-end">{{ __('Curso') }}</label>
                             <div class="col-md-6">
-                                    <select id="curso" class="form-select">
-                                      <option value="1">1º</option>
-                                      <option value="2">2º</option>
-                                      <option value="3">3º</option>
-                                      <option value="4">4º</option>
+                                    <select id="curso" name="curso" class="form-select">
+                                      <option value="1º">1º</option>
+                                      <option value="2º">2º</option>
+                                      <option value="3º">3º</option>
+                                      <option value="4º">4º</option>
                                     </select>
                             </div>
                         </div>

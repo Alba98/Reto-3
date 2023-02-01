@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Nueva empresa') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('empresa.store') }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre empresa') }}</label>
@@ -30,9 +30,12 @@
                         <div class="row mb-3">
                             <label for="sector" class="col-md-4 col-form-label text-md-end">{{ __('Sector') }}</label>
                             <div class="col-md-6">
-                                    <select id="sector" class="form-select">
-                                      <option>Industria</option>
-                                      <option>Informatica</option>
+                                    <select id="sector" name="sector" class="form-select">
+                                      <option value="Industrial">Industrial</option>
+                                      <option value="Informatica">Informatica</option>
+                                      <option value="Comercio">Comercio</option>
+                                      <option value="Hosteleria">Hosteleria</option>
+                                      <option value="Sanidad">Sanidad</option>
                                     </select>
                             </div>
                         </div>

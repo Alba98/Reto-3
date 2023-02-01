@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('fichas_duales', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('id_persona')->constrained('alumnos');
+            $table->foreignId('id_alumno')->constrained('alumnos');
             $table->foreignId('id_empresa')->constrained('empresas');
             $table->foreignId('id_tempresa')->constrained('tempresa');
             $table->foreignId('id_tuniversidad')->constrained('tuniversidad');

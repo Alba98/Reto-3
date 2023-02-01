@@ -17,7 +17,7 @@ class Alumno extends Model
         'curso',
         'dual',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     public function persona()
@@ -39,5 +39,14 @@ class Alumno extends Model
     {
         return $this->hasMany(EvaluacionTrabajo::class, 'id_alumno');
     }
-    
+
+    public function fichaSeguimiento()
+    {
+        return $this->hasMany(FichaSeguimiento::class, 'id_alumno');
+    }
+
+    public function fichaDual()
+    {
+        return $this->hasMany(FichaDual::class, 'id_alumno');
+    }   
 }

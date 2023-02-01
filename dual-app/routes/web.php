@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\GradoController;
+use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
@@ -41,7 +44,7 @@ Route::get('home', [UserController::class, 'home'])->name('principal');
 Route::get('notificaciones', [UserController::class, 'notificaciones'])->name('notificaciones');
 
 Route::get('registros', [RegistrosController::class, 'index'])->name('registros');
-    Route::get('registros/alumno', [RegistrosController::class, 'alumno'])->name('registrosAlumno');
+    Route::get('registros/alumno', [AlumnoController::class, 'index'])->name('registrosAlumno');
     Route::get('registros/empresa', [RegistrosController::class, 'empresa'])->name('registrosEmpresa');
     Route::get('registros/tutorEmpresa', [RegistrosController::class, 'tutorEmpresa'])->name('registrosTutorEmpresa');
     Route::get('registros/tutorUniversidad', [RegistrosController::class, 'tutorUniversidad'])->name('registrosTutorUniversidad');
@@ -70,3 +73,12 @@ Route::get('notas', [UserController::class, 'notas'])->name('notas');
 Route::get('fichaSeguimiento', [UserController::class, 'fichaSeg'])->name('fichaSeg');
 Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
 Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
+
+// Crear un nuevo grado
+Route::post('registrar/grado', [GradoController::class, 'store'])->name('grado.store');
+
+// Crear un nuevo alumno
+Route::post('registrar/alumno', [AlumnoController::class, 'store'])->name('alumno.store');
+
+// Crear una nueva empresa
+Route::post('registrar/empresa', [EmpresaController::class, 'store'])->name('empresa.store');

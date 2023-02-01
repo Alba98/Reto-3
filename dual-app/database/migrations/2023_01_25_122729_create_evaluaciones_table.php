@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('indicador');
             $table->integer('valoracion');
             $table->string('observacion');
+            // id_ficha fk de fichas duales
+            $table->foreignId('id_ficha')->constrained('fichas_duales');
+            
         });
     }
 
