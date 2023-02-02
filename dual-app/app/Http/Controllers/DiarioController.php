@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DiarioAprendizaje;
+use App\Models\FichaDual;
 use App\Models\Alumno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,12 +16,23 @@ class DiarioController extends Controller
     {
         if (Auth::user()->rol == 'Alumno') {
             $id = Auth::user()->id;
-            $diarios = Alumno::all()->where('id_persona', $id);
-            //$diarios = Alumno::all()->where('id_persona', $id)->fichasDuales->last();
+            // $diarios = Alumno::all()->where('id_persona', $id);
+            // $diarios = Alumno::all()->where('id_persona', $id)->fichasDuales->last();
             // $diarios = $fichasDuales->diariosAprendizajes;
             // $diarios = Alumno::all()->where('id_persona', $id)->fichaDual->diariosAprendizajes;
-            //$diarios = DiarioAprendizaje::all()->where('id', $id);
+
+            //$diarios = DiarioAprendizaje::all()->where('id_ficha', $id);
+            // return view('pages.alumno.diarioaprendizaje', [
+            //     'diarios' => $diarios
+            // ]);
+
+            $alumno = Alumno::all()->where('id_persona', $id);
+            $fichas = FichaDual::all()->where('id_alumno', $id);
+            $diarios = DiarioAprendizaje::all();
+
             return view('pages.alumno.diarioaprendizaje', [
+                'alumno' => $alumno,
+                'fichas' => $fichas,
                 'diarios' => $diarios
             ]);
         }   
