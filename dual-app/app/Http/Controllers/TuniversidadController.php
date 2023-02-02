@@ -7,6 +7,7 @@ use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Tuniversidad;
 use App\Models\Docente;
+use App\Models\FichaDual;
 class TuniversidadController extends Controller
 {
     /**
@@ -16,7 +17,14 @@ class TuniversidadController extends Controller
      */
     public function index()
     {
-        //
+        $tuniversidad = Tuniversidad::all();
+        $ficha = FichaDual::all();
+        $usuarios = Usuario::all();
+        return response(view('pages.coordinador.registrosAnteriores.t_universidad', [
+            'tuniversidad' => $tuniversidad,
+            'ficha' => $ficha,
+            'usuarios' => $usuarios
+        ]));
     }
 
     /**

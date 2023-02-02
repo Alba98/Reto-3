@@ -15,34 +15,22 @@
                               <thead>
                                 <tr>
                                   <th><i class="bi bi-person"></i> Nombre</th>
-                                  <th><i class="bi bi-buildings"></i> Sector</th>
-                                  <th><i class="bi bi-telephone"></i> Teléfono</th>
+                                  <th><i class="bi bi-building"></i> Sector</th>
+                                  <th><i class="bi bi-file-text"></i> Cif</th>
                                   <th><i class="bi bi-people"></i> Tutores</th>
                                   <th><i class="bi bi-trash"></i> Eliminar</th>
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach ($empresas as $empresa)
                                 <tr>
-                                  <td>Samso Park</td>
-                                  <td>Industrial</td>
-                                  <td>986476543</td>
-                                  <td>7</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
+                                  <td>{{$empresa->nombre}}</td>
+                                  <td>{{$empresa->sector}}</td>
+                                  <td>{{$empresa->cif}}</td>
+                                  <td>{{$tempresa->where('id_empresa',$empresa->id)->count()}}</td>
+                                  <td><a href="?id={{$empresa->id}}" class="btn btn-danger">Eliminar</a></td>
                                 </tr>
-                                <tr>
-                                  <td>Marlo Sanki</td>
-                                  <td>Industrial</td>
-                                  <td>128765987</td>
-                                  <td>6</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
-                                <tr>
-                                  <td>John ryte</td>
-                                  <td>Industrial</td>
-                                  <td>134564324</td>
-                                  <td>4</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
+                                @endforeach
                               </tbody>
                             </table>
                           </div>

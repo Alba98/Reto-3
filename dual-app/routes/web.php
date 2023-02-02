@@ -45,10 +45,10 @@ Route::get('perfil', [UserController::class, 'perfil'])->name('perfil');
 
 Route::get('registros', [RegistrosController::class, 'index'])->name('registros');
     Route::get('registros/alumno', [AlumnoController::class, 'index'])->name('registrosAlumno');
-    Route::get('registros/empresa', [RegistrosController::class, 'empresa'])->name('registrosEmpresa');
+    Route::get('registros/empresa', [EmpresaController::class, 'index'])->name('registrosEmpresa');
     Route::get('registros/tutorEmpresa', [RegistrosController::class, 'tutorEmpresa'])->name('registrosTutorEmpresa');
-    Route::get('registros/tutorUniversidad', [RegistrosController::class, 'tutorUniversidad'])->name('registrosTutorUniversidad');
-    Route::get('registros/coordinador', [RegistrosController::class, 'coordinador'])->name('registrosCoordinador');
+    Route::get('registros/tutorUniversidad', [TuniversidadController::class, 'index'])->name('registrosTutorUniversidad');
+    Route::get('registros/coordinador', [CoordinadorController::class, 'index'])->name('registrosCoordinador');
 
 //coordinador
 Route::get('registrar', [RegistrarController::class, 'index'])->name('darAlta');

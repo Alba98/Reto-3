@@ -31,18 +31,6 @@ class RegistrarController extends Controller
         return view('pages.coordinador.darAlta.grado');
     }
 
-    public function alumno()
-    {
-        $grados = Grado::all();
-        return view('pages.coordinador.darAlta.alumno', [
-            'grados' => $grados
-        ]);
-    }
-
-    public function empresa()
-    {
-        return view('pages.coordinador.darAlta.empresa');
-    }
 
     public function tutorEmpresa()
     {

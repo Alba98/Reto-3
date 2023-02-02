@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Empresa;
+use App\Models\Tempresa;
 
 class EmpresaController extends Controller
 {
@@ -14,7 +15,12 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        //
+        $empresas = Empresa::all();
+        $tempresa = Tempresa::all();
+        return response(view('pages.coordinador.registrosAnteriores.empresas', [
+            'empresas' => $empresas,
+            'tempresa' => $tempresa,
+        ]));
     }
 
     /**
