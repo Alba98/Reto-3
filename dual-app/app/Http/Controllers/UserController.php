@@ -20,7 +20,7 @@ class UserController extends Controller
         $id = Auth::user()->id; //id_persona->alumno->id_diario
         $notificaciones = Notificaciones::all()->where('id_usuario', $id);
 
-        switch (Auth::user()->rol) {
+        switch (Auth::user()->tipo_usuario) {
             case 'Coordinador':
                 return view('pages.coordinador.home', [
                     'notificaciones' => $notificaciones

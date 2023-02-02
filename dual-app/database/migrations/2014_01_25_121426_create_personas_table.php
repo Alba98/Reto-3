@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
+            $table->enum('tipo_usuario', ['alumno', 'coordinador', 'tempresa', 'tuniversidad']);
             $table->timestamps();
             $table->string('nombre');
             $table->string('ape1');
