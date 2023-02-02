@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="card-header">Ficha dual</div>
                 <div class="card-body">
-                  <h5 class="card-title">Chasco Fernandez, Andrea</h5>
+                  <h5 class="card-title">{{($alumno->persona->nombre)}}</h5>
                   <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati doloribus corporis ab ea deleniti repellendus deserunt hic tempora nobis sit cupiditate laborum reiciendis doloremque, sapiente, consequatur natus, numquam asperiores. Doloremque! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum quas pariatur dolorem, nisi quaerat, molestias quasi non a, mollitia voluptatibus assumenda at! Quae debitis architecto distinctio, nisi dignissimos accusantium quos Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum illum ea tempora natus temporibus aperiam vitae aliquid vero architecto unde inventore laborum est cum accusamus dolore distinctio, dolor veniam amet!</p>
                   </div>
                 </div>
