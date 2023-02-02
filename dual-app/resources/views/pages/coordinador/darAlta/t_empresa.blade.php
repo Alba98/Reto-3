@@ -7,50 +7,51 @@
             <div class="card">
                 <div class="card-header">{{ __('Nuevo tutor de empresa') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('tempresa.store') }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Nombre del tutor" name="nombre" id="nombre">
+                                    <input type="text" class="form-control" placeholder="Nombre del tutor" name="nombre" id="nombre" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="ape1" class="col-md-4 col-form-label text-md-end">{{ __('Primer apellido') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Primer apellido" name="ape1" id="ape1">
+                                    <input type="text" class="form-control" placeholder="Primer apellido" name="ape1" id="ape1" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="ape2" class="col-md-4 col-form-label text-md-end">{{ __('Segundo apellido') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Segundo apellido" name="ape2" id="ape2">
+                                    <input type="text" class="form-control" placeholder="Segundo apellido" name="ape2" id="ape2" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="dni" class="col-md-4 col-form-label text-md-end">{{ __('DNI') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="DNI del tutor" name="dni" id="dni">
+                                    <input type="text" class="form-control" placeholder="DNI del tutor" name="dni" id="dni" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Correo electronico" name="email" id="email">
+                                    <input type="email" class="form-control" placeholder="Correo electronico" name="email" id="email" required>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="tel" class="col-md-4 col-form-label text-md-end">{{ __('Teléfono') }}</label>
+                            <label for="telefono" class="col-md-4 col-form-label text-md-end">{{ __('Teléfono') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Número de teléfono" name="tel" id="tel">
+                                    <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" id="telefono" required>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="empresa" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
+                            <label for="id_empresa" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
                             <div class="col-md-6">
-                                    <select id="empresa" class="form-select">
-                                      <option>Mercedes-Benz</option>
-                                      <option>Michelin</option>
+                                    <select id="id_empresa" name="id_empresa" class="form-select">
+                                        @foreach ($empresas as $empresa)
+                                        <option value="{{ $empresa->id }}">{{ $empresa->nombre }}</option>
+                                        @endforeach
                                     </select>
                             </div>
                         </div>

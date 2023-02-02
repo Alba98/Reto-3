@@ -11,6 +11,9 @@ use App\Http\Controllers\RegistrosController;
 use App\Http\Controllers\DiarioController;
 use App\Http\Controllers\NotificacionesController;
 use App\Http\Controllers\NotasController;
+use App\Http\Controllers\TempresaController;
+use App\Http\Controllers\TuniversidadController;
+use App\Http\Controllers\CoordinadorController;
 
 
 /*
@@ -83,3 +86,12 @@ Route::post('registrar/alumno', [AlumnoController::class, 'store'])->name('alumn
 
 // Crear una nueva empresa
 Route::post('registrar/empresa', [EmpresaController::class, 'store'])->name('empresa.store');
+
+// Crear un nuevo tutor de empresa
+Route::post('registrar/tutorEmpresa', [TempresaController::class, 'store'])->name('tempresa.store');
+
+// Crear un nuevo tutor de universidad
+Route::post('registrar/tutorUniversidad', [TuniversidadController::class, 'store'])->name('tuniversidad.store');
+
+// Crear un nuevo coordinador
+Route::post('registrar/coordinador', [CoordinadorController::class, 'store'])->name('coordinador.store');
