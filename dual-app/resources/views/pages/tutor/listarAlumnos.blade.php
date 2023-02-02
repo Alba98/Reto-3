@@ -26,14 +26,16 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach($alumnos as $alumno)
                                 <tr>
-                                  <td>Samso Park</td>
-                                  <td>Mercedes-Benz</td>
+                                  <td>{{($alumno->persona->nombre)}}</td>
+                                  <td>{{($alumno->persona->empresa)}}</td>
                                   <td>2017-2018</td>
                                   <td>Ingenieria informatica</td>
                                   <td>7</td>
-                                  <td><a href="{{ route('fichaAlumno') }}" class="btn btn-primary">Ver</a></td>
+                                  <td><a href="{{ route('alumno.show',$alumno->id)}}" class="btn btn-primary">Ver</a></td>
                                 </tr>
+                                @endforeach
                                 <tr>
                                   <td>Marlo Sanki</td>
                                   <td>Mercedes-Benz</td>

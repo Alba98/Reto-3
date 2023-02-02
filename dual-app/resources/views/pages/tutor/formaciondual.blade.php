@@ -1,5 +1,5 @@
-@extends('layouts.default')
-@section('content')
+
+
 <div class="container-fluid">
         <div class="row">
           <div class="col-sm-6">   
@@ -30,4 +30,3 @@
       </div>
       
 
-@stop

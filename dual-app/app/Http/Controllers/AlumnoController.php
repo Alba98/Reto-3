@@ -19,7 +19,8 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::all();
+        $alumnos = Alumno::all(); 
+        //return view('pages.tutor.listarAlumnos',compact('alumnos'));
         $empresas = Empresa::all();
         $evaluaciones = Evaluacion::all();
         $ficha = FichaDual::all();
@@ -91,7 +92,8 @@ class AlumnoController extends Controller
     public function show($id)
     {
         $alumno = Alumno::where('id',$id)->firstOrFail(); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
-        return $alumno->persona;
+        //return $alumno->persona;
+        return view('pages.tutor.formaciondual',compact('alumno')); //compact pasa un array con variables. ('var1','var2'...)
     }
 
     /**
