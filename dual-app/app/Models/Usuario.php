@@ -21,4 +21,9 @@ class Usuario extends Model
     {
         return $this->belongsTo(Persona::class, 'id_persona');
     }
+
+    public function notificaciones()
+    {
+        return $this->hasMany(Notificaciones::class);
+    }
 }

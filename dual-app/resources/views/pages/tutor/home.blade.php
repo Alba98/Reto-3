@@ -9,7 +9,7 @@
             <div class="card-body">
               <h4 class="card-title ">Alumnos</h4>
               <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Alumnos</a>
+              <a href="{{ route('alumnos') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Alumnos</a>
             </div>
           </div>
         </div>
@@ -26,6 +26,6 @@
   </div>
 
   <!-- Notificaciones -->
-  @include('pages.notificacion')
+  @include('pages.notificacion', $notificaciones)
 
 @stop

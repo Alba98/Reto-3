@@ -18,4 +18,9 @@ class Grado extends Model
     {
         return $this->hasMany(Coordinador::class, 'id_grado');
     }
+
+    public function alumnos()
+    {
+        return $this->hasMany(Alumno::class, 'id_grado');
+    }
 }

@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
+// Modelos
+use App\Models\Grado;
+use App\Models\Empresa;
+
 class RegistrarController extends Controller
 {
 
@@ -27,19 +31,13 @@ class RegistrarController extends Controller
         return view('pages.coordinador.darAlta.grado');
     }
 
-    public function alumno()
-    {
-        return view('pages.coordinador.darAlta.alumno');
-    }
-
-    public function empresa()
-    {
-        return view('pages.coordinador.darAlta.empresa');
-    }
 
     public function tutorEmpresa()
     {
-        return view('pages.coordinador.darAlta.t_empresa');
+        $empresas = Empresa::all();
+        return view('pages.coordinador.darAlta.t_empresa', [
+            'empresas' => $empresas
+        ]);
     }
 
     public function tutorUniversidad()
@@ -49,7 +47,10 @@ class RegistrarController extends Controller
 
     public function coordinador()
     {
-        return view('pages.coordinador.darAlta.coordinador');
+        $grados = Grado::all();
+        return view('pages.coordinador.darAlta.coordinador', [
+            'grados' => $grados
+        ]);
     }
 }
 ?>

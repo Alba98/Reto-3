@@ -2,11 +2,8 @@
                         
     <header id="header">
         <div class="header_toggle">
-            <button type="button" class="btn btn-primary btn float-end align-items-sm-start d-none d-sm-inline" aria-label="Left Align">
-                <i class="fs-4 bi-x" id="header-toggle"></i>
-            </button>
-            <button type="button" class="btn btn-primary btn float-end align-items-sm-start d-none d-sm-inline" aria-label="Left Align">
-                <i class="fs-4 bi-arrow-right-square-fill" id="header-toggle"></i>
+            <button type="button" class="btn text-white float-end align-items-sm-start d-none d-sm-inline" aria-label="Left Align">
+                <i class="fs-4 bi-x toggle"></i>
             </button>
         </div>
     </header>
@@ -34,7 +31,6 @@
 
             @default
                 <span>Something went wrong, please try again</span>
-                @include('layouts.nav.coordinador')
         @endswitch
     @endif
 
@@ -50,23 +46,18 @@
                 <p> Imposible </p>
             @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre
-                        href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">>
+                    <a id="navbarDropdown" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                            {{ __('Ajustes') }}
+                        <a class="dropdown-item" href="{{ route('perfil') }}">
+                             {{ __('Ajustes') }}
                         </a>
                         <a class="dropdown-divider"a>
                         <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf

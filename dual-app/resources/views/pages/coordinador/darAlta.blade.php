@@ -3,7 +3,7 @@
 <body>
     <div class="container mt-2">
         <h2 class="text-muted"><i class="bi bi-person-bounding-box"></i> Dar de alta</h2>
-        <div class="row mt-3a">
+        <div class="row">
           <div class="col col-md-3">
             <div class="card border-3 border-primary">
               <div class="card-body">

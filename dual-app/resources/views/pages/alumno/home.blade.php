@@ -9,7 +9,7 @@
             <div class="card-body">
               <h4 class="card-title ">Acceder al diario</h4>
               <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Diario Aprendizaje</a>
+              <a href="{{ route('diarioAprendizaje') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Diario Aprendizaje</a>
             </div>
           </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="card-body">
               <h4 class="card-title">Ver mis notas</h4>
               <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Ver Notas</a>
+              <a href="{{ route('notas') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Ver Notas</a>
             </div>
           </div>
         </div>
@@ -26,5 +26,5 @@
   </div>
 
   <!-- Notificaciones -->
-  @include('pages.notificacion')
+  @include('pages.notificacion', $notificaciones)
 @stop

@@ -20,7 +20,7 @@ class Calificaciones extends Model
 
     public function ficha()
     {
-        return $this->belongsTo(Ficha::class, 'id_ficha');
+        return $this->belongsTo(FichaDual::class, 'id_ficha');
     }
 
     public function fichaSeguimiento()

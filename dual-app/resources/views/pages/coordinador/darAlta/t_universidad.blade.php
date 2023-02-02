@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Nuevo tutor de la universidad') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('tuniversidad.store') }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
@@ -40,9 +40,9 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="tel" class="col-md-4 col-form-label text-md-end">{{ __('Teléfono') }}</label>
+                            <label for="telefono" class="col-md-4 col-form-label text-md-end">{{ __('Teléfono') }}</label>
                             <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="Número de teléfono" name="tel" id="tel">
+                                    <input type="text" class="form-control" placeholder="Número de teléfono" name="telefono" id="telefono">
                             </div>
                         </div>
                         <div class="row mb-0">

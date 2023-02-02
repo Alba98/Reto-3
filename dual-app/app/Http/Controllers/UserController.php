@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Notificaciones;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -16,23 +17,39 @@ class UserController extends Controller
 
     public function home()
     {
+        $id = Auth::user()->id; //id_persona->alumno->id_diario
+        $notificaciones = Notificaciones::all()->where('id_usuario', $id);
+
         switch (Auth::user()->rol) {
             case 'Coordinador':
-                return view('pages.coordinador.home');
+                return view('pages.coordinador.home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
             
             case 'Alumno':
-                return view('pages.alumno.home');
+                return view('pages.alumno.home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
             
             case 'Tutor':
-                return view('pages.tutor.home');
+                return view('pages.tutor.home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
             
             default:
-                return view('pages.coordinador.home');
+                return view('home', [
+                    'notificaciones' => $notificaciones
+                ]);
                 break;
         }
+    }
+
+    public function perfil()
+    {
+        return view('pages.perfil');
     }
 
     public function notificaciones()
@@ -70,18 +87,6 @@ class UserController extends Controller
             case 'Coordinador':
                 return view('pages.coordinador.estadisticas.stats');
                 break;   
-        }
-    }
-
-    public function diario()
-    {
-        switch (Auth::user()->rol) {
-            case 'Alumno':
-                return view('pages.alumno.diarioaprendizaje');
-                break;  
-            case 'Tutor':
-                #return view('pages.alumno.diario');
-                break; 
         }
     }
 

@@ -21,4 +21,18 @@ class Evaluacion extends Model
     {
         return $this->hasMany(Calificaciones::class, 'id_evaluacion');
     }
+    public function alumno()
+    {
+        return $this->belongsTo(Alumno::class, 'id_alumno');
+    }
+
+    public function fichaSeguimiento()
+    {
+        return $this->belongsTo(FichaSeguimiento::class, 'id_fichaSeguimiento');
+    }
+
+    public function tutor()
+    {
+        return $this->belongsTo(Tutor::class, 'id_tutor');
+    }
 }

@@ -22,33 +22,21 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                @foreach ($coordinadores as $coordinador)
                                 <tr>
-                                  <td>Samso Park</td>
-                                  <td>Ingenieria industrial</td>
-                                  <td>samso@gmail.com</td>
-                                  <td>765432876</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
+                                  <td>{{$coordinador->persona->nombre}}</td>
+                                  <td>{{$grados->where('id',$coordinador->id_grado)->value('nombre')}}</td>
+                                  <td>{{$usuarios->where('id_persona',$coordinador->id_persona)->value('email')}}</td>
+                                  <td>{{$personas->where('id',$coordinador->id_persona)->value('telefono')}}</td>
+                                  <td><a href="?id={{$coordinador->id_persona}}" class="btn btn-danger">Eliminar</a></td>
                                 </tr>
-                                <tr>
-                                  <td>Marlo Sanki</td>
-                                  <td>Ingenieria Informatica</td>
-                                  <td>marlo@gmail.com</td>
-                                  <td>654927394</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
-                                <tr>
-                                  <td>John ryte</td>
-                                  <td>Ingenieria industrial</td>
-                                  <td>john@gmail.com</td>
-                                  <td>472498123</td>
-                                  <td><button class="btn btn-danger">Eliminar</button></td>
-                                </tr>
+                                @endforeach
                               </tbody>
                             </table>
                           </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('principal') }}" class="btn btn-primary">Volver</a>
+                            <a href="{{ route('registros') }}" class="btn btn-primary">Volver</a>
                         </div>
                       </div>
                     </div>

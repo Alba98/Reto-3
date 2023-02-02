@@ -92,35 +92,6 @@ class DatabaseSeeder extends Seeder
         }
 
         $faker = \Faker\Factory::create();
-        for($i=0;$i<40;$i++){
-            DB::table('evaluaciones')->insert([
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'valoracion' => $faker->randomElement(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
-                'indicador' => $faker->text(),
-                'observacion' => $faker->text()
-            ]);
-        }
-
-        $faker = \Faker\Factory::create();
-        for($i=0;$i<20;$i++){
-            DB::table('evaluaciones_diario')->insert([
-                'id_evaluacion' => $faker->unique()->numberBetween(1, 20),
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now')
-            ]);
-        }
-
-        $faker = \Faker\Factory::create();
-        for($i=0;$i<20;$i++){
-            DB::table('evaluaciones_trabajo')->insert([
-                'id_evaluacion' => $faker->unique()->numberBetween(21, 40),
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now')
-            ]);
-        }
-
-        $faker = \Faker\Factory::create();
         for($i=0;$i<5;$i++){
             DB::table('tempresa')->insert([
                 'id_empresa' => $faker->unique()->numberBetween(1, 10),
@@ -142,12 +113,42 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create();
         for($i=0;$i<30;$i++){
             DB::table('fichas_duales')->insert([
-                'id_persona' => $faker->unique()->numberBetween(1, 30),
+                'id_alumno' => $faker->unique()->numberBetween(1, 30),
                 'id_empresa' => $faker->numberBetween(1, 10),
                 'id_tempresa' => $faker->numberBetween(1, 5),
                 'id_tuniversidad' => $faker->numberBetween(1, 5),
                 'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+            ]);
+        }
+
+        $faker = \Faker\Factory::create();
+        for($i=0;$i<40;$i++){
+            DB::table('evaluaciones')->insert([
+                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'valoracion' => $faker->randomElement(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']),
+                'indicador' => $faker->text(),
+                'observacion' => $faker->text(),
+                'id_ficha' => $faker->numberBetween(1, 30)
+            ]);
+        }
+
+        $faker = \Faker\Factory::create();
+        for($i=0;$i<20;$i++){
+            DB::table('evaluaciones_diario')->insert([
+                'id_evaluacion' => $faker->unique()->numberBetween(1, 20),
+                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-1 years', 'now')
+            ]);
+        }
+
+        $faker = \Faker\Factory::create();
+        for($i=0;$i<20;$i++){
+            DB::table('evaluaciones_trabajo')->insert([
+                'id_evaluacion' => $faker->unique()->numberBetween(21, 40),
+                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-1 years', 'now')
             ]);
         }
 
