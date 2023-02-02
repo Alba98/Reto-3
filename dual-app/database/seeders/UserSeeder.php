@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
        $user=\App\Models\User::factory()->create([
             'email'=>'administrador@gmail.com',
             'password'=> bcrypt('admin'),
-            'persona_id'=>$admin->id,
+            'id_persona'=>$admin->id,
             'email_verified_at'=>now()
        ]);
     }
