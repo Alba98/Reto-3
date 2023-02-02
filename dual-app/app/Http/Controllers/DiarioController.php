@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
+
 use App\Models\DiarioAprendizaje;
 use App\Models\FichaDual;
 use App\Models\Alumno;
@@ -14,7 +18,7 @@ class DiarioController extends Controller
 
     public function index()
     {
-        if (Auth::user()->rol == 'Alumno') {
+        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])) {
             $id = Auth::user()->id;
             // $diarios = Alumno::all()->where('id_persona', $id);
             // $diarios = Alumno::all()->where('id_persona', $id)->fichasDuales->last();
@@ -35,20 +39,33 @@ class DiarioController extends Controller
                 'fichas' => $fichas,
                 'diarios' => $diarios
             ]);
-        }   
+        }  
+        else if (Gate::allows('coordinador'))
+        //alguien que me exploque xq se supone que ahora soy coordiador si estoy como alumno ????
+            return view('errors.401');  
+        else
+            return view('errors.403');  
     }
 
     public function show($id)
     {
-        $diario = DiarioAprendizaje::find($id);
-        return view('pages.tutor.diarioaprendizaje', [
-            'diario' => $diario
-        ]);
+        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])){ 
+            $diario = DiarioAprendizaje::find($id);
+            return view('pages.tutor.diarioaprendizaje', [
+                'diario' => $diario
+            ]);
+        }
+        else
+            return view('errors.403');
+
     }
 
     public function add()
     {
-        return view('pages.alumno.creardiario');
+        if (Gate::allows('alumno'))
+            return view('pages.alumno.creardiario');
+        else
+            return view('errors.403');
     }
 
 }

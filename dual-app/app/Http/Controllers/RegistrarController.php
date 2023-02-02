@@ -15,42 +15,71 @@ class RegistrarController extends Controller
 
     public function index()
     {
-    //    if (Gate::allows('isCoordinador')) {
-    //         return view('pages.coordinador.darAlta');
-    //     } else {
-    //         return view('errors.403');
-    //     }
-
-        if (Auth::user()->rol == 'Coordinador')
+        if (Gate::allows('coordinador'))
             return view('pages.coordinador.darAlta');
-        
+        else
+            return view('errors.403');        
     }
 
     public function grado()
     {
-        return view('pages.coordinador.darAlta.grado');
+        if (Gate::allows('coordinador'))
+            return view('pages.coordinador.darAlta.grado');
+        else
+            return view('errors.403');     
     }
 
+    public function alumno()
+    {
+        if (Gate::allows('coordinador')){
+            $grados = Grado::all();
+            return view('pages.coordinador.darAlta.alumno', [
+                'grados' => $grados
+            ]);
+        }
+        else
+            return view('errors.403');     
+    }
+
+    public function empresa()
+    {
+        if (Gate::allows('coordinador'))
+            return view('pages.coordinador.darAlta.empresa');
+        else
+            return view('errors.403');     
+        
+    }
 
     public function tutorEmpresa()
     {
-        $empresas = Empresa::all();
-        return view('pages.coordinador.darAlta.t_empresa', [
-            'empresas' => $empresas
-        ]);
+        if (Gate::allows('coordinador')) {
+            $empresas = Empresa::all();
+            return view('pages.coordinador.darAlta.t_empresa', [
+                'empresas' => $empresas
+            ]);
+        }
+        else
+            return view('errors.403');  
     }
 
     public function tutorUniversidad()
     {
-        return view('pages.coordinador.darAlta.t_universidad');
+        if (Gate::allows('coordinador'))
+            return view('pages.coordinador.darAlta.t_universidad');
+        else
+            return view('errors.403'); 
     }
 
     public function coordinador()
     {
-        $grados = Grado::all();
-        return view('pages.coordinador.darAlta.coordinador', [
-            'grados' => $grados
-        ]);
+        if (Gate::allows('coordinador')) {
+            $grados = Grado::all();
+            return view('pages.coordinador.darAlta.coordinador', [
+                'grados' => $grados
+            ]);
+        }
+        else
+            return view('errors.403'); 
     }
 }
 ?>

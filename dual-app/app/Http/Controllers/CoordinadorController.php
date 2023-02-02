@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+
 use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Coordinador;
@@ -48,6 +51,9 @@ class CoordinadorController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::user()->cannot('registrar'))
+            return view('errors.403'); 
+
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
             'ape1' => 'required|unique:personas|max:255',

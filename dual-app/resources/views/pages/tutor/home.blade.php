@@ -13,6 +13,7 @@
             </div>
           </div>
         </div>
+        @if (Auth::user()->tipo_usuario == 'tuniversidad')
         <div class="col col-md-6">
           <div class="card">
             <div class="card-body">
@@ -23,6 +24,7 @@
           </div>
         </div>
       </div>
+      @endif
   </div>
 
   <!-- Notificaciones -->

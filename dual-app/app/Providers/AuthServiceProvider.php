@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+use App\Models\User;
+
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -27,17 +29,21 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
         //Gates:
-        Gate::define('alumno',function($user){
+        Gate::define('alumno',function(User $user){
             return $user->persona->tipo_usuario === 'alumno';
         });
-        Gate::define('coordinador',function($user){
+        Gate::define('coordinador',function(User $user){
             return $user->persona->tipo_usuario === 'coordinador';
         });
-        Gate::define('tempresa',function($user){
+        Gate::define('tempresa',function(User $user){
             return $user->persona->tipo_usuario === 'tempresa';
         });
-        Gate::define('tuniversidad',function($user){
+        Gate::define('tuniversidad',function(User $user){
             return $user->persona->tipo_usuario === 'tuniversidad';
+        });
+
+        Gate::define('registrar',function(User $user){ //por si quisieramos que en algun momento el tutor tmb registre
+            return $user->persona->tipo_usuario === 'coordinador';
         });
 
     }

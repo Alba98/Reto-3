@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
+
 use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Alumno;
 use App\Models\Tuniversidad;
-use Illuminate\Http\Request;
-
 
 class AlumnoController extends Controller
 {
@@ -41,6 +44,8 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::user()->cannot('registrar'))
+            return view('errors.403'); 
 
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
