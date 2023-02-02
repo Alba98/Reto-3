@@ -26,11 +26,6 @@ class FichaSeguimiento extends Model
         return $this->belongsTo(FichaDual::class, 'id_fichadual');
     }
 
-    public function fichaSeguimiento()
-    {
-        return $this->hasMany(FichaSeguimiento::class, 'id_fichadual');
-    }
-
     public function evaluaciones()
     {
         return $this->hasMany(Evaluacion::class, 'id_fichaSeguimiento');

@@ -38,4 +38,14 @@ class FichaDual extends Model
     {
         return $this->belongsTo(Tuniversidad::class, 'id_tuniversidad');
     }
+
+    public function fichaSeguimineto()
+    {
+        return $this->hasMany(FichaSeguimiento::class, 'id_fichadual');
+    }
+
+    public function diarioAprendizaje()
+    {
+        return $this->hasMany(DiarioAprendizaje::class, 'id_ficha');
+    }
 }
