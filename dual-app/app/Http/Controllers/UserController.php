@@ -21,23 +21,23 @@ class UserController extends Controller
         $notificaciones = Notificaciones::all()->where('id_usuario', $id);
 
         switch (Auth::user()->tipo_usuario) {
-            case 'Coordinador':
+            case 'coordinador':
                 return view('pages.coordinador.home', [
                     'notificaciones' => $notificaciones
                 ]);
             
-            case 'Alumno':
+            case 'alumno':
                 return view('pages.alumno.home', [
                     'notificaciones' => $notificaciones
                 ]);
             
-            case 'Tutor':
+            case 'tutor':
                 return view('pages.tutor.home', [
                     'notificaciones' => $notificaciones
                 ]);
             
             default:
-                return view('home', [
+                return view('pages.tutor.home', [
                     'notificaciones' => $notificaciones
                 ]);
         }

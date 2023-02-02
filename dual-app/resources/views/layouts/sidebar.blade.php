@@ -12,32 +12,34 @@
         <span >{{ config('app.name', 'FormacionDual') }}</span>
     </a>
     <hr class="sidebar-divider my-0 color-light">
-    
-    {{-- @include('layouts.nav.coordinador') --}}
-    {{-- @include('layouts.nav.alumno') --}}
-    @if (Auth::user()->rol)
-        @switch(Auth::user()->rol)
-            @case('Coordinador')
+
+    @if (Auth::user()->tipo_usuario)
+        @switch(Auth::user()->tipo_usuario)
+            @case('coordinador')
                 @include('layouts.nav.coordinador')
                 @break
 
-            @case('Alumno')
+            @case('alumno')
                 @include('layouts.nav.alumno')
                 @break
             
-            @case('Tutor')
+            @case('tuniversidad')
                 @include('layouts.nav.tutor')
                 @break
 
+            @case('tempresa')
+                @include('layouts.nav.tutor')
+                @break
             @default
                 <span>Something went wrong, please try again</span>
         @endswitch
     @endif
 
+
     <hr>
     <div class="text-center nav-item">
         @auth
-            <span class="fs-4 d-none d-sm-inline nav_name">{{Auth::user()->rol}}</span>
+            <span class="fs-4 d-none d-sm-inline nav_name">{{Auth::user()->tipo_usuario}}</span>
         @endauth
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ms-auto">
@@ -47,7 +49,7 @@
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+                        {{ Auth::user()->persona->nombre }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ route('perfil') }}">

@@ -30,7 +30,8 @@ class UserSeeder extends Seeder
             'email'=>'administrador@gmail.com',
             'password'=> bcrypt('admin'),
             'id_persona'=>$admin->id,
-            'email_verified_at'=>now()
+            'email_verified_at'=>now(),
+            'tipo_usuario'=>'coordinador'
        ]);
     }
 }

@@ -10,22 +10,24 @@
                 </a>
             </li>
         @endif
-        @if (Route::has('fichaSeg'))   
-            <li class="nav-item">
-                <a href="{{ route('fichaSeguimineto') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
-                    <i class="fs-4 bi-file-earmark-text-fill nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Ficha seguiminto</span>
-                </a>
-            </li>
-        @endif
-        @if (Route::has('evaluar'))
-            <li class="nav-item">
-                <a href="{{ route('evaluar') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
-                    <i class="fs-4 bi-file-ruled-fill nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Evaluar</span>
-                </a>
-            </li>
-        @endif
+        @can('tempresa')
+            @if (Route::has('fichaSeg'))   
+                <li class="nav-item">
+                    <a href="{{ route('fichaSeguimineto') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                        <i class="fs-4 bi-file-earmark-text-fill nav_icon"></i>
+                        <span class="ms-1 d-none d-sm-inline nav_name">Ficha seguiminto</span>
+                    </a>
+                </li>
+            @endif
+            @if (Route::has('evaluar'))
+                <li class="nav-item">
+                    <a href="{{ route('evaluar') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                        <i class="fs-4 bi-file-ruled-fill nav_icon"></i>
+                        <span class="ms-1 d-none d-sm-inline nav_name">Evaluar</span>
+                    </a>
+                </li>
+            @endif
+        @endcan
         @if (Route::has('alumnos'))
             <li class="nav-item">
                 <a href="{{ route('alumnos') }}" class="nav-link px-sm-0 px-2 text-white nav_link">

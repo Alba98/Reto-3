@@ -24,9 +24,11 @@
                     <main class="row overflow-auto">
 
                         <div class="col pt-4">
-
-                            @yield('content')
-
+                            @auth
+                                @yield('content')
+                            @else
+                                @include('errors.401')
+                            @endauth
                         </div>
 
                     </main>
