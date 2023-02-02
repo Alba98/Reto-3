@@ -7,6 +7,7 @@ use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Coordinador;
 use App\Models\Docente;
+use App\Models\Grado;
 
 class CoordinadorController extends Controller
 {
@@ -17,7 +18,16 @@ class CoordinadorController extends Controller
      */
     public function index()
     {
-        //
+        $personas = Persona::all();
+        $grados = Grado::all();
+        $coordinadores = Coordinador::all();
+        $usuarios = Usuario::all();
+        return response(view('pages.coordinador.registrosAnteriores.coordinadores', [
+            'personas' => $personas,
+            'grados' => $grados,
+            'coordinadores' => $coordinadores,
+            'usuarios' => $usuarios
+        ]));
     }
 
     /**

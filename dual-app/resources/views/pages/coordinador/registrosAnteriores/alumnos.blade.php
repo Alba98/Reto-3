@@ -29,10 +29,10 @@
                                 @foreach ($alumnos as $alumno)
                                 <tr>
                                   <td>{{$alumno->persona->nombre}}</td>
-                                  <td>{{$alumno->fichaDual}}</td>
+                                  <td>{{$empresas->where('id',$alumno->fichaDual->value('id_empresa'))->value('nombre')}}</td>
                                   <td>{{$alumno->curso}}</td>
                                   <td>{{$alumno->grado->nombre}}</td>
-                                  <td>{{$alumno->fichaDual}}</td>
+                                  <td>{{$evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion')}}</td>
                                   <td><a href="?id={{$alumno->id_persona}}" class="btn btn-danger">Eliminar</a></td>
                                 </tr>
                                 @endforeach

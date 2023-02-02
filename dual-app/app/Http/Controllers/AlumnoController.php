@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Alumno;
+use App\Models\Empresa;
+use App\Models\Evaluacion;
+use App\Models\FichaDual;
 use Illuminate\Http\Request;
 
 
@@ -17,9 +20,15 @@ class AlumnoController extends Controller
     public function index()
     {
         $alumnos = Alumno::all();
-        return view('pages.coordinador.registrosAnteriores.alumnos', [
-            'alumnos' => $alumnos
-        ]);
+        $empresas = Empresa::all();
+        $evaluaciones = Evaluacion::all();
+        $ficha = FichaDual::all();
+        return response(view('pages.coordinador.registrosAnteriores.alumnos', [
+            'alumnos' => $alumnos,
+            'empresas' => $empresas,
+            'evaluaciones' => $evaluaciones,
+            'ficha' => $ficha
+        ]));
     }
 
     /**
