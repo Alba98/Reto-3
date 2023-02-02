@@ -15,15 +15,15 @@
             <div class="card-header">Acciones rapidas</div>
             <div class="card-body">
                 <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ver Diario Aprendizaje</a>
+                <a href="{{ route('diarioAlumno', 0) }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ver Diario Aprendizaje</a>
               </div>
               <div class="card-body">        
                 <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ficha de seguimiento</a>
+                <a href="{{ route('fichaSeguimineto') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ficha de seguimiento</a>
               </div>
               <div class="card-body">
                 <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Evaluacion trabajo en empresa </a>
+                <a href="{{ route('evaluacionFicha') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Evaluacion trabajo en empresa </a>
               </div>
           </div>
         </div>
