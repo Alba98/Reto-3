@@ -26,6 +26,6 @@
   </div>
 
   <!-- Notificaciones -->
-  @include('pages.notificacion')
+  @include('pages.notificacion', $notificaciones)
 
 @stop

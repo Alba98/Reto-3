@@ -2,6 +2,17 @@
 <div class="container mt-4">
     <h2 class="text-muted"><i class="bi bi-bell-fill"></i> Notificaciones</h2>
     <div class="row">
+      @foreach ($notificaciones as $notificacion)
+        <div class="col col-md-3">
+          <div class="card  border-3 border-primary">
+            <div class="card-body">
+              <h4 class="card-title">{{ ($notificacion->mensaje) }}</h4>
+              <p class="card-text text-muted">{{ ($notificacion->fecha) }}</p>
+              <a href="#" class="btn btn-primary fs-5">Visto <i class="bi bi-patch-check-fill"></i></a>
+            </div>
+          </div>
+        </div>
+      @endforeach
       <div class="col col-md-3">
         <div class="card  border-3 border-primary">
           <div class="card-body">
