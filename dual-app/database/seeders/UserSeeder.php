@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Persona;
 
 class UserSeeder extends Seeder
 {
@@ -29,7 +30,7 @@ class UserSeeder extends Seeder
             'email'=>'administrador@gmail.com',
             'password'=> bcrypt('admin'),
             'persona_id'=>$admin->id,
-            'email_verified_at'=>nom()
+            'email_verified_at'=>now()
        ]);
     }
 }

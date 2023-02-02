@@ -82,6 +82,3 @@ Route::post('registrar/alumno', [AlumnoController::class, 'store'])->name('alumn
 
 // Crear una nueva empresa
 Route::post('registrar/empresa', [EmpresaController::class, 'store'])->name('empresa.store');
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

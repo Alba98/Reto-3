@@ -16,8 +16,8 @@ class UserController extends Controller
 
     public function home()
     {
-        switch (Auth::user()->rol) {
-            case 'Coordinador':
+        switch (Auth::user()->tipo_usuario) {
+            case 'coordinador':
                 return view('pages.coordinador.home');
                 break;
             
