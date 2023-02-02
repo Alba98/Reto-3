@@ -14,9 +14,12 @@ class DiarioController extends Controller
     public function index()
     {
         if (Auth::user()->rol == 'Alumno') {
-            $id = Auth::user()->id; //id_persona->alumno->id_diario
-            $id_diario = Alumno::all()->where('id_persona', $id)->fichaDual;
-            $diarios = DiarioAprendizaje::all()->where('id', $id_diario);
+            $id = Auth::user()->id;
+            $diarios = Alumno::all()->where('id_persona', $id);
+            //$diarios = Alumno::all()->where('id_persona', $id)->fichasDuales->last();
+            // $diarios = $fichasDuales->diariosAprendizajes;
+            // $diarios = Alumno::all()->where('id_persona', $id)->fichaDual->diariosAprendizajes;
+            //$diarios = DiarioAprendizaje::all()->where('id', $id);
             return view('pages.alumno.diarioaprendizaje', [
                 'diarios' => $diarios
             ]);

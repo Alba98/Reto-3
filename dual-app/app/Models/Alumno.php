@@ -40,13 +40,18 @@ class Alumno extends Model
         return $this->hasMany(EvaluacionTrabajo::class, 'id_alumno');
     }
 
-    public function fichaSeguimiento()
+    public function fichasSeguimientos()
     {
         return $this->hasMany(FichaSeguimiento::class, 'id_alumno');
     }
 
-    public function fichaDual()
+    public function fichasDuales()
     {
         return $this->hasMany(FichaDual::class, 'id_alumno');
-    }   
+    }  
+    
+    public function fichaDual()
+    {
+        return $this->hasOne(FichaDual::class, 'id_alumno')->latest();
+    }
 }

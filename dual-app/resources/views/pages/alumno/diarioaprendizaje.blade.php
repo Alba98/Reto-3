@@ -6,6 +6,7 @@
         <div class="row container d-flex justify-content-center">
         <div class="col-lg-8 grid-margin stretch-card">
                       <div class="card">
+                      {{$diarios}}
                         <div class="card-header">
                             <span>Registros diario aprendizaje</span>
                         </div>
