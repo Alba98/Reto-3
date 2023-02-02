@@ -6,6 +6,16 @@
         <div class="row container d-flex justify-content-center">
         <div class="col-lg-8 grid-margin stretch-card">
                       <div class="card">
+                      {{$alumno->value('id_persona')}}
+                      <br><br>
+                      {{$fichas}}
+                      <br><br>
+                      {{$fichas->last()}}
+                      <br><br>
+                      {{$fichas->last()->value('id')}}
+                      <br><br>
+                      {{$diarios->where('id_ficha', $fichas->last()->value('id'))}}
+                      <br>
                         <div class="card-header">
                             <span>Registros diario aprendizaje</span>
                         </div>
@@ -21,7 +31,7 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach ($diarios as $diario)
+                                @foreach ($diarios->where('id_ficha', $fichas->last()->value('id')) as $diario)
                                 <tr>
                                     <td>{{ ($diario->periodo) }}</td>
                                     <td>{{ ($diario->actividades) }}</td>

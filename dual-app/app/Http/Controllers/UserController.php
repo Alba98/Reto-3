@@ -25,25 +25,21 @@ class UserController extends Controller
                 return view('pages.coordinador.home', [
                     'notificaciones' => $notificaciones
                 ]);
-                break;
             
             case 'Alumno':
                 return view('pages.alumno.home', [
                     'notificaciones' => $notificaciones
                 ]);
-                break;
             
             case 'Tutor':
                 return view('pages.tutor.home', [
                     'notificaciones' => $notificaciones
                 ]);
-                break;
             
             default:
                 return view('home', [
                     'notificaciones' => $notificaciones
                 ]);
-                break;
         }
     }
 
@@ -56,20 +52,20 @@ class UserController extends Controller
     {
         return view('pages.notificaciones');
 
-        switch (Auth::user()->rol) {
-            case 'Coordinador':
-                return view('pages.coordinador.notificaciones');
-                break;
+        // switch (Auth::user()->rol) {
+        //     case 'Coordinador':
+        //         return view('pages.coordinador.notificaciones');
+        //         break;
             
-            case 'Alumno':
-                return view('pages.alumno.notificaciones');
-                break;
+        //     case 'Alumno':
+        //         return view('pages.alumno.notificaciones');
+        //         break;
             
-            case 'Tutor':
-                return view('pages.tutor.notificaciones');
-                break;
+        //     case 'Tutor':
+        //         return view('pages.tutor.notificaciones');
+        //         break;
 
-        }
+        // }
     }
     
     public function asignarDual()
@@ -77,7 +73,6 @@ class UserController extends Controller
         switch (Auth::user()->rol) {
             case 'Coordinador':
                 return view('pages.coordinador.asignarDual');
-                break;   
         }
     }
 
@@ -86,7 +81,6 @@ class UserController extends Controller
         switch (Auth::user()->rol) {
             case 'Coordinador':
                 return view('pages.coordinador.estadisticas.stats');
-                break;   
         }
     }
 
@@ -95,7 +89,6 @@ class UserController extends Controller
         switch (Auth::user()->rol) {
             case 'Alumno':
                 return view('pages.alumno.notas');
-                break;   
         }
     }
 
@@ -104,7 +97,6 @@ class UserController extends Controller
         switch (Auth::user()->rol) {
             case 'Tutor':
                 return view('pages.alumno.evaluar');
-                break; 
         }
     }
 
@@ -113,7 +105,39 @@ class UserController extends Controller
         switch (Auth::user()->rol) {
             case 'Tutor':
                 return view('pages.tutor.listarAlumnos');
-                break; 
+        }
+    }
+
+    public function fichaAlumno()
+    {
+        switch (Auth::user()->rol) {
+            case 'Tutor':
+                return view('pages.tutor.formaciondual');
+        }
+    }
+
+    public function fichaSeguimineto()
+    {
+        switch (Auth::user()->rol) {
+            case 'Tutor':
+                return view('pages.tutor.fichaseguimiento');  
+        }
+    }
+
+    public function evaluacionDiario()
+    {
+        switch (Auth::user()->rol) {
+            case 'Tutor':
+                return view('pages.tutor.evaluacionDiario');  
+        }
+    }
+
+    public function evaluacionFicha()
+    {
+        switch (Auth::user()->rol) {
+            case 'Tutor':
+                return view('pages.tutor.evaluacionFicha');
+                break;   
         }
     }
 }

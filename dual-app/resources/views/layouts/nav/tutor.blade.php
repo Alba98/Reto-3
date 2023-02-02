@@ -12,7 +12,7 @@
         @endif
         @if (Route::has('fichaSeg'))   
             <li class="nav-item">
-                <a href="{{ route('fichaSeg') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                <a href="{{ route('fichaSeguimineto') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
                     <i class="fs-4 bi-file-earmark-text-fill nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Ficha seguiminto</span>
                 </a>

@@ -73,9 +73,11 @@ Route::get('notas', [NotasController::class, 'index'])->name('notas');
 Route::get('fichaSeguimiento', [UserController::class, 'fichaSeg'])->name('fichaSeg');
 Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
 Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
-Route::get('fichaAlumno', function () {
-    return view('pages.tutor.formaciondual');
-})->name('fichaAlumno');
+
+Route::get('fichaAlumno', [UserController::class, 'fichaAlumno'])->name('fichaAlumno');
+Route::get('fichaSeguimineto', [UserController::class, 'fichaSeguimineto'])->name('fichaSeguimineto');
+Route::get('evaluacion/diario', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
+Route::get('evaluacion/ficha', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
 
 
 // Crear un nuevo grado

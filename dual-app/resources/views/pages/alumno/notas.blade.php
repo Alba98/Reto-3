@@ -22,14 +22,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- @foreach ($calificaciones as $calificacion)
+                    @foreach ($calificaciones->where('id_ficha', $fichas->value('id')) as $calificacion)
                       <tr>
-                          <td>{{ ($calificacion->periodo) }}</td>
-                          <td>{{ ($calificacion->actividades) }}</td>
-                          <td>{{ ($calificacion->reflexion) }}</td>
-                          <td>{{ ($calificacion->problemas) }}</td>
+                        <td> {{ ($alumno->value('curso')) }} curso</td>
+                        <td> {{ $empresas->where('id', $fichas->value('id_empresa'))->value('nombre') }} </td>
+                        <td> {{ ($calificacion->id_ficha) }}</td>
+                        <td> {{ ($calificacion->id_ficha_seguimiento) }}</td>
+                        <td> {{ ($calificacion->id_ficha) + ($calificacion->id_ficha_seguimiento) / 2 }}</td>
                       </tr>
-                    @endforeach -->
+                    @endforeach
                     <tr>
                       <td>4º Curso</td>
                       <td>Mercedes-Benz</td>
