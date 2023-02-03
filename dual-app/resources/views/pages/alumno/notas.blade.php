@@ -26,8 +26,8 @@
                       <tr>
                         <td> {{ ($alumno->value('curso')) }} curso</td>
                         <td> {{ $empresas->where('id', $fichas->value('id_empresa'))->value('nombre') }} </td>
-                        <td> {{ ($calificacion->id_ficha) }}</td>
-                        <td> {{ ($calificacion->id_ficha_seguimiento) }}</td>
+                        <td> {{ ($calificacion->calificacionTrabajo) }}</td>
+                        <td> {{ ($calificacion->calificacionDiario) }}</td>
                         <td> {{ ($calificacion->id_ficha) + ($calificacion->id_ficha_seguimiento) / 2 }}</td>
                       </tr>
                     @endforeach

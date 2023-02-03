@@ -6,16 +6,6 @@
         <div class="row container d-flex justify-content-center">
         <div class="col-lg-8 grid-margin stretch-card">
                       <div class="card">
-                      {{$alumno->value('id_persona')}}
-                      <br><br>
-                      {{$fichas}}
-                      <br><br>
-                      {{$fichas->last()}}
-                      <br><br>
-                      {{$fichas->last()->value('id')}}
-                      <br><br>
-                      {{$diarios->where('id_ficha', $fichas->last()->value('id'))}}
-                      <br>
                         <div class="card-header">
                             <span>Registros diario aprendizaje</span>
                         </div>
@@ -31,7 +21,7 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach ($diarios->where('id_ficha', $fichas->last()->value('id')) as $diario)
+                                @foreach ($diarios->where('id_ficha', $fichas->last()->id) as $diario)
                                 <tr>
                                     <td>{{ ($diario->periodo) }}</td>
                                     <td>{{ ($diario->actividades) }}</td>
@@ -39,18 +29,6 @@
                                     <td>{{ ($diario->problemas) }}</td>
                                 </tr>
                                 @endforeach
-                                <tr>
-                                  <td>31/02/2022</td>
-                                  <td>Muchas</td>
-                                  <td>Todo OK</td>
-                                  <td>Ninguno, soy muy bueno</td>
-                                </tr>
-                                <tr>
-                                  <td>12/03/2022</td>
-                                  <td>...</td>
-                                  <td>-</td>
-                                  <td>6</td>
-                                </tr>
                               </tbody>
                             </table>
                           </div>
