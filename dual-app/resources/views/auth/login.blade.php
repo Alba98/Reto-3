@@ -1,6 +1,6 @@
 @extends('layouts.app')
-
 @section('content')
+<form id="login-form">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -22,6 +22,8 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                             
+
                             </div>
                         </div>
 
@@ -53,7 +55,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button id="submit-button" type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
 
@@ -70,4 +72,7 @@
         </div>
     </div>
 </div>
+</form>
+<script src="{{ asset('js/validateLogin.js') }}"></script>
 @endsection
+
