@@ -42,7 +42,7 @@ class TempresaController extends Controller
     public function store(Request $request)
     {
         if (Auth::User()->cannot('registrar'))
-            return view('errors.403'); 
+            return response(view('errors.403')); 
             
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',

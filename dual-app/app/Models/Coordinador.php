@@ -21,11 +21,6 @@ class Coordinador extends Model
         return $this->belongsTo(Docente::class, 'id_docente');
     }
     
-    public function persona()
-    {
-        return $this->belongsTo(Persona::class, 'id_persona');
-    }
-
     public function grado()
     {
         return $this->belongsTo(Grado::class, 'id_grado');

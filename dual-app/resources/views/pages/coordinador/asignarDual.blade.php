@@ -34,7 +34,7 @@
                             <div class="col-md-6">
                                     <select id="id_tuniversidad" name="id_tuniversidad" class="form-select">
                                       @foreach ($tuniversidad as $tuniversidad)
-                                        <option value="{{ $tuniversidad->id }}">{{ $personas->where('id',$tuniversidad->id_persona)->value('nombre') }}</option>
+                                        <option value="{{ $tuniversidad->docente->id }}">{{ $personas->where('id',$tuniversidad->docente->id_persona)->value('nombre') }}</option>
                                       @endforeach
                                       @foreach ($coordinadores as $coordinador)
                                         <option value="{{ $coordinador->docente->id }}">{{ $personas->where('id',$coordinador->docente->id_persona)->value('nombre') }}</option>

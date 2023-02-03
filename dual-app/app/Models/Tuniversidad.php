@@ -11,14 +11,15 @@ class Tuniversidad extends Model
     protected $table = 'tuniversidad';
     protected $fillable = [
         'id',
-        'id_persona',
+        'id_docente',
         'created_at',
         'updated_at'
     ];
 
-    public function persona()
+
+    public function docente()
     {
-        return $this->belongsTo(Persona::class, 'id_persona');
+        return $this->belongsTo(Docente::class, 'id_docente');
     }
 
     public function fichas()
