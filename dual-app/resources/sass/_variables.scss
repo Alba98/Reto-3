@@ -16,8 +16,10 @@ $grid-breakpoints: (
 );
 
 $blue-deusto:    #0153ce;
+$eliminar:    #e6091e;
 
 $theme-colors: (
   "primary":    $blue-deusto, //$primary
-  "light":    $body-bg //$primary
+  "danger":     $eliminar, //$danger
+  "light":      $body-bg //$primary
 ) !default;
