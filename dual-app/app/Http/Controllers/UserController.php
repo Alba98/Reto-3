@@ -8,6 +8,14 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Notificaciones;
+use App\Models\Persona;
+use App\Models\Alumno;
+use App\Models\Empresa;
+use App\Models\Tuniversidad;
+use App\Models\Tempresa;
+use App\Models\Coordinador;
+use App\Models\FichaDual;
+use SebastianBergmann\Environment\Console;
 
 class UserController extends Controller
 {
@@ -60,8 +68,29 @@ class UserController extends Controller
     public function asignarDual()
     {
         if (Gate::allows('coordinador'))
-            return view('pages.coordinador.asignarDual');
+            return view('pages.coordinador.asignarDual',[
+                'alumnos' => Alumno::all(),
+                'empresas' => Empresa::all(),
+                'tuniversidad' => Tuniversidad::all(),
+                'tempresa' => Tempresa::all(),
+                'personas' => Persona::all(),
+                'coordinadores' => Coordinador::all(),
+            ]);
         else
+            return view('errors.403');
+    }
+
+    public function storeDual(Request $request)
+    {
+        if (Gate::allows('coordinador')) {
+            $ficha = new FichaDual();
+            $ficha->id_alumno = $request->input('id_alumno');
+            $ficha->id_empresa = $request->input('id_empresa');
+            $ficha->id_tuniversidad = $request->input('id_tuniversidad');
+            $ficha->id_tempresa = $request->input('id_tempresa');
+            $ficha->save(); 
+            return redirect()->route('darAlta')->with('success', 'Alumno asignado correctamente');
+        } else
             return view('errors.403');
     }
 

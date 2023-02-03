@@ -24,11 +24,11 @@
                               <tbody>
                                 @foreach ($coordinadores as $coordinador)
                                 <tr>
-                                  <td>{{$coordinador->persona->nombre}}</td>
+                                  <td>{{$personas->where('id',$coordinador->docente->id_persona)->value('nombre')}}</td>
                                   <td>{{$grados->where('id',$coordinador->id_grado)->value('nombre')}}</td>
-                                  <td>{{$usuarios->where('id_persona',$coordinador->id_persona)->value('email')}}</td>
-                                  <td>{{$personas->where('id',$coordinador->id_persona)->value('telefono')}}</td>
-                                  <td><a href="?id={{$coordinador->id_persona}}" class="btn btn-danger">Eliminar</a></td>
+                                  <td>{{$usuarios->where('id_persona',$coordinador->docente->id_persona)->value('email')}}</td>
+                                  <td>{{$personas->where('id',$coordinador->docente->id_persona)->value('telefono')}}</td>
+                                  <td><a href="?id={{$coordinador->docente->id_persona}}" class="btn btn-danger">Eliminar</a></td>
                                 </tr>
                                 @endforeach
                               </tbody>
@@ -36,7 +36,7 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('registros') }}" class="btn btn-primary">Volver</a>
+                            <a href="{{ route('registros') }}" class="btn btn-primary">Volver <i class="bi bi-arrow-return-left"></i></a>
                         </div>
                       </div>
                     </div>

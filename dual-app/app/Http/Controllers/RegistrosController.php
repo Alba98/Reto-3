@@ -18,11 +18,5 @@ class RegistrosController extends Controller
         else if (Gate::allows('tutor'))
             return view('pages.coordinador.registrosAnteriores.alumnos');
     }
-
-
-    public function tutorEmpresa()
-    {
-        return view('pages.coordinador.registrosAnteriores.t_empresa');
-    }
 }
 ?>

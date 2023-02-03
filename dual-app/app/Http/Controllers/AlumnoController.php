@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Persona;
 use App\Models\Alumno;
 use App\Models\Empresa;
@@ -35,7 +35,7 @@ class AlumnoController extends Controller
             ]));
         }
         else
-            return view('errors.403'); 
+            return response(view('errors.403')); 
     }
 
     /**
@@ -57,7 +57,7 @@ class AlumnoController extends Controller
     public function store(Request $request)
     {
         if (Auth::User()->cannot('registrar'))
-            return view('errors.403'); 
+            return response(view('errors.403')); 
 
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
@@ -81,9 +81,9 @@ class AlumnoController extends Controller
         $clave = \Faker\Factory::create()->password;
 
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
-        $usuario = new Usuario();
+        $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->clave = $clave;
+        $usuario->password = $clave;
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'alumno';
         $usuario->save();
@@ -101,7 +101,7 @@ class AlumnoController extends Controller
     {
         $alumno = Alumno::where('id',$id)->firstOrFail(); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
         //return $alumno->persona;
-        return view('pages.tutor.formaciondual',compact('alumno')); //compact pasa un array con variables. ('var1','var2'...)
+        return response(view('pages.tutor.formaciondual',compact('alumno'))); //compact pasa un array con variables. ('var1','var2'...)
     }
 
     /**

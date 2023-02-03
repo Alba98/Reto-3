@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Persona;
 use App\Models\Tempresa;
 use App\Models\Docente;
@@ -68,9 +68,9 @@ class TempresaController extends Controller
         $clave = \Faker\Factory::create()->password;
 
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
-        $usuario = new Usuario();
+        $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->clave = $clave;
+        $usuario->password = $clave;
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'tempresa';
         $usuario->save();

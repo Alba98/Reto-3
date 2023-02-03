@@ -33,10 +33,18 @@
                                 @foreach ($alumnos as $alumno)
                                 <tr>
                                   <td>{{$alumno->persona->nombre}}</td>
-                                  <td>{{$empresas->where('id',$alumno->fichaDual->value('id_empresa'))->value('nombre')}}</td>
+                                  @if ($alumno->fichaDual == null)
+                                    <td>-</td>
+                                  @else
+                                  <td>{{$alumno->fichaDual->empresa->nombre}}</td>
+                                  @endif
                                   <td>{{$alumno->curso}}</td>
                                   <td>{{$alumno->grado->nombre}}</td>
-                                  <td>{{$evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion')}}</td>
+                                  @if ($evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion') == null)
+                                    <td>-</td>
+                                  @else
+                                    <td>{{$evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion')}}</td>
+                                  @endif
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
                                     <td><a href="?id={{$alumno->id_persona}}" class="btn btn-danger">Eliminar</a></td>
                                   @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
@@ -49,7 +57,7 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('registros') }}" class="btn btn-primary">Ver más</a>
+                            <a href="{{ route('registros') }}" class="btn btn-primary">Volver <i class="bi bi-arrow-return-left"></i></a>
                         </div>
                       </div>
                     </div>

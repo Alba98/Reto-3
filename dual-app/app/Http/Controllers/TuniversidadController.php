@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Persona;
 use App\Models\Tuniversidad;
 use App\Models\Docente;
@@ -26,7 +26,7 @@ class TuniversidadController extends Controller
 
         $tuniversidad = Tuniversidad::all();
         $ficha = FichaDual::all();
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
         return response(view('pages.coordinador.registrosAnteriores.t_universidad', [
             'tuniversidad' => $tuniversidad,
             'ficha' => $ficha,
