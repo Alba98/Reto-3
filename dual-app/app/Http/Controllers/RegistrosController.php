@@ -11,11 +11,11 @@ class RegistrosController extends Controller
 
     public function index()
     {
-        if (Auth::user()->rol == 'Coordinador')
+        if (Gate::allows('coordinador'))
             return view('pages.coordinador.registros');
-        else if (Auth::user()->rol == 'Alumno')
+        else if (Gate::allows('alumno'))
             return view('pages.alumno.registros'); 
-        else if (Auth::user()->rol == 'Tutor')  
+        else if (Gate::allows('tutor'))
             return view('pages.coordinador.registrosAnteriores.alumnos');
     }
 

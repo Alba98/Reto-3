@@ -69,7 +69,6 @@ Route::get('diarioAlumno/{id}', [DiarioController::class, 'show'])->name('diario
 Route::get('notas', [NotasController::class, 'index'])->name('notas');
 
 //tutor universidad
-Route::get('fichaSeguimiento', [UserController::class, 'fichaSeg'])->name('fichaSeg');
 Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
 Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
 

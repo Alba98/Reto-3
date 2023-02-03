@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
+
 use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Alumno;
 use App\Models\Empresa;
 use App\Models\Evaluacion;
 use App\Models\FichaDual;
-use Illuminate\Http\Request;
-
 
 class AlumnoController extends Controller
 {
@@ -19,17 +22,20 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        $alumnos = Alumno::all(); 
-        //return view('pages.tutor.listarAlumnos',compact('alumnos'));
-        $empresas = Empresa::all();
-        $evaluaciones = Evaluacion::all();
-        $ficha = FichaDual::all();
-        return response(view('pages.coordinador.registrosAnteriores.alumnos', [
-            'alumnos' => $alumnos,
-            'empresas' => $empresas,
-            'evaluaciones' => $evaluaciones,
-            'ficha' => $ficha
-        ]));
+        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
+            $alumnos = Alumno::all();
+            $empresas = Empresa::all();
+            $evaluaciones = Evaluacion::all();
+            $ficha = FichaDual::all();
+            return response(view('pages.coordinador.registrosAnteriores.alumnos', [
+                'alumnos' => $alumnos,
+                'empresas' => $empresas,
+                'evaluaciones' => $evaluaciones,
+                'ficha' => $ficha
+            ]));
+        }
+        else
+            return view('errors.403'); 
     }
 
     /**
@@ -50,6 +56,8 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::User()->cannot('registrar'))
+            return view('errors.403'); 
 
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',

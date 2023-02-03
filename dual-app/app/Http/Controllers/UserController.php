@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\Notificaciones;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
+
+use App\Models\User;
+use App\Models\Notificaciones;
 
 class UserController extends Controller
 {
@@ -20,26 +21,29 @@ class UserController extends Controller
         $id = Auth::user()->id; //id_persona->alumno->id_diario
         $notificaciones = Notificaciones::all()->where('id_usuario', $id);
 
-        switch (Auth::user()->rol) {
-            case 'Coordinador':
+        switch (Auth::user()->tipo_usuario) {
+            case 'coordinador':
                 return view('pages.coordinador.home', [
                     'notificaciones' => $notificaciones
                 ]);
             
-            case 'Alumno':
+            case 'alumno':
                 return view('pages.alumno.home', [
                     'notificaciones' => $notificaciones
                 ]);
             
-            case 'Tutor':
+            case 'tempresa':
+                return view('pages.tutor.home', [
+                    'notificaciones' => $notificaciones
+                ]);
+            
+            case 'tuniversidad':
                 return view('pages.tutor.home', [
                     'notificaciones' => $notificaciones
                 ]);
             
             default:
-                return view('home', [
-                    'notificaciones' => $notificaciones
-                ]);
+                return view('errors.403');
         }
     }
 
@@ -51,93 +55,77 @@ class UserController extends Controller
     public function notificaciones()
     {
         return view('pages.notificaciones');
-
-        // switch (Auth::user()->rol) {
-        //     case 'Coordinador':
-        //         return view('pages.coordinador.notificaciones');
-        //         break;
-            
-        //     case 'Alumno':
-        //         return view('pages.alumno.notificaciones');
-        //         break;
-            
-        //     case 'Tutor':
-        //         return view('pages.tutor.notificaciones');
-        //         break;
-
-        // }
     }
     
     public function asignarDual()
     {
-        switch (Auth::user()->rol) {
-            case 'Coordinador':
-                return view('pages.coordinador.asignarDual');
-        }
+        if (Gate::allows('coordinador'))
+            return view('pages.coordinador.asignarDual');
+        else
+            return view('errors.403');
     }
 
     public function estadisticas()
     {
-        switch (Auth::user()->rol) {
-            case 'Coordinador':
-                return view('pages.coordinador.estadisticas.stats');
-        }
+        if (Gate::allows('coordinador'))
+            return view('pages.coordinador.estadisticas.stats');
+        else
+            return view('errors.403');
     }
 
     public function notas()
     {
-        switch (Auth::user()->rol) {
-            case 'Alumno':
-                return view('pages.alumno.notas');
-        }
+        if (Gate::allows('alumno'))
+            return view('pages.alumno.notas');
+        else
+            return view('errors.403');
     }
 
     public function evaluar()
     {
-        switch (Auth::user()->rol) {
-            case 'Tutor':
-                return view('pages.alumno.evaluar');
-        }
+        if (Gate::allows('tuniversidad'))
+            return view('pages.alumno.evaluar');
+        else
+            return view('errors.403');
     }
 
     public function alumnos()
     {
-        switch (Auth::user()->rol) {
-            case 'Tutor':
-                return view('pages.tutor.listarAlumnos');
-        }
+        if (Gate::any(['tuniversidad', 'tempresa']))
+            return view('pages.tutor.listarAlumnos');
+        else
+            return view('errors.403');
     }
 
     public function fichaAlumno()
     {
-        switch (Auth::user()->rol) {
-            case 'Tutor':
-                return view('pages.tutor.formaciondual');
-        }
+        if (Gate::any(['tuniversidad', 'tempresa']))
+            return view('pages.tutor.formaciondual');
+        else
+            return view('errors.403');
     }
 
     public function fichaSeguimineto()
     {
-        switch (Auth::user()->rol) {
-            case 'Tutor':
-                return view('pages.tutor.fichaseguimiento');  
-        }
+        if (Gate::any(['tuniversidad', 'tempresa']))
+            return view('pages.tutor.fichaSeguimineto');
+        else
+            return view('errors.403');
     }
 
     public function evaluacionDiario()
     {
-        switch (Auth::user()->rol) {
-            case 'Tutor':
-                return view('pages.tutor.evaluacionDiario');  
-        }
+        if (Gate::allows('tuniversidad'))
+            return view('pages.tutor.evaluacionDiario');
+        else
+            return view('errors.403');
     }
 
     public function evaluacionFicha()
     {
-        switch (Auth::user()->rol) {
-            case 'Tutor':
-                return view('pages.tutor.evaluacionFicha');
-                break;   
-        }
+        if (Gate::allows('tuniversidad'))
+            return view('pages.tutor.evaluacionFicha');
+        else
+            return view('errors.403');
     }
 }

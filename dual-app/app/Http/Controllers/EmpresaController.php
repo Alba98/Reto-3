@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+
 use App\Models\Empresa;
 use App\Models\Tempresa;
 
@@ -41,6 +44,9 @@ class EmpresaController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::user()->cannot('registrar'))
+            return view('errors.403'); 
+
         $validated = $request->validate([
             'nombre' => 'required|unique:empresas|max:255',
             'direccion' => 'required|unique:empresas|max:255',

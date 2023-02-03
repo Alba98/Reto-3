@@ -25,9 +25,9 @@
                 </a>
             </li>
         @endif
-        @if (Route::has('registros'))
+        @if (Route::has('registrosAlumno'))
             <li class="nav-item">
-                <a href="{{ route('registros') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                <a href="{{ route('registrosAlumno') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
                     <i class="fs-4 bi-archive-fill nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Registros anteriores</span>
                 </a>

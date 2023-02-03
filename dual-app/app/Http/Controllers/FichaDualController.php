@@ -8,11 +8,10 @@ use Illuminate\Http\Request;
 
 use App\Models\Usuario;
 use App\Models\Persona;
-use App\Models\Coordinador;
-use App\Models\Docente;
-use App\Models\Grado;
+use App\Models\Alumno;
+use App\Models\Tuniversidad;
 
-class CoordinadorController extends Controller
+class AlumnoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,16 +20,10 @@ class CoordinadorController extends Controller
      */
     public function index()
     {
-        $personas = Persona::all();
-        $grados = Grado::all();
-        $coordinadores = Coordinador::all();
-        $usuarios = Usuario::all();
-        return response(view('pages.coordinador.registrosAnteriores.coordinadores', [
-            'personas' => $personas,
-            'grados' => $grados,
-            'coordinadores' => $coordinadores,
-            'usuarios' => $usuarios
-        ]));
+        $tutores = Tuniversidad::all();
+        return view('pages.tutor.formaciondual.Tuniversidad', [
+            'tutores' => $tutores
+        ]);
     }
 
     /**
@@ -40,7 +33,7 @@ class CoordinadorController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -63,18 +56,14 @@ class CoordinadorController extends Controller
         ]);
         Persona::create($validate);
 
-        // Hasta aquí se crea la persona, ahora se crea el docente
+        // Hasta aquí se crea la persona, ahora se crea el usuario
         
-        $docente = new Docente();
-        $docente->id_persona = Persona::latest('id')->first()->id;
-        $docente->save();
-
-        
-        // Se crea el coordinador
-        $coordinador = new Coordinador();
-        $coordinador->id_persona = Docente::latest('id')->first()->id;
-        $coordinador->id_grado = $request->id_grado;
-        $coordinador->save();
+        $tutores = new Alumno();
+        $tutores->id_persona = Persona::latest('id')->first()->id;
+        $tutores->curso = $request->curso;
+        $tutores->id_grado = $request->id_grado;
+        $tutores->dual =1;
+        $tutores->save();
 
         // Clave con faker
         $clave = \Faker\Factory::create()->password;
@@ -84,10 +73,10 @@ class CoordinadorController extends Controller
         $usuario->email = $request->email;
         $usuario->clave = $clave;
         $usuario->id_persona = Persona::latest('id')->first()->id;
-        $usuario->tipo_usuario = 'coordinador';
+        $usuario->tipo_usuario = 'tutores';
         $usuario->save();
 
-        return redirect()->route('darAlta');
+        return redirect()->route('registrosAlumno');
     }
 
     /**

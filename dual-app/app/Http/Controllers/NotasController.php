@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Http\Request;
+
 use App\Models\Alumno;
 use App\Models\FichaDual;
 use App\Models\Calificaciones;
 use App\Models\Empresa;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
+
 
 class NotasController extends Controller
 {
 
     public function index()
     {
-        if (Auth::user()->rol == 'Alumno') {
+        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])) {
             $id = Auth::user()->id; //id_persona->alumno->id_diario
 
             // $id_diario = Alumno::find($id)->id;
@@ -35,20 +38,34 @@ class NotasController extends Controller
                 'calificaciones' => $calificacion,
                 'empresas' => $empresas
             ]);
-        }   
+        } 
+        else if (Gate::allows('coordinador'))
+        //alguien que me exploque xq se supone que ahora soy coordiador si estoy como alumno ????
+            return view('errors.401');   
+        else
+            return view('errors.403'); 
     }
 
     public function show($id)
     {
-        $diario = Calificaciones::find($id);
-        return view('pages.alumno.notas', [
-            'diario' => $diario
-        ]);
+        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])){ 
+            $diario = Calificaciones::find($id);
+            return view('pages.alumno.notas', [
+                'diario' => $diario
+            ]);
+        }
+        else
+            return view('errors.403');
+
+       
     }
 
     public function add()
     {
-        return view('pages.alumno.creardiario');
+        if (Gate::allows('alumno'))
+            return view('pages.alumno.creardiario');
+        else
+            return view('errors.403');
     }
 
 }

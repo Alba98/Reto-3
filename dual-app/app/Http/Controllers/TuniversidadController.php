@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
+
 use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Tuniversidad;
 use App\Models\Docente;
 use App\Models\FichaDual;
+
 class TuniversidadController extends Controller
 {
     /**
@@ -17,6 +21,9 @@ class TuniversidadController extends Controller
      */
     public function index()
     {
+        if (Auth::user()->cannot('registrar'))
+            return view('errors.403'); 
+
         $tuniversidad = Tuniversidad::all();
         $ficha = FichaDual::all();
         $usuarios = Usuario::all();
