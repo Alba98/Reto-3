@@ -13,7 +13,7 @@
 
             <div class="row vh-100 overflow-auto">
 
-                <nav class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top" id="nav-bar">
+                <nav class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex justify-content-center sticky-top bg-primary" id="nav-bar">
 
                     @include('layouts.sidebar')
 

@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
           btn.classList.add('bi-x');
 
           document.getElementById('nav-bar').classList.add('col-sm-3');
-          document.getElementById('nav-bar').classList.remove('col-sm-1');
+          document.getElementById('nav-bar').classList.remove('col-sm-2');
           document.getElementById('nav-bar').classList.add('col-xl-2');
           document.getElementById('nav-bar').classList.remove('col-xl-1');
           
@@ -22,10 +22,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
             nav_name.forEach((l) => l.classList.remove('d-sm-inline'));
 
           btn.classList.remove('bi-x');
-          btn.classList.add('bi-arrow-right-square-fill');
+          btn.classList.add('bi-list');
 
           document.getElementById('nav-bar').classList.remove('col-sm-3');
-          document.getElementById('nav-bar').classList.add('col-sm-1');
+          document.getElementById('nav-bar').classList.add('col-sm-2');
           document.getElementById('nav-bar').classList.remove('col-xl-2');
           document.getElementById('nav-bar').classList.add('col-xl-1');
           
