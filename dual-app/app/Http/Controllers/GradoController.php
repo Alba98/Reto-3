@@ -38,7 +38,7 @@ class GradoController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::->user()->cannot('registrar'))
+        if (Auth::user()->cannot('registrar'))
             return view('errors.403'); 
 
         $validated = $request->validate([

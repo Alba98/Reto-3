@@ -13,7 +13,7 @@ class NotificacionesController extends Controller
     public function index()
     {
         
-        $id = Auth::user()->id; //id_persona->alumno->id_diario
+        $id = Auth::User()->id; //id_persona->alumno->id_diario
         $notificaciones = Notificaciones::all()->where('id_usuario', $id);
 
         return view('pages.notificaciones', [

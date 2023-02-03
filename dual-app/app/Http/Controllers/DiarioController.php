@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 use App\Models\DiarioAprendizaje;
 use App\Models\FichaDual;
 use App\Models\Alumno;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Gate;
 
 class DiarioController extends Controller
 {

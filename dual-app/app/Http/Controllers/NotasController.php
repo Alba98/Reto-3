@@ -10,7 +10,6 @@ use App\Models\Alumno;
 use App\Models\FichaDual;
 use App\Models\Calificaciones;
 use App\Models\Empresa;
-use Illuminate\Http\Request;
 
 
 class NotasController extends Controller
