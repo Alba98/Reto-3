@@ -30,20 +30,20 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         //Gates:
         Gate::define('alumno',function(User $user){
-            return $user->persona->tipo_usuario === 'alumno';
+            return $user->tipo_usuario === 'alumno';
         });
         Gate::define('coordinador',function(User $user){
-            return $user->persona->tipo_usuario === 'coordinador';
+            return $user->tipo_usuario === 'coordinador';
         });
         Gate::define('tempresa',function(User $user){
-            return $user->persona->tipo_usuario === 'tempresa';
+            return $user->tipo_usuario === 'tempresa';
         });
         Gate::define('tuniversidad',function(User $user){
-            return $user->persona->tipo_usuario === 'tuniversidad';
+            return $user->tipo_usuario === 'tuniversidad';
         });
 
         Gate::define('registrar',function(User $user){ //por si quisieramos que en algun momento el tutor tmb registre
-            return $user->persona->tipo_usuario === 'coordinador';
+            return $user->tipo_usuario === 'coordinador';
         });
 
     }
