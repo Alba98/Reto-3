@@ -3,8 +3,8 @@
 <body>
     <div class="container mt-2">
         <h2 class="text-muted"><i class="bi bi-person-bounding-box"></i> Dar de alta</h2>
-        <div class="row">
-          <div class="col col-md-3">
+        <div class="row gap-3 p-3">
+          <div class="col-5">
             <div class="card border-3 border-primary">
               <div class="card-body">
                 <h4 class="card-title"><i class="bi bi-justify-left"></i> GRADO</h4>
@@ -13,7 +13,7 @@
               </div>
             </div>
           </div>
-          <div class="col col-md-3">
+          <div class="col-5">
             <div class="card border-3 border-primary">
               <div class="card-body">
                 <h4 class="card-title"><i class="bi bi-person"></i> ALUMNO</h4>
@@ -22,12 +22,8 @@
               </div>
             </div>
           </div>
-        </div>
-    </div>
 
-    <div class="container mt-4">
-        <div class="row">
-          <div class="col col-md-3">
+          <div class="col-5">
             <div class="card border-3 border-primary">
               <div class="card-body">
                 <h4 class="card-title"><i class="bi bi-building"></i> EMPRESA</h4>
@@ -36,7 +32,7 @@
               </div>
             </div>
           </div>
-          <div class="col col-md-3">
+          <div class="col-5">
             <div class="card border-3 border-primary">
               <div class="card-body">
                 <h4 class="card-title"><i class="bi bi-layers"></i> TUTOR EMPRESA</h4>
@@ -45,12 +41,8 @@
               </div>
             </div>
           </div>
-        </div>
-    </div>
 
-    <div class="container mt-4">
-        <div class="row">
-          <div class="col col-md-3">
+          <div class="col-5">
             <div class="card border-3 border-primary">
               <div class="card-body">
                 <h4 class="card-title"><i class="bi bi-journal-bookmark"></i> TUTOR UNIVERSIDAD</h4>
@@ -59,7 +51,7 @@
               </div>
             </div>
           </div>
-          <div class="col col-md-3">
+          <div class="col-5">
             <div class="card border-3 border-primary">
               <div class="card-body">
                 <h4 class="card-title"><i class="bi bi-person-circle"></i> COORDINADOR</h4>

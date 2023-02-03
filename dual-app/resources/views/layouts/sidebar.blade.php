@@ -1,14 +1,14 @@
-<div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+<div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center px-3 pt-2 text-white">
                         
-    <header id="header">
-        <div class="header_toggle">
-            <button type="button" class="btn text-white float-end align-items-sm-start d-none d-sm-inline" aria-label="Left Align">
-                <i class="fs-4 bi-x toggle"></i>
-            </button>
-        </div>
+    <header id="header_toggle" class="d-flex justify-content-between align-items-center">
+        <img src="{{ asset('images/logo.png') }}" class="float-start" alt=""  style="max-width: 20%;"/>
+        <h1 class="ms-1 d-none d-sm-inline nav_name">Deusto</h1>
+        <button type="button" class="btn text-white align-self-end d-none d-sm-inline" aria-label="Left Align">
+            <i class="fs-4 bi-x toggle"></i>
+        </button>
     </header>
 
-    <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <a href="/" class="d-flex align-items-center justify-content-center text-black text-decoration-none">
         <span >{{ config('app.name', 'FormacionDual') }}</span>
     </a>
     <hr class="sidebar-divider my-0 color-light">

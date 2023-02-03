@@ -1,6 +1,6 @@
 @extends('layouts.default')
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <h1 class="display-3 text-center mt-4">Asignar Dual</h1>
         <div class="col-md-8 mt-4">
