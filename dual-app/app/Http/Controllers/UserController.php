@@ -135,10 +135,10 @@ class UserController extends Controller
 
     public function alumnos()
     {
-        if (Gate::any(['tuniversidad', 'tempresa']))
+        //if (Gate::any(['tuniversidad', 'tempresa']))
             return view('pages.tutor.listarAlumnos');
-        else
-            return view('errors.403');
+        // else
+        //     return view('errors.403');
     }
 
     public function fichaAlumno()

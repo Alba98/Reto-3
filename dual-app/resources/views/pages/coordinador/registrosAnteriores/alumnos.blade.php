@@ -48,7 +48,7 @@
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
                                     <td><a href="?id={{$alumno->id_persona}}" class="btn btn-danger">Eliminar</a></td>
                                   @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
-                                    <td><a href="?id={{$alumno->id_persona}}" class="btn btn-primary">Ver</a></td>
+                                    <td><a href="{{ route('alumno.show',$alumno->id_persona)}}" class="btn btn-primary">Ver</a></td>
                                   @endif
                                 </tr>
                                 @endforeach

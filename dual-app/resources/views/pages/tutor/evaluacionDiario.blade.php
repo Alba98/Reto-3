@@ -70,43 +70,43 @@
             <tbody>
               <tr>
                 <td>Esfuerzo y regularidad</td>
-                <td>Suficiente</td>
+                <td>Suficiente<button class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-desplegable"  type="button" id="dropdownMenuButton" data-toggle="dropdown"></button></td>
                 <td>At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus 
                     vestibulum, facilisi ac, sed faucibus.</td>
               </tr>
               <tr>
                 <td>Orden, estructura y presentacion</td>
-                <td>Suficiente</td>
+                <td>Suficiente<button class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-desplegable"  type="button" id="dropdownMenuButton" data-toggle="dropdown"></button></td>
                 <td>At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus 
                     vestibulum, facilisi ac, sed faucibus.</td>
               </tr>
               <tr>
                 <td>Contenido</td>
-                <td>Suficiente</td>
+                <td>Suficiente<button class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-desplegable"  type="button" id="dropdownMenuButton" data-toggle="dropdown"></button></td>
                 <td>At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus 
                     vestibulum, facilisi ac, sed faucibus.</td>
               </tr>
               <tr>
                 <td>Terminologia y notacion</td>
-                <td>Suficiente</td>
+                <td>Suficiente<button class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-desplegable"  type="button" id="dropdownMenuButton" data-toggle="dropdown"></button></td>
                 <td>At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus 
                     vestibulum, facilisi ac, sed faucibus.</td>
               </tr>
               <tr>
                 <td>Calidad del trabajo</td>
-                <td>Suficiente</td>
+                <td>Suficiente<button class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-desplegable"  type="button" id="dropdownMenuButton" data-toggle="dropdown"></button></td>
                 <td>At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus 
                     vestibulum, facilisi ac, sed faucibus.</td>
               </tr>
               <tr>
                 <td>Relaciona conceptos</td>
-                <td>Suficiente</td>
+                <td>Suficiente<button class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-desplegable"  type="button" id="dropdownMenuButton" data-toggle="dropdown"></button></td>
                 <td>At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus 
                     vestibulum, facilisi ac, sed faucibus.</td>
               </tr>
               <tr>
                 <td>Reflexion sobre aprendizaje</td>
-                <td>Suficiente</td>
+                <td>Suficiente<button class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split btn-desplegable"  type="button" id="dropdownMenuButton" data-toggle="dropdown"></button></td>
                 <td>At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus 
                     vestibulum, facilisi ac, sed faucibus.</td>
               </tr>

@@ -56,8 +56,8 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::User()->cannot('registrar'))
-            return response(view('errors.403')); 
+        if (Gate::User()->cannot('registrar'))
+            return view('errors.403'); 
 
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
@@ -99,9 +99,14 @@ class AlumnoController extends Controller
      */
     public function show($id)
     {
-        $alumno = Alumno::where('id',$id)->firstOrFail(); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
+        //$alumno = Alumno::where('id',$id)->firstOrFail(); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
         //return $alumno->persona;
-        return response(view('pages.tutor.formaciondual',compact('alumno'))); //compact pasa un array con variables. ('var1','var2'...)
+        $alumno = Alumno::find($id); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
+        return view('pages.tutor.formaciondual',compact('alumno')); //compact pasa un array con variables. ('var1','var2'...)
+        $alumno = Alumno::where('id',$id)->firstOrFail();
+        return view('pages.tutor.formaciondual',compact('alumno'));
+    
+    
     }
 
     /**
