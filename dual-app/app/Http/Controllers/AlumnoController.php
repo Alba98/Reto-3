@@ -111,11 +111,14 @@ class AlumnoController extends Controller
     public function alumnosTutor() {
         if (Gate::any(['tuniversidad', 'tempresa'])) {
             $id = Auth::user()->id_persona;
-            $id_tutor = Tempresa::where('id_persona', $id);
+            $id_tutor = Tempresa::where('id_persona', $id)->firstOrFail()->id;
             $fichas = FichaDual::where('id_tempresa', $id_tutor);
             //where ficha dual
             return view('pages.tutor.listarAlumnos', [
-                'fichas' => $fichas
+                'fichas' => FichaDual::All(),
+                'usuario' => Auth::user(),
+                'tutor' => Tempresa::where('id_persona', $id)->firstOrFail()
+                
             ]);
         }
         else

@@ -25,16 +25,20 @@
                                   <th><i class="bi bi-star-fill"></i> Evaluar</th>
                                 </tr>
                               </thead>
+                              {{ ($usuario) }}
+                              <br>
+                              {{ ($usuario->id_persona) }}
+                              <br><br>  
+                              {{ ($tutor) }}
                               <tbody>
                                 @foreach($fichas as $ficha)
                                 <tr>
-                                  <!-- <td>{{ ($alumno->persona->nombre) }}</td>
-                                  <td>{{ ($alumno->persona->empresa) }}</td> -->
-                                  <td>{{ ($ficha) }}</td>
+                                  <td>{{ ($ficha->alumno->persona->nombre)  }}</td>
+                                  <td>{{ ($ficha->empresa->nombre)  }}</td>
                                   <td>2017-2018</td>
-                                  <td>Ingenieria informatica</td>
+                                  <td>{{ ($ficha->alumno->grado->nombre)  }}</td>
                                   <td>7</td>
-                                  <td><a href="{{ route('alumno.show',$alumno->id)}}" class="btn btn-primary">Ver</a></td>
+                                  <td><a href="" class="btn btn-primary">Ver</a></td>
                                 </tr>
                                 @endforeach
                                 <tr>
