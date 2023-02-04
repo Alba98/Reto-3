@@ -60,6 +60,7 @@ Route::get('registrar/tutorUniversidad', [RegistrarController::class, 'tutorUniv
 Route::get('registrar/coordinador', [RegistrarController::class, 'coordinador'])->name('registrarCoordinador');
 
 Route::get('asignarDual', [UserController::class, 'asignarDual'])->name('asignarDual'); //registrar ?
+Route::post('asignarDual', [UserController::class, 'storeDual'])->name('dual.store');
 Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estadisticas');
 
 //alumno

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
-use App\Models\Usuario;
+use App\Models\User;
 use App\Models\Persona;
 use App\Models\Coordinador;
 use App\Models\Docente;
@@ -24,12 +24,14 @@ class CoordinadorController extends Controller
         $personas = Persona::all();
         $grados = Grado::all();
         $coordinadores = Coordinador::all();
-        $usuarios = Usuario::all();
+        $usuarios = User::all();
+        $docentes = Docente::all();
         return response(view('pages.coordinador.registrosAnteriores.coordinadores', [
             'personas' => $personas,
             'grados' => $grados,
             'coordinadores' => $coordinadores,
-            'usuarios' => $usuarios
+            'usuarios' => $usuarios,
+            'docentes' => $docentes
         ]));
     }
 
@@ -52,7 +54,7 @@ class CoordinadorController extends Controller
     public function store(Request $request)
     {
         if (Auth::user()->cannot('registrar'))
-            return view('errors.403'); 
+            return response(view('errors.403')); 
 
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
@@ -72,7 +74,7 @@ class CoordinadorController extends Controller
         
         // Se crea el coordinador
         $coordinador = new Coordinador();
-        $coordinador->id_persona = Docente::latest('id')->first()->id;
+        $coordinador->id_docente = Docente::latest('id')->first()->id;
         $coordinador->id_grado = $request->id_grado;
         $coordinador->save();
 
@@ -80,14 +82,14 @@ class CoordinadorController extends Controller
         $clave = \Faker\Factory::create()->password;
 
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
-        $usuario = new Usuario();
+        $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->clave = $clave;
+        $usuario->password = $clave;
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'coordinador';
         $usuario->save();
 
-        return redirect()->route('darAlta');
+        return redirect()->route('registrosCoordinador');
     }
 
     /**

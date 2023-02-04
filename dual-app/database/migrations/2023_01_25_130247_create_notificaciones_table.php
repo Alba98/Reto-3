@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('mensaje');
             $table->date('fecha');
-            $table->foreignId('id_usuario')->constrained('usuarios');
+            $table->foreignId('id_usuario')->constrained('users');
         });
     }
 

@@ -7,37 +7,48 @@
             <div class="card">
                 <div class="card-header">{{ __('Asignar Dual') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('dual.store') }}">
                         @csrf
                         <div class="row mb-3">
-                            <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre') }}</label>
+                            <label for="id_alumno" class="col-md-4 col-form-label text-md-end">{{ __('Alumno') }}</label>
                             <div class="col-md-6">
-                                    <select id="nombre" class="form-select">
-                                      <option>Nombre alumno</option>
+                                    <select id="id_alumno" name="id_alumno" class="form-select">
+                                      @foreach ($alumnos as $alumno)
+                                        <option value="{{ $alumno->id }}">{{ $personas->where('id',$alumno->id_persona)->value('nombre') }}</option>
+                                      @endforeach
                                     </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="empresa" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
+                            <label for="id_empresa" class="col-md-4 col-form-label text-md-end">{{ __('Empresa') }}</label>
                             <div class="col-md-6">
-                                    <select id="empresa" class="form-select">
-                                      <option>Nombre empresa</option>
+                                    <select id="id_empresa" name="id_empresa" class="form-select">
+                                      @foreach ($empresas as $empresa)
+                                        <option value="{{ $empresa->id }}">{{ $empresa->nombre }}</option>
+                                        @endforeach
                                     </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="tuniversidad" class="col-md-4 col-form-label text-md-end">{{ __('Tutor Universidad') }}</label>
+                            <label for="id_tuniversidad" class="col-md-4 col-form-label text-md-end">{{ __('Tutor Universidad / Coordinador') }}</label>
                             <div class="col-md-6">
-                                    <select id="tuniversidad" class="form-select">
-                                      <option>Nombre tutor universidad</option>
+                                    <select id="id_tuniversidad" name="id_tuniversidad" class="form-select">
+                                      @foreach ($tuniversidad as $tuniversidad)
+                                        <option value="{{ $tuniversidad->docente->id }}">{{ $personas->where('id',$tuniversidad->docente->id_persona)->value('nombre') }}</option>
+                                      @endforeach
+                                      @foreach ($coordinadores as $coordinador)
+                                        <option value="{{ $coordinador->docente->id }}">{{ $personas->where('id',$coordinador->docente->id_persona)->value('nombre') }}</option>
+                                        @endforeach
                                     </select>
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="tempresa" class="col-md-4 col-form-label text-md-end">{{ __('Tutor Empresa') }}</label>
+                            <label for="id_tempresa" class="col-md-4 col-form-label text-md-end">{{ __('Tutor Empresa') }}</label>
                             <div class="col-md-6">
-                                    <select id="tempresa" class="form-select">
-                                      <option>Nombre tutor empresa</option>
+                                    <select id="id_tempresa" name="id_tempresa" class="form-select">
+                                      @foreach ($tempresa as $tempresa)
+                                        <option value="{{ $tempresa->id }}">{{ $personas->where('id',$tempresa->id_persona)->value('nombre') }}</option>
+                                      @endforeach
                                     </select>
                             </div>
                         </div>

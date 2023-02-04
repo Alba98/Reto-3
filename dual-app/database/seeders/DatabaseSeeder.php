@@ -84,12 +84,12 @@ class DatabaseSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
         for($i=0;$i<100;$i++){
-            DB::table('usuarios')->insert([
-                'id_persona' => $faker->unique()->numberBetween(1, 100),
+            DB::table('users')->insert([
+                'id_persona' => $faker->unique()->numberBetween(2, 101),
                 'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'email' => $faker->email(),
-                'clave' => $faker->password(),
+                'password' => $faker->password(),
                 'tipo_usuario' => $faker->randomElement(['alumno', 'tempresa', 'coordinador','tuniversidad'])
             ]);
         }
@@ -107,7 +107,7 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create();
         for($i=0;$i<5;$i++){
             DB::table('tuniversidad')->insert([
-                'id_persona' => $faker->unique()->numberBetween(1, 10),
+                'id_docente' => $faker->unique()->numberBetween(1, 10),
                 'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now')
             ]);
@@ -172,7 +172,7 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create();
         for($i=0;$i<5;$i++){
             DB::table('coordinadores')->insert([
-                'id_persona' => $faker->numberBetween(1, 20),
+                'id_docente' => $faker->numberBetween(1, 20),
                 'id_grado' => $faker->numberBetween(1, 5),
                 'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now')
