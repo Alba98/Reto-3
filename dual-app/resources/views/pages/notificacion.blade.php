@@ -8,7 +8,15 @@
             <div class="card-body">
               <h4 class="card-title">{{ ($notificacion->mensaje) }}</h4>
               <p class="card-text text-muted">{{ ($notificacion->fecha) }}</p>
-              <a href="#" class="btn btn-primary fs-5">Visto <i class="bi bi-patch-check-fill"></i></a>
+              <form method="POST" action="{{ route('notificaciones.destroy', [$notificacion->id]) }}">
+                  @csrf
+                  @method("DELETE")
+
+                  <button type="submit" class="btn btn-primary fs-5"> 
+                    Visto 
+                    <!-- <i class="bi bi-patch-check-fill">  -->
+                  </button>
+              </form>
             </div>
           </div>
         </div>
