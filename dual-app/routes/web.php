@@ -26,18 +26,9 @@ use App\Http\Controllers\CoordinadorController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-//mio
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-Route::get('/', function()
-{
-    return View::make('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('home', [UserController::class, 'home'])->name('principal');
 Route::get('notificaciones', [NotificacionesController::class, 'index'])->name('notificaciones');
