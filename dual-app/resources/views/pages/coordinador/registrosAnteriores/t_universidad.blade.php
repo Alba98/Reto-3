@@ -24,9 +24,9 @@
                       <tbody>
                         @foreach ($tuniversidad as $tuniversidad)
                           <tr>
-                            <td>{{$tuniversidad->persona->nombre}}</td>
-                            <td>{{$tuniversidad->persona->telefono}}</td>
-                            <td>{{$usuarios->where('id_persona',$tuniversidad->id_persona)->value('email')}}</td>
+                            <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('nombre')}}</td>
+                            <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('telefono')}}</td>
+                            <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('email')}}</td>
                             <td>{{$ficha->where('id_tuniversidad',$tuniversidad->id)->count()}}</td>
                             <td><a href="?id={{$tuniversidad->id}}" class="btn btn-danger">Eliminar</a></td>
                           </tr>

@@ -26,11 +26,11 @@ class TuniversidadController extends Controller
 
         $tuniversidad = Tuniversidad::all();
         $ficha = FichaDual::all();
-        $usuarios = User::all();
+        $personas = Persona::all();
         return response(view('pages.coordinador.registrosAnteriores.t_universidad', [
             'tuniversidad' => $tuniversidad,
             'ficha' => $ficha,
-            'usuarios' => $usuarios
+            'personas' => $personas
         ]));
     }
 
