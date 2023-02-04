@@ -12,6 +12,7 @@ use App\Models\Alumno;
 use App\Models\Empresa;
 use App\Models\Evaluacion;
 use App\Models\FichaDual;
+use App\Models\Tempresa;
 
 class AlumnoController extends Controller
 {
@@ -22,7 +23,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
+        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
             $alumnos = Alumno::all();
             $empresas = Empresa::all();
             $evaluaciones = Evaluacion::all();
@@ -105,8 +106,20 @@ class AlumnoController extends Controller
         return view('pages.tutor.formaciondual',compact('alumno')); //compact pasa un array con variables. ('var1','var2'...)
         $alumno = Alumno::where('id',$id)->firstOrFail();
         return view('pages.tutor.formaciondual',compact('alumno'));
-    
-    
+    }
+
+    public function alumnosTutor() {
+        if (Gate::any(['tuniversidad', 'tempresa'])) {
+            $id = Auth::user()->id_persona;
+            $id_tutor = Tempresa::where('id_persona', $id);
+            $fichas = FichaDual::where('id_tempresa', $id_tutor);
+            //where ficha dual
+            return view('pages.tutor.listarAlumnos', [
+                'fichas' => $fichas
+            ]);
+        }
+        else
+            return view('errors.403');
     }
 
     /**

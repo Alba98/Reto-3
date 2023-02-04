@@ -26,10 +26,11 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach($alumnos as $alumno)
+                                @foreach($fichas as $ficha)
                                 <tr>
-                                  <td>{{($alumno->persona->nombre)}}</td>
-                                  <td>{{($alumno->persona->empresa)}}</td>
+                                  <!-- <td>{{ ($alumno->persona->nombre) }}</td>
+                                  <td>{{ ($alumno->persona->empresa) }}</td> -->
+                                  <td>{{ ($ficha) }}</td>
                                   <td>2017-2018</td>
                                   <td>Ingenieria informatica</td>
                                   <td>7</td>

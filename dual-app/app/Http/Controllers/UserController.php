@@ -84,27 +84,27 @@ class UserController extends Controller
     public function storeDual(Request $request)
     {
         if (Gate::allows('coordinador')) {
-        // Comprobar si el coordinador esta en la tabla tuniversidad, sino meterlo VA MEDIO RARO
-        if (Tuniversidad::where('id_docente',Docente::all()->where('id',$request->input('id_tuniversidad')) )->value('id') == null) {
-            $tuniversidad = new Tuniversidad();
-            $tuniversidad->id_docente = $request->input('id_tuniversidad');
-            $tuniversidad->save();
+            // Comprobar si el coordinador esta en la tabla tuniversidad, sino meterlo VA MEDIO RARO
+            if (Tuniversidad::where('id_docente',Docente::all()->where('id',$request->input('id_tuniversidad')) )->value('id') == null) {
+                $tuniversidad = new Tuniversidad();
+                $tuniversidad->id_docente = $request->input('id_tuniversidad');
+                $tuniversidad->save();
 
-            $ficha = new FichaDual();
-            $ficha->id_alumno = $request->input('id_alumno');
-            $ficha->id_empresa = $request->input('id_empresa');
-            $ficha->id_tuniversidad = Tuniversidad::latest('id')->first()->id;
-            $ficha->id_tempresa = $request->input('id_tempresa');
-            $ficha->save(); 
-        } else {
-            $ficha = new FichaDual();
-            $ficha->id_alumno = $request->input('id_alumno');
-            $ficha->id_empresa = $request->input('id_empresa');
-            $ficha->id_tuniversidad = $request->input('id_tuniversidad');
-            $ficha->id_tempresa = $request->input('id_tempresa');
-            $ficha->save(); 
-        }
-            return redirect()->route('darAlta')->with('success', 'Alumno asignado correctamente');
+                $ficha = new FichaDual();
+                $ficha->id_alumno = $request->input('id_alumno');
+                $ficha->id_empresa = $request->input('id_empresa');
+                $ficha->id_tuniversidad = Tuniversidad::latest('id')->first()->id;
+                $ficha->id_tempresa = $request->input('id_tempresa');
+                $ficha->save(); 
+            } else {
+                $ficha = new FichaDual();
+                $ficha->id_alumno = $request->input('id_alumno');
+                $ficha->id_empresa = $request->input('id_empresa');
+                $ficha->id_tuniversidad = $request->input('id_tuniversidad');
+                $ficha->id_tempresa = $request->input('id_tempresa');
+                $ficha->save(); 
+            }
+                return redirect()->route('darAlta')->with('success', 'Alumno asignado correctamente');
         } else
             return view('errors.403');
     }
@@ -135,10 +135,10 @@ class UserController extends Controller
 
     public function alumnos()
     {
-        //if (Gate::any(['tuniversidad', 'tempresa']))
+        if (Gate::any(['tuniversidad', 'tempresa']))
             return view('pages.tutor.listarAlumnos');
-        // else
-        //     return view('errors.403');
+        else
+            return view('errors.403');
     }
 
     public function fichaAlumno()

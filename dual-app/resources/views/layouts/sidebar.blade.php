@@ -39,7 +39,28 @@
     <hr>
     <div class="text-center nav-item">
         @auth
-            <span class="fs-4 d-none d-sm-inline nav_name">{{Auth::user()->tipo_usuario}}</span>
+            
+            @if (Auth::user()->tipo_usuario)
+                @switch(Auth::user()->tipo_usuario)
+                    @case('coordinador')
+                        <span class="fs-5 d-none d-sm-inline nav_name"> COORDINADOR </span>
+                        @break
+
+                    @case('alumno')
+                        <span class="fs-5 d-none d-sm-inline nav_name"> ALUMNO </span>
+                        @break
+                    
+                    @case('tuniversidad')
+                        <span class="fs-5 d-none d-sm-inline nav_name"> TUTOR </span>
+                        @break
+
+                    @case('tempresa')
+                        <span class="fs-5 d-none d-sm-inline nav_name"> TUTOR</span>
+                        @break
+                    @default
+                        <span>Imposible</span>
+                @endswitch
+            @endif
         @endauth
         <!-- Right Side Of Navbar -->
         <ul class="navbar-nav ms-auto">
