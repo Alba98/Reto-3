@@ -2,6 +2,28 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('layouts.head')
+    {{--
+    <style>
+      :root {
+            --light-bg: #fff;
+            --light-text: #000;
+            --dark-bg: #333;
+            --dark-text: #fff;
+        }
+
+        /* Estilos iniciales (modo claro) */
+        body {
+            background-color: var(--light-bg);
+            color: var(--light-text);
+        }
+
+        /* Estilos para modo oscuro */
+        .dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }     
+        </style>
+    --}} 
 </head>
 <body>
     <div id="app">
@@ -39,7 +61,13 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+                         <!--Modo Oscuro Modo Claro -->
+                        <li class="nav-item">
+                        <button class="btn btn-primary btn-switch" id="switch-mode">Dark Mode</button>
+
+                        </li>
+                        
+                 </ul>
                
             </div>
         </nav>
@@ -49,4 +77,20 @@
         </main>
     </div>
 </body>
+{{--
+<script>
+const switchModeBtn = document.querySelector('#switch-mode');
+const body = document.querySelector('body');
+
+switchModeBtn.addEventListener('click', function() {
+  if (body.classList.contains('dark-mode')) {
+    body.classList.remove('dark-mode');
+    switchModeBtn.innerHTML = 'Dark Mode';
+  } else {
+    body.classList.add('dark-mode');
+    switchModeBtn.innerHTML = 'Light Mode';
+  }
+});
+</script>   
+--}} 
 </html>
