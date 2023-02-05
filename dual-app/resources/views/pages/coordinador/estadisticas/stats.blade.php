@@ -24,10 +24,10 @@
     var chart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Student 1', 'Student 2', 'Student 3', 'Student 4', 'Student 5'],
+            labels: ['Estudiante 1', 'Estudiante 2', 'Estudiante 3', 'Estudiante 4', 'Estudiante 5'],
             datasets: [{
-                label: 'Grados',
-                data: [100, 85, 80, 75, 70],
+                label: 'Nota media',
+                data: [10, 8.5, 8.0, 7,5, 7,0],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
