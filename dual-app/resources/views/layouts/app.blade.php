@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     @include('layouts.head')
-    {{--
+  
     <style>
       :root {
             --light-bg: #fff;
@@ -23,7 +23,7 @@
             color: var(--dark-text);
         }     
         </style>
-    --}} 
+  
 </head>
 <body>
     <div id="app">
@@ -63,7 +63,7 @@
                         @endguest
                          <!--Modo Oscuro Modo Claro -->
                         <li class="nav-item">
-                        <button class="btn btn-primary btn-switch" id="switch-mode">Dark Mode</button>
+                        <button class="btn btn-primary btn-switch" id="switch-mode">Confort Visual</button>
 
                         </li>
                         
@@ -77,20 +77,23 @@
         </main>
     </div>
 </body>
-{{--
+
 <script>
+
+
 const switchModeBtn = document.querySelector('#switch-mode');
 const body = document.querySelector('body');
 
 switchModeBtn.addEventListener('click', function() {
-  if (body.classList.contains('dark-mode')) {
+  if(body.classList.contains('dark-mode')) {
     body.classList.remove('dark-mode');
-    switchModeBtn.innerHTML = 'Dark Mode';
-  } else {
+    switchModeBtn.innerHTML = "🌙 Dark";
+
+  }else {
     body.classList.add('dark-mode');
-    switchModeBtn.innerHTML = 'Light Mode';
+    switchModeBtn.innerHTML = "🌞 Light";
   }
 });
 </script>   
---}} 
+
 </html>
