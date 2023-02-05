@@ -125,10 +125,15 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function evaluar()
+    public function evaluar($id)
     {
+    $alumno  = Alumno::find($id);
+    $alumno = $alumno::with(['curso','empresa','tutor'])->get(); 
+    $curso =  $alumno->curso;
+    $empresa = $alumno->empresa;
+    $tutor = $alumno;
         if (Gate::allows('tuniversidad'))
-            return view('pages.alumno.evaluar');
+            return view('pages.tutor.evaluar');
         else
             return view('errors.403');
     }

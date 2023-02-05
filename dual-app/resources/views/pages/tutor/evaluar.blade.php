@@ -14,18 +14,19 @@
                     </div>
                   </div>
                 </div>
+               
                 <div class="about-candidate border-top">
                   <div class="candidate-info">
                     <h6 class="text-white">Apellidos,Nombre:</h6>
-                    <p class="text-white">Marquinez Fernández, Ignacio</p>
+                    <p class="text-white">{{($alumno->persona->Apellidos)}},{{($alumno->persona->nombre)}}</p>
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white">Email del estudiante:</h6>
-                    <p class="text-white">imarquinez@deusto.es</p>
+                    <p class="text-white">{{($alumno->persona->email)}}</p>
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white">Año académico:</h6>
-                    <p class="text-white">2021-22</p>
+                    <p class="text-white">{{($alumno->persona->email)}}</p>
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white">Curso:</h6>
