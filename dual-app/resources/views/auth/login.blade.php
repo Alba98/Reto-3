@@ -12,7 +12,7 @@
 
             <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                    <span class="h1 fw-bold mb-0">DeustoDual</span>
+                    <span class="h1 fw-bold mb-0"><span id="colorAzul">Deusto</span>Dual</span>
                   </div>
 
                 <form method="POST" action="{{ route('login') }}">
@@ -21,7 +21,7 @@
                         <!-- Email input -->
                         <div class="form-outline mb-4">
                             <input type="email" id="form1Example13" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus" />
-                            <label class="form-label" for="form1Example13">{{ __('Email Address') }}</label>
+                            <label class="form-label" for="form1Example13">{{ __('Correo electrónico') }}</label>
                             @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -31,7 +31,7 @@
                         <!-- Password input -->
                         <div class="form-outline mb-4">
                             <input id="password" type="password" class="form-control form-control-lg  @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" />
-                            <label for="password" class="form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="password" class="form-label text-md-end">{{ __('Contraseña') }}</label>
                             @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -45,18 +45,17 @@
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                             <label class="form-check-label" ffor="remember">
-                                {{ __('Remember Me') }}
+                                {{ __('Recuerdame') }}
                             </label>
                         </div>
                         @if (Route::has('password.request'))
                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                            {{ __('Forgot Your Password?') }}
+                            {{ __('¿Has olvidado tu contraseña?') }}
                         </a>
                         @endif
                     </div>
                     <!-- Login button -->
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"> {{ __('Login') }}
-                    </button>
+                    @include('layouts.modoVisual')
                 </form>
             </div>
         </div>
