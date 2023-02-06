@@ -13,7 +13,8 @@
         <span >{{ config('app.name', 'FormacionDual') }}</span>
     </a>
     <hr class="sidebar-divider my-0 color-light">
-    <button class="btn btn-primary btn-switch" id="switch-mode">Confort Visual</button>
+        <!--Modo Oscuro Modo Claro -->
+        @include('layouts.modoVisual')
                       
                         
 

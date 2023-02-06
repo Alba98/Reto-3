@@ -7,7 +7,6 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <img src="{{ asset('images/deustoDual.png') }}" class="float-start" alt=""  />
