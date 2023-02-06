@@ -26,14 +26,14 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach($alumnos as $alumno)
+                                @foreach($fichas as $ficha)
                                 <tr>
-                                  <td>{{($alumno->persona->nombre)}}</td>
-                                  <td>{{($alumno->persona->empresa)}}</td>
+                                  <td>{{ ($ficha->alumno->persona->nombre)  }}</td>
+                                  <td>{{ ($ficha->empresa->nombre)  }}</td>
                                   <td>2017-2018</td>
-                                  <td>Ingenieria informatica</td>
+                                  <td>{{ ($ficha->alumno->grado->nombre)  }}</td>
                                   <td>7</td>
-                                  <td><a href="{{ route('alumno.show',$alumno->id)}}" class="btn btn-primary">Ver</a></td>
+                                  <td><a href="{{ route('fichaAlumno', $ficha->alumno) }}" class="btn btn-primary">Ver</a></td>
                                 </tr>
                                 @endforeach
                                 <tr>
@@ -42,30 +42,6 @@
                                   <td>2014-2015</td>
                                   <td>Historia del arte</td>
                                   <td>8</td>
-                                  <td><a href="{{ route('fichaAlumno') }}" class="btn btn-primary">Ver</a></td>
-                                </tr>
-                                <tr>
-                                  <td>John ryte</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2016-2017</td>
-                                  <td>Ingenieria industrial</td>
-                                  <td>9</td>
-                                  <td><a href="{{ route('fichaAlumno') }}" class="btn btn-primary">Ver</a></td>
-                                </tr>
-                                <tr>
-                                  <td>Peter mark</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2022-2023</td>
-                                  <td>Ingenieria informatica</td>
-                                  <td>10</td>
-                                  <td><a href="{{ route('fichaAlumno') }}" class="btn btn-primary">Ver</a></td>
-                                </tr>
-                                <tr>
-                                  <td>Dave</td>
-                                  <td>Mercedes-Benz</td>
-                                  <td>2021-2022</td>
-                                  <td>Historia del arte</td>
-                                  <td>7</td>
                                   <td><a href="{{ route('fichaAlumno') }}" class="btn btn-primary">Ver</a></td>
                                 </tr>
                               </tbody>

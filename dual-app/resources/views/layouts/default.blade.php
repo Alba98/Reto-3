@@ -13,13 +13,13 @@
 
             <div class="row vh-100 overflow-auto">
 
-                <nav class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex justify-content-center sticky-top bg-primary" id="nav-bar">
+                <nav class="col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex justify-content-center sticky-top bg-primary" id="nav-bar">
 
                     @include('layouts.sidebar')
 
                 </nav>
 
-                <div class="col d-flex flex-column h-sm-100">
+                <div class="col-sm-9 col-xl-10 d-flex flex-column h-sm-100" id="main-side">
 
                     <main class="row overflow-auto">
 
@@ -40,13 +40,13 @@
                             @include('layouts.footer')
 
                         </div>
-                        
+
                     </footer>
-                      
+  
                 </div>
             
             </div>
-
+            
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         </div>
 

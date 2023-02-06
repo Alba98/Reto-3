@@ -8,10 +8,13 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Persona;
+use App\Models\Docente;
+use App\Models\Tuniversidad;
 use App\Models\Alumno;
 use App\Models\Empresa;
 use App\Models\Evaluacion;
 use App\Models\FichaDual;
+use App\Models\Tempresa;
 
 class AlumnoController extends Controller
 {
@@ -22,7 +25,7 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
+        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
             $alumnos = Alumno::all();
             $empresas = Empresa::all();
             $evaluaciones = Evaluacion::all();
@@ -105,8 +108,34 @@ class AlumnoController extends Controller
         return view('pages.tutor.formaciondual',compact('alumno')); //compact pasa un array con variables. ('var1','var2'...)
         $alumno = Alumno::where('id',$id)->firstOrFail();
         return view('pages.tutor.formaciondual',compact('alumno'));
-    
-    
+    }
+
+    public function alumnosTutor() {
+        if (Gate::any(['tuniversidad', 'tempresa'])) {
+
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $docente = Docente::where('id_persona', $persona->id)->first();
+            $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
+            if (Gate::allows('tempresa'))
+                $tutor = Tempresa::where('id_persona', $docente->id)->first();
+            $fichas = []; //por si este tutor no tiene alumnos asignados
+            if($tutor != null)
+                $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
+
+            //where ficha dual
+            return view('pages.tutor.listarAlumnos', [
+                'fichas' => $fichas 
+            ]);
+        }
+        else
+            return view('errors.403');
+    }
+
+    public function verAlumno(Alumno $alumno)
+    {
+        return view('pages.tutor.formaciondual', [
+            'alumno' => $alumno
+        ]);
     }
 
     /**
