@@ -15,7 +15,12 @@ document.addEventListener("DOMContentLoaded", function (event) {
           document.getElementById('nav-bar').classList.remove('col-sm-2');
           document.getElementById('nav-bar').classList.add('col-xl-2');
           document.getElementById('nav-bar').classList.remove('col-xl-1');
-          
+
+          document.getElementById('main-side').classList.add('col-sm-9');
+          document.getElementById('main-side').classList.remove('col-sm-10');
+          document.getElementById('main-side').classList.add('col-xl-10');
+          document.getElementById('main-side').classList.remove('col-xl-11');
+
           btnst = false;
         }else if(btnst == false) {
           if (nav_name)
@@ -28,6 +33,11 @@ document.addEventListener("DOMContentLoaded", function (event) {
           document.getElementById('nav-bar').classList.add('col-sm-2');
           document.getElementById('nav-bar').classList.remove('col-xl-2');
           document.getElementById('nav-bar').classList.add('col-xl-1');
+
+          document.getElementById('main-side').classList.remove('col-sm-9');
+          document.getElementById('main-side').classList.add('col-sm-10');
+          document.getElementById('main-side').classList.remove('col-xl-10');
+          document.getElementById('main-side').classList.add('col-xl-11');
           
 
           btnst = true;

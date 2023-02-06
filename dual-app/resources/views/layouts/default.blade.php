@@ -13,13 +13,13 @@
 
             <div class="row vh-100 overflow-auto">
 
-                <nav class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex justify-content-center sticky-top bg-primary" id="nav-bar">
+                <nav class="col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex justify-content-center sticky-top bg-primary" id="nav-bar">
 
                     @include('layouts.sidebar')
 
                 </nav>
 
-                <div class="col d-flex flex-column h-sm-100">
+                <div class="col-sm-9 col-xl-10 d-flex flex-column h-sm-100" id="main-side">
 
                     <main class="row overflow-auto">
 
@@ -31,18 +31,18 @@
                             @endauth
                         </div>
 
+                        <footer class="row bg-light py-4 mt-auto">
+
+                            <div class="col pt-4">
+
+                                @include('layouts.footer')
+
+                            </div>
+                            
+                        </footer>
+
                     </main>
-
-                    <footer class="row bg-light py-4 mt-auto">
-
-                        <div class="col pt-4">
-
-                            @include('layouts.footer')
-
-                        </div>
-                        
-                    </footer>
-                      
+  
                 </div>
             
             </div>
