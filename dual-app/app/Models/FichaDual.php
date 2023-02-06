@@ -26,7 +26,7 @@ class FichaDual extends Model
         return $this->belongsTo(Empresa::class, 'id_empresa');
     }
 
-    public function alumno()
+    public function alumno()  
     {
         return $this->belongsTo(Alumno::class, 'id_alumno');
     }
@@ -49,5 +49,10 @@ class FichaDual extends Model
     public function diariosAprendizajes()
     {
         return $this->hasMany(DiarioAprendizaje::class, 'id_ficha');
+    }
+
+    public function calificaciones()
+    {
+        return $this->hasMany(Calificaciones::class, 'id_ficha');
     }
 }
