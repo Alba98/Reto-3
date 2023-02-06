@@ -32,8 +32,27 @@
                                   <td>{{ ($ficha->empresa->nombre)  }}</td>
                                   <td>{{ ($ficha->curso)  }}</td>
                                   <td>{{ ($ficha->alumno->grado->nombre)  }}</td>
-                                  <td>{{ ($ficha->calificaciones)  }}</td>
-                                  <td><a href="{{ route('fichaAlumno', $ficha->alumno) }}" class="btn btn-primary">Ver</a></td>
+                                  @php
+                                      $suma = 0;
+                                  @endphp
+                                  @foreach ($ficha->calificaciones as $evaluacion)
+                                    @php
+                                      $suma+=$evaluacion->evaluacion->valoracion;
+                                    @endphp 
+                                      {{ $evaluacion->evaluacion->valoracion}}   
+                                     
+                                  @endforeach
+                                  @php
+                                    $count = $ficha->calificaciones->count();
+                                    if ($count > 0) {
+                                        $media = (floatval($suma)/floatval($count)); 
+                                    }else{
+                                        $media = 0; //Valor predeterminado        
+                                    }
+                                      
+                                  @endphp
+                                  <td>{{ ($media)  }}</td>
+                                  <td><a href="{{ route('fichaAlumno', $ficha->alumno->id) }}" class="btn btn-primary">Ver</a></td>
                                 </tr>
                                 @endforeach
                               </tbody>

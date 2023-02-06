@@ -62,11 +62,11 @@ Route::get('diarioAlumno/{id}', [DiarioController::class, 'show'])->name('diario
 Route::get('notas', [NotasController::class, 'index'])->name('notas');
 
 //tutor universidad
-Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
+Route::get('evaluar/{alumno}', [UserController::class, 'evaluar'])->name('evaluar');
 //Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
 Route::get('alumnos', [AlumnoController::class, 'alumnosTutor'])->name('alumnos');
 
-Route::get('fichaAlumno', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
+Route::get('fichaAlumno/{alumno}', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
 Route::get('fichaSeguimineto', [UserController::class, 'fichaSeguimineto'])->name('fichaSeguimineto');
 Route::get('evaluacion/diario', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
 Route::get('evaluacion/ficha', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');

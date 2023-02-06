@@ -23,7 +23,7 @@
               </div>
               <div class="card-body">
                 <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="#" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Evaluacion trabajo en empresa </a>
+                <a href="{{ route('evaluar', $alumno) }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Evaluacion trabajo en empresa </a>
               </div>
           </div>
         </div>
