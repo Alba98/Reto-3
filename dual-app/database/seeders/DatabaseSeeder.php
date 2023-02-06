@@ -122,6 +122,8 @@ class DatabaseSeeder extends Seeder
                 'id_tuniversidad' => $faker->numberBetween(1, 5),
                 'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'anio_academico' => $faker->year(),
+                'curso' => $faker->randomElement(['1º', '2º', '3º', '4º']),
             ]);
         }
 

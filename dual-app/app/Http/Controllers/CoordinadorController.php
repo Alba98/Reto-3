@@ -53,9 +53,6 @@ class CoordinadorController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user()->cannot('registrar'))
-            return response(view('errors.403')); 
-
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
             'ape1' => 'required|unique:personas|max:255',

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Docente;
+use App\Models\Evaluacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -104,7 +105,7 @@ class UserController extends Controller
             $ficha->id_tempresa = $request->input('id_tempresa');
             $ficha->save(); 
         }
-            return redirect()->route('darAlta')->with('success', 'Alumno asignado correctamente');
+            return redirect()->route('registrosAlumno');
         } else
             return view('errors.403');
     }
@@ -125,15 +126,17 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function evaluar($id)
+    public function evaluar(Request $request)
     {
-    $alumno  = Alumno::find($id);
-    $alumno = $alumno::with(['curso','empresa','tutor'])->get(); 
-    $curso =  $alumno->curso;
-    $empresa = $alumno->empresa;
-    $tutor = $alumno;
+        $alumno = Alumno::all()->where('id',$request->input('id'))->first();
+        $email = User::all()->where('id_persona',$alumno->id_persona)->value('email');
+        $usuarios = User::all();
         if (Gate::allows('tuniversidad'))
-            return view('pages.tutor.evaluar');
+            return view('pages.tutor.evaluar', [
+                'alumno' => $alumno,
+                'email' => $email,
+                'usuarios' => $usuarios
+            ]);
         else
             return view('errors.403');
     }
@@ -141,7 +144,14 @@ class UserController extends Controller
     public function alumnos()
     {
         //if (Gate::any(['tuniversidad', 'tempresa']))
-            return view('pages.tutor.listarAlumnos');
+        $alumnos = Alumno::all();
+        $evaluaciones = Evaluacion::all();
+        $ficha = FichaDual::all();
+            return view('pages.tutor.listarAlumnos', [
+                'alumnos' => $alumnos,
+                'evaluaciones' => $evaluaciones,
+                'ficha' => $ficha
+            ]);
         // else
         //     return view('errors.403');
     }
@@ -157,7 +167,7 @@ class UserController extends Controller
     public function fichaSeguimineto()
     {
         if (Gate::any(['tuniversidad', 'tempresa']))
-            return view('pages.tutor.fichaSeguimineto');
+            return view('pages.tutor.fichaSeguimiento');
         else
             return view('errors.403');
     }

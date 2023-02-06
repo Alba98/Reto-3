@@ -7,50 +7,47 @@
               <div class="resume-base bg-primary user-dashboard-info-box p-4">
                 <div class="profile">
                   <div class="jobster-user-info">
-                    <div class="profile-avatar align-items-center">
-                      <img class="img-fluid" style="width: 200px; height: 200px;" src="./estudiante.jpg">
                     <div class="profile-avatar-info mt-3">
                       <h5 class="text-white">Perfil</h5>
-                    </div>
                   </div>
                 </div>
                
                 <div class="about-candidate border-top">
-                  <div class="candidate-info">
-                    <h6 class="text-white">Apellidos,Nombre:</h6>
-                    <p class="text-white">{{($alumno->persona->Apellidos)}},{{($alumno->persona->nombre)}}</p>
+                  <div class="candidate-info mt-2">
+                    <h6 class="text-white"><b>Apellidos,Nombre:</b></h6>
+                    <p class="text-white">{{$alumno->persona->ape1}} {{$alumno->persona->ape2}}, {{$alumno->persona->nombre}}</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Email del estudiante:</h6>
-                    <p class="text-white">{{($alumno->persona->email)}}</p>
+                    <h6 class="text-white"><b>Email del estudiante:</b></h6>
+                    <p class="text-white">{{($email)}}</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Año académico:</h6>
-                    <p class="text-white">{{($alumno->persona->email)}}</p>
+                    <h6 class="text-white"><b>Año académico:</b></h6>
+                    <p class="text-white">¿?</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Curso:</h6>
-                    <p class="text-white">2º</p>
+                    <h6 class="text-white"><b>Curso:</b></h6>
+                    <p class="text-white">{{$alumno->value('curso')}}</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Empresa:</h6>
-                    <p class="text-white">INGENIERIA DACO</p>
+                    <h6 class="text-white"><b>Empresa:</b></h6>
+                    <p class="text-white">{{$alumno->fichaDual->empresa->nombre}}</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Tutor Univerisad:</h6>
-                    <p class="text-white">López Urrutia, Juan</p>
+                    <h6 class="text-white"><b>Tutor Univerisad:</b></h6>
+                    <p class="text-white">{{$alumno->fichaDual->tuniversidad->docente->persona->nombre}}</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Contacto Fac.univ:</h6>
-                    <p class="text-white">jlopez@deusto.es</p>
+                    <h6 class="text-white"><b>Contacto Fac.univ:</b></h6>
+                    <p class="text-white">{{$usuarios->where('id_persona',$alumno->fichaDual->tuniversidad->docente->persona->id)->value('email')}}</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Tutor Empresa:</h6>
-                    <p class="text-white">Eguren, Ane</p>
+                    <h6 class="text-white"><b>Tutor Empresa:</b></h6>
+                    <p class="text-white">{{$alumno->fichaDual->tempresa->persona->nombre}}</p>
                   </div>
                   <div class="candidate-info">
-                    <h6 class="text-white">Contacto Fac.Empresa:</h6>
-                    <p class="text-white">neguren@dacom.com</p>
+                    <h6 class="text-white"><b>Contacto Fac.Empresa:</b></h6>
+                    <p class="text-white">{{$usuarios->where('id_persona',$alumno->fichaDual->tempresa->persona->id)->value('email')}}</p>
                   </div>
                 </div>
               </div>
