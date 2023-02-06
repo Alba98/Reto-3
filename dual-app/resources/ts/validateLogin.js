@@ -8,7 +8,7 @@ form.addEventListener('submit', function (event) {
         return;
     }
     if (!password.value) {
-        console.log('nia');
+        console.log('prueba');
         alert('El campo de contraseña es requerido');
         return;
     }

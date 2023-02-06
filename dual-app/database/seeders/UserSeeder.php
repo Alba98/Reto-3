@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         //Persona administradora:
         $admin = new Persona();
-        $admin->nombre='Usuario Logeado';
+        $admin->nombre='Usuario';
         $admin->ape1='Apellido1 del Usuario';
         $admin->ape2='Apellido2 del Usuario';
         $admin->dni='12345';
