@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Models\Persona;
+use App\Models\Docente;
+use App\Models\Tuniversidad;
 use App\Models\Alumno;
 use App\Models\Empresa;
 use App\Models\Evaluacion;
@@ -110,9 +112,11 @@ class AlumnoController extends Controller
 
     public function alumnosTutor() {
         if (Gate::any(['tuniversidad', 'tempresa'])) {
-            $id = Auth::user()->id_persona;
-            $id_tutor = Tempresa::where('id_persona', $id)->firstOrFail()->id;
-            $fichas = FichaDual::where('id_tempresa', $id_tutor);
+
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $docente = Docente::where('id_persona', $persona->id)->first();
+            $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
+            $fichas = FichaDual::where('id_tuniversidad', $tutor->id);
             //where ficha dual
             return view('pages.tutor.listarAlumnos', [
                 'fichas' => FichaDual::All(),
