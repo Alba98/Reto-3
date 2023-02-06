@@ -18,10 +18,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
 
 @vite(['resources/js/app.js'])
-@vite(['resources/js/estadisticas.js'])
-@vite(['resources/js/darkMode.js'])
 @vite(['resources/sass/app.scss'])
-
 
 
  <!-- Bootstrap CSS -->
