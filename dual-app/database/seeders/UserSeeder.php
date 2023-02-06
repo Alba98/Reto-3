@@ -26,8 +26,8 @@ class UserSeeder extends Seeder
 
 
        $user=\App\Models\User::factory()->create([
-            'email'=>'administrador@gmail.com',
-            'password'=> bcrypt('admin'),
+            'email'=>'daw.wat2022@gmail.com',
+            'password'=> bcrypt('12345Abcde'),
             'id_persona'=>$admin->id,
             'email_verified_at'=>now(),
             'tipo_usuario'=>'coordinador'
