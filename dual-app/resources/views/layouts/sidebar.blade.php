@@ -13,11 +13,9 @@
         <span >{{ config('app.name', 'FormacionDual') }}</span>
     </a>
     <hr class="sidebar-divider my-0 color-light">
-        <!--Modo Oscuro Modo Claro -->
-        @include('layouts.modoVisual')
+    <!--Modo Oscuro Modo Claro -->
+    @include('layouts.modoVisual')
                       
-                        
-
     @if (Auth::user()->tipo_usuario)
         @switch(Auth::user()->tipo_usuario)
             @case('coordinador')
@@ -76,7 +74,6 @@
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
-                             {{ __('Logout') }}
                         {{ Auth::user()->persona->nombre }}
                         
                     </a>

@@ -7,3 +7,9 @@ npm run dev
 
 #migration
 artisan migrate:fresh --seed
+
+
+#TypeScript
+
+npm install typescript@latest -g
+tsc --init (añade tsconfig.json) 
