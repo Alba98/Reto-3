@@ -141,14 +141,6 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function fichaAlumno()
-    {
-        if (Gate::any(['tuniversidad', 'tempresa']))
-            return view('pages.tutor.formaciondual');
-        else
-            return view('errors.403');
-    }
-
     public function fichaSeguimineto()
     {
         if (Gate::any(['tuniversidad', 'tempresa']))

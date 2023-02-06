@@ -31,22 +31,22 @@
                             @endauth
                         </div>
 
-                        <footer class="row bg-light py-4 mt-auto">
-
-                            <div class="col pt-4">
-
-                                @include('layouts.footer')
-
-                            </div>
-                            
-                        </footer>
-
                     </main>
+
+                    <footer class="row bg-light py-4 mt-auto">
+
+                        <div class="col pt-4">
+
+                            @include('layouts.footer')
+
+                        </div>
+
+                    </footer>
   
                 </div>
             
             </div>
-
+            
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
         </div>
 

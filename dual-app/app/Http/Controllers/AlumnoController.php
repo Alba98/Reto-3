@@ -116,17 +116,26 @@ class AlumnoController extends Controller
             $persona = Persona::where('id', Auth::user()->id_persona)->first();
             $docente = Docente::where('id_persona', $persona->id)->first();
             $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
-            $fichas = FichaDual::where('id_tuniversidad', $tutor->id);
+            if (Gate::allows('tempresa'))
+                $tutor = Tempresa::where('id_persona', $docente->id)->first();
+            $fichas = []; //por si este tutor no tiene alumnos asignados
+            if($tutor != null)
+                $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
+
             //where ficha dual
             return view('pages.tutor.listarAlumnos', [
-                'fichas' => FichaDual::All(),
-                'usuario' => Auth::user(),
-                'tutor' => Tempresa::where('id_persona', $id)->firstOrFail()
-                
+                'fichas' => $fichas 
             ]);
         }
         else
             return view('errors.403');
+    }
+
+    public function verAlumno(Alumno $alumno)
+    {
+        return view('pages.tutor.formaciondual', [
+            'alumno' => $alumno
+        ]);
     }
 
     /**

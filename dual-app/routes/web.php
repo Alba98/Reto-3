@@ -66,7 +66,7 @@ Route::get('evaluar', [UserController::class, 'evaluar'])->name('evaluar');
 //Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
 Route::get('alumnos', [AlumnoController::class, 'alumnosTutor'])->name('alumnos');
 
-Route::get('fichaAlumno', [UserController::class, 'fichaAlumno'])->name('fichaAlumno');
+Route::get('fichaAlumno', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
 Route::get('fichaSeguimineto', [UserController::class, 'fichaSeguimineto'])->name('fichaSeguimineto');
 Route::get('evaluacion/diario', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
 Route::get('evaluacion/ficha', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
@@ -91,5 +91,4 @@ Route::post('registrar/tutorUniversidad', [TuniversidadController::class, 'store
 Route::post('registrar/coordinador', [CoordinadorController::class, 'store'])->name('coordinador.store');
 
 //Ver un alumno desde el tutor:
-
 Route::get('/alumno/{id}',[AlumnoController::class,'show'])->name('alumno.show')->whereNumber('id');
