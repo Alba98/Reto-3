@@ -1,11 +1,4 @@
-@extends('layouts.default')
-@section('content')
-  <div class="container">
-    <h1 class="text-center">Tabla de calificaciones de los alumnos</h1>
-    <canvas id="Grafico"></canvas>
-  </div>
-  <script>
-      //El método getContext() devuelve un dibujo contexto en el lienzo y '2d' representa un bidimensional.
+  //El método getContext() devuelve un dibujo contexto en el lienzo y '2d' representa un bidimensional.
  var ctx = document.getElementById('Grafico').getContext('2d');
  var chart = new Chart(ctx, {
      type: 'bar',
@@ -42,5 +35,3 @@
      }
  });
 
-  </script>
-@stop

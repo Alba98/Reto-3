@@ -24,4 +24,17 @@ $theme-colors: (
   "light":      $body-bg //$primary
 ) !default;
 
+//Boton de confort visual:
+$light-mode-bg-color: #fff;
+$light-mode-text-color: #000;
+$dark-mode-bg-color: #333;
+$dark-mode-text-color: #fff;
 
+body {
+  background-color: $light-mode-bg-color;
+  color: $light-mode-text-color;
+}
+.dark-mode {
+	background-color: $dark-mode-bg-color;
+	color: $dark-mode-text-color;
+}
