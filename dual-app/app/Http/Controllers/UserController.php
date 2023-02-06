@@ -166,7 +166,7 @@ class UserController extends Controller
     public function fichaSeguimineto()
     {
         if (Gate::any(['tuniversidad', 'tempresa']))
-            return view('pages.tutor.fichaSeguimiento');
+            return view('pages.tutor.fichaseguimiento');
         else
             return view('errors.403');
     }

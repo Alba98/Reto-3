@@ -35,11 +35,11 @@
                                   @php
                                       $suma = 0;
                                   @endphp
-                                  @foreach ($ficha->calificaciones as $evaluacion)
+                                  @foreach ($ficha->calificaciones as $califiacion)
                                     @php
-                                      $suma+=$evaluacion->evaluacion->valoracion;
+                                      $suma+=$califiacion->evaluacion->valoracion;
                                     @endphp 
-                                      {{ $evaluacion->evaluacion->valoracion}}   
+                                      {{ $califiacion->evaluacion->valoracion}}   
                                      
                                   @endforeach
                                   @php

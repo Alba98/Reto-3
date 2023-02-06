@@ -7,7 +7,44 @@
                 <div class="card-header">Ficha dual</div>
                 <div class="card-body">
                   <h5 class="card-title">{{($alumno->persona->nombre)}}</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dis turpis nisi, justo, integer dignissim ornare leo euismod ac Lorem, ipsum dolor sit amet consectetur adipisicing elit. Obcaecati doloribus corporis ab ea deleniti repellendus deserunt hic tempora nobis sit cupiditate laborum reiciendis doloremque, sapiente, consequatur natus, numquam asperiores. Doloremque! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum quas pariatur dolorem, nisi quaerat, molestias quasi non a, mollitia voluptatibus assumenda at! Quae debitis architecto distinctio, nisi dignissimos accusantium quos Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum illum ea tempora natus temporibus aperiam vitae aliquid vero architecto unde inventore laborum est cum accusamus dolore distinctio, dolor veniam amet!</p>
+                  <div class="about-candidate border-top">
+                    <div class="candidate-info mt-2">
+                      <h6><b>Apellidos,Nombre:</b></h6>
+                      <p>{{ $alumno->persona->ape1 }} {{ $alumno->persona->ape2 }}, {{ $alumno->persona->nombre }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Email del estudiante:</b></h6>
+                      <p>{{ $alumno->persona->usuario->email }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Año académico:</b></h6>
+                      <p>{{ $alumno->fichaDual->anio_academico }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Curso:</b></h6>
+                      <p>{{ $alumno->fichaDual->curso }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Empresa:</b></h6>
+                      <p>{{ $alumno->fichaDual->empresa->nombre }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Tutor Univerisad:</b></h6>
+                      <p>{{ $alumno->fichaDual->tuniversidad->docente->persona->nombre }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Contacto Fac.univ:</b></h6>
+                      <p>{{ $alumno->fichaDual->tuniversidad->docente->persona->usuario->email }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Tutor Empresa:</b></h6>
+                      <p>{{ $alumno->fichaDual->tempresa->persona->nombre }}</p>
+                    </div>
+                    <div class="candidate-info">
+                      <h6><b>Contacto Fac.Empresa:</b></h6>
+                      <p>{{ $alumno->fichaDual->tempresa->persona->usuario->email }}</p>
+                    </div>
+                  </div>
                   </div>
                 </div>
           </div>
