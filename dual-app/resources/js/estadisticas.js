@@ -1,3 +1,17 @@
+
+  fetch('/ChartJSController')
+  .then(response => response.json())
+  .then(data => {
+    let sum = 0;
+    let count = 0;
+    for (let i = 0; i < data.length; i++) {
+      sum += data[i].grade;
+      count++;
+    }
+    const average = sum / count;
+    console.log("La nota media es: " + average);
+  })
+  .catch(error => console.error(error));
   //El método getContext() devuelve un dibujo contexto en el lienzo y '2d' representa un bidimensional.
  var ctx = document.getElementById('Grafico').getContext('2d');
  var chart = new Chart(ctx, {
