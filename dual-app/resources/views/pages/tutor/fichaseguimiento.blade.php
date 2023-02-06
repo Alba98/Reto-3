@@ -11,28 +11,27 @@
 
 
 <div class="card-body">
-                <div class="table-responsive">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th><i class="bi bi-person"></i> Nombre</th>
-                                      <th><i class="bi bi-building"></i> Empresa</th>
-                                      <th><i class="bi bi-justify-left"></i> Curso</th>
-                                      <th><i class="bi bi-justify-left"></i> Grado</th>
-                                      <th><i class="bi bi-star-fill"></i> Email</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>Samuel</td>
-                                      <td>Mercedes-Benz</td>
-                                      <td>2017-2018</td>
-                                      <td>Historia</td>
-                                      <td>samuel@egibide.org</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
+  <div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th><i class="bi bi-person"></i> Nombre</th>
+        <th><i class="bi bi-building"></i> Empresa</th>
+        <th><i class="bi bi-justify-left"></i> Curso</th>
+        <th><i class="bi bi-justify-left"></i> Grado</th>
+        <th><i class="bi bi-star-fill"></i> Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Samuel</td>
+        <td>Mercedes-Benz</td>
+        <td>2017-2018</td>
+        <td>Historia</td>
+        <td>samuel@egibide.org</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div class="card-body">
@@ -74,5 +73,4 @@
       </table>
     </div>
 </div>
-
 @stop

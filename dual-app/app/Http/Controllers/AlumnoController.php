@@ -59,9 +59,6 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
-        if (Gate::User()->cannot('registrar'))
-            return view('errors.403'); 
-
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
             'ape1' => 'required|unique:personas|max:255',

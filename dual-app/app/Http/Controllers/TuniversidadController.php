@@ -11,6 +11,7 @@ use App\Models\Persona;
 use App\Models\Tuniversidad;
 use App\Models\Docente;
 use App\Models\FichaDual;
+use App\Models\Usuario;
 
 class TuniversidadController extends Controller
 {
@@ -21,16 +22,15 @@ class TuniversidadController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->cannot('registrar'))
-            return view('errors.403'); 
-
         $tuniversidad = Tuniversidad::all();
         $ficha = FichaDual::all();
         $personas = Persona::all();
+        $usuarios = Usuario::all();
         return response(view('pages.coordinador.registrosAnteriores.t_universidad', [
             'tuniversidad' => $tuniversidad,
             'ficha' => $ficha,
-            'personas' => $personas
+            'personas' => $personas,
+            'usuarios' => $usuarios
         ]));
     }
 
@@ -52,9 +52,6 @@ class TuniversidadController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::User()->cannot('registrar'))
-        return response(view('errors.403')); 
-        
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
             'ape1' => 'required|unique:personas|max:255',

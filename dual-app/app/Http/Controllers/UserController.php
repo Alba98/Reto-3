@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Docente;
+use App\Models\Evaluacion;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -90,21 +91,21 @@ class UserController extends Controller
                 $tuniversidad->id_docente = $request->input('id_tuniversidad');
                 $tuniversidad->save();
 
-                $ficha = new FichaDual();
-                $ficha->id_alumno = $request->input('id_alumno');
-                $ficha->id_empresa = $request->input('id_empresa');
-                $ficha->id_tuniversidad = Tuniversidad::latest('id')->first()->id;
-                $ficha->id_tempresa = $request->input('id_tempresa');
-                $ficha->save(); 
-            } else {
-                $ficha = new FichaDual();
-                $ficha->id_alumno = $request->input('id_alumno');
-                $ficha->id_empresa = $request->input('id_empresa');
-                $ficha->id_tuniversidad = $request->input('id_tuniversidad');
-                $ficha->id_tempresa = $request->input('id_tempresa');
-                $ficha->save(); 
-            }
-                return redirect()->route('darAlta')->with('success', 'Alumno asignado correctamente');
+            $ficha = new FichaDual();
+            $ficha->id_alumno = $request->input('id_alumno');
+            $ficha->id_empresa = $request->input('id_empresa');
+            $ficha->id_tuniversidad = Tuniversidad::latest('id')->first()->id;
+            $ficha->id_tempresa = $request->input('id_tempresa');
+            $ficha->save(); 
+        } else {
+            $ficha = new FichaDual();
+            $ficha->id_alumno = $request->input('id_alumno');
+            $ficha->id_empresa = $request->input('id_empresa');
+            $ficha->id_tuniversidad = $request->input('id_tuniversidad');
+            $ficha->id_tempresa = $request->input('id_tempresa');
+            $ficha->save(); 
+        }
+            return redirect()->route('registrosAlumno');
         } else
             return view('errors.403');
     }
@@ -125,15 +126,37 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function evaluar()
+    public function evaluar(Request $request)
     {
+        $alumno = Alumno::all()->where('id',$request->input('id'))->first();
+        $email = User::all()->where('id_persona',$alumno->id_persona)->value('email');
+        $usuarios = User::all();
         if (Gate::allows('tuniversidad'))
-            return view('pages.alumno.evaluar');
+            return view('pages.tutor.evaluar', [
+                'alumno' => $alumno,
+                'email' => $email,
+                'usuarios' => $usuarios
+            ]);
         else
             return view('errors.403');
     }
 
     public function alumnos()
+    {
+        //if (Gate::any(['tuniversidad', 'tempresa']))
+        $alumnos = Alumno::all();
+        $evaluaciones = Evaluacion::all();
+        $ficha = FichaDual::all();
+            return view('pages.tutor.listarAlumnos', [
+                'alumnos' => $alumnos,
+                'evaluaciones' => $evaluaciones,
+                'ficha' => $ficha
+            ]);
+        // else
+        //     return view('errors.403');
+    }
+
+    public function fichaAlumno()
     {
         if (Gate::any(['tuniversidad', 'tempresa']))
             return view('pages.tutor.listarAlumnos');
@@ -144,7 +167,7 @@ class UserController extends Controller
     public function fichaSeguimineto()
     {
         if (Gate::any(['tuniversidad', 'tempresa']))
-            return view('pages.tutor.fichaSeguimineto');
+            return view('pages.tutor.fichaSeguimiento');
         else
             return view('errors.403');
     }

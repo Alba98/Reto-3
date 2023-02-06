@@ -26,7 +26,7 @@
                           <tr>
                             <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('nombre')}}</td>
                             <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('telefono')}}</td>
-                            <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('email')}}</td>
+                            <td>{{$usuarios->where('id_persona',$tuniversidad->docente->id_persona)->value('email')}}</td>
                             <td>{{$ficha->where('id_tuniversidad',$tuniversidad->id)->count()}}</td>
                             <td><a href="?id={{$tuniversidad->id}}" class="btn btn-danger">Eliminar</a></td>
                           </tr>
@@ -36,7 +36,7 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <a href="{{ route('registros') }}" class="btn btn-primary">Volver</a>
+                  <a href="{{ route('registros') }}" class="btn btn-primary">Volver <i class="bi bi-arrow-return-left"></i></a>
                 </div>
               </div>
             </div>

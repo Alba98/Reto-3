@@ -16,7 +16,9 @@ class FichaDual extends Model
         'id_tempresa',
         'id_tuniversidad',
         'created_at',
-        'updated_at'
+        'updated_at',
+        'anio_academico',
+        'curso'
     ];
 
     public function empresa()
