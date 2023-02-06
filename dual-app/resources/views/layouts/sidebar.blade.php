@@ -1,3 +1,4 @@
+
 <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center px-3 pt-2 text-white">
                         
     <header id="header_toggle" class="d-flex justify-content-between align-items-center">
@@ -12,6 +13,10 @@
         <span >{{ config('app.name', 'FormacionDual') }}</span>
     </a>
     <hr class="sidebar-divider my-0 color-light">
+        <!--Modo Oscuro Modo Claro -->
+        @include('layouts.modoVisual')
+                      
+                        
 
     @if (Auth::user()->tipo_usuario)
         @switch(Auth::user()->tipo_usuario)
