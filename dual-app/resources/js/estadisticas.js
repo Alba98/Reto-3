@@ -1,6 +1,9 @@
   //El método getContext() devuelve un dibujo contexto en el lienzo y '2d' representa un bidimensional.
- var ctx = document.getElementById('Grafico').getContext('2d');
- var chart = new Chart(ctx, {
+ 
+var gradico = document.getElementById('Grafico');
+if(gradico){
+var ctx = document.getElementById('Grafico').getContext('2d');
+var chart = new Chart(ctx, {
      type: 'bar',
      data: {
          labels: ['Estudiante 1', 'Estudiante 2', 'Estudiante 3', 'Estudiante 4', 'Estudiante 5'],
@@ -34,4 +37,5 @@
          }
      }
  });
+}
 

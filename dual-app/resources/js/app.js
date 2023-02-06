@@ -4,6 +4,8 @@ import '../sass/app.scss'
 
 import '../ts/sidebar';
 
-import './darkMode';
+import '../ts/darkMode';
 
 import './estadisticas';
+
+import './switch';

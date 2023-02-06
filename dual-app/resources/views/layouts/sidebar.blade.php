@@ -13,11 +13,9 @@
         <span >{{ config('app.name', 'FormacionDual') }}</span>
     </a>
     <hr class="sidebar-divider my-0 color-light">
-        <!--Modo Oscuro Modo Claro -->
-        @include('layouts.modoVisual')
+    <!--Modo Oscuro Modo Claro -->
+    @include('layouts.modoVisual')
                       
-                        
-
     @if (Auth::user()->tipo_usuario)
         @switch(Auth::user()->tipo_usuario)
             @case('coordinador')
