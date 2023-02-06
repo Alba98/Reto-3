@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
         $faker = \Faker\Factory::create();
         for($i=0;$i<30;$i++){
             DB::table('alumnos')->insert([
-                'id_persona' => $faker->unique()->numberBetween(1, 30),
+                'id_persona' => $faker->unique()->numberBetween(4, 34),
                 'id_grado' => $faker->numberBetween(1, 5),
                 'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),

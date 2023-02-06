@@ -168,6 +168,8 @@ class AlumnoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $alumno = Alumno::find($id);
+        $alumno->delete();
+        return redirect()->route('registrosAlumno');
     }
 }

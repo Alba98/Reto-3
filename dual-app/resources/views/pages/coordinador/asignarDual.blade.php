@@ -14,7 +14,7 @@
                             <div class="col-md-6">
                                     <select id="id_alumno" name="id_alumno" class="form-select">
                                       @foreach ($alumnos as $alumno)
-                                        <option value="{{ $alumno->id }}">{{ $personas->where('id',$alumno->id_persona)->value('nombre') }}</option>
+                                        <option value="{{ $alumno->id }}">{{ $personas->where('id',$alumno->id_persona)->value('nombre') }} {{ $personas->where('id',$alumno->id_persona)->value('ape1') }} {{ $personas->where('id',$alumno->id_persona)->value('ape2') }}</option>
                                       @endforeach
                                     </select>
                             </div>

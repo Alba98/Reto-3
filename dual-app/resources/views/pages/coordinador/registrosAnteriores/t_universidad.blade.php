@@ -28,7 +28,16 @@
                             <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('telefono')}}</td>
                             <td>{{$usuarios->where('id_persona',$tuniversidad->docente->id_persona)->value('email')}}</td>
                             <td>{{$ficha->where('id_tuniversidad',$tuniversidad->id)->count()}}</td>
-                            <td><a href="?id={{$tuniversidad->id}}" class="btn btn-danger">Eliminar</a></td>
+                            <td>
+                              <form method="POST" action="{{ route('tuniversidad.destroy', [$tuniversidad->id]) }}">
+                                @csrf
+                                @method("DELETE")
+              
+                                <button type="submit" class="btn btn-danger"> 
+                                  Eliminar
+                                </button>
+                              </form>
+                            </td>
                           </tr>
                         @endforeach
                       </tbody>

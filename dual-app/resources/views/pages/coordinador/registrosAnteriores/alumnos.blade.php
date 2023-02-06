@@ -46,7 +46,16 @@
                                     <td>{{$evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion')}}</td>
                                   @endif
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
-                                    <td><a href="?id={{$alumno->id_persona}}" class="btn btn-danger">Eliminar</a></td>
+                                  <td>
+                                    <form method="POST" action="{{ route('alumno.destroy', [$alumno->id]) }}">
+                                      @csrf
+                                      @method("DELETE")
+                    
+                                      <button type="submit" class="btn btn-danger"> 
+                                        Eliminar
+                                      </button>
+                                    </form>
+                                  </td>
                                   @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
                                     <td><a href="{{ route('alumno.show',$alumno->id_persona)}}" class="btn btn-primary">Ver</a></td>
                                   @endif

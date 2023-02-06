@@ -126,7 +126,9 @@ class TuniversidadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $tuniversidad = Tuniversidad::find($id);
+        $tuniversidad->delete();
+        return redirect()->route('registrosTutorUniversidad');
     }
 }

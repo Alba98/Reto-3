@@ -23,11 +23,11 @@
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white"><b>Año académico:</b></h6>
-                    <p class="text-white">¿?</p>
+                    <p class="text-white">{{$alumno->fichaDual->anio_academico}}</p>
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white"><b>Curso:</b></h6>
-                    <p class="text-white">{{$alumno->value('curso')}}</p>
+                    <p class="text-white">{{$alumno->fichaDual->curso}}</p>
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white"><b>Empresa:</b></h6>

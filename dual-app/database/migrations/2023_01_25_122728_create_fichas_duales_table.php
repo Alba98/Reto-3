@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('anio_academico');
             $table->string('curso');
             $table->timestamps();
-            $table->foreignId('id_alumno')->constrained('alumnos');
-            $table->foreignId('id_empresa')->constrained('empresas');
-            $table->foreignId('id_tempresa')->constrained('tempresa');
-            $table->foreignId('id_tuniversidad')->constrained('tuniversidad');
+            $table->foreignId('id_alumno')->constrained('alumnos')->cascadeOnDelete();
+            $table->foreignId('id_empresa')->constrained('empresas')->cascadeOnDelete();
+            $table->foreignId('id_tempresa')->constrained('tempresa')->cascadeOnDelete();
+            $table->foreignId('id_tuniversidad')->constrained('tuniversidad')->cascadeOnDelete();
         });
     }
 

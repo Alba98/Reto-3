@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('tipo_tutoria', ['presencial', 'telefonica','email']);
             $table->string('objetivos');
             $table->string('resumen');
-            $table->foreignId('id_fichadual')->constrained('fichas_duales');
+            $table->foreignId('id_fichadual')->constrained('fichas_duales')->cascadeOnDelete();
         });
     }
 

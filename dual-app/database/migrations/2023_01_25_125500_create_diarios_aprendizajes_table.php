@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('actividades');
             $table->string('reflexion');
             $table->string('problemas');
-            $table->foreignId('id_ficha')->constrained('fichas_duales');
+            $table->foreignId('id_ficha')->constrained('fichas_duales')->cascadeOnDelete();
         });
     }
 

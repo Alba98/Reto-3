@@ -28,7 +28,15 @@
                                   <td>{{$empresa->sector}}</td>
                                   <td>{{$empresa->cif}}</td>
                                   <td>{{$tempresa->where('id_empresa',$empresa->id)->count()}}</td>
-                                  <td><a href="?id={{$empresa->id}}" class="btn btn-danger">Eliminar</a></td>
+                                  <td>
+                                    <form method="POST" action="{{ route('empresa.destroy', [$empresa->id]) }}">
+                                      @csrf
+                                      @method("DELETE")
+                                      <button type="submit" class="btn btn-danger"> 
+                                        Eliminar
+                                      </button>
+                                    </form>
+                                  </td>
                                 </tr>
                                 @endforeach
                               </tbody>

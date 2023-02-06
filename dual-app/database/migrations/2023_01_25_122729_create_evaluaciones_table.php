@@ -20,7 +20,7 @@ return new class extends Migration
             $table->integer('valoracion');
             $table->string('observacion');
             // id_ficha fk de fichas duales
-            $table->foreignId('id_ficha')->constrained('fichas_duales');
+            $table->foreignId('id_ficha')->constrained('fichas_duales')->cascadeOnDelete();
             
         });
     }
