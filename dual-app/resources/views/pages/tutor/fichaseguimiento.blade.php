@@ -24,14 +24,14 @@
     </thead>
     <tbody>
       @foreach ($fichas as $ficha)
-      <tr>
-          <td>{{ $ficha->nombre }}</td>
-          <td>{{ $ficha->empresa }}</td>
-          <td>{{ $ficha->curso }}</td>
-          <td>{{ $ficha->grado }}</td>
-          <td>{{ $ficha->email }}</td>
-      </tr>
-  @endforeach
+        <tr>
+            <td>{{ $ficha->nombre }}</td>
+            <td>{{ $ficha->empresa }}</td>
+            <td>{{ $ficha->curso }}</td>
+            <td>{{ $ficha->grado }}</td>
+            <td>{{ $ficha->email }}</td>
+        </tr>
+      @endforeach
     </tbody>
   </table>
 </div>

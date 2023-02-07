@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <div class="container mt-2">
-    <h1 class="display-3 text-center mt-5">Registros anteriores @if (!Auth::user()->tipo_usuario == 'alumno') alumnos @endif</h1>
+    <h1 class="display-3 text-center mt-5">Registros anteriores alumnos </h1>
     <div class="padding mt-4">
         <div class="row container d-flex justify-content-center">
         <div class="col-lg-8 grid-margin stretch-card">
@@ -95,11 +95,41 @@
                                   @endif
                                   <td>{{$alumno->curso}}</td>
                                   <td>{{$alumno->grado->nombre}}</td>
-                                  @if ($evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion') == null)
+                                @if($alumno->fichaDual)
+                                  @php
+                                    $nota_trabajo = 0; $nota_diario = 0;
+                                    $suma = 0;
+                                    $count = $alumno->fichaDual->calificaciones->evaluacionTrabajo->count();
+                                  @endphp
+                                  @foreach ($alumno->fichaDual->calificaciones->evaluacionTrabajo as $trabajo)
+                                    @php
+                                      $suma += $trabajo->evaluacion->valoracion;
+                                    @endphp
+                                  @endforeach
+                                  @php
+                                    if ($count > 0)
+                                        $nota_trabajo = (floatval($suma)/floatval($count)); 
+                                    $count = $alumno->fichaDual->calificaciones->evaluacionDiario->count();
+                                    $suma = 0;
+                                  @endphp
+                                  @foreach ($alumno->fichaDual->calificaciones->evaluacionDiario as $diario)
+                                    @php
+                                      $suma += $diario->evaluacion->valoracion;
+                                    @endphp
+                                  @endforeach
+                                  @php
+                                    if ($count > 0)
+                                        $nota_diario = (floatval($suma)/floatval($count)); 
+                                  @endphp
+                                  @if ($alumno->fichaDual->calificaciones->evaluacionTrabajo == null || 
+                                       $alumno->fichaDual->calificaciones->evaluacionDiario == null)
                                     <td>-</td>
                                   @else
-                                    <td>{{$evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion')}}</td>
+                                    <td>{{round(($nota_trabajo + $nota_diario) / 2, 2)}}</td>
                                   @endif
+                                @else
+                                  <td>-</td>
+                                @endif
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
                                   <td>
                                     <form method="POST" action="{{ route('alumno.destroy', [$alumno->id]) }}">

@@ -17,30 +17,13 @@ class Evaluacion extends Model
         'created_at',
         'updated_at'
     ];
-    public function calificaciones()
-    {
-        return $this->hasMany(Calificaciones::class, 'id_evaluacion');
-    }
-    public function alumno()
-    {
-        return $this->belongsTo(Alumno::class, 'id_alumno');
-    }
-
-    public function fichaSeguimiento()
-    {
-        return $this->belongsTo(FichaSeguimiento::class, 'id_fichaSeguimiento');
-    }
-
-    public function tutor()
-    {
-        return $this->belongsTo(Tutor::class, 'id_tutor');
-    }
+   
     public function evaluacionDiario()
     {
-        return $this->belongsTo(EvaluacionDiario::class, 'id_evaluacion');
+        return $this->hasMany(EvaluacionDiario::class, 'id');
     }
     public function evaluacionTrabajo()
     {
-        return $this->belongsTo(EvaluacionTrabajo::class, 'id_evaluacion');
+        return $this->hasMany(EvaluacionTrabajo::class, 'id');
     }
 }

@@ -25,6 +25,8 @@ class AlumnoController extends Controller
      */
     public function index()
     {
+        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
+            
         // Comprobas si se ha enviado un nombre por GET
         if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
             $nombre = $_GET['nombre'];
@@ -61,6 +63,7 @@ class AlumnoController extends Controller
             }
             else
                 return response(view('errors.403')); 
+        }
         }
     }
 
@@ -139,7 +142,30 @@ class AlumnoController extends Controller
             if ($docente != null) {
                 $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
                 if (Gate::allows('tempresa'))
-                    $tutor = Tempresa::where('id_persona', $docente->id)->first();
+                    $tutor = Tempresa::where('id_docente', $docente->id)->first();
+                
+                if ($tutor != null)
+                    $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get()->where('anio_academico','=','2022');
+            }
+            //where ficha dual
+            return view('pages.tutor.listarAlumnos', [
+                'fichas' => $fichas 
+            ]);
+        }
+        else
+            return view('errors.403');
+    }
+
+    public function alumnosTutorHistorial() {
+        if (Gate::any(['tuniversidad', 'tempresa'])) {
+
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $docente = Docente::where('id_persona', $persona->id)->first();
+            $fichas = []; //por si este tutor no tiene alumnos asignados
+            if ($docente != null) {
+                $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
+                if (Gate::allows('tempresa'))
+                    $tutor = Tempresa::where('id_docente', $docente->id)->first();
                 
                 if ($tutor != null)
                     $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
@@ -152,6 +178,7 @@ class AlumnoController extends Controller
         else
             return view('errors.403');
     }
+
 
     public function verAlumno(Alumno $alumno)
     {
