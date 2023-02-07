@@ -55,7 +55,8 @@
                         @endif
                     </div>
                     <!-- Login button -->
-                    @include('layouts.modoVisual')
+                    <button type="submit" class="btn btn-primary btn-lg btn-block">
+                        {{ __('Iniciar sesión') }}
                 </form>
             </div>
         </div>
