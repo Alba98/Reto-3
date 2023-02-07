@@ -69,7 +69,7 @@ Route::get('evaluar/{alumno}', [UserController::class, 'evaluar'])->name('evalua
 Route::get('alumnos', [AlumnoController::class, 'alumnosTutor'])->name('alumnos');
 
 Route::get('fichaAlumno/{alumno}', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
-//Route::get('fichaSeguimiento', [UserController::class, 'fichaSeguimiento'])->name('fichaSeguimiento');
+Route::get('fichaSeguimiento', [UserController::class, 'fichaSeguimiento'])->name('fichaSeguimiento');
 Route::get('evaluacion/diario', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
 Route::get('evaluacion/ficha', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
 

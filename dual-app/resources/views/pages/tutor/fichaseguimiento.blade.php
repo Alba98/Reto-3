@@ -14,24 +14,24 @@
   <div class="table-responsive">
   <table class="table table-striped table-hover">
     <thead>
-    @foreach ($fichas as $ficha)
-        <tr>
-            <td>{{ $ficha->fichadual }}</td>
-            <td>{{ $ficha->empresa }}</td>
-            <td>{{ $ficha->curso }}</td>
-            <td>{{ $ficha->grado }}</td>
-            <td>{{ $ficha->email }}</td>
-        </tr>
-    @endforeach
+      <tr>
+        <th><i class="bi bi-person"></i> Nombre</th>
+        <th><i class="bi bi-building"></i> Empresa</th>
+        <th><i class="bi bi-justify-left"></i> Curso</th>
+        <th><i class="bi bi-justify-left"></i> Grado</th>
+        <th><i class="bi bi-star-fill"></i> Email</th>
+      </tr>
     </thead>
     <tbody>
+      @foreach ($fichaSeguimiento as $ficha)
       <tr>
-        <td>Samuel</td>
-        <td>Mercedes-Benz</td>
-        <td>2017-2018</td>
-        <td>Historia</td>
-        <td>samuel@egibide.org</td>
+          <td>{{ $ficha->nombre }}</td>
+          <td>{{ $ficha->empresa }}</td>
+          <td>{{ $ficha->curso }}</td>
+          <td>{{ $ficha->grado }}</td>
+          <td>{{ $ficha->email }}</td>
       </tr>
+  @endforeach
     </tbody>
   </table>
 </div>
