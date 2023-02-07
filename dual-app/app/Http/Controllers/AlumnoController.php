@@ -25,11 +25,19 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
+        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
+            
             $alumnos = Alumno::all();
             $empresas = Empresa::all();
             $evaluaciones = Evaluacion::all();
             $ficha = FichaDual::all();
+
+            if(Gate::any(['tuniversidad', 'tempresa'])) {
+                $persona = Persona::where('id', Auth::user()->id_persona)->first();
+                $alumno = Alumno::where('id_persona', $persona->id)->first();
+                return response(view('errors.401')); 
+            }
+
             return response(view('pages.coordinador.registrosAnteriores.alumnos', [
                 'alumnos' => $alumnos,
                 'empresas' => $empresas,
@@ -129,6 +137,30 @@ class AlumnoController extends Controller
         else
             return view('errors.403');
     }
+
+    public function alumnosTutorHistorial() {
+        if (Gate::any(['tuniversidad', 'tempresa'])) {
+
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $docente = Docente::where('id_persona', $persona->id)->first();
+            $fichas = []; //por si este tutor no tiene alumnos asignados
+            if ($docente != null) {
+                $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
+                if (Gate::allows('tempresa'))
+                    $tutor = Tempresa::where('id_persona', $docente->id)->first();
+                
+                if ($tutor != null)
+                    $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
+            }
+            //where ficha dual
+            return view('pages.tutor.listarAlumnos', [
+                'fichas' => $fichas 
+            ]);
+        }
+        else
+            return view('errors.403');
+    }
+
 
     public function verAlumno(Alumno $alumno)
     {

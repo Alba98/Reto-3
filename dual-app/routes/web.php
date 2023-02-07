@@ -65,6 +65,7 @@ Route::get('notas', [NotasController::class, 'index'])->name('notas');
 Route::get('evaluar/{alumno}', [UserController::class, 'evaluar'])->name('evaluar');
 //Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
 Route::get('alumnos', [AlumnoController::class, 'alumnosTutor'])->name('alumnos');
+Route::get('registros/alumnos', [AlumnoController::class, 'alumnosTutorHistorial'])->name('alumnos.tutorHistorial');
 
 Route::get('fichaAlumno/{alumno}', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
 Route::get('fichaSeguimineto', [UserController::class, 'fichaSeguimineto'])->name('fichaSeguimineto');
