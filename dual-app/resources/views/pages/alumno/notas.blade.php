@@ -22,13 +22,13 @@
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($calificaciones->where('id_ficha', $fichas->value('id')) as $calificacion)
+                    @foreach($fichas as $ficha)
                       <tr>
-                        <td> {{ ($alumno->value('curso')) }} curso</td>
-                        <td> {{ $empresas->where('id', $fichas->value('id_empresa'))->value('nombre') }} </td>
-                        <td> {{ ($calificacion->calificacionTrabajo) }}</td>
-                        <td> {{ ($calificacion->calificacionDiario) }}</td>
-                        <td> {{ ($calificacion->id_ficha) + ($calificacion->id_ficha_seguimiento) / 2 }}</td>
+                        <td> {{ $ficha->curso }} curso</td>
+                        <td> {{ $ficha->empresa->nombre }} </td>
+                        <td> {{ ($ficha->calificaciones->evaluacion->calificacionTrabajo) }}</td>
+                        <td> {{ ($ficha->calificaciones->evaluacion->calificacionDiario) }}</td>
+                        <td> {{ ($ficha->calificaciones->id_evaluacion) + ($ficha->calificaciones->id_ficha_seguimiento) / 2 }}</td>
                       </tr>
                     @endforeach
                     <tr>
@@ -37,13 +37,6 @@
                       <td>8</td>
                       <td>6</td>
                       <td>7</td>
-                    </tr>
-                    <tr>
-                      <td>3º Curso</td>
-                      <td>Mercedes-Benz</td>
-                      <td>7</td>
-                      <td>9</td>
-                      <td>8</td>
                     </tr>
                   </tbody>
                 </table>

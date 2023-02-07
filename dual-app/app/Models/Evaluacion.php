@@ -35,4 +35,12 @@ class Evaluacion extends Model
     {
         return $this->belongsTo(Tutor::class, 'id_tutor');
     }
+    public function evaluacionDiario()
+    {
+        return $this->belongsTo(EvaluacionDiario::class, 'id_evaluacion');
+    }
+    public function evaluacionTrabajo()
+    {
+        return $this->belongsTo(EvaluacionTrabajo::class, 'id_evaluacion');
+    }
 }

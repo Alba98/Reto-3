@@ -11,7 +11,7 @@ use App\Models\Persona;
 use App\Models\Alumno;
 use App\Models\Tuniversidad;
 
-class AlumnoController extends Controller
+class FichaDualController extends Controller
 {
     /**
      * Display a listing of the resource.
