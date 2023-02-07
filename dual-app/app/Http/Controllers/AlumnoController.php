@@ -126,8 +126,6 @@ class AlumnoController extends Controller
         //return $alumno->persona;
         $alumno = Alumno::find($id); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
         return response(view('pages.tutor.formaciondual',compact('alumno'))); //compact pasa un array con variables. ('var1','var2'...)
-        $alumno = Alumno::where('id',$id)->firstOrFail();
-        return response(view('pages.tutor.formaciondual',compact('alumno')));
     }
 
     public function alumnosTutor() {

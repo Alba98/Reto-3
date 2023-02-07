@@ -48,11 +48,11 @@ class DiarioController extends Controller
     public function show($id)
     {
         if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])){ 
-            $alumno = Alumno::find($id);
-            $diario = DiarioAprendizaje::find($id);
+            $idalumno = Alumno::all()->where('id_persona', $id)->last();
+            $diario = DiarioAprendizaje::all();
             return view('pages.tutor.diarioaprendizaje', [
                 'diario' => $diario,
-                'alumno' => $alumno
+                "alumno" => $idalumno
             ]);
         }
         else

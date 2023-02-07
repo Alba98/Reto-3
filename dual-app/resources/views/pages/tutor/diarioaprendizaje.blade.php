@@ -27,10 +27,10 @@
       <tbody>
         <tr>
           <td>{{$alumno->persona->nombre}}</td>
-          <td>Mercedes-Benz</td>
-          <td>2017-2018</td>
-          <td>Historia</td>
-          <td>samuel@egibide.org</td>
+          <td>{{$alumno->fichaDual->empresa->nombre}}</td>
+          <td>{{$alumno->fichaDual->curso}}</td>
+          <td>{{$alumno->grado->nombre}}</td>
+          <td>{{ $alumno->persona->usuario->email }}</td>
         </tr>
       </tbody>
     </table>
@@ -39,7 +39,7 @@
 
 <div class="card-body">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th><i class="bi bi-person"></i> Periodo</th>
@@ -49,25 +49,14 @@
           </tr>
         </thead>
         <tbody>
+          @foreach ($diario as $diario)
           <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
+            <td>{{$diario}}</td>
+            <td>{{$diario}}</td>
+            <td>{{$diario}}</td>
+            <td>{{$diario}}</td>
           </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
+          @endforeach
         </tbody>
       </table>
     </div>
