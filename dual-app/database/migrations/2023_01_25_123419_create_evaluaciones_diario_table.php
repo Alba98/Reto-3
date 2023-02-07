@@ -13,9 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('evaluaciones_trabajo', function (Blueprint $table) {
+        Schema::create('evaluaciones_diario', function (Blueprint $table) {
             $table->foreignId('id_evaluacion')->constrained('evaluaciones')->primary()->cascadeOnDelete();
             $table->timestamps();
+            // fk  de calificaciones
+            $table->foreignId('id_calificacion')->constrained('calificaciones')->cascadeOnDelete();
         });
     }
 
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evaluaciones_trabajo');
+        Schema::dropIfExists('evaluaciones_diario');
     }
 };
