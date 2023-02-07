@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('periodo');
-            $table->string('actividades');
-            $table->string('reflexion');
-            $table->string('problemas');
+            $table->text('actividades');
+            $table->text('reflexion');
+            $table->text('problemas');
             $table->foreignId('id_ficha')->constrained('fichas_duales')->cascadeOnDelete();
         });
     }

@@ -65,5 +65,28 @@ class DiarioController extends Controller
             return view('errors.403');
     }
 
+    public function store(Request $request) {
+        if (Gate::allows('alumno')) {
+            // creame una variable con la id del alumno que ha iniciado sesion
+            $id = Auth::user()->id;
+            // busca el alumno que ha iniciado sesion
+            $alumno = Alumno::all()->where('id', $id);
+
+            // reame una variable con la id de la ficha dual del alumno que ha iniciado sesion
+            $id_ficha = FichaDual::all()->where('id_alumno', $id)->last()->id;
+            
+            $diario = new DiarioAprendizaje();
+            $diario->periodo = $request->periodo;
+            $diario->actividades = $request->actividades;
+            $diario->reflexion = $request->reflexion;
+            $diario->problemas = $request->problemas;
+            $diario->id_ficha = $id_ficha;
+            $diario->save();
+            return redirect()->route('diarioAprendizaje');
+        }
+        else
+            return view('errors.403');
+    }
+
 }
 ?>

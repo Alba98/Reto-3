@@ -7,7 +7,7 @@
             <div class="card mt-4">
                 <div class="card-header">{{ __('Nueva entrada en el diario') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="POST" action="{{ route('diario.store') }}">
                         @csrf
                         <div class="row mb-3">
                             <label for="periodo" class="col-md-4 col-form-label text-md-end">{{ __('Periodo') }}</label>
@@ -35,10 +35,9 @@
                         </div>
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <!-- <button type="submit" class="btn btn-primary">
+                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Guardar') }}
-                                </button> -->
-                                <a href="{{ route('diarioAprendizaje') }}" class="btn btn-primary">Guardar</a>
+                                </button>
                             </div>
                         </div>
                     </form>
