@@ -8,21 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluacionDiario extends Model
 {
     use HasFactory;
-    protected $table = 'evaluaciones_diarios';
+    protected $table = 'evaluaciones_diario';
     protected $fillable = [
         'id',
-        'id_evaluacion',
+        'id_calificacion',
         'created_at',
         'updated_at'
     ];
 
     public function evaluacion()
     {
-        return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
+        return $this->belongsTo(Evaluacion::class, 'id');
     }
 
-    public function diarioAprendizaje()
+    public function calificacion()
     {
-        return $this->hasOne(DiarioAprendizaje::class, 'id_evaluacion_diario');
+        return $this->belongsTo(Calificaciones::class, 'id_calificacion');
     }
 }

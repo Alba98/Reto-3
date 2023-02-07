@@ -8,17 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluacionTrabajo extends Model
 {
     use HasFactory;
-    protected $table = 'evaluaciones_trabajos';
+    protected $table = 'evaluaciones_trabajo';
     protected $fillable = [
         'id',
-        'id_evaluacion',
+        'id_calificacion',
         'created_at',
         'updated_at'
     ];
 
     public function evaluacion()
     {
-        return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
+        return $this->belongsTo(Evaluacion::class, 'id');
+    }
+
+    public function calificacion()
+    {
+        return $this->belongsTo(Calificaciones::class, 'id_calificacion');
     }
     
 }

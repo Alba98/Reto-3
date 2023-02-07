@@ -17,9 +17,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->date('fecha');
-            $table->foreignId('id_evaluacion')->constrained('evaluaciones')->cascadeOnDelete();
+            //$table->foreignId('id_evaluacion')->constrained('evaluaciones')->cascadeOnDelete();
             $table->foreignId('id_ficha')->constrained('fichas_duales')->cascadeOnDelete();
-            $table->foreignId('id_ficha_seguimiento')->constrained('fichas_seguimiento')->cascadeOnDelete();
+            //$table->foreignId('id_ficha_seguimiento')->constrained('fichas_seguimiento')->cascadeOnDelete();
         });
     }
 
