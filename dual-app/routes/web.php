@@ -114,3 +114,5 @@ Route::delete('registros/coordinador/{coordinador}', [CoordinadorController::cla
 Route::get('ficha_Seguimiento', [FichaSeguimientoController::class, 'index'])->name('ficha.index');
 
 Route::post('ficha_Seguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
+
+Route::get('/tutor/ver-alumnos',  [TempresaController::class, 'verAlumnos'])->name('tempresa.verAlumnos');

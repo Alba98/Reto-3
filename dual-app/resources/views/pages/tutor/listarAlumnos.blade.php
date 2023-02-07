@@ -16,14 +16,19 @@
                           <div class="table-responsive">
                             <table class="table table-striped table-hover">
                               <thead>
-                                <tr>
-                                  <th><i class="bi bi-person"></i> Nombre</th>
-                                  <th><i class="bi bi-building"></i> Empresa</th>
-                                  <th><i class="bi bi-justify-left"></i> Curso</th>
-                                  <th><i class="bi bi-justify-left"></i> Grado</th>
-                                  <th><i class="bi bi-star-fill"></i> Calificación</th>
-                                  <th><i class="bi bi-star-fill"></i> Evaluar</th>
-                                </tr>
+                              @foreach($fichas as $ficha)
+                                  @if($ficha->Alumno && $ficha->curso)
+                                      <tr>
+                                          <th><i class="bi bi-person"></i> {{($ficha->alumno->nombre)}}</th>
+                                          <th><i class="bi bi-building"></i> {{ ($ficha->empresa->nombre)}}</th>
+                                          <th><i class="bi bi-justify-left"></i>{{ ($ficha->curso)}}</th>
+                                          <th><i class="bi bi-justify-left"></i>{{ ($ficha->alumno->grado->nombre)}}</th>
+                                          <th><i class="bi bi-star-fill"></i> {{$califiacion->evaluacion->valoracion}}  </th>
+                                          <th><i class="bi bi-star-fill"></i> Evaluar</th>
+                                      </tr>
+                                  @endif
+                              @endforeach
+
                               </thead>
                               <tbody>
                                 @foreach($fichas as $ficha)
