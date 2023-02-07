@@ -49,28 +49,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
+      @foreach ($fichas as $ficha)
+      <tr>
+          <td>{{ $ficha->fecha }}</td>
+          <td>{{ $ficha->asistentes}}</td>
+          <td>{{ $ficha->tipo_tutoria }}</td>
+          <td>{{ $ficha->objetivos }}</td>
+          <td>{{ $ficha->resumen }}</td>
+      </tr>
+  
+      <tr>
+          <td>{{ $ficha->nombre }}</td>
+          <td>{{ $ficha->empresa }}</td>
+          <td>{{ $ficha->curso }}</td>
+          <td>{{ $ficha->grado }}</td>
+          <td>{{ $ficha->email }}</td>
+      </tr>
+  
+         
+      <tr>
+          <td>{{ $ficha->nombre }}</td>
+          <td>{{ $ficha->empresa }}</td>
+          <td>{{ $ficha->curso }}</td>
+          <td>{{ $ficha->grado }}</td>
+          <td>{{ $ficha->email }}</td>
+      </tr>
+  @endforeach
         </tbody>
       </table>
     </div>

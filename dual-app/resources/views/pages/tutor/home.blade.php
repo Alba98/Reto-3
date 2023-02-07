@@ -19,7 +19,7 @@
             <div class="card-body">
               <h4 class="card-title">Formulario de seguimiento</h4>
               <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
-              <a href="{{ route('ficha_Seguimiento') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Formulario seguimiento</a>
+              <a href="{{route('ficha_Seguimiento'),['alumno' => $alumno]}}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Formulario seguimiento</a>
             </div>
           </div>
         </div>
