@@ -131,6 +131,8 @@ class CoordinadorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coordinador = Coordinador::find($id);
+        $coordinador->delete();
+        return redirect()->route('registrosCoordinador');
     }
 }

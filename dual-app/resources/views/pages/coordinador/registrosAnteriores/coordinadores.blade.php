@@ -28,7 +28,15 @@
                                   <td>{{$grados->where('id',$coordinador->id_grado)->value('nombre')}}</td>
                                   <td>{{$usuarios->where('id_persona',$coordinador->docente->id_persona)->value('email')}}</td>
                                   <td>{{$personas->where('id',$coordinador->docente->id_persona)->value('telefono')}}</td>
-                                  <td><a href="?id={{$coordinador->docente->id_persona}}" class="btn btn-danger">Eliminar</a></td>
+                                  <td>
+                                    <form method="POST" action="{{ route('coordinador.destroy', [$coordinador->id]) }}">
+                                      @csrf
+                                      @method("DELETE")
+                                      <button type="submit" class="btn btn-danger"> 
+                                        Eliminar
+                                      </button>
+                                    </form>
+                                  </td>
                                 </tr>
                                 @endforeach
                               </tbody>

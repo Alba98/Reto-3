@@ -17,17 +17,17 @@ class UserSeeder extends Seeder
     {
         //Persona administradora:
         $admin = new Persona();
-        $admin->nombre='Usuario';
-        $admin->ape1='Apellido1 del Usuario';
-        $admin->ape2='Apellido2 del Usuario';
+        $admin->nombre='Coordinador';
+        $admin->ape1='Coor1';
+        $admin->ape2='Coor2';
         $admin->dni='12345';
         $admin->telefono='123456';
         $admin->save();
 
 
        $user=\App\Models\User::factory()->create([
-            'email'=>'administrador@gmail.com',
-            'password'=> bcrypt('admin'),
+            'email'=>'daw.wat2022@gmail.com',
+            'password'=> bcrypt('12345Abcde'),
             'id_persona'=>$admin->id,
             'email_verified_at'=>now(),
             'tipo_usuario'=>'coordinador'
@@ -36,8 +36,8 @@ class UserSeeder extends Seeder
        // Persona tutor de universidad
         $tuni = new Persona();
         $tuni->nombre='Tutor de Universidad';
-        $tuni->ape1='Apellido1 del Tutor';
-        $tuni->ape2='Apellido1 del Tutor';
+        $tuni->ape1='Uni1';
+        $tuni->ape2='Uni2';
         $tuni->dni='123456';
         $tuni->telefono='1234567';
         $tuni->save();
@@ -53,8 +53,8 @@ class UserSeeder extends Seeder
         // Persona tutor de empresa
         $temp = new Persona();
         $temp->nombre='Tutor de Empresa';
-        $temp->ape1='Apellido1 del Tutor';
-        $temp->ape2='Apellido2 del Tutor';
+        $temp->ape1='Emp1';
+        $temp->ape2='Emp2';
         $temp->dni='12345678';
         $temp->telefono='12345678';
         $temp->save();
@@ -70,8 +70,8 @@ class UserSeeder extends Seeder
         // Persona alumno
         $alumno = new Persona();
         $alumno->nombre='Alumno';
-        $alumno->ape1='Apellido1 del Alumno';
-        $alumno->ape2='Apellido2 del Alumno';
+        $alumno->ape1='Alu1';
+        $alumno->ape2='Alu2';
         $alumno->dni='123456789';
         $alumno->telefono='123456789';
         $alumno->save();

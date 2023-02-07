@@ -96,3 +96,14 @@ Route::get('/alumno/{id}',[AlumnoController::class,'show'])->name('alumno.show')
 //
 Route::get('chart', [ChartJSController::class, 'index']);
 
+// Eliminar un tutor de universidad
+Route::delete('registros/tutorUniversidad/{tutorUniversidad}', [TuniversidadController::class, 'destroy'])->name('tuniversidad.destroy');
+
+// Eliminar un alumno
+Route::delete('registros/alumno/{alumno}', [AlumnoController::class, 'destroy'])->name('alumno.destroy');
+
+// Eliminar una empresa
+Route::delete('registros/empresa/{empresa}', [EmpresaController::class, 'destroy'])->name('empresa.destroy');
+
+// Eliminar coordinador
+Route::delete('registros/coordinador/{coordinador}', [CoordinadorController::class, 'destroy'])->name('coordinador.destroy');

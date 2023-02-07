@@ -14,8 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('coordinadores', function (Blueprint $table) {
-            $table->foreignId('id_docente')->constrained('docentes')->primary();
-            $table->foreignId('id_grado')->constrained('grados');
+            $table->id();
+            $table->foreignId('id_docente')->constrained('docentes')->primary()->cascadeOnDelete();
+            $table->foreignId('id_grado')->constrained('grados')->cascadeOnDelete();
             $table->timestamps();
         });
     }

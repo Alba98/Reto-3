@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('evaluaciones_diario', function (Blueprint $table) {
-            $table->foreignId('id_evaluacion')->constrained('evaluaciones')->primary();
+            $table->foreignId('id_evaluacion')->constrained('evaluaciones')->primary()->cascadeOnDelete();
             $table->timestamps();
         });
     }

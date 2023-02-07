@@ -84,6 +84,8 @@ class UserController extends Controller
 
     public function storeDual(Request $request)
     {
+        Alumno::all()->where('id',$request->input('id_alumno'))->first()->update(['dual' => 1]);
+        $cursoalumno = Alumno::all()->where('id',$request->input('id_alumno'))->value('curso');
         if (Gate::allows('coordinador')) {
             // Comprobar si el coordinador esta en la tabla tuniversidad, sino meterlo VA MEDIO RARO
             if (Tuniversidad::where('id_docente',Docente::all()->where('id',$request->input('id_tuniversidad')) )->value('id') == null) {
@@ -96,6 +98,8 @@ class UserController extends Controller
             $ficha->id_empresa = $request->input('id_empresa');
             $ficha->id_tuniversidad = Tuniversidad::latest('id')->first()->id;
             $ficha->id_tempresa = $request->input('id_tempresa');
+            $ficha->anio_academico = date('Y');
+            $ficha->curso = $cursoalumno;
             $ficha->save(); 
         } else {
             $ficha = new FichaDual();

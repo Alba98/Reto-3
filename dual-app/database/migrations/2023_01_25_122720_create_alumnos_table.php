@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('alumnos', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('id_persona')->constrained('personas')->primary();
+            $table->foreignId('id_persona')->constrained('personas')->primary()->cascadeOnDelete();
             $table->string('curso');
             $table->integer('dual');
-            $table->foreignId('id_grado')->constrained('grados');
+            $table->foreignId('id_grado')->constrained('grados')->cascadeOnDelete();
             $table->timestamps();
         });
     }
