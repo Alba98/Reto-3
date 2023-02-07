@@ -1,16 +1,17 @@
 var switchModeBtn = document.querySelector('#switch-mode');
 var body = document.querySelector('body');
+var active = true;
 if (switchModeBtn) {
     switchModeBtn.addEventListener('click', function () {
-        debugger;
-        if (body) {
+        active = !active;
+        if (body && active) {
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
-                switchModeBtn.innerHTML = "🌙 Dark";
+                switchModeBtn.setAttribute("label", "🌙 Dark");
             }
             else {
                 body.classList.add('dark-mode');
-                switchModeBtn.innerHTML = "🌞 Light";
+                switchModeBtn.setAttribute("label", "🌞 Light");
             }
         }
     });
