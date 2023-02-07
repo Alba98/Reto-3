@@ -4,14 +4,15 @@
     <h1 class="display-3 text-center mt-5">Diario aprendizaje</h1>
     <div class="padding mt-4">
         <div class="row container d-flex justify-content-center">
-        <div class="col-lg-8 grid-margin stretch-card">
+        <div class="col-lg-12 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-header">
                             <span>Registros diario aprendizaje</span>
+                            <a href="{{ route('nuevaEntradaDiario') }}" class="btn btn-primary float-end">Nueva entrada</a>
                         </div>
                         <div class="card-body">
                           <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-striped table-hover">
                               <thead>
                                 <tr>
                                   <th><i class="bi bi-calendar-check"></i> Periodo</th>
@@ -34,7 +35,7 @@
                           </div>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('nuevaEntradaDiario') }}" class="btn btn-primary">Nueva entrada</a>
+                          <a href="{{ route('principal') }}" class="btn btn-primary">Volver <i class="bi bi-arrow-return-left"></i></a>
                         </div>
                       </div>
                     </div>

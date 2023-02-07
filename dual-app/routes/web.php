@@ -58,8 +58,10 @@ Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estad
 //alumno
 Route::get('diarioAprendizaje', [DiarioController::class, 'index'])->name('diarioAprendizaje');
 Route::get('diarioAprendizaje/nuevo', [DiarioController::class, 'add'])->name('nuevaEntradaDiario');
+Route::post('diarioAprendizaje/nuevo', [DiarioController::class, 'store'])->name('diario.store');
 Route::get('diarioAlumno/{id}', [DiarioController::class, 'show'])->name('diarioAlumno'); //tutor
 Route::get('notas', [NotasController::class, 'index'])->name('notas');
+
 
 //tutor universidad
 Route::get('evaluar/{alumno}', [UserController::class, 'evaluar'])->name('evaluar');
