@@ -24,8 +24,8 @@ class FichaSeguimientoController extends Controller
     public function index()
     {
 
-        $fichaSeguimiento = FichaSeguimiento::all();
-        return view('pages.tutor.fichaseguimiento', compact('fichaSeguimiento'));
+        $fichas = FichaSeguimiento::all();
+        return view('pages.tutor.fichaseguimiento', compact('fichas'));
     }
     }
     

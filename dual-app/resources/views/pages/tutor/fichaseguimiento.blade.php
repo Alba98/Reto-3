@@ -23,7 +23,7 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($fichaSeguimiento as $ficha)
+      @foreach ($fichas as $ficha)
       <tr>
           <td>{{ $ficha->nombre }}</td>
           <td>{{ $ficha->empresa }}</td>

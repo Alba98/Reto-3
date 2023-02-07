@@ -110,6 +110,7 @@ Route::delete('registros/empresa/{empresa}', [EmpresaController::class, 'destroy
 // Eliminar coordinador
 Route::delete('registros/coordinador/{coordinador}', [CoordinadorController::class, 'destroy'])->name('coordinador.destroy');
 
-Route::get('fichaSeguimiento', [FichaSeguimientoController::class, 'index'])->name('ficha.index');
 
-Route::post('fichaSeguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
+Route::get('ficha_Seguimiento', [FichaSeguimientoController::class, 'index'])->name('ficha.index');
+
+Route::post('ficha_Seguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
