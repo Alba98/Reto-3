@@ -32,26 +32,44 @@
                                   <td>{{ ($ficha->empresa->nombre)  }}</td>
                                   <td>{{ ($ficha->curso)  }}</td>
                                   <td>{{ ($ficha->alumno->grado->nombre)  }}</td>
-                                  @php
-                                      $suma = 0;
-                                  @endphp
-                                  @foreach ($ficha->calificaciones as $califiacion)
-                                    @php
-                                      $suma+=$califiacion->evaluacion->valoracion;
-                                    @endphp 
-                                      {{ $califiacion->evaluacion->valoracion}}   
-                                     
-                                  @endforeach
-                                  @php
-                                    $count = $ficha->calificaciones->count();
-                                    if ($count > 0) {
-                                        $media = (floatval($suma)/floatval($count)); 
-                                    }else{
-                                        $media = 0; //Valor predeterminado        
-                                    }
-                                      
-                                  @endphp
-                                  <td>{{ ($media)  }}</td>
+                                    @if($ficha->calificaciones)
+                                      {{--$ficha->calificaciones--}}
+                                      @php
+                                        $nota_trabajo = 0; $nota_diario = 0;
+                                        $suma = 0;
+                                        $count = $ficha->calificaciones->evaluacionTrabajo->count();
+                                      @endphp
+                                      @foreach ($ficha->calificaciones->evaluacionTrabajo as $evTrabajo)
+                                        {{--$evTrabajo->evaluacion->valoracion--}}
+                                        @php
+                                          $suma += $evTrabajo->evaluacion->valoracion;
+                                        @endphp
+                                      @endforeach
+                                      @php
+                                        if ($count > 0)
+                                            $nota_diario = (floatval($suma)/floatval($count)); 
+                                            $count = $ficha->calificaciones->evaluacionDiario->count();
+                                            $suma = 0;
+                                      @endphp
+                                      @foreach ($ficha->calificaciones->evaluacionDiario as $evDiario)
+                                        {{--$evDiario->evaluacion->valoracion--}}
+                                        @php
+                                          $suma += $evDiario->evaluacion->valoracion;
+                                        @endphp
+                                      @endforeach
+                                      @php
+                                        if ($count > 0)
+                                            $nota_diario = (floatval($suma)/floatval($count)); 
+                                      @endphp
+                                      @if ($ficha->calificaciones->evaluacionTrabajo == null || 
+                                           $ficha->calificaciones->evaluacionDiario == null)
+                                        <td>-</td>
+                                      @else
+                                        <td>{{round(($nota_trabajo + $nota_diario) / 2, 2)}}</td>
+                                      @endif
+                                    @else
+                                      <td> - </td>
+                                    @endif
                                   <td><a href="{{ route('fichaAlumno', $ficha->alumno->id) }}" class="btn btn-primary">Ver</a></td>
                                 </tr>
                                 @endforeach

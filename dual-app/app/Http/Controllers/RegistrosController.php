@@ -21,13 +21,10 @@ class RegistrosController extends Controller
             $persona = Persona::where('id', Auth::user()->id_persona)->first();
             $alumno = Alumno::where('id_persona', $persona->id)->first();
             $fichas = FichaDual::where('id_alumno', $alumno->id)->get();
-
-            $evaluaciones = Evaluacion::all();
             
             //where ficha dual
             return view('pages.alumno.registros', [
-                'fichas' => $fichas,
-                'evaluaciones' => $evaluaciones
+                'fichas' => $fichas
             ]);
         }
         else if (Gate::allows('tutor'))

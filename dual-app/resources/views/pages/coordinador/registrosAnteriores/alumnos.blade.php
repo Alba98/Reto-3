@@ -40,6 +40,7 @@
                                   @endif
                                   <td>{{$alumno->curso}}</td>
                                   <td>{{$alumno->grado->nombre}}</td>
+                                @if($alumno->fichaDual)
                                   @php
                                     $nota_trabajo = 0; $nota_diario = 0;
                                     $suma = 0;
@@ -47,7 +48,7 @@
                                   @endphp
                                   @foreach ($alumno->fichaDual->calificaciones->evaluacionTrabajo as $trabajo)
                                     @php
-                                      $suma += $evaluaciones->where('id', $trabajo->id_evaluacion)->avg('valoracion');
+                                      $suma += $trabajo->evaluacion->valoracion;
                                     @endphp
                                   @endforeach
                                   @php
@@ -58,18 +59,22 @@
                                   @endphp
                                   @foreach ($alumno->fichaDual->calificaciones->evaluacionDiario as $diario)
                                     @php
-                                      $suma += $evaluaciones->where('id', $diario->id_evaluacion)->avg('valoracion');
+                                      $suma += $diario->evaluacion->valoracion;
                                     @endphp
                                   @endforeach
                                   @php
                                     if ($count > 0)
                                         $nota_diario = (floatval($suma)/floatval($count)); 
                                   @endphp
-                                  @if ($alumno->fichaDual->calificaciones->evaluacionTrabajo == null || $alumno->fichaDual->calificaciones->evaluacionDiario == null)
+                                  @if ($alumno->fichaDual->calificaciones->evaluacionTrabajo == null || 
+                                       $alumno->fichaDual->calificaciones->evaluacionDiario == null)
                                     <td>-</td>
                                   @else
                                     <td>{{round(($nota_trabajo + $nota_diario) / 2, 2)}}</td>
                                   @endif
+                                @else
+                                  <td>-</td>
+                                @endif
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
                                   <td>
                                     <form method="POST" action="{{ route('alumno.destroy', [$alumno->id]) }}">

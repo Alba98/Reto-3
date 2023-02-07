@@ -11,15 +11,15 @@ class Tempresa extends Model
     protected $table = 'tempresa';
     protected $fillable = [
         'id',
-        'id_persona',
+        'id_docente',
         'id_empresa',
         'created_at',
         'updated_at'
     ];
 
-    public function persona()
+    public function docente()
     {
-        return $this->belongsTo(Persona::class, 'id_persona');
+        return $this->belongsTo(Docente::class, 'id_docente');
     }
 
     public function empresa()

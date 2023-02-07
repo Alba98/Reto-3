@@ -43,11 +43,11 @@
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white"><b>Tutor Empresa:</b></h6>
-                    <p class="text-white">{{$alumno->fichaDual->tempresa->persona->nombre}}</p>
+                    <p class="text-white">{{$alumno->fichaDual->tempresa->docente->persona->nombre}}</p>
                   </div>
                   <div class="candidate-info">
                     <h6 class="text-white"><b>Contacto Fac.Empresa:</b></h6>
-                    <p class="text-white">{{$usuarios->where('id_persona',$alumno->fichaDual->tempresa->persona->id)->value('email')}}</p>
+                    <p class="text-white">{{$usuarios->where('id_persona',$alumno->fichaDual->tempresa->docente->persona->id)->value('email')}}</p>
                   </div>
                 </div>
               </div>

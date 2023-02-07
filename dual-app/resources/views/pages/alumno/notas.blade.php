@@ -23,36 +23,38 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td> {{ $ficha->curso }} curso</td>
-                      <td> {{ $ficha->empresa->nombre }} </td>
-                      @php
-                        $nota_trabajo = 0; $nota_diario = 0;
-                        $suma = 0;
-                        $count = $ficha->calificaciones->evaluacionTrabajo->count();
-                      @endphp
-                      @foreach ($ficha->calificaciones->evaluacionTrabajo as $trabajo)
+                      @if($ficha)
+                        <td> {{ $ficha->curso }} curso</td>
+                        <td> {{ $ficha->empresa->nombre }} </td>
                         @php
-                          $suma += $evaluaciones->where('id', $trabajo->id_evaluacion)->avg('valoracion');
+                          $nota_trabajo = 0; $nota_diario = 0;
+                          $suma = 0;
+                          $count = $ficha->calificaciones->evaluacionTrabajo->count();
                         @endphp
-                      @endforeach
-                      @php
-                        if ($count > 0)
-                            $nota_trabajo = (floatval($suma)/floatval($count)); 
-                        $count = $ficha->calificaciones->evaluacionDiario->count();
-                        $suma = 0;
-                      @endphp
-                      @foreach ($ficha->calificaciones->evaluacionDiario as $diario)
+                        @foreach ($ficha->calificaciones->evaluacionTrabajo as $trabajo)
+                          @php
+                            $suma += $evaluaciones->where('id', $trabajo->id_evaluacion)->avg('valoracion');
+                          @endphp
+                        @endforeach
                         @php
-                          $suma += $evaluaciones->where('id', $diario->id_evaluacion)->avg('valoracion');
+                          if ($count > 0)
+                              $nota_trabajo = (floatval($suma)/floatval($count)); 
+                          $count = $ficha->calificaciones->evaluacionDiario->count();
+                          $suma = 0;
                         @endphp
-                      @endforeach
-                      @php
-                        if ($count > 0)
-                            $nota_diario = (floatval($suma)/floatval($count)); 
-                      @endphp
-                      <td> {{ round($nota_trabajo, 2) }}</td>
-                      <td> {{ round($nota_diario, 2) }}</td>
-                      <td> {{ round(($nota_trabajo + $nota_diario) / 2, 2) }}</td>
+                        @foreach ($ficha->calificaciones->evaluacionDiario as $diario)
+                          @php
+                            $suma += $evaluaciones->where('id', $diario->id_evaluacion)->avg('valoracion');
+                          @endphp
+                        @endforeach
+                        @php
+                          if ($count > 0)
+                              $nota_diario = (floatval($suma)/floatval($count)); 
+                        @endphp
+                        <td> {{ round($nota_trabajo, 2) }}</td>
+                        <td> {{ round($nota_diario, 2) }}</td>
+                        <td> {{ round(($nota_trabajo + $nota_diario) / 2, 2) }}</td>
+                      @endif
                     </tr>
                   </tbody>
                 </table>

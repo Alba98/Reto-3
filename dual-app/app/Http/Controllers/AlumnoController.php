@@ -32,17 +32,8 @@ class AlumnoController extends Controller
             $evaluaciones = Evaluacion::all();
             $ficha = FichaDual::all();
 
-            if(Gate::any(['tuniversidad', 'tempresa'])) {
-                $persona = Persona::where('id', Auth::user()->id_persona)->first();
-                $alumno = Alumno::where('id_persona', $persona->id)->first();
-                return response(view('errors.401')); 
-            }
-
             return response(view('pages.coordinador.registrosAnteriores.alumnos', [
                 'alumnos' => $alumnos,
-                'empresas' => $empresas,
-                'evaluaciones' => $evaluaciones,
-                'ficha' => $ficha
             ]));
         }
         else
@@ -124,10 +115,10 @@ class AlumnoController extends Controller
             if ($docente != null) {
                 $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
                 if (Gate::allows('tempresa'))
-                    $tutor = Tempresa::where('id_persona', $docente->id)->first();
+                    $tutor = Tempresa::where('id_docente', $docente->id)->first();
                 
                 if ($tutor != null)
-                    $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
+                    $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get()->where('anio_academico','=','2022');
             }
             //where ficha dual
             return view('pages.tutor.listarAlumnos', [
@@ -147,7 +138,7 @@ class AlumnoController extends Controller
             if ($docente != null) {
                 $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
                 if (Gate::allows('tempresa'))
-                    $tutor = Tempresa::where('id_persona', $docente->id)->first();
+                    $tutor = Tempresa::where('id_docente', $docente->id)->first();
                 
                 if ($tutor != null)
                     $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
