@@ -14,13 +14,15 @@
   <div class="table-responsive">
   <table class="table table-striped table-hover">
     <thead>
-      <tr>
-        <th><i class="bi bi-person"></i> Nombre</th>
-        <th><i class="bi bi-building"></i> Empresa</th>
-        <th><i class="bi bi-justify-left"></i> Curso</th>
-        <th><i class="bi bi-justify-left"></i> Grado</th>
-        <th><i class="bi bi-star-fill"></i> Email</th>
-      </tr>
+    @foreach ($fichas as $ficha)
+        <tr>
+            <td>{{ $ficha->fichadual }}</td>
+            <td>{{ $ficha->empresa }}</td>
+            <td>{{ $ficha->curso }}</td>
+            <td>{{ $ficha->grado }}</td>
+            <td>{{ $ficha->email }}</td>
+        </tr>
+    @endforeach
     </thead>
     <tbody>
       <tr>
