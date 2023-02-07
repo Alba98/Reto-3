@@ -7,10 +7,12 @@
         <div class="col-lg-8 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-header">
+                          <form action="{{ route('registrosAlumno') }}">
                             <div class="input-group">
-                                <input type="search" class="form-control rounded" placeholder="Busqueda por nombre" aria-label="Search" aria-describedby="search-addon" />
-                                <button type="button" class="btn btn-primary">Buscar</button>
+                                <input type="search" name="nombre" class="form-control rounded"  value="@if(isset($_GET['nombre'])){{$_GET['nombre']}}@endif" placeholder="Busqueda por nombre" aria-label="Search" aria-describedby="search-addon" />
+                                <button type="submit" class="btn btn-primary">Buscar</button>
                               </div>
+                            </form>
                         </div>
                         <div class="card-body">
                           <div class="table-responsive">
@@ -30,6 +32,59 @@
                                 </tr>
                               </thead>
                               <tbody>
+                                @if ($opcion == 1)
+                                @foreach ($personas as $persona)
+                                <tr>
+                                  @if ($alumnos->where('id_persona',$persona->id)->value('id') !== null)
+                                      @if ($alumnos->where('id_persona',$persona->id)->value('id') == null)
+                                        <td>{{$persona->nombre}}</td>
+                                      @else
+                                      <td>{{$alumnos->where('id_persona',$persona->id)->value('persona.nombre')}}</td>
+                                      @endif
+
+                                      @if ($alumnos->where('id_persona',$persona->id)->value('id') == null)
+                                        <td>-</td>
+                                      @else
+                                      <td>{{$alumnos->where('id_persona',$persona->id)->value('fichaDual.empresa.nombre')}}</td>
+                                      @endif
+
+                                      @if ($alumnos->where('id_persona',$persona->id)->value('id') == null)
+                                        <td>-</td>
+                                      @else
+                                      <td>{{$alumnos->where('id_persona',$persona->id)->value('curso')}}</td>
+                                      @endif
+
+                                      @if ($alumnos->where('id_persona',$persona->id)->value('id') == null)
+                                        <td>-</td>
+                                      @else
+                                      <td>{{$alumnos->where('id_persona',$persona->id)->value('grado.nombre')}}</td>
+                                      @endif
+
+                                      @if ($alumnos->where('id_persona',$persona->id)->value('id') == null)
+                                        <td>-</td>
+                                      @else
+                                        <td>{{$evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumnos->where('id_persona',$persona->id)->value('id'))->value('id'))->value('valoracion')}}</td>
+                                      @endif
+
+                                      @if (Auth::user()->tipo_usuario == 'coordinador')
+                                        <td>
+                                          <form method="POST" action="{{ route('alumno.destroy', [$alumnos->where('id_persona',$persona->id)->value('id')]) }}">
+                                            @csrf
+                                            @method("DELETE")
+                          
+                                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                                          </form>
+                                        </td>
+                                      @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
+                                        <td>
+                                          <a href="{{ route('alumno.show', [$alumnos->where('id_persona',$persona->id)->value('id')]) }}" class="btn btn-primary">Ver</a>
+                                        </td>
+                                      @endif
+                                  @endif
+                                </tr>
+                                @endforeach
+
+                                @else
                                 @foreach ($alumnos as $alumno)
                                 <tr>
                                   <td>{{$alumno->persona->nombre}}</td>
@@ -61,6 +116,7 @@
                                   @endif
                                 </tr>
                                 @endforeach
+                                @endif
                               </tbody>
                             </table>
                           </div>
