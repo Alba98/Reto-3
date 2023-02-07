@@ -38,11 +38,11 @@
                     </div>
                     <div class="candidate-info">
                       <h6><b>Tutor Empresa:</b></h6>
-                      <p>{{ $alumno->fichaDual->tempresa->persona->nombre }}</p>
+                      <p>{{ $alumno->fichaDual->tempresa->docente->persona->nombre }}</p>
                     </div>
                     <div class="candidate-info">
                       <h6><b>Contacto Fac.Empresa:</b></h6>
-                      <p>{{ $alumno->fichaDual->tempresa->persona->usuario->email }}</p>
+                      <p>{{ $alumno->fichaDual->tempresa->docente->persona->usuario->email }}</p>
                     </div>
                   </div>
                   </div>

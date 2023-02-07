@@ -10,7 +10,7 @@ class EvaluacionDiario extends Model
     use HasFactory;
     protected $table = 'evaluaciones_diario';
     protected $fillable = [
-        'id',
+        'id_evaluacion',
         'id_calificacion',
         'created_at',
         'updated_at'
@@ -18,7 +18,7 @@ class EvaluacionDiario extends Model
 
     public function evaluacion()
     {
-        return $this->belongsTo(Evaluacion::class, 'id');
+        return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
     }
 
     public function calificacion()

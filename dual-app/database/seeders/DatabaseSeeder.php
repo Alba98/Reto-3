@@ -234,7 +234,7 @@ class DatabaseSeeder extends Seeder
         // FICHAS DUALES
         $faker = \Faker\Factory::create();
         $x=1;
-        for($i=1,$c=1;$i<=80;$i++){
+        for($i=1,$c=1;$i<=100;$i++){
             DB::table('fichas_duales')->insert([
                 'id_alumno' => $faker->numberBetween(1, 75),
                 'id_empresa' => $faker->numberBetween(1, 10),
@@ -295,6 +295,7 @@ class DatabaseSeeder extends Seeder
                 ]);
             }
 
+            $x+=7;
             $c++;
 
             DB::table('calificaciones')->insert([
@@ -304,7 +305,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
             ]);
 
-            for($j=1;$j<=10;$j++){
+            for($j=$x;$j<=$x+10;$j++){
                 DB::table('evaluaciones')->insert([
                     'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                     'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
@@ -320,7 +321,7 @@ class DatabaseSeeder extends Seeder
                     'id_calificacion' => $c
                 ]);
             }
-
+            //$x+=10;
         }
 
         
