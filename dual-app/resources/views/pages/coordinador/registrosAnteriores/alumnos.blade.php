@@ -77,7 +77,7 @@
                                         </td>
                                       @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
                                         <td>
-                                          <a href="{{ route('alumno.show', [$alumnos->where('id_persona',$persona->id)->value('id')]) }}" class="btn btn-primary">Ver</a>
+                                          <a href="{{ route('alumno.show', [$alumnos->where('id_persona',$persona->id)->value('id_persona')]) }}" class="btn btn-primary">Ver</a>
                                         </td>
                                       @endif
                                   @endif
@@ -93,7 +93,7 @@
                                   @else
                                   <td>{{$alumno->fichaDual->empresa->nombre}}</td>
                                   @endif
-                                  <td>{{$alumno->curso}}</td>
+                                  <td>{{$alumno->fichaDual->curso}}</td>
                                   <td>{{$alumno->grado->nombre}}</td>
                                   @if ($evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion') == null)
                                     <td>-</td>
@@ -112,7 +112,7 @@
                                     </form>
                                   </td>
                                   @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
-                                    <td><a href="{{ route('alumno.show',$alumno->id_persona)}}" class="btn btn-primary">Ver</a></td>
+                                    <td><a href="{{ route('alumno.show',$alumno)}}" class="btn btn-primary">Ver</a></td>
                                   @endif
                                 </tr>
                                 @endforeach

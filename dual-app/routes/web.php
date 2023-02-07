@@ -93,7 +93,7 @@ Route::post('registrar/tutorUniversidad', [TuniversidadController::class, 'store
 Route::post('registrar/coordinador', [CoordinadorController::class, 'store'])->name('coordinador.store');
 
 //Ver un alumno desde el tutor:
-Route::get('/alumno/{id}',[AlumnoController::class,'show'])->name('alumno.show')->whereNumber('id');
+Route::get('/alumno/{id}',[AlumnoController::class,'show'])->name('alumno.show');
 
 //
 Route::get('chart', [ChartJSController::class, 'index']);
