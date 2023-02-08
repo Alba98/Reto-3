@@ -52,16 +52,16 @@
       <div class="card col-sm-6 ">
               <div class="card-header">Acciones rapidas</div>
               <div class="card-body">
-                  <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                  <p class="card-text">Abrir el diario de aprendizaje con todas las entradas del alumno </p>
                   <a href="{{ route('diarioAlumno', $alumno->persona->id) }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ver Diario Aprendizaje</a>
                 </div>
                 <div class="card-body">        
-                  <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                  <p class="card-text"> Abrir la ficha de segimiento con todas reuniones entre los tutores y el alumno </p>
                   <a href="{{ route('fichaSeguimiento', $alumno->persona->id) }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ficha de seguimiento</a>
                 </div>
                 @if (Auth::user()->tipo_usuario == 'tuniversidad')
                   <div class="card-body">
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
+                    <p class="card-text">Evaluar las parcticas duales</p>
                     <a href="{{ route('evaluar', $alumno) }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Evaluacion trabajo en empresa </a>
                   </div>
                 @endif
