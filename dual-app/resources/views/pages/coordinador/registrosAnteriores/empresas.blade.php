@@ -23,6 +23,7 @@
                               </thead>
                               <tbody>
                                 @foreach ($empresas as $empresa)
+                                <!-- Mostramos mediante una tabla la info de todos las empresas -->
                                 <tr>
                                   <td>{{$empresa->nombre}}</td>
                                   <td>{{$empresa->sector}}</td>

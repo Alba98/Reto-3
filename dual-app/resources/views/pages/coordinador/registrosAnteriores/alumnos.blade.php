@@ -29,6 +29,7 @@
                                 </tr>
                               </thead>
                               <tbody>
+                              @if ($opcion == 1) <!-- Esto nos indica que la busqueda de alumnos irá por nombre -->
                                 @foreach ($alumnos as $alumno)
                                 <tr>
                                   <td>{{$alumno->persona->nombre}}</td>

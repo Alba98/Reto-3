@@ -29,7 +29,6 @@ class DiarioController extends Controller
             ]);
         }  
         else if (Gate::allows('coordinador'))
-        //alguien que me exploque xq se supone que ahora soy coordiador si estoy como alumno ????
             return view('errors.401');  
         else
             return view('errors.403');  

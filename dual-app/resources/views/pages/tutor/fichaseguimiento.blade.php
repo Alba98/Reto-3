@@ -27,6 +27,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Se muestra la info del alumno que hemos seleccionado -->
       <tr>
         <td>{{ $alumno->persona->nombre }}</td>
         <td>{{ $alumno->fichaDual->empresa->nombre }}</td>
@@ -51,6 +52,7 @@
           </tr>
         </thead>
         <tbody>
+        <!-- Se muestra la ficha de seguimiento de dicho alumno -->
         @foreach ($fichas as $ficha)
           <tr>
               <td>{{ $ficha->fecha }}</td>

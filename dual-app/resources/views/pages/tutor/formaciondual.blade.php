@@ -6,6 +6,7 @@
       <div class="card">
                 <div class="card-header">Ficha dual</div>
                 <div class="card-body">
+                  <!-- Se muestra información correspondiente al alumno seleccionado -->
                   <h5 class="card-title">{{($alumno->persona->nombre)}}</h5>
                   <div class="about-candidate border-top">
                     <div class="candidate-info mt-2">

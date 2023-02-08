@@ -17,6 +17,7 @@ class EvaluacionController extends Controller
         $calificacion->id_ficha = $request->input('id_ficha');
         $calificacion->save();
 
+        // Nueva evaluacion
         $evaluacion = new Evaluacion();
         $evaluacion->indicador = 'Esfuerzo y regularidad';
         $evaluacion->valoracion = $request->input('nota1');
@@ -33,6 +34,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion2 = new Evaluacion();
         $evaluacion2->indicador = 'Orden, estructura y presentacion';
         $evaluacion2->valoracion = $request->input('nota2');
@@ -49,6 +51,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion3 = new Evaluacion();
         $evaluacion3->indicador = 'Contenido';
         $evaluacion3->valoracion = $request->input('nota3');
@@ -65,6 +68,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion4 = new Evaluacion();
         $evaluacion4->indicador = 'Terminologia y notacion';
         $evaluacion4->valoracion = $request->input('nota4');
@@ -81,6 +85,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion5 = new Evaluacion();
         $evaluacion5->indicador = 'Calidad del trabajo';
         $evaluacion5->valoracion = $request->input('nota5');
@@ -97,6 +102,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion6 = new Evaluacion();
         $evaluacion6->indicador = 'Relaciona conceptos';
         $evaluacion6->valoracion = $request->input('nota6');
@@ -110,6 +116,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion7 = new Evaluacion();
         $evaluacion7->indicador = 'Reflexion sobre aprendizaje';
         $evaluacion7->valoracion = $request->input('nota7');
@@ -138,6 +145,7 @@ class EvaluacionController extends Controller
         $calificacion->id_ficha = $request->input('id_ficha');
         $calificacion->save();
 
+        // Nueva evaluacion
         $evaluacion = new Evaluacion();
         $evaluacion->indicador = 'Actitud y disposicion para el trabajo';
         $evaluacion->valoracion = $request->input('nota1');
@@ -154,6 +162,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion2 = new Evaluacion();
         $evaluacion2->indicador = 'Puntualidad';
         $evaluacion2->valoracion = $request->input('nota2');
@@ -170,6 +179,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion3 = new Evaluacion();
         $evaluacion3->indicador = 'Responsabilidad';
         $evaluacion3->valoracion = $request->input('nota3');
@@ -186,6 +196,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion4 = new Evaluacion();
         $evaluacion4->indicador = 'Capacidad de resolucion de problemas';
         $evaluacion4->valoracion = $request->input('nota4');
@@ -202,6 +213,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion5 = new Evaluacion();
         $evaluacion5->indicador = 'Calidad en el trabajo';
         $evaluacion5->valoracion = $request->input('nota5');
@@ -218,6 +230,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion6 = new Evaluacion();
         $evaluacion6->indicador = 'Implicación e integracion en el equipo';
         $evaluacion6->valoracion = $request->input('nota6');
@@ -231,6 +244,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion7 = new Evaluacion();
         $evaluacion7->indicador = 'Toma de decisiones';
         $evaluacion7->valoracion = $request->input('nota7');
@@ -247,6 +261,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion8 = new Evaluacion();
         $evaluacion8->indicador = 'Capacidad de comunicacion oral y escrita';
         $evaluacion8->valoracion = $request->input('nota8');
@@ -263,6 +278,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion9 = new Evaluacion();
         $evaluacion9->indicador = 'Capacidad de planificacion y organizacion';
         $evaluacion9->valoracion = $request->input('nota9');
@@ -279,6 +295,7 @@ class EvaluacionController extends Controller
         $evaluacionDiario->id_calificacion = Calificaciones::all()->last()->id;
         $evaluacionDiario->save();
 
+        // Nueva evaluacion
         $evaluacion10 = new Evaluacion();
         $evaluacion10->indicador = 'Capacidad de aprendizaje y asimilacion';
         $evaluacion10->valoracion = $request->input('nota10');

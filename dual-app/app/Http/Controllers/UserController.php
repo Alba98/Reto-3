@@ -115,7 +115,6 @@ class UserController extends Controller
 
     public function alumnos()
     {
-        //if (Gate::any(['tuniversidad', 'tempresa']))
         $alumnos = Alumno::all();
         $evaluaciones = Evaluacion::all();
         $ficha = FichaDual::all();
@@ -124,8 +123,6 @@ class UserController extends Controller
                 'evaluaciones' => $evaluaciones,
                 'ficha' => $ficha
             ]);
-        // else
-        //     return view('errors.403');
     }
 
     public function fichaAlumno()

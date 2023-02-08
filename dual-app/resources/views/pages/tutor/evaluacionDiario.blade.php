@@ -172,6 +172,7 @@
               <tr>
                 <tr>
                   <td class="bg-primary bg-gradient text-light">Nota media</td>
+                  <!-- La nota media va variando dependiendo de el valor de cada campo, a tráves de js -->
                   <td class="bg-primary bg-gradient text-light"><span id="notaMediaDiario"></span></td>
                   <td class="bg-primary bg-gradient text-light"></td>
                 </tr>
