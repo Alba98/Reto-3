@@ -22,7 +22,7 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach ($diarios->where('id_ficha', $fichas->last()->id) as $diario)
+                                @foreach ($diarios as $diario)
                                 <tr>
                                     <td>{{ ($diario->periodo) }}</td>
                                     <td>{{ ($diario->actividades) }}</td>

@@ -53,15 +53,22 @@
                           if ($count > 0)
                               $nota_diario = (floatval($suma)/floatval($count)); 
                         @endphp
+                        @if($ficha->calificaciones->evaluacionTrabajo == null)
+                          <td>-</td>
+                        @else
+                          <td> {{ round($nota_trabajo, 2) }}</td>
+                        @endif
+                        @if($ficha->calificaciones->evaluacionDiario == null)
+                          <td>-</td>
+                        @else
+                          <td> {{ round($nota_diario, 2) }}</td>
+                        @endif
                         @if ($ficha->calificaciones->evaluacionTrabajo == null || 
                             $ficha->calificaciones->evaluacionDiario == null)
                           <td>-</td>
                         @else
                           <td>{{round(($nota_trabajo + $nota_diario) / 2, 2)}}</td>
                         @endif
-                        <td> {{ round($nota_trabajo, 2) }}</td>
-                        <td> {{ round($nota_diario, 2) }}</td>
-                        <td> {{ round(($nota_trabajo + $nota_diario) / 2, 2) }}</td>
                       @endif
                     </tr>
                   </tbody>
