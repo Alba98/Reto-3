@@ -11,9 +11,9 @@
             </li>
         @endif
         @if (Auth::user()->tipo_usuario == 'tuniversidad')
-            @if (Route::has('fichaSeguimiento'))   
+            @if (Route::has('ficha_Seguimiento'))   
                 <li class="nav-item">
-                    <a href="{{ route('fichaSeguimiento') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('fichaSeguimiento') ? 'active' : '' }}">
+                    <a href="{{ route('ficha_Seguimiento') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('ficha_Seguimiento') ? 'active' : '' }}">
                         <i class="fs-4 bi-file-earmark-text-fill nav_icon"></i>
                         <span class="ms-1 d-none d-sm-inline nav_name">Ficha seguimiento</span>
                     </a>

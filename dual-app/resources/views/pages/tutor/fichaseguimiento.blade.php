@@ -25,7 +25,7 @@
     <tbody>
       @foreach ($fichas as $ficha)
       <tr>
-          <td>{{ $ficha->nombre }}</td>
+          <td>{{($ficha->nombre)}}</td>
           <td>{{ $ficha->empresa }}</td>
           <td>{{ $ficha->curso }}</td>
           <td>{{ $ficha->grado }}</td>

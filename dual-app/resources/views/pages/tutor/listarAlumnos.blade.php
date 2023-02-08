@@ -17,9 +17,9 @@
                             <table class="table table-striped table-hover">
                               <thead>
                               @foreach($fichas as $ficha)
-                                  @if($ficha->Alumno && $ficha->curso)
+                                  @if($ficha->dual && $ficha->curso)
                                       <tr>
-                                          <th><i class="bi bi-person"></i> {{($ficha->alumno->nombre)}}</th>
+                                          <th><i class="bi bi-person"></i> {{($ficha->alumno->persona->nombre)}}</th>
                                           <th><i class="bi bi-building"></i> {{ ($ficha->empresa->nombre)}}</th>
                                           <th><i class="bi bi-justify-left"></i>{{ ($ficha->curso)}}</th>
                                           <th><i class="bi bi-justify-left"></i>{{ ($ficha->alumno->grado->nombre)}}</th>

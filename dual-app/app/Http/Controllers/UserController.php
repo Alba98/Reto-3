@@ -191,22 +191,22 @@ class UserController extends Controller
         else
             return view('errors.403');
     }
-    public function store(Alumno $alumno)
-    {
-        $fichaSeguimiento =new FichaSeguimiento();
-        $fichaSeguimiento->nombre = $alumno->nombre;
-        $fichaSeguimiento->empresa = $alumno->empresa;
-        $fichaSeguimiento->curso = $alumno->curso;
-        $fichaSeguimiento->grado = $alumno->grado;
-        $fichaSeguimiento->email = $alumno->email;
-        $fichaSeguimiento->save();
+    // public function store(Alumno $alumno)
+    // {
+    //     $fichaSeguimiento =new FichaSeguimiento();
+    //     $fichaSeguimiento->nombre = $alumno->nombre;
+    //     $fichaSeguimiento->empresa = $alumno->empresa;
+    //     $fichaSeguimiento->curso = $alumno->curso;
+    //     $fichaSeguimiento->grado = $alumno->grado;
+    //     $fichaSeguimiento->email = $alumno->email;
+    //     $fichaSeguimiento->save();
         
-        return redirect()->route('ficha.index');
-    }
-    public function index()
-    {
+    //     return redirect()->route('ficha.index');
+    // }
+    // public function index()
+    // {
 
-        $fichaSeguimiento = FichaSeguimiento::all();
-        return view('pages.tutor.fichaseguimiento', compact('fichaSeguimiento'));
-    }
+    //     $fichaSeguimiento = FichaSeguimiento::all();
+    //     return view('pages.tutor.fichaseguimiento', compact('fichaSeguimiento'));
+    // }
 }
