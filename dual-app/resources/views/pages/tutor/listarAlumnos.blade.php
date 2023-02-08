@@ -6,16 +6,16 @@
         <div class="col-lg-8 grid-margin stretch-card">
                       <div class="card">
                         <div class="card-header">
-                            <h1>Listado alumnos</h1>
-                            <div class="input-group">
-                                <input type="search" class="form-control rounded" placeholder="Busqueda por nombre" aria-label="Search" aria-describedby="search-addon" />
-                                <button type="button" class="btn btn-primary">Buscar</button>
-                              </div>
+                          <h1>Listado alumnos</h1>
+                          <div class="input-group">
+                            <input type="search" class="form-control rounded" placeholder="Busqueda por nombre" aria-label="Search" aria-describedby="search-addon" />
+                            <button type="button" class="btn btn-primary">Buscar</button>
+                          </div>
                         </div>
                         <div class="card-body">
                           <div class="table-responsive">
                             <table class="table table-striped table-hover">
-                            <thead>
+                              <thead>
                                 <tr>
                                   <th><i class="bi bi-person"></i> Nombre</th>
                                   <th><i class="bi bi-building"></i> Empresa</th>

@@ -4,8 +4,11 @@
 <div class="container">
         <div class="d-flex justify-content-center align-items-center" style="height: 148px;">
           <div class="text-center">
-         
-            <h1 class="display-4 text-dark">Diario aprendizaje  <a href="{{ route('evaluacionDiario') }}" class="btn btn-primary fs-5 pull-right">Evaluar Diario</a></h1>
+            <h1 class="display-4 text-dark">Diario aprendizaje 
+              @if (Auth::user()->tipo_usuario == 'tuniversidad') 
+                <a href="{{ route('evaluacionDiario') }}" class="btn btn-primary fs-5 pull-right">Evaluar Diario</a>
+              @endif
+            </h1>
             <p class="lead text-muted">At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus vestibulum, facilisi ac, sed faucibus.</p>
           </div>
         </div>
