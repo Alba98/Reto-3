@@ -22,7 +22,10 @@ class DiarioController extends Controller
             $alumno = Alumno::where('id_persona', $persona->id)->first();
 
             $ficha = FichaDual::where('id_alumno', $alumno->id)->get()->last();
-            $diarios = DiarioAprendizaje::where('id_ficha', $ficha->id)->get()->sortBy('periodo');
+            if($ficha)
+                $diarios = DiarioAprendizaje::where('id_ficha', $ficha->id)->get()->sortBy('periodo');
+            else
+                return redirect()->route('home');
 
             return view('pages.alumno.diarioaprendizaje', [
                 'diarios' => $diarios
