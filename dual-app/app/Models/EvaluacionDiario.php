@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluacionDiario extends Model
 {
     use HasFactory;
-    protected $table = 'evaluaciones_diarios';
+    protected $table = 'evaluaciones_diario';
     protected $fillable = [
         'id_evaluacion',
         'id_calificacion',
@@ -21,8 +21,8 @@ class EvaluacionDiario extends Model
         return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
     }
 
-    public function diarioAprendizaje()
+    public function calificacion()
     {
-        return $this->hasOne(DiarioAprendizaje::class, 'id_evaluacion_diario');
+        return $this->belongsTo(Calificaciones::class, 'id_calificacion');
     }
 }

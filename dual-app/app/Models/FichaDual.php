@@ -53,6 +53,6 @@ class FichaDual extends Model
 
     public function calificaciones()
     {
-        return $this->hasMany(Calificaciones::class, 'id_ficha');
+        return $this->hasOne(Calificaciones::class, 'id_ficha');
     }
 }

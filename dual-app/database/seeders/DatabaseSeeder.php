@@ -483,10 +483,23 @@ class DatabaseSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
         for($i=0;$i<30;$i++){
+            DB::table('diarios_aprendizajes')->insert([
+                'id_ficha' => $i+1,
+                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                'periodo' => $faker->date() . ' - ' . $faker->date(),
+                'reflexion' => $faker->text(),
+                'problemas' => $faker->text(),
+                'actividades' => $faker->text()
+            ]);
+        }
+
+        $faker = \Faker\Factory::create();
+        for($i=0;$i<30;$i++){
             DB::table('calificaciones')->insert([
                 'id_ficha' => $i+1,
-                'id_ficha_seguimiento' => $i+1,
-                'id_evaluacion' => $faker->unique()->numberBetween(1, 40),
+                //'id_ficha_seguimiento' => $i+1,
+                //'id_evaluacion' => $faker->unique()->numberBetween(1, 40),
                 'fecha' => $faker->date($format = 'Y-m-d', $max = 'now'),
                 'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
                 'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
@@ -523,18 +536,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $faker = \Faker\Factory::create();
-        for($i=0;$i<30;$i++){
-            DB::table('diarios_aprendizajes')->insert([
-                'id_ficha' => $i+1,
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'periodo' => $faker->date() . ' - ' . $faker->date(),
-                'reflexion' => $faker->text(),
-                'problemas' => $faker->text(),
-                'actividades' => $faker->text()
-            ]);
-        }
+        
 
         $faker = \Faker\Factory::create();
         for($i=0;$i<70;$i++){
