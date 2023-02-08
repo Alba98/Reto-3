@@ -7,11 +7,11 @@ if (switchModeBtn) {
         if (body && active) {
             if (body.classList.contains('dark-mode')) {
                 body.classList.remove('dark-mode');
-                switchModeBtn.setAttribute("label", "🌙 Dark");
+                //switchModeBtn.setAttribute("label", "🌙 Dark");
             }
             else {
                 body.classList.add('dark-mode');
-                switchModeBtn.setAttribute("label", "🌞 Light");
+                //sswitchModeBtn.setAttribute("label", "🌞 Light");
             }
         }
     });

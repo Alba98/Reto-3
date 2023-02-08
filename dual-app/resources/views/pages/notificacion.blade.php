@@ -7,7 +7,7 @@
       @endif
 
       @foreach ($notificaciones as $notificacion)
-        <div class="col-md-3">
+        <div class="col-md-5">
           <div class="card border-3 border-primary">
             <div class="card-body">
               <h4 class="card-title">{{ ($notificacion->mensaje) }}</h4>

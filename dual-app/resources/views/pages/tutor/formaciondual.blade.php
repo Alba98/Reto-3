@@ -48,7 +48,7 @@
                   </div>
                 </div>
           </div>
-          <div class="col-sm-6">
+          <div class="card col-sm-6 ">
             <div class="card-header">Acciones rapidas</div>
             <div class="card-body">
                 <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>

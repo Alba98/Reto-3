@@ -3,17 +3,17 @@
 <section class="vh-100">
     <div class="container py-5 h-100">
         <div class="row d-flex align-items-center justify-content-center h-100">
-            <div class="col-md-8 col-lg-7 col-xl-6">
+            <div class="col-md-8 col-lg-7 col-xl-6 bg-light">
                 <img src="{{asset('chicalogo.png')}}" class="img-fluid" alt="Chica Deusto">
             </div>
 
 
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
 
-            <div class="d-flex align-items-center mb-3 pb-1">
+                <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
                     <span class="h1 fw-bold mb-0"><span id="colorAzul">Deusto</span>Dual</span>
-                  </div>
+                </div>
 
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
