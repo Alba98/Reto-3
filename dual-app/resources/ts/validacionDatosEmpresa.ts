@@ -13,7 +13,6 @@ interface FormData {
     nombre: string;
     cif: string;
     direccion: string;
-    sector: string;
   }
   
   const formData: FormData = new FormData();
@@ -22,8 +21,7 @@ interface FormData {
   const validationRules = {
     nombre: /^[a-zA-Z\s]{2,100}$/,
     cif: /^[A-Za-z]{1}[0-9]{7}[A-Za-z]{1}$/,
-    direccion: /^[a-zA-Z0-9\s,.'-]{2,200}$/,
-    sector: /^(Industrial|Informatica|Comercio|Hosteleria|Sanidad)$/,
+    direccion: /^[a-zA-Z0-9\s,.'-]{2,200}$/
   };
   
   function validateForm(formData: FormData, validationRules: any) {
@@ -39,13 +37,3 @@ interface FormData {
     }
     return isValid;
   }
-  
-  const submitForm = (e: any) => {
-    e.preventDefault();
-    if (validateForm(formData, validationRules)) {
-      // enviar formulario
-    } else {
-      // mostrar errores de validación
-    }
-  };
-  

@@ -8,8 +8,14 @@ import '../ts/darkMode';
 
 import './estadisticas';
 
-import './switch';
+import './components/switch';
 
 import '../ts/notaMediaTrabajoEmpresa';
 
 import '../ts/notaMediaDiarioAprendizaje';
+
+import '../ts/validacionDatosEmpresa';
+
+import '../ts/validacionDarAlta';
+
+//import './validacion';

@@ -22,7 +22,8 @@ class NotasController extends Controller
             $persona = Persona::where('id', Auth::user()->id_persona)->first();
             $alumno = Alumno::where('id_persona', $persona->id)->first();
             $ficha = FichaDual::where('id_alumno', $alumno->id)->get()->sortBy('anio_academico')->last();
-            
+            if($ficha == null)
+                return redirect()->route('home');
             //where ficha dual
             return view('pages.alumno.notas', [
                 'ficha' => $ficha 
