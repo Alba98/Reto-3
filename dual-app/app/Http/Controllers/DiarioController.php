@@ -77,7 +77,7 @@ class DiarioController extends Controller
             $alumno = Alumno::all()->where('id', $id);
 
             // reame una variable con la id de la ficha dual del alumno que ha iniciado sesion
-            $id_ficha = FichaDual::all()->where('id_alumno', $id)->last()->id;
+            $id_ficha = FichaDual::all()->where('id_alumno', $alumno->id)->last()->id;
             
             $diario = new DiarioAprendizaje();
             $diario->periodo = $request->periodo;
@@ -86,6 +86,7 @@ class DiarioController extends Controller
             $diario->problemas = $request->problemas;
             $diario->id_ficha = $id_ficha;
             $diario->save();
+            
             return redirect()->route('diarioAprendizaje');
         }
         else
