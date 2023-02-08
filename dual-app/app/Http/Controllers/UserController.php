@@ -14,6 +14,7 @@ use App\Models\Persona;
 use App\Models\Alumno;
 use App\Models\Empresa;
 use App\Models\Tuniversidad;
+use App\Models\FichaSeguimiento;
 use App\Models\Tempresa;
 use App\Models\Coordinador;
 use App\Models\FichaDual;
@@ -167,7 +168,7 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function fichaSeguimineto()
+    public function fichaSeguimiento()
     {
         if (Gate::any(['tuniversidad', 'tempresa']))
             return view('pages.tutor.fichaseguimiento');
@@ -189,5 +190,23 @@ class UserController extends Controller
             return view('pages.tutor.evaluacionFicha');
         else
             return view('errors.403');
+    }
+    public function store(Alumno $alumno)
+    {
+        $fichaSeguimiento =new FichaSeguimiento();
+        $fichaSeguimiento->nombre = $alumno->nombre;
+        $fichaSeguimiento->empresa = $alumno->empresa;
+        $fichaSeguimiento->curso = $alumno->curso;
+        $fichaSeguimiento->grado = $alumno->grado;
+        $fichaSeguimiento->email = $alumno->email;
+        $fichaSeguimiento->save();
+        
+        return redirect()->route('ficha.index');
+    }
+    public function index()
+    {
+
+        $fichaSeguimiento = FichaSeguimiento::all();
+        return view('pages.tutor.fichaseguimiento', compact('fichaSeguimiento'));
     }
 }

@@ -27,17 +27,44 @@ class AlumnoController extends Controller
     {
         if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
             
+        // Comprobas si se ha enviado un nombre por GET
+        if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
+            $nombre = $_GET['nombre'];
             $alumnos = Alumno::all();
+            $personas = Persona::where('nombre', 'like', '%' . $nombre . '%')->get();
             $empresas = Empresa::all();
             $evaluaciones = Evaluacion::all();
             $ficha = FichaDual::all();
-
+            $opcion = 1;
             return response(view('pages.coordinador.registrosAnteriores.alumnos', [
+                'personas' => $personas,
                 'alumnos' => $alumnos,
+                'empresas' => $empresas,
+                'evaluaciones' => $evaluaciones,
+                'ficha' => $ficha,
+                'opcion' => $opcion
             ]));
+        } else {
+            if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
+                $alumnos = Alumno::all();
+                $empresas = Empresa::all();
+                $evaluaciones = Evaluacion::all();
+                $ficha = FichaDual::all();
+                $personas = 0;
+                $opcion = 2;
+                return response(view('pages.coordinador.registrosAnteriores.alumnos', [
+                    'personas' => $personas,
+                    'alumnos' => $alumnos,
+                    'empresas' => $empresas,
+                    'evaluaciones' => $evaluaciones,
+                    'ficha' => $ficha,
+                    'opcion' => $opcion
+                ]));
+            }
+            else
+                return response(view('errors.403')); 
         }
-        else
-            return response(view('errors.403')); 
+        }
     }
 
     /**

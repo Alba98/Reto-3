@@ -15,7 +15,7 @@
                         <div class="card-body">
                           <div class="table-responsive">
                             <table class="table table-striped table-hover">
-                              <thead>
+                            <thead>
                                 <tr>
                                   <th><i class="bi bi-person"></i> Nombre</th>
                                   <th><i class="bi bi-building"></i> Empresa</th>
