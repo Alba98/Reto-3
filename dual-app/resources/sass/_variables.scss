@@ -25,20 +25,70 @@ $theme-colors: (
 ) !default;
 
 //Boton de confort visual:
-$light-mode-bg-color: #fff;
+$light-mode-bg-color: $body-bg;
+$light-mode-card-bg-color: #fff;
 $light-mode-text-color: #000;
 $dark-mode-bg-color: #333;
 $dark-mode-text-color: #fff;
 
-body > *{
+body{
   background-color: $light-mode-bg-color;
   color: $light-mode-text-color;
+  
 }
 .dark-mode > *{
 	background-color: $dark-mode-bg-color;
 	color: $dark-mode-text-color;
+  .card-body {
+    background-color: $light-mode-card-bg-color;
+    color: $light-mode-text-color;
+  }  
+  .card-header {
+    color: $light-mode-text-color;
+  }
 }
 
-#colorAzul{
-  color:$blue-deusto;
+
+// $darkMode: false;
+
+// @mixin darkMode {
+//   @if($darkMode) {
+//     @media(prefers-color-scheme: dark) {
+//       @content;
+//     }
+//   }
+// }
+
+// body > * {
+//   background-color: $light-mode-bg-color;
+//   color: $light-mode-text-color;
+//   @include darkMode {
+//     background-color: $dark-mode-bg-color;
+// 	  color: $dark-mode-text-color;
+//   }
+// }
+
+
+
+$color-mode-type: data;
+
+@mixin color-mode($mode: light, $root: false) {
+  @if $color-mode-type == "media-query" {
+    @if $root == true {
+      @media (prefers-color-scheme: $mode) {
+        :root {
+          @content;
+        }
+      }
+    } @else {
+      @media (prefers-color-scheme: $mode) {
+        @content;
+      }
+    }
+  } @else {
+    [data-bs-theme="#{$mode}"] {
+      @content;
+    }
+  }
 }
+
