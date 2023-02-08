@@ -13,7 +13,6 @@ class Calificaciones extends Model
         'fecha',
         'id_ficha',
         'id_ficha_seguimiento',
-        //'id_evaluacion',
         'created_at',
         'updated_at'
     ];
@@ -27,12 +26,6 @@ class Calificaciones extends Model
     {
         return $this->belongsTo(FichaSeguimiento::class, 'id_ficha_seguimiento');
     }
-
-    // public function evaluacion()
-    // {
-    //     return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
-    // }
-
     public function evaluacionTrabajo()
     {
         return $this->hasMany(EvaluacionTrabajo::class, 'id_calificacion');

@@ -29,7 +29,7 @@ class HomeController extends Controller
     public function index()
     {
         $notificaciones = Notificaciones::all()->where('id_usuario', Auth::user()->id);
-
+        // Dependiendo del tipo de usuario, se le muestra una vista u otra
         switch (Auth::user()->tipo_usuario) {
             case 'coordinador':
                 return view('pages.coordinador.home', [

@@ -3,7 +3,11 @@
 <div class="container">
         <div class="d-flex justify-content-center align-items-center" style="height: 148px;">
           <div class="text-center">
-          <h1 class="display-4 text-dark">Ficha de seguimiento  <a href="{{ route('evaluacionFicha') }}" class="btn btn-primary fs-5 pull-right">Evaluar Ficha</a></h1>
+            <h1 class="display-4 text-dark">Ficha de seguimiento
+              @if (Auth::user()->tipo_usuario == 'tuniversidad') 
+                <a href="{{ route('evaluacionFicha', $alumno) }}" class="btn btn-primary fs-5 pull-right">Evaluar Ficha</a>
+              @endif
+            </h1>
             <p class="lead text-muted">At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus vestibulum, facilisi ac, sed faucibus.</p>
           </div>
         </div>
@@ -23,6 +27,7 @@
       </tr>
     </thead>
     <tbody>
+      <!-- Se muestra la info del alumno que hemos seleccionado -->
       <tr>
         <td>{{ $alumno->persona->nombre }}</td>
         <td>{{ $alumno->fichaDual->empresa->nombre }}</td>
@@ -47,6 +52,7 @@
           </tr>
         </thead>
         <tbody>
+        <!-- Se muestra la ficha de seguimiento de dicho alumno -->
         @foreach ($fichas as $ficha)
           <tr>
               <td>{{ $ficha->fecha }}</td>

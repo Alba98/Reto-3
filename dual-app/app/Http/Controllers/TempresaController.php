@@ -12,6 +12,7 @@ use App\Models\Tempresa;
 use App\Models\Docente;
 use App\Models\FichaDual;
 use App\Models\Alumno;
+use Illuminate\Support\Facades\Hash;
 
 class TempresaController extends Controller
 {
@@ -44,7 +45,7 @@ class TempresaController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nombre' => 'required|unique:personas|max:255',
+            'nombre' => 'required|max:255',
             'ape1' => 'required|unique:personas|max:255',
             'ape2' => 'required|unique:personas|max:255',
             'dni' => 'required|unique:personas|max:255',
@@ -59,7 +60,7 @@ class TempresaController extends Controller
 
         // Se crea el tutor empresa
         $tempresa = new Tempresa();
-        $tempresa->id_persona = Docente::latest('id')->first()->id;
+        $tempresa->id_docente = Docente::latest('id')->first()->id;
         $tempresa->id_empresa = $request->id_empresa;
         $tempresa->save();
 
@@ -69,59 +70,13 @@ class TempresaController extends Controller
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
         $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->password = $clave;
+        $usuario->password = Hash::make($clave);
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'tempresa';
         $usuario->save();
 
         return redirect()->route('darAlta');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
     public function verAlumnos()
     {
         $fichas = Alumno::where('curso', true)->get();

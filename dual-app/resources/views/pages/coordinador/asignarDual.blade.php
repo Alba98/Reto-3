@@ -7,6 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Asignar Dual') }}</div>
                 <div class="card-body">
+                  <!-- Mediante este formulario le asignamos los tutores tanto de empresa como de universidad + la empresa al alumno -->
                     <form method="POST" action="{{ route('dual.store') }}">
                         @csrf
                         <div class="row mb-3">
@@ -47,7 +48,7 @@
                             <div class="col-md-6">
                                     <select id="id_tempresa" name="id_tempresa" class="form-select">
                                       @foreach ($tempresa as $tempresa)
-                                        <option value="{{ $tempresa->id }}">{{ $personas->where('id',$tempresa->id_persona)->value('nombre') }}</option>
+                                        <option value="{{ $tempresa->id }}">{{ $personas->where('id',$tempresa->docente->id_persona)->value('nombre') }}</option>
                                       @endforeach
                                     </select>
                             </div>

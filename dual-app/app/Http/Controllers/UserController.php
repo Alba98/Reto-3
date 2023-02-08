@@ -83,38 +83,6 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function storeDual(Request $request)
-    {
-        Alumno::all()->where('id',$request->input('id_alumno'))->first()->update(['dual' => 1]);
-        $cursoalumno = Alumno::all()->where('id',$request->input('id_alumno'))->value('curso');
-        if (Gate::allows('coordinador')) {
-            // Comprobar si el coordinador esta en la tabla tuniversidad, sino meterlo VA MEDIO RARO
-            if (Tuniversidad::where('id_docente',Docente::all()->where('id',$request->input('id_tuniversidad')) )->value('id') == null) {
-                $tuniversidad = new Tuniversidad();
-                $tuniversidad->id_docente = $request->input('id_tuniversidad');
-                $tuniversidad->save();
-
-            $ficha = new FichaDual();
-            $ficha->id_alumno = $request->input('id_alumno');
-            $ficha->id_empresa = $request->input('id_empresa');
-            $ficha->id_tuniversidad = Tuniversidad::latest('id')->first()->id;
-            $ficha->id_tempresa = $request->input('id_tempresa');
-            $ficha->anio_academico = date('Y');
-            $ficha->curso = $cursoalumno;
-            $ficha->save(); 
-        } else {
-            $ficha = new FichaDual();
-            $ficha->id_alumno = $request->input('id_alumno');
-            $ficha->id_empresa = $request->input('id_empresa');
-            $ficha->id_tuniversidad = $request->input('id_tuniversidad');
-            $ficha->id_tempresa = $request->input('id_tempresa');
-            $ficha->save(); 
-        }
-            return redirect()->route('registrosAlumno');
-        } else
-            return view('errors.403');
-    }
-
     public function estadisticas()
     {
         if (Gate::allows('coordinador'))
@@ -147,7 +115,6 @@ class UserController extends Controller
 
     public function alumnos()
     {
-        //if (Gate::any(['tuniversidad', 'tempresa']))
         $alumnos = Alumno::all();
         $evaluaciones = Evaluacion::all();
         $ficha = FichaDual::all();
@@ -156,8 +123,6 @@ class UserController extends Controller
                 'evaluaciones' => $evaluaciones,
                 'ficha' => $ficha
             ]);
-        // else
-        //     return view('errors.403');
     }
 
     public function fichaAlumno()
@@ -176,19 +141,28 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function evaluacionDiario()
+    public function evaluacionDiario(Alumno $alumno)
     {
-        if (Gate::allows('tuniversidad'))
-            return view('pages.tutor.evaluacionDiario');
+        if (Gate::allows('tuniversidad')) {
+            $fechahoy = date('Y-m-d');
+            return view('pages.tutor.evaluacionDiario', [
+                'alumno' => $alumno,
+                'fechahoy' => $fechahoy
+            ]);
+        }
         else
             return view('errors.403');
     }
 
-    public function evaluacionFicha()
+    public function evaluacionFicha(Alumno $alumno)
     {
-        if (Gate::allows('tuniversidad'))
-            return view('pages.tutor.evaluacionFicha');
-        else
+        if (Gate::allows('tuniversidad')) {
+            $fechahoy = date('Y-m-d');
+            return view('pages.tutor.evaluacionFicha', [
+                'fechahoy' => $fechahoy,
+                'alumno' => $alumno
+            ]);
+        } else
             return view('errors.403');
     }
     // public function store(Alumno $alumno)

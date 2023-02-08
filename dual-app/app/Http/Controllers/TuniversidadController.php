@@ -12,6 +12,7 @@ use App\Models\Tuniversidad;
 use App\Models\Docente;
 use App\Models\FichaDual;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
 
 class TuniversidadController extends Controller
 {
@@ -33,17 +34,6 @@ class TuniversidadController extends Controller
             'usuarios' => $usuarios
         ]));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -53,7 +43,7 @@ class TuniversidadController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nombre' => 'required|unique:personas|max:255',
+            'nombre' => 'required|max:255',
             'ape1' => 'required|unique:personas|max:255',
             'ape2' => 'required|unique:personas|max:255',
             'dni' => 'required|unique:personas|max:255',
@@ -77,48 +67,13 @@ class TuniversidadController extends Controller
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
         $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->password = $clave;
+        $usuario->password = Hash::make($clave);
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'tuniversidad';
         $usuario->save();
 
         return redirect()->route('darAlta');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tuniversidad $tuniversidad) //acceso al objeto directamente
-    {
-       
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -130,5 +85,24 @@ class TuniversidadController extends Controller
         $tuniversidad = Tuniversidad::find($id);
         $tuniversidad->delete();
         return redirect()->route('registrosTutorUniversidad');
+    }
+
+    public function show($id)
+    {
+        $docente = Docente::where('id_persona', $id)->first();
+        $fichas = []; //por si este tutor no tiene alumnos asignados
+        if ($docente != null) {
+            $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
+            if (Gate::allows('tempresa'))
+                $tutor = Tempresa::where('id_docente', $docente->id)->first();
+            
+            if ($tutor != null)
+                $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
+        }
+        //where ficha dual
+        return view('pages.tutor.listarAlumnos', [
+            'fichas' => $fichas 
+        ]);
+
     }
 }

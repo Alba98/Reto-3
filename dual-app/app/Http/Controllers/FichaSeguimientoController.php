@@ -41,7 +41,7 @@ class FichaSeguimientoController extends Controller
 
     public function show($id)
     {
-        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])){ 
+        if (Gate::any(['coordinador', 'alumno', 'tuniversidad', 'tempresa'])) {
             $alumno = Alumno::all()->where('id_persona', $id)->last();
             $fichaDual = FichaDual::all()->where('id_alumno', $alumno->id)->last();
             $fichas = FichaSeguimiento::all()->where('id_fichadual', $fichaDual->id);

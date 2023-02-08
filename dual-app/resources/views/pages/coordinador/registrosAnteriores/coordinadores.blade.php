@@ -23,6 +23,7 @@
                               </thead>
                               <tbody>
                                 @foreach ($coordinadores as $coordinador)
+                                <!-- Mostramos mediante una tabla la info de todos los coordinadores -->
                                 <tr>
                                   <td>{{$personas->where('id',$coordinador->docente->id_persona)->value('nombre')}}</td>
                                   <td>{{$grados->where('id',$coordinador->id_grado)->value('nombre')}}</td>

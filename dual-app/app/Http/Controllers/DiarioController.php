@@ -16,38 +16,25 @@ class DiarioController extends Controller
 
     public function index()
     {
-        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])) {
-            $id = Auth::user()->id;
-            // $diarios = Alumno::all()->where('id_persona', $id);
-            // $diarios = Alumno::all()->where('id_persona', $id)->fichasDuales->last();
-            // $diarios = $fichasDuales->diariosAprendizajes;
-            // $diarios = Alumno::all()->where('id_persona', $id)->fichaDual->diariosAprendizajes;
+        if (Gate::any(['coordinador', 'alumno', 'tuniversidad', 'tempresa'])) {
 
-            //$diarios = DiarioAprendizaje::all()->where('id_ficha', $id);
-            // return view('pages.alumno.diarioaprendizaje', [
-            //     'diarios' => $diarios
-            // ]);
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $alumno = Alumno::where('id_persona', $persona->id)->first();
 
-            $alumno = Alumno::all()->where('id_persona', $id);
-            $fichas = FichaDual::all()->where('id_alumno', $id);
-            $diarios = DiarioAprendizaje::all();
+            $ficha = FichaDual::where('id_alumno', $alumno->id)->get()->last();
+            $diarios = DiarioAprendizaje::where('id_ficha', $ficha->id)->get()->sortBy('periodo');
 
             return view('pages.alumno.diarioaprendizaje', [
-                'alumno' => $alumno,
-                'fichas' => $fichas,
                 'diarios' => $diarios
             ]);
-        }  
-        else if (Gate::allows('coordinador'))
-        //alguien que me exploque xq se supone que ahora soy coordiador si estoy como alumno ????
-            return view('errors.401');  
+        }
         else
             return view('errors.403');  
     }
 
     public function show($id)
     {
-        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])){ 
+        if (Gate::any(['coordinador', 'alumno', 'tuniversidad', 'tempresa'])) {
             $alumno = Alumno::all()->where('id_persona', $id)->last();
             $fichaDual = FichaDual::all()->where('id_alumno', $alumno->id)->last();
             $diarios = DiarioAprendizaje::all()->where('id_ficha', $fichaDual->id);
@@ -71,21 +58,22 @@ class DiarioController extends Controller
 
     public function store(Request $request) {
         if (Gate::allows('alumno')) {
-            // creame una variable con la id del alumno que ha iniciado sesion
-            $id = Auth::user()->id;
-            // busca el alumno que ha iniciado sesion
-            $alumno = Alumno::all()->where('id', $id);
 
-            // reame una variable con la id de la ficha dual del alumno que ha iniciado sesion
-            $id_ficha = FichaDual::all()->where('id_alumno', $id)->last()->id;
-            
+            // busca el alumno que ha iniciado sesion
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $alumno = Alumno::where('id_persona', $persona->id)->first();
+
+            // obtenre la ultima ficha dual del alumno que ha iniciado sesion
+            $ficha = FichaDual::where('id_alumno', $alumno->id)->get()->last();
+              
             $diario = new DiarioAprendizaje();
             $diario->periodo = $request->periodo;
             $diario->actividades = $request->actividades;
             $diario->reflexion = $request->reflexion;
             $diario->problemas = $request->problemas;
-            $diario->id_ficha = $id_ficha;
+            $diario->id_ficha = $ficha->id;
             $diario->save();
+            
             return redirect()->route('diarioAprendizaje');
         }
         else

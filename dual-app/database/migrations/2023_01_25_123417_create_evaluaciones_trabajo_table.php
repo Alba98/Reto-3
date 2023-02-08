@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('evaluaciones_trabajo', function (Blueprint $table) {
             $table->foreignId('id_evaluacion')->constrained('evaluaciones')->primary()->cascadeOnDelete();
             $table->timestamps();
-            // fk  de calificaciones
             $table->foreignId('id_calificacion')->constrained('calificaciones')->cascadeOnDelete();
         });
     }
