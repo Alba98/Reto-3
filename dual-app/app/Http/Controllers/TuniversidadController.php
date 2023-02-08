@@ -86,4 +86,23 @@ class TuniversidadController extends Controller
         $tuniversidad->delete();
         return redirect()->route('registrosTutorUniversidad');
     }
+
+    public function show($id)
+    {
+        $docente = Docente::where('id_persona', $id)->first();
+        $fichas = []; //por si este tutor no tiene alumnos asignados
+        if ($docente != null) {
+            $tutor = Tuniversidad::where('id_docente', $docente->id)->first();
+            if (Gate::allows('tempresa'))
+                $tutor = Tempresa::where('id_docente', $docente->id)->first();
+            
+            if ($tutor != null)
+                $fichas = FichaDual::where('id_tuniversidad', $tutor->id)->get();
+        }
+        //where ficha dual
+        return view('pages.tutor.listarAlumnos', [
+            'fichas' => $fichas 
+        ]);
+
+    }
 }
