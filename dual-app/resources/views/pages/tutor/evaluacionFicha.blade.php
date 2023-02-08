@@ -223,7 +223,7 @@
               </tr>
               <tr>
                 <td class="bg-primary bg-gradient text-light">Nota media</td>
-                <td class="bg-primary bg-gradient text-light">5</td>
+                <td class="bg-primary bg-gradient text-light"><span id="notaMedia"></span></td>
                 <td class="bg-primary bg-gradient text-light"></td>
               </tr>
             </tbody>

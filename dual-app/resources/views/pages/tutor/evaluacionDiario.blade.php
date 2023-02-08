@@ -74,7 +74,7 @@
               <tr>
                 <td>Esfuerzo y regularidad</td>
                 <td>
-                  <select class="form-select" name="nota1" id="nota1">
+                  <select class="form-select" name="nota1" id="notas1">
                     <option value="3">Insuficiente</option>
                     <option value="5">Suficiente</option>
                     <option value="7">Notable</option>
@@ -82,13 +82,13 @@
                   </select>
                 </td>
                 <td>
-                  <textarea class="form-control" name="observaciones1" id="observaciones1" rows="2"></textarea>
+                  <textarea class="form-control" name="observaciones1" id="observaciones1" rows="1"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>Orden, estructura y presentacion</td>
                 <td>
-                  <select class="form-select" name="nota2" id="nota2">
+                  <select class="form-select" name="nota2" id="notas2">
                     <option value="3">Insuficiente</option>
                     <option value="5">Suficiente</option>
                     <option value="7">Notable</option>
@@ -96,13 +96,13 @@
                   </select>
                 </td>
                 <td>
-                  <textarea class="form-control" name="observaciones2" id="observaciones2" rows="2"></textarea>
+                  <textarea class="form-control" name="observaciones2" id="observaciones2" rows="1"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>Contenido</td>
                 <td>
-                  <select class="form-select" name="nota3" id="nota3">
+                  <select class="form-select" name="nota3" id="notas3">
                     <option value="3">Insuficiente</option>
                     <option value="5">Suficiente</option>
                     <option value="7">Notable</option>
@@ -110,13 +110,13 @@
                   </select>
                 </td>
                 <td>
-                  <textarea class="form-control" name="observaciones3" id="observaciones3" rows="2"></textarea>
+                  <textarea class="form-control" name="observaciones3" id="observaciones3" rows="1"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>Terminologia y notacion</td>
                 <td>
-                  <select class="form-select" name="nota4" id="nota4">
+                  <select class="form-select" name="nota4" id="notas4">
                     <option value="3">Insuficiente</option>
                     <option value="5">Suficiente</option>
                     <option value="7">Notable</option>
@@ -124,13 +124,13 @@
                   </select>
                 </td>
                 <td>
-                  <textarea class="form-control" name="observaciones4" id="observaciones4" rows="2"></textarea>
+                  <textarea class="form-control" name="observaciones4" id="observaciones4" rows="1"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>Calidad del trabajo</td>
                 <td>
-                  <select class="form-select" name="nota5" id="nota5">
+                  <select class="form-select" name="nota5" id="notas5">
                     <option value="3">Insuficiente</option>
                     <option value="5">Suficiente</option>
                     <option value="7">Notable</option>
@@ -138,13 +138,13 @@
                   </select>
                 </td>
                 <td>
-                  <textarea class="form-control" name="observaciones5" id="observaciones5" rows="2"></textarea>
+                  <textarea class="form-control" name="observaciones5" id="observaciones5" rows="1"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>Relaciona conceptos</td>
                 <td>
-                  <select class="form-select" name="nota6" id="nota6">
+                  <select class="form-select" name="nota6" id="notas6">
                     <option value="3">Insuficiente</option>
                     <option value="5">Suficiente</option>
                     <option value="7">Notable</option>
@@ -152,13 +152,13 @@
                   </select>
                 </td>
                 <td>
-                  <textarea class="form-control" name="observaciones6" id="observaciones6" rows="2"></textarea>
+                  <textarea class="form-control" name="observaciones6" id="observaciones6" rows="1"></textarea>
                 </td>
               </tr>
               <tr>
                 <td>Reflexion sobre aprendizaje</td>
                 <td>
-                  <select class="form-select" name="nota7" id="nota7">
+                  <select class="form-select" name="nota7" id="notas7">
                     <option value="3">Insuficiente</option>
                     <option value="5">Suficiente</option>
                     <option value="7">Notable</option>
@@ -166,13 +166,15 @@
                   </select>
                 </td>
                 <td>
-                  <textarea class="form-control" name="observaciones7" id="observaciones7" rows="2"></textarea>
+                  <textarea class="form-control" name="observaciones7" id="observaciones7" rows="1"></textarea>
                 </td>
               </tr>
               <tr>
-                <td>Nota media</td>
-                <td>5</td>
-                <td></td>
+                <tr>
+                  <td class="bg-primary bg-gradient text-light">Nota media</td>
+                  <td class="bg-primary bg-gradient text-light"><span id="notaMediaDiario"></span></td>
+                  <td class="bg-primary bg-gradient text-light"></td>
+                </tr>
               </tr>
             </tbody>
           </table>
@@ -182,9 +184,5 @@
           <input class="btn btn-primary mb-3" type="submit" value="Guardar">
       </div>
     </form>
-    </div>
-  </div>
-</div>
-</div>
 </div>
 @stop
