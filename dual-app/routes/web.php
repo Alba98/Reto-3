@@ -4,7 +4,7 @@ use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Broadcasting\Channel;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\RegistrosController;
@@ -15,6 +15,8 @@ use App\Http\Controllers\TempresaController;
 use App\Http\Controllers\TuniversidadController;
 use App\Http\Controllers\CoordinadorController;
 use App\Http\Controllers\FichaSeguimientoController;
+use App\Notifications\testNotification;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -118,3 +120,12 @@ Route::get('fichaSeguimiento/{id}', [FichaSeguimientoController::class, 'show'])
 Route::post('ficha_Seguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
 
 Route::get('/tutor/ver-alumnos',  [TempresaController::class, 'verAlumnos'])->name('tempresa.verAlumnos');
+
+
+Route::get('\notificaciones', function(){
+    $user=User::find(10);
+    $user->notify(new testNotification());
+    //Notification::route('mail', 'daw.wat2022@gmail.com')->notify(new testNotification());
+    return view('notificaciones');
+});
+ 
