@@ -41,6 +41,7 @@ Route::get('registros/empresa', [EmpresaController::class, 'index'])->name('regi
 Route::get('registros/tutorEmpresa', [RegistrosController::class, 'tutorEmpresa'])->name('registrosTutorEmpresa');
 Route::get('registros/tutorUniversidad', [TuniversidadController::class, 'index'])->name('registrosTutorUniversidad');
 Route::get('registros/coordinador', [CoordinadorController::class, 'index'])->name('registrosCoordinador');
+Route::get('registros/alumnos', [AlumnoController::class, 'alumnosTutorHistorial'])->name('alumnos.tutorHistorial');
 
 //coordinador
 Route::get('registrar', [RegistrarController::class, 'index'])->name('darAlta');
