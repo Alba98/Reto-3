@@ -17,9 +17,7 @@
                       <th><i class="bi bi-calendar-check"></i> Periodo</th>
                       <th><i class="bi bi-text-left"></i> Curso</th>
                       <th><i class="bi bi-buildings"></i> Empresa</th>
-                      <th><i class="bi bi-list-stars"></i> Nota Empresa</th>
-                      <th><i class="bi bi-list-stars"></i> Nota Curso</th>
-                      <th><i class="bi bi-calendar-check"></i> Nota final</th>
+                      <th><i class="bi bi-star"></i> Nota</th>
                     </tr>
                   </thead>
                   <tbody>

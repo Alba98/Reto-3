@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Alumno;
-use App\Models\Evaluacion;
-use App\Models\FichaDual;
-use App\Models\Persona;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;

@@ -13,33 +13,33 @@
 
 
 <div class="card-body">
-                              <div class="table-responsive">
-                                <table class="table">
-                                  <thead>
-                                    <tr>
-                                      <th><i class="bi bi-person"></i> Nombre</th>
-                                      <th><i class="bi bi-building"></i> Empresa</th>
-                                      <th><i class="bi bi-justify-left"></i> Curso</th>
-                                      <th><i class="bi bi-justify-left"></i> Grado</th>
-                                      <th><i class="bi bi-star-fill"></i> Email</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                    <tr>
-                                      <td>Samuel</td>
-                                      <td>Mercedes-Benz</td>
-                                      <td>2017-2018</td>
-                                      <td>Historia</td>
-                                      <td>samuel@egibide.org</td>
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th><i class="bi bi-person"></i> Nombre</th>
+          <th><i class="bi bi-building"></i> Empresa</th>
+          <th><i class="bi bi-justify-left"></i> Curso</th>
+          <th><i class="bi bi-justify-left"></i> Grado</th>
+          <th><i class="bi bi-star-fill"></i> Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ $alumno->persona->nombre }}</td>
+          <td>{{ $alumno->fichaDual->empresa->nombre }}</td>
+          <td>{{ $alumno->fichaDual->curso }}</td>
+          <td>{{ $alumno->grado->nombre }}</td>
+          <td>{{ $alumno->persona->usuario->email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <div class="card-body">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table table-striped table-hover">
         <thead>
           <tr>
             <th><i class="bi bi-person"></i> Periodo</th>
@@ -49,25 +49,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
+          @foreach ($diarios as $diario)
+            <tr>
+              <td>{{ ($diario->periodo) }}</td>
+              <td>{{ ($diario->actividades) }}</td>
+              <td>{{ ($diario->reflexion) }}</td>
+              <td>{{ ($diario->problemas) }}</td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
     </div>

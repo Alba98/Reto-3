@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\DiarioAprendizaje;
 use App\Models\FichaDual;
 use App\Models\Alumno;
+use App\Models\Persona;
 
 class DiarioController extends Controller
 {
@@ -47,9 +48,12 @@ class DiarioController extends Controller
     public function show($id)
     {
         if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])){ 
-            $diario = DiarioAprendizaje::find($id);
+            $alumno = Alumno::all()->where('id_persona', $id)->last();
+            $fichaDual = FichaDual::all()->where('id_alumno', $alumno->id)->last();
+            $diarios = DiarioAprendizaje::all()->where('id_ficha', $fichaDual->id);
             return view('pages.tutor.diarioaprendizaje', [
-                'diario' => $diario
+                'diarios' => $diarios,
+                "alumno" => $alumno
             ]);
         }
         else

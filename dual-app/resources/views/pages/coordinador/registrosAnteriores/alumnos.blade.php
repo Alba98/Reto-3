@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <div class="container mt-2">
-    <h1 class="display-3 text-center mt-5">Registros anteriores alumnos </h1>
+    <h1 class="display-3 text-center mt-5">Registros anteriores @if (!Auth::user()->tipo_usuario == 'alumno') alumnos @endif</h1>
     <div class="padding mt-4">
         <div class="row container d-flex justify-content-center">
         <div class="col-lg-8 grid-margin stretch-card">
@@ -32,7 +32,7 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @if ($opcion == 1)
+                              @if ($opcion == 1)
                                 @foreach ($personas as $persona)
                                 <tr>
                                   @if ($alumnos->where('id_persona',$persona->id)->value('id') !== null)
@@ -77,56 +77,58 @@
                                         </td>
                                       @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
                                         <td>
-                                          <a href="{{ route('alumno.show', [$alumnos->where('id_persona',$persona->id)->value('id')]) }}" class="btn btn-primary">Ver</a>
+                                          <a href="{{ route('alumno.show', [$alumnos->where('id_persona',$persona->id)->value('id_persona')]) }}" class="btn btn-primary">Ver</a>
                                         </td>
                                       @endif
                                   @endif
                                 </tr>
                                 @endforeach
 
-                                @else
-                                @foreach ($alumnos as $alumno)
+                              @else
+                              @foreach ($alumnos as $alumno)
                                 <tr>
-                                  <td>{{$alumno->persona->nombre}}</td>
-                                  @if ($alumno->fichaDual == null)
-                                    <td>-</td>
-                                  @else
-                                  <td>{{$alumno->fichaDual->empresa->nombre}}</td>
-                                  @endif
-                                  <td>{{$alumno->curso}}</td>
-                                  <td>{{$alumno->grado->nombre}}</td>
-                                @if($alumno->fichaDual)
-                                  @php
-                                    $nota_trabajo = 0; $nota_diario = 0;
-                                    $suma = 0;
-                                    $count = $alumno->fichaDual->calificaciones->evaluacionTrabajo->count();
-                                  @endphp
-                                  @foreach ($alumno->fichaDual->calificaciones->evaluacionTrabajo as $trabajo)
+                                 @if($alumno->fichaDual)
+                                    <td>{{$alumno->persona->nombre}}</td>
+                                    @if ($alumno->fichaDual == null)
+                                      <td>-</td>
+                                    @else
+                                      <td>{{$alumno->fichaDual->empresa->nombre}}</td>
+                                    @endif
+
+                                    <td>{{$alumno->fichaDual->curso}}</td>
+                                    <td>{{$alumno->grado->nombre}}</td>
+                                  
                                     @php
-                                      $suma += $trabajo->evaluacion->valoracion;
+                                      $nota_trabajo = 0; $nota_diario = 0;
+                                      $suma = 0;
+                                      $count = $alumno->fichaDual->calificaciones->evaluacionTrabajo->count();
                                     @endphp
-                                  @endforeach
-                                  @php
-                                    if ($count > 0)
-                                        $nota_trabajo = (floatval($suma)/floatval($count)); 
-                                    $count = $alumno->fichaDual->calificaciones->evaluacionDiario->count();
-                                    $suma = 0;
-                                  @endphp
-                                  @foreach ($alumno->fichaDual->calificaciones->evaluacionDiario as $diario)
+                                    @foreach ($alumno->fichaDual->calificaciones->evaluacionTrabajo as $trabajo)
+                                      @php
+                                        $suma += $trabajo->evaluacion->valoracion;
+                                      @endphp
+                                    @endforeach
                                     @php
-                                      $suma += $diario->evaluacion->valoracion;
+                                      if ($count > 0)
+                                          $nota_trabajo = (floatval($suma)/floatval($count)); 
+                                      $count = $alumno->fichaDual->calificaciones->evaluacionDiario->count();
+                                      $suma = 0;
                                     @endphp
-                                  @endforeach
-                                  @php
-                                    if ($count > 0)
-                                        $nota_diario = (floatval($suma)/floatval($count)); 
-                                  @endphp
-                                  @if ($alumno->fichaDual->calificaciones->evaluacionTrabajo == null || 
-                                       $alumno->fichaDual->calificaciones->evaluacionDiario == null)
-                                    <td>-</td>
-                                  @else
-                                    <td>{{round(($nota_trabajo + $nota_diario) / 2, 2)}}</td>
-                                  @endif
+                                    @foreach ($alumno->fichaDual->calificaciones->evaluacionDiario as $diario)
+                                      @php
+                                        $suma += $diario->evaluacion->valoracion;
+                                      @endphp
+                                    @endforeach
+                                    @php
+                                      if ($count > 0)
+                                          $nota_diario = (floatval($suma)/floatval($count)); 
+                                    @endphp
+                                    @if ($alumno->fichaDual->calificaciones->evaluacionTrabajo == null || 
+                                        $alumno->fichaDual->calificaciones->evaluacionDiario == null)
+                                      <td>-</td>
+                                    @else
+                                      <td>{{round(($nota_trabajo + $nota_diario) / 2, 2)}}</td>
+                                    @endif
                                 @else
                                   <td>-</td>
                                 @endif
@@ -146,7 +148,7 @@
                                   @endif
                                 </tr>
                                 @endforeach
-                                @endif
+                              @endif
                               </tbody>
                             </table>
                           </div>

@@ -22,6 +22,15 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach($fichas as $ficha)
+                      <tr>
+                        <td> {{ $ficha->curso }} curso</td>
+                        <td> {{ $ficha->empresa->nombre }} </td>
+                        <td> {{ ($ficha->calificaciones->evaluacion->calificacionTrabajo) }}</td>
+                        <td> {{ ($ficha->calificaciones->evaluacion->calificacionDiario) }}</td>
+                        <td> {{ ($ficha->calificaciones->id_evaluacion) + ($ficha->calificaciones->id_ficha_seguimiento) / 2 }}</td>
+                      </tr>
+                    @endforeach
                     <tr>
                       @if($ficha)
                         <td> {{ $ficha->curso }} curso</td>
