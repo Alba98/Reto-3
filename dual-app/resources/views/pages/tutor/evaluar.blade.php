@@ -54,8 +54,8 @@
               <h1 class="display-7 fw-bold text-center">Evaluar</h1>
               <div class="col-lg-4 mx-auto p-5">
                 <div class="d-grid gap-5 d-sm-flex justify-content-sm-center">
-                  <a href="{{ route('evaluacionDiario') }}" class="btn btn-primary btn-lg px-5 gap-5 m-2">Evaluar Diario</a>
-                  <a href="{{ route('evaluacionFicha') }}" class="btn btn-primary btn-lg px-5 gap-5 m-2">Evaluar Ficha</a>
+                  <a href="{{ route('evaluacionDiario', $alumno->id) }}" class="btn btn-primary btn-lg px-5 gap-5 m-2">Evaluar Diario</a>
+                  <a href="{{ route('evaluacionFicha', $alumno->id) }}" class="btn btn-primary btn-lg px-5 gap-5 m-2">Evaluar Ficha</a>
                 </div>
               </div>
             </div>
