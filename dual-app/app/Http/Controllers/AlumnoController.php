@@ -26,8 +26,7 @@ class AlumnoController extends Controller
     public function index()
     {
         if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
-            
-        // Comprobas si se ha enviado un nombre por GET
+        // Comprobas si se ha enviado un nombre por GET, si es así, cargas los alumnos que coincidan con ese nombre
         if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
             $nombre = $_GET['nombre'];
             $alumnos = Alumno::all();
@@ -44,7 +43,7 @@ class AlumnoController extends Controller
                 'ficha' => $ficha,
                 'opcion' => $opcion
             ]));
-        } else {
+        } else { // Si no se ha enviado un nombre por GET, cargas todos los alumnos
             if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
                 $alumnos = Alumno::all();
                 $empresas = Empresa::all();
@@ -66,17 +65,6 @@ class AlumnoController extends Controller
         }
         }
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -95,7 +83,6 @@ class AlumnoController extends Controller
         Persona::create($validate);
 
         // Hasta aquí se crea la persona, ahora se crea el usuario
-        
         $alumno = new Alumno();
         $alumno->id_persona = Persona::latest('id')->first()->id;
         $alumno->curso = $request->curso;
@@ -125,10 +112,8 @@ class AlumnoController extends Controller
      */
     public function show($id)
     {
-        //$alumno = Alumno::where('id',$id)->firstOrFail(); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
-        //return $alumno->persona;
-        $alumno = Alumno::find($id); //get sirve para coger una coleccion. firstOrFail el primer elemento que va a encontrar en la base de datos y si no error 404.
-        return response(view('pages.tutor.formaciondual',compact('alumno'))); //compact pasa un array con variables. ('var1','var2'...)
+        $alumno = Alumno::find($id); 
+        return response(view('pages.tutor.formaciondual',compact('alumno')));
     }
 
     public function alumnosTutor() {
@@ -156,7 +141,6 @@ class AlumnoController extends Controller
 
     public function alumnosTutorHistorial() {
         if (Gate::any(['tuniversidad', 'tempresa'])) {
-
             $persona = Persona::where('id', Auth::user()->id_persona)->first();
             $docente = Docente::where('id_persona', $persona->id)->first();
             $fichas = []; //por si este tutor no tiene alumnos asignados
@@ -183,29 +167,6 @@ class AlumnoController extends Controller
         return view('pages.tutor.formaciondual', [
             'alumno' => $alumno
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
     }
 
     /**

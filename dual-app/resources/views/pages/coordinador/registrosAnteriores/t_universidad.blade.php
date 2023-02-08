@@ -23,6 +23,7 @@
                       </thead>
                       <tbody>
                         @foreach ($tuniversidad as $tuniversidad)
+                        <!-- Mostramos mediante una tabla la info de todos los tutores de universidad -->
                           <tr>
                             <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('nombre')}}</td>
                             <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('telefono')}}</td>

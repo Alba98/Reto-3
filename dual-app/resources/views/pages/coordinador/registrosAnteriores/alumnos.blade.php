@@ -32,9 +32,10 @@
                                 </tr>
                               </thead>
                               <tbody>
-                              @if ($opcion == 1)
+                              @if ($opcion == 1) <!-- Esto nos indica que la busqueda de alumnos irá por nombre -->
                                 @foreach ($personas as $persona)
                                 <tr>
+                                  <!-- Los ifs están porque puede que haya alumnos que formen parte de la dual, entonces no tendrían empresa, tutor de empresa... -->
                                   @if ($alumnos->where('id_persona',$persona->id)->value('id') !== null)
                                       @if ($alumnos->where('id_persona',$persona->id)->value('id') == null)
                                         <td>{{$persona->nombre}}</td>
@@ -84,9 +85,10 @@
                                 </tr>
                                 @endforeach
 
-                              @else
+                              @else <!-- Al contrario nos mostrará todos los alumnos -->
                               @foreach ($alumnos as $alumno)
                                 <tr>
+                                 <!-- Los ifs están porque puede que haya alumnos que formen parte de la dual, entonces no tendrían empresa, tutor de empresa... -->
                                  @if($alumno->fichaDual)
                                     <td>{{$alumno->persona->nombre}}</td>
                                     @if ($alumno->fichaDual == null)

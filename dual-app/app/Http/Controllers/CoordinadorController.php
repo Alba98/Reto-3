@@ -34,17 +34,6 @@ class CoordinadorController extends Controller
             'docentes' => $docentes
         ]));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -63,7 +52,6 @@ class CoordinadorController extends Controller
         Persona::create($validate);
 
         // Hasta aquí se crea la persona, ahora se crea el docente
-        
         $docente = new Docente();
         $docente->id_persona = Persona::latest('id')->first()->id;
         $docente->save();
@@ -88,41 +76,6 @@ class CoordinadorController extends Controller
 
         return redirect()->route('registrosCoordinador');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
     /**
      * Remove the specified resource from storage.
      *

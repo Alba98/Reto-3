@@ -21,21 +21,10 @@ class FichaDualController extends Controller
     public function index()
     {
         $tutores = Tuniversidad::all();
-        return view('pages.tutor.formaciondual.Tuniversidad', [
+        return response(view('pages.tutor.formaciondual.Tuniversidad', [
             'tutores' => $tutores
-        ]);
+        ]));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -45,7 +34,7 @@ class FichaDualController extends Controller
     public function store(Request $request)
     {
         if (Auth::user()->cannot('registrar'))
-            return view('errors.403'); 
+            return response(view('errors.403')); 
 
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
@@ -77,50 +66,5 @@ class FichaDualController extends Controller
         $usuario->save();
 
         return redirect()->route('registrosAlumno');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
