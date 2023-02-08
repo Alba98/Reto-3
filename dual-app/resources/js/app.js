@@ -9,3 +9,7 @@ import '../ts/darkMode';
 import './estadisticas';
 
 import './switch';
+
+import '../ts/notaMediaTrabajoEmpresa';
+
+import '../ts/notaMediaDiarioAprendizaje';

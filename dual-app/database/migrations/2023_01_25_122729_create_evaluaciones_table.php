@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('indicador');
             $table->integer('valoracion');
-            $table->string('observacion');
+            $table->text('observacion');
             // id_ficha fk de fichas duales
             // $table->foreignId('id_ficha')->constrained('fichas_duales')->cascadeOnDelete();
             
