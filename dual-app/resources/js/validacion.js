@@ -16,10 +16,10 @@ if(darAltaAlumno)
             iDNI.value, iEmail.value, iTelefono.value)
           const errors = validateForm(formData);
         
-          if(errors){
+          if(!errors){
             if(form) form.submit();
           }else{
-            //   Display errors in fields
+             alert(errors);
           }
         }
       });
