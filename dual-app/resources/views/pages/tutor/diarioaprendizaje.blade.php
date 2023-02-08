@@ -26,10 +26,10 @@
       </thead>
       <tbody>
         <tr>
-          <td>{{$alumno->persona->nombre}}</td>
-          <td>{{$alumno->fichaDual->empresa->nombre}}</td>
-          <td>{{$alumno->fichaDual->curso}}</td>
-          <td>{{$alumno->grado->nombre}}</td>
+          <td>{{ $alumno->persona->nombre }}</td>
+          <td>{{ $alumno->fichaDual->empresa->nombre }}</td>
+          <td>{{ $alumno->fichaDual->curso }}</td>
+          <td>{{ $alumno->grado->nombre }}</td>
           <td>{{ $alumno->persona->usuario->email }}</td>
         </tr>
       </tbody>
@@ -49,13 +49,13 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($diario as $diario)
-          <tr>
-            <td>{{$diario}}</td>
-            <td>{{$diario}}</td>
-            <td>{{$diario}}</td>
-            <td>{{$diario}}</td>
-          </tr>
+          @foreach ($diarios as $diario)
+            <tr>
+              <td>{{ ($diario->periodo) }}</td>
+              <td>{{ ($diario->actividades) }}</td>
+              <td>{{ ($diario->reflexion) }}</td>
+              <td>{{ ($diario->problemas) }}</td>
+            </tr>
           @endforeach
         </tbody>
       </table>

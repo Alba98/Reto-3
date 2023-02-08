@@ -13,7 +13,7 @@ class Calificaciones extends Model
         'fecha',
         'id_ficha',
         'id_ficha_seguimiento',
-        'id_evaluacion',
+        //'id_evaluacion',
         'created_at',
         'updated_at'
     ];
@@ -28,18 +28,18 @@ class Calificaciones extends Model
         return $this->belongsTo(FichaSeguimiento::class, 'id_ficha_seguimiento');
     }
 
-    public function evaluacion()
+    // public function evaluacion()
+    // {
+    //     return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
+    // }
+
+    public function evaluacionTrabajo()
     {
-        return $this->belongsTo(Evaluacion::class, 'id_evaluacion');
+        return $this->hasMany(EvaluacionTrabajo::class, 'id_calificacion');
     }
 
-    public function calificacionTrabajo()
+    public function evaluacionDiario()
     {
-        return $this->hasOne(CalificacionTrabajo::class, 'id_calificacion');
-    }
-
-    public function calificacionDiario()
-    {
-        return $this->hasOne(CalificacionDiario::class, 'id_calificacion');
+        return $this->hasMany(EvaluacionDiario::class, 'id_calificacion');
     }
 }
