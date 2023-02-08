@@ -16,15 +16,15 @@ use App\Models\FichaSeguimiento;
 class FichaSeguimientoController extends Controller
 { 
 
-    public function store(User $usu)
+    public function store(Alumno $alumno,Persona $persona,Empresa $empresa,Grado $grado)
     {   
        //dd($alumno);
         $fichaSeguimientos = new FichaSeguimiento();
-        $fichaSeguimientos->nombre = $usu->nombre;
-        $fichaSeguimientos->empresa = $usu->empresa;
-        $fichaSeguimientos->curso = $usu->curso;
-        $fichaSeguimientos->grado = $usu->grado;
-        $fichaSeguimientos->email = $usu->email;
+        $fichaSeguimientos->nombre = $persona->nombre;
+        $fichaSeguimientos->empresa = $empresas->empresa;
+        $fichaSeguimientos->curso = $alumno->curso;
+        $fichaSeguimientos->grado = $grado->grado;
+        $fichaSeguimientos->email = $persona->email;
         $fichaSeguimientos->save();
         
         return redirect()->route('ficha.index');
@@ -35,7 +35,7 @@ class FichaSeguimientoController extends Controller
         $fichas = FichaSeguimiento::whereYear('fecha', '=', 2023)->get();
         return view('pages.tutor.fichaseguimiento', compact('fichas'));
        
-        $fichas = User::all();
+        $fichas = Persona::all();
        return view('pages.tutor.fichaseguimiento', compact('fichas'));
     }
 
