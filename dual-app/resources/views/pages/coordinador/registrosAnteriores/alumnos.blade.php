@@ -145,7 +145,7 @@
                                     </form>
                                   </td>
                                   @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
-                                    <td><a href="{{ route('alumno.show',$alumno->id_persona)}}" class="btn btn-primary">Ver</a></td>
+                                    <td><a href="{{ route('alumno.show',$alumno->id)}}" class="btn btn-primary">Ver</a></td>
                                   @endif
                                 </tr>
                                 @endif

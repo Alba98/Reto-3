@@ -6,7 +6,7 @@
           <div class="text-center">
             <h1 class="display-4 text-dark">Diario aprendizaje 
               @if (Auth::user()->tipo_usuario == 'tuniversidad') 
-                <a href="{{ route('evaluacionDiario') }}" class="btn btn-primary fs-5 pull-right">Evaluar Diario</a>
+                <a href="{{ route('evaluacionDiario', $alumno) }}" class="btn btn-primary fs-5 pull-right">Evaluar Diario</a>
               @endif
             </h1>
             <p class="lead text-muted">At lacus vitae nulla sagittis scelerisque nisl. Pellentesque duis cursus vestibulum, facilisi ac, sed faucibus.</p>

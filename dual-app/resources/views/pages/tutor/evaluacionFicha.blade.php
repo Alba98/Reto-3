@@ -2,9 +2,8 @@
 @section('content')
  
 <div class="container">
-        <div class="text-center">
+      <div class="text-center">
           <h1 class="my-4">Evaluacion Ficha Aprendizaje</h1>
-        </div>
       </div>
     
     <div class="container">
@@ -235,9 +234,6 @@
           <button class="btn btn-primary ">Guardar</button>
       </div>
     </div>
-  </div>
-</div>
-</div>
 </div>
 
 @stop

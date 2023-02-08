@@ -2,9 +2,8 @@
 @section('content')
   
 <div class="container">
-        <div class="text-center">
+      <div class="text-center">
           <h1 class="my-4">Evaluacion Diario Aprendizaje</h1>
-        </div>
       </div>
     
     <div class="container">
