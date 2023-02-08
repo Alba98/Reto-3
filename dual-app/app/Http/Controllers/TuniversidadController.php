@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
-
+use App\Models\FichaSeguimiento;
 use App\Models\User;
 use App\Models\Persona;
 use App\Models\Tuniversidad;

@@ -95,11 +95,41 @@
                                   @endif
                                   <td>{{$alumno->fichaDual->curso}}</td>
                                   <td>{{$alumno->grado->nombre}}</td>
-                                  @if ($evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion') == null)
+                                @if($alumno->fichaDual)
+                                  @php
+                                    $nota_trabajo = 0; $nota_diario = 0;
+                                    $suma = 0;
+                                    $count = $alumno->fichaDual->calificaciones->evaluacionTrabajo->count();
+                                  @endphp
+                                  @foreach ($alumno->fichaDual->calificaciones->evaluacionTrabajo as $trabajo)
+                                    @php
+                                      $suma += $trabajo->evaluacion->valoracion;
+                                    @endphp
+                                  @endforeach
+                                  @php
+                                    if ($count > 0)
+                                        $nota_trabajo = (floatval($suma)/floatval($count)); 
+                                    $count = $alumno->fichaDual->calificaciones->evaluacionDiario->count();
+                                    $suma = 0;
+                                  @endphp
+                                  @foreach ($alumno->fichaDual->calificaciones->evaluacionDiario as $diario)
+                                    @php
+                                      $suma += $diario->evaluacion->valoracion;
+                                    @endphp
+                                  @endforeach
+                                  @php
+                                    if ($count > 0)
+                                        $nota_diario = (floatval($suma)/floatval($count)); 
+                                  @endphp
+                                  @if ($alumno->fichaDual->calificaciones->evaluacionTrabajo == null || 
+                                       $alumno->fichaDual->calificaciones->evaluacionDiario == null)
                                     <td>-</td>
                                   @else
                                     <td>{{$evaluaciones->where('id_ficha',$ficha->where('id_alumno',$alumno->id)->value('id'))->value('valoracion')}}</td>
                                   @endif
+                                @else
+                                  <td>-</td>
+                                @endif
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
                                   <td>
                                     <form method="POST" action="{{ route('alumno.destroy', [$alumno->id]) }}">

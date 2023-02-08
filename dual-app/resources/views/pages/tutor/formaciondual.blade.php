@@ -38,11 +38,11 @@
                     </div>
                     <div class="candidate-info">
                       <h6><b>Tutor Empresa:</b></h6>
-                      <p>{{ $alumno->fichaDual->tempresa->persona->nombre }}</p>
+                      <p>{{ $alumno->fichaDual->tempresa->docente->persona->nombre }}</p>
                     </div>
                     <div class="candidate-info">
                       <h6><b>Contacto Fac.Empresa:</b></h6>
-                      <p>{{ $alumno->fichaDual->tempresa->persona->usuario->email }}</p>
+                      <p>{{ $alumno->fichaDual->tempresa->docente->persona->usuario->email }}</p>
                     </div>
                   </div>
                   </div>
@@ -56,7 +56,7 @@
               </div>
               <div class="card-body">        
                 <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                <a href="{{ route('fichaSeguimineto') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ficha de seguimiento</a>
+                <a href="{{ route('fichaSeguimiento', $alumno->persona->id) }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i>Ficha de seguimiento</a>
               </div>
               <div class="card-body">
                 <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>

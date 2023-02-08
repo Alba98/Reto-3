@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
-
+use App\Models\FichaSeguimiento;
 use App\Models\User;
 use App\Models\Persona;
 use App\Models\Tempresa;
 use App\Models\Docente;
+use App\Models\FichaDual;
+use App\Models\Alumno;
 
 class TempresaController extends Controller
 {
@@ -118,5 +120,12 @@ class TempresaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function verAlumnos()
+    {
+        $fichas = Alumno::where('curso', true)->get();
+
+        return view('pages.tutor.listarAlumnos', compact('fichas'));
     }
 }

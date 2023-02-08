@@ -24,11 +24,11 @@
     </thead>
     <tbody>
       <tr>
-        <td>Samuel</td>
-        <td>Mercedes-Benz</td>
-        <td>2017-2018</td>
-        <td>Historia</td>
-        <td>samuel@egibide.org</td>
+        <td>{{ $alumno->persona->nombre }}</td>
+        <td>{{ $alumno->fichaDual->empresa->nombre }}</td>
+        <td>{{ $alumno->fichaDual->curso }}</td>
+        <td>{{ $alumno->grado->nombre }}</td>
+        <td>{{ $alumno->persona->usuario->email }}</td>
       </tr>
     </tbody>
   </table>
@@ -47,28 +47,15 @@
           </tr>
         </thead>
         <tbody>
+        @foreach ($fichas as $ficha)
           <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-            <td>George</td>
+              <td>{{ $ficha->fecha }}</td>
+              <td>{{ $ficha->asistentes}}</td>
+              <td>{{ $ficha->tipo_tutoria }}</td>
+              <td>{{ $ficha->objetivos }}</td>
+              <td>{{ $ficha->resumen }}</td>
           </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
-            <td>22/12/22</td>
-            <td>Fire&Blood</td>
-            <td>George</td>
-            <td>George</td>
-            <td>George</td>
-          </tr>
-          <tr>
+        @endforeach
         </tbody>
       </table>
     </div>
