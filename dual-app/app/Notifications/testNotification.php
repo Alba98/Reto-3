@@ -38,12 +38,19 @@ class testNotification extends Notification
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
-    public function toMail($notifiable)
+    public function toMail(Alumno $alumno)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('Se ha registrado correctamente como alumno en nuestra plataforma.')
+            ->line('Nombre: '.$alumno->persona->nombre)
+            ->line('Apellidos: '.$alumno->persona->ape1.' '.$alumno->persona->ape2)
+            ->line('DNI: '.$alumno->persona->dni)
+            ->line('Email: '.$alumno->persona->usuario->email)
+            ->line('Teléfono: '.$alumno->persona->telefono)
+            ->line('Grado: '.$alumno->grado->nombre)
+            ->line('Curso: '.$alumno->curso)
+            ->line('Gracias por registrarte!');
+           
     }
 
     /**

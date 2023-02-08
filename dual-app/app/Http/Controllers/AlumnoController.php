@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Notification;
 use App\Models\User;
 use App\Models\Persona;
 use App\Models\Docente;
@@ -85,6 +85,7 @@ class AlumnoController extends Controller
      */
     public function store(Request $request)
     {
+
         $validate = $request->validate([
             'nombre' => 'required|unique:personas|max:255',
             'ape1' => 'required|unique:personas|max:255',
@@ -114,6 +115,8 @@ class AlumnoController extends Controller
         $usuario->tipo_usuario = 'alumno';
         $usuario->save();
 
+        //Mail::to($request->input($usuario->email))->send(new NewStudentNotification($alumno));
+        Notification::route('mail', $usuario->email)->notify(new testNotification($alumno));
         return redirect()->route('darAlta');
     }
 

@@ -131,7 +131,6 @@ Route::get('/tutor/ver-alumnos',  [TempresaController::class, 'verAlumnos'])->na
 Route::get('\notificaciones', function(){
     //$user=User::find(10); 
     //$user->notify(new testNotification());
-     
     Notification::route('mail', 'daw.wat2022@gmail.com')->notify(new testNotification());
     return view('notificaciones');
 });
