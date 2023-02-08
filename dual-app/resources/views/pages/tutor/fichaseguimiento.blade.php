@@ -23,15 +23,13 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($fichas as $ficha)
-        <tr>
-            <td>{{ $ficha->nombre }}</td>
-            <td>{{ $ficha->empresa }}</td>
-            <td>{{ $ficha->curso }}</td>
-            <td>{{ $ficha->grado }}</td>
-            <td>{{ $ficha->email }}</td>
-        </tr>
-      @endforeach
+      <tr>
+        <td>{{ $alumno->persona->nombre }}</td>
+        <td>{{ $alumno->fichaDual->empresa->nombre }}</td>
+        <td>{{ $alumno->fichaDual->curso }}</td>
+        <td>{{ $alumno->grado->nombre }}</td>
+        <td>{{ $alumno->persona->usuario->email }}</td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -49,32 +47,15 @@
           </tr>
         </thead>
         <tbody>
-      @foreach ($fichas as $ficha)
-      <tr>
-          <td>{{ $ficha->fecha }}</td>
-          <td>{{ $ficha->asistentes}}</td>
-          <td>{{ $ficha->tipo_tutoria }}</td>
-          <td>{{ $ficha->objetivos }}</td>
-          <td>{{ $ficha->resumen }}</td>
-      </tr>
-  
-      <tr>
-          <td>{{ $ficha->nombre }}</td>
-          <td>{{ $ficha->empresa }}</td>
-          <td>{{ $ficha->curso }}</td>
-          <td>{{ $ficha->grado }}</td>
-          <td>{{ $ficha->email }}</td>
-      </tr>
-  
-         
-      <tr>
-          <td>{{ $ficha->nombre }}</td>
-          <td>{{ $ficha->empresa }}</td>
-          <td>{{ $ficha->curso }}</td>
-          <td>{{ $ficha->grado }}</td>
-          <td>{{ $ficha->email }}</td>
-      </tr>
-  @endforeach
+        @foreach ($fichas as $ficha)
+          <tr>
+              <td>{{ $ficha->fecha }}</td>
+              <td>{{ $ficha->asistentes}}</td>
+              <td>{{ $ficha->tipo_tutoria }}</td>
+              <td>{{ $ficha->objetivos }}</td>
+              <td>{{ $ficha->resumen }}</td>
+          </tr>
+        @endforeach
         </tbody>
       </table>
     </div>

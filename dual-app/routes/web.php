@@ -67,9 +67,10 @@ Route::get('notas', [NotasController::class, 'index'])->name('notas');
 Route::get('evaluar/{alumno}', [UserController::class, 'evaluar'])->name('evaluar');
 //Route::get('alumnos', [UserController::class, 'alumnos'])->name('alumnos');
 Route::get('alumnos', [AlumnoController::class, 'alumnosTutor'])->name('alumnos');
+Route::get('registros/alumnos', [AlumnoController::class, 'alumnosTutorHistorial'])->name('alumnos.tutorHistorial');
 
 Route::get('fichaAlumno/{alumno}', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
-Route::get('fichaSeguimiento', [UserController::class, 'fichaSeguimiento'])->name('fichaSeguimiento');
+//Route::get('fichaSeguimiento', [UserController::class, 'fichaSeguimiento'])->name('fichaSeguimiento');
 Route::get('evaluacion/diario', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
 Route::get('evaluacion/ficha', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
 
@@ -96,7 +97,7 @@ Route::post('registrar/coordinador', [CoordinadorController::class, 'store'])->n
 Route::get('/alumno/{id}',[AlumnoController::class,'show'])->name('alumno.show')->whereNumber('id');
 
 //
-Route::get('chart', [ChartJSController::class, 'index']);
+//Route::get('chart', [ChartJSController::class, 'index']);
 
 // Eliminar un tutor de universidad
 Route::delete('registros/tutorUniversidad/{tutorUniversidad}', [TuniversidadController::class, 'destroy'])->name('tuniversidad.destroy');
@@ -111,7 +112,8 @@ Route::delete('registros/empresa/{empresa}', [EmpresaController::class, 'destroy
 Route::delete('registros/coordinador/{coordinador}', [CoordinadorController::class, 'destroy'])->name('coordinador.destroy');
 
 
-Route::get('ficha_Seguimiento', [FichaSeguimientoController::class, 'index'])->name('ficha.index');
+Route::get('fichaSeguimiento', [FichaSeguimientoController::class, 'index'])->name('ficha.index');
+Route::get('fichaSeguimiento/{id}', [FichaSeguimientoController::class, 'show'])->name('fichaSeguimiento');
 
 Route::post('ficha_Seguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
 
