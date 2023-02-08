@@ -1,0 +1,44 @@
+// Body
+$body-bg: #e7ebf2 !default;;
+
+// Typography
+$font-family-sans-serif: 'Montserrat', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 640px, // 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+$blue-deusto:    #0153ce;
+$eliminar:    #e6091e;
+
+$theme-colors: (
+  "primary":    $blue-deusto, //$primary
+  "danger":     $eliminar, //$danger
+  "light":      $body-bg //$primary
+) !default;
+
+//Boton de confort visual:
+$light-mode-bg-color: #fff;
+$light-mode-text-color: #000;
+$dark-mode-bg-color: #333;
+$dark-mode-text-color: #fff;
+
+body > *{
+  background-color: $light-mode-bg-color;
+  color: $light-mode-text-color;
+}
+.dark-mode > *{
+	background-color: $dark-mode-bg-color;
+	color: $dark-mode-text-color;
+}
+
+#colorAzul{
+  color:$blue-deusto;
+}
