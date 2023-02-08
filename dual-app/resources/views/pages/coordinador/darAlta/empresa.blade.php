@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">{{ __('Nueva empresa') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('empresa.store') }}">
+                    <form method="POST" action="{{ route('empresa.store') }}" id="empForm">
                         @csrf
                         <div class="row mb-3">
                             <label for="nombre" class="col-md-4 col-form-label text-md-end">{{ __('Nombre empresa') }}</label>
@@ -41,7 +41,7 @@
                         </div>
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="darAltaEmp">
                                     {{ __('Guardar') }}
                                 </button>
                             </div>

@@ -1,4 +1,4 @@
-interface AlumnoFormData {
+interface PersonaFormData {
     nombre: string;
     ape1: string;
     ape2: string;
@@ -9,7 +9,7 @@ interface AlumnoFormData {
     curso: string;
   }
   
-  function validateAlumnoFormData(data: AlumnoFormData) {
+  function validatePersonaFormData(data: PersonaFormData) {
     const errors: { [key: string]: string } = {};
   
     const nameRegex = /^[a-zA-ZÀ-ÿ\s]{3,}$/;
