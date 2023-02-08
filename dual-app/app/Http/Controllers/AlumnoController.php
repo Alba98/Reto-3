@@ -15,6 +15,7 @@ use App\Models\Empresa;
 use App\Models\Evaluacion;
 use App\Models\FichaDual;
 use App\Models\Tempresa;
+use Illuminate\Support\Facades\Hash;
 
 class AlumnoController extends Controller
 {
@@ -109,12 +110,12 @@ class AlumnoController extends Controller
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
         $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->password = $clave;
+        $usuario->password = Hash::make($clave);
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'alumno';
         $usuario->save();
 
-        return redirect()->route('registrosAlumno');
+        return redirect()->route('darAlta');
     }
 
     /**

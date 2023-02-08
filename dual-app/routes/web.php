@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\FichaDualController;
 use App\Http\Controllers\GradoController;
 use App\Http\Controllers\EmpresaController;
 use Illuminate\Support\Facades\Route;
@@ -55,7 +56,7 @@ Route::get('registrar/tutorUniversidad', [RegistrarController::class, 'tutorUniv
 Route::get('registrar/coordinador', [RegistrarController::class, 'coordinador'])->name('registrarCoordinador');
 
 Route::get('asignarDual', [UserController::class, 'asignarDual'])->name('asignarDual');
-Route::post('asignarDual', [UserController::class, 'storeDual'])->name('dual.store');
+Route::post('asignarDual', [FichaDualController::class, 'store'])->name('dual.store');
 Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estadisticas');
 
 //alumno

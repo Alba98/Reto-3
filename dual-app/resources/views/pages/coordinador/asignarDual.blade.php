@@ -47,7 +47,7 @@
                             <div class="col-md-6">
                                     <select id="id_tempresa" name="id_tempresa" class="form-select">
                                       @foreach ($tempresa as $tempresa)
-                                        <option value="{{ $tempresa->id }}">{{ $personas->where('id',$tempresa->id_persona)->value('nombre') }}</option>
+                                        <option value="{{ $tempresa->id }}">{{ $personas->where('id',$tempresa->docente->id_persona)->value('nombre') }}</option>
                                       @endforeach
                                     </select>
                             </div>

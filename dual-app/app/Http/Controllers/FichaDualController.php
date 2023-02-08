@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Usuario;
 use App\Models\Persona;
 use App\Models\Alumno;
+use App\Models\Docente;
+use App\Models\FichaDual;
 use App\Models\Tuniversidad;
 
 class FichaDualController extends Controller
@@ -44,39 +46,34 @@ class FichaDualController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user()->cannot('registrar'))
-            return view('errors.403'); 
+        Alumno::all()->where('id', $request->input('id_alumno'))->first()->update(['dual' => 1]);
+        $cursoalumno = Alumno::all()->where('id', $request->input('id_alumno'))->value('curso');
+        if (Gate::allows('coordinador')) {
+            // Comprobar si el coordinador esta en la tabla tuniversidad, sino meterlo VA MEDIO RARO
+            if (Tuniversidad::where('id_docente', Docente::all()->where('id', $request->input('id_tuniversidad')))->value('id') == null) {
+                $tuniversidad = new Tuniversidad();
+                $tuniversidad->id_docente = $request->input('id_tuniversidad');
+                $tuniversidad->save();
 
-        $validate = $request->validate([
-            'nombre' => 'required|unique:personas|max:255',
-            'ape1' => 'required|unique:personas|max:255',
-            'ape2' => 'required|unique:personas|max:255',
-            'dni' => 'required|unique:personas|max:255',
-            'telefono' => 'required|unique:personas|max:255',
-        ]);
-        Persona::create($validate);
-
-        // Hasta aquí se crea la persona, ahora se crea el usuario
-        
-        $tutores = new Alumno();
-        $tutores->id_persona = Persona::latest('id')->first()->id;
-        $tutores->curso = $request->curso;
-        $tutores->id_grado = $request->id_grado;
-        $tutores->dual =1;
-        $tutores->save();
-
-        // Clave con faker
-        $clave = \Faker\Factory::create()->password;
-
-        // Se crea el usuario con la clave generada por faker y el id de la persona creada
-        $usuario = new Usuario();
-        $usuario->email = $request->email;
-        $usuario->clave = $clave;
-        $usuario->id_persona = Persona::latest('id')->first()->id;
-        $usuario->tipo_usuario = 'tutores';
-        $usuario->save();
-
-        return redirect()->route('registrosAlumno');
+                $ficha = new FichaDual();
+                $ficha->id_alumno = $request->input('id_alumno');
+                $ficha->id_empresa = $request->input('id_empresa');
+                $ficha->id_tuniversidad = Tuniversidad::latest('id')->first()->id;
+                $ficha->id_tempresa = $request->input('id_tempresa');
+                $ficha->anio_academico = date('Y');
+                $ficha->curso = $cursoalumno;
+                $ficha->save();
+            } else {
+                $ficha = new FichaDual();
+                $ficha->id_alumno = $request->input('id_alumno');
+                $ficha->id_empresa = $request->input('id_empresa');
+                $ficha->id_tuniversidad = $request->input('id_tuniversidad');
+                $ficha->id_tempresa = $request->input('id_tempresa');
+                $ficha->save();
+            }
+            return redirect()->route('home');
+        } else
+            return view('errors.403');
     }
 
     /**

@@ -12,6 +12,7 @@ use App\Models\Tempresa;
 use App\Models\Docente;
 use App\Models\FichaDual;
 use App\Models\Alumno;
+use Illuminate\Support\Facades\Hash;
 
 class TempresaController extends Controller
 {
@@ -44,7 +45,7 @@ class TempresaController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nombre' => 'required|unique:personas|max:255',
+            'nombre' => 'required|max:255',
             'ape1' => 'required|unique:personas|max:255',
             'ape2' => 'required|unique:personas|max:255',
             'dni' => 'required|unique:personas|max:255',
@@ -59,7 +60,7 @@ class TempresaController extends Controller
 
         // Se crea el tutor empresa
         $tempresa = new Tempresa();
-        $tempresa->id_persona = Docente::latest('id')->first()->id;
+        $tempresa->id_docente = Docente::latest('id')->first()->id;
         $tempresa->id_empresa = $request->id_empresa;
         $tempresa->save();
 
@@ -69,7 +70,7 @@ class TempresaController extends Controller
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
         $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->password = $clave;
+        $usuario->password = Hash::make($clave);
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'tempresa';
         $usuario->save();
