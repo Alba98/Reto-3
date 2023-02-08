@@ -51,7 +51,7 @@ class EmpresaController extends Controller
             'nombre' => 'required|unique:empresas|max:255',
             'direccion' => 'required|unique:empresas|max:255',
             'cif' => 'required|unique:empresas|max:255',
-            'sector' => 'required|unique:empresas|max:255',
+            'sector' => 'required|max:255',
         ]);
 
         Empresa::create($validated);

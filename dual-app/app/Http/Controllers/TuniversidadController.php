@@ -12,6 +12,7 @@ use App\Models\Tuniversidad;
 use App\Models\Docente;
 use App\Models\FichaDual;
 use App\Models\Usuario;
+use Illuminate\Support\Facades\Hash;
 
 class TuniversidadController extends Controller
 {
@@ -53,7 +54,7 @@ class TuniversidadController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'nombre' => 'required|unique:personas|max:255',
+            'nombre' => 'required|max:255',
             'ape1' => 'required|unique:personas|max:255',
             'ape2' => 'required|unique:personas|max:255',
             'dni' => 'required|unique:personas|max:255',
@@ -77,7 +78,7 @@ class TuniversidadController extends Controller
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
         $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->password = $clave;
+        $usuario->password = Hash::make($clave);
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'tuniversidad';
         $usuario->save();

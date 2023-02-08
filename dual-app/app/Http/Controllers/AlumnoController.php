@@ -15,6 +15,7 @@ use App\Models\Empresa;
 use App\Models\Evaluacion;
 use App\Models\FichaDual;
 use App\Models\Tempresa;
+use Illuminate\Support\Facades\Hash;
 
 class AlumnoController extends Controller
 {
@@ -25,33 +26,16 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {
-            
-        // Comprobas si se ha enviado un nombre por GET
-        if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
-            $nombre = $_GET['nombre'];
-            $alumnos = Alumno::all();
-            $personas = Persona::where('nombre', 'like', '%' . $nombre . '%')->get();
-            $empresas = Empresa::all();
-            $evaluaciones = Evaluacion::all();
-            $ficha = FichaDual::all();
-            $opcion = 1;
-            return response(view('pages.coordinador.registrosAnteriores.alumnos', [
-                'personas' => $personas,
-                'alumnos' => $alumnos,
-                'empresas' => $empresas,
-                'evaluaciones' => $evaluaciones,
-                'ficha' => $ficha,
-                'opcion' => $opcion
-            ]));
-        } else {
-            if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
+        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {  
+            // Comprobas si se ha enviado un nombre por GET
+            if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
+                $nombre = $_GET['nombre'];
                 $alumnos = Alumno::all();
+                $personas = Persona::where('nombre', 'like', '%' . $nombre . '%')->get();
                 $empresas = Empresa::all();
                 $evaluaciones = Evaluacion::all();
                 $ficha = FichaDual::all();
-                $personas = 0;
-                $opcion = 2;
+                $opcion = 1;
                 return response(view('pages.coordinador.registrosAnteriores.alumnos', [
                     'personas' => $personas,
                     'alumnos' => $alumnos,
@@ -60,10 +44,26 @@ class AlumnoController extends Controller
                     'ficha' => $ficha,
                     'opcion' => $opcion
                 ]));
+            } else {
+                if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
+                    $alumnos = Alumno::all();
+                    $empresas = Empresa::all();
+                    $evaluaciones = Evaluacion::all();
+                    $ficha = FichaDual::all();
+                    $personas = 0;
+                    $opcion = 2;
+                    return response(view('pages.coordinador.registrosAnteriores.alumnos', [
+                        'personas' => $personas,
+                        'alumnos' => $alumnos,
+                        'empresas' => $empresas,
+                        'evaluaciones' => $evaluaciones,
+                        'ficha' => $ficha,
+                        'opcion' => $opcion
+                    ]));
+                }
+                else
+                    return response(view('errors.403')); 
             }
-            else
-                return response(view('errors.403')); 
-        }
         }
     }
 
@@ -109,12 +109,12 @@ class AlumnoController extends Controller
         // Se crea el usuario con la clave generada por faker y el id de la persona creada
         $usuario = new User();
         $usuario->email = $request->email;
-        $usuario->password = $clave;
+        $usuario->password = Hash::make($clave);
         $usuario->id_persona = Persona::latest('id')->first()->id;
         $usuario->tipo_usuario = 'alumno';
         $usuario->save();
 
-        return redirect()->route('registrosAlumno');
+        return redirect()->route('darAlta');
     }
 
     /**
