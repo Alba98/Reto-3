@@ -26,7 +26,6 @@
                                   <th><i class="bi bi-star-fill"></i> Calificación</th>
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
                                     <th><i class="bi bi-trash"></i> Eliminar</th>
-                                  @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
                                     <th><i class="bi bi-eye"></i> Ver</th>
                                   @endif
                                 </tr>
@@ -134,17 +133,16 @@
                                     <td>-</td>
                                   @endif
                                   @if (Auth::user()->tipo_usuario == 'coordinador')
-                                  <td>
-                                    <form method="POST" action="{{ route('alumno.destroy', [$alumno->id]) }}">
-                                      @csrf
-                                      @method("DELETE")
-                    
-                                      <button type="submit" class="btn btn-danger"> 
-                                        Eliminar
-                                      </button>
-                                    </form>
-                                  </td>
-                                  @elseif (Auth::user()->tipo_usuario == 'tempresa' || Auth::user()->tipo_usuario == 'tuniversidad')
+                                    <td>
+                                      <form method="POST" action="{{ route('alumno.destroy', [$alumno->id]) }}">
+                                        @csrf
+                                        @method("DELETE")
+                      
+                                        <button type="submit" class="btn btn-danger"> 
+                                          Eliminar
+                                        </button>
+                                      </form>
+                                    </td>
                                     <td><a href="{{ route('alumno.show',$alumno->id)}}" class="btn btn-primary">Ver</a></td>
                                   @endif
                                 </tr>

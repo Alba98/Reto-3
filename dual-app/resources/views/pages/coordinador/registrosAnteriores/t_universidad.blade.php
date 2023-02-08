@@ -19,6 +19,7 @@
                                   <th><i class="bi bi-envelope"></i> Email</th>
                                   <th><i class="bi bi-people"></i> Alumnos</th>
                                   <th><i class="bi bi-trash"></i> Eliminar</th>
+                                  <th><i class="bi bi-eye"></i> Ver</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -38,6 +39,7 @@
                                         </button>
                                       </form>
                                     </td>
+                                    <td><a href="{{ route('tuniversidad.show', $tuniversidad->id_docente)}}" class="btn btn-primary">Ver</a></td>
                                   </tr>
                                 @endforeach
                               </tbody>

@@ -16,7 +16,7 @@ class DiarioController extends Controller
 
     public function index()
     {
-        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])) {
+        if (Gate::any(['coordinador', 'alumno', 'tuniversidad', 'tempresa'])) {
 
             $persona = Persona::where('id', Auth::user()->id_persona)->first();
             $alumno = Alumno::where('id_persona', $persona->id)->first();
@@ -27,16 +27,14 @@ class DiarioController extends Controller
             return view('pages.alumno.diarioaprendizaje', [
                 'diarios' => $diarios
             ]);
-        }  
-        else if (Gate::allows('coordinador'))
-            return view('errors.401');  
+        }
         else
             return view('errors.403');  
     }
 
     public function show($id)
     {
-        if (Gate::any(['alumno', 'tuniversidad', 'tempresa'])){ 
+        if (Gate::any(['coordinador', 'alumno', 'tuniversidad', 'tempresa'])) {
             $alumno = Alumno::all()->where('id_persona', $id)->last();
             $fichaDual = FichaDual::all()->where('id_alumno', $alumno->id)->last();
             $diarios = DiarioAprendizaje::all()->where('id_ficha', $fichaDual->id);
