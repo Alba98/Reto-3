@@ -23,7 +23,7 @@ class RegistrosController extends Controller
                 'fichas' => $fichas
             ]);
         }
-        else if (Gate::allows('tutor'))
+        else if (Gate::any(['tuniversidad', 'tempresa']))
             return view('pages.coordinador.registrosAnteriores.alumnos');
     }
 }
