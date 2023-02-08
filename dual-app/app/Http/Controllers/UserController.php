@@ -176,19 +176,28 @@ class UserController extends Controller
             return view('errors.403');
     }
 
-    public function evaluacionDiario()
+    public function evaluacionDiario(Alumno $alumno)
     {
-        if (Gate::allows('tuniversidad'))
-            return view('pages.tutor.evaluacionDiario');
+        if (Gate::allows('tuniversidad')) {
+            $fechahoy = date('Y-m-d');
+            return view('pages.tutor.evaluacionDiario', [
+                'alumno' => $alumno,
+                'fechahoy' => $fechahoy
+            ]);
+        }
         else
             return view('errors.403');
     }
 
-    public function evaluacionFicha()
+    public function evaluacionFicha(Alumno $alumno)
     {
-        if (Gate::allows('tuniversidad'))
-            return view('pages.tutor.evaluacionFicha');
-        else
+        if (Gate::allows('tuniversidad')) {
+            $fechahoy = date('Y-m-d');
+            return view('pages.tutor.evaluacionFicha', [
+                'fechahoy' => $fechahoy,
+                'alumno' => $alumno
+            ]);
+        } else
             return view('errors.403');
     }
     public function store(Alumno $alumno)

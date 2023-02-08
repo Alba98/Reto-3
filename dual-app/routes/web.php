@@ -15,6 +15,7 @@ use App\Http\Controllers\TempresaController;
 use App\Http\Controllers\TuniversidadController;
 use App\Http\Controllers\CoordinadorController;
 use App\Http\Controllers\FichaSeguimientoController;
+use App\Http\Controllers\EvaluacionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,8 +71,8 @@ Route::get('alumnos', [AlumnoController::class, 'alumnosTutor'])->name('alumnos'
 
 Route::get('fichaAlumno/{alumno}', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
 Route::get('fichaSeguimiento', [UserController::class, 'fichaSeguimiento'])->name('fichaSeguimiento');
-Route::get('evaluacion/diario', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
-Route::get('evaluacion/ficha', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
+Route::get('evaluacion/diario/{alumno}', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
+Route::get('evaluacion/ficha/{alumno}', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
 
 
 // Crear un nuevo grado
@@ -110,10 +111,14 @@ Route::delete('registros/empresa/{empresa}', [EmpresaController::class, 'destroy
 // Eliminar coordinador
 Route::delete('registros/coordinador/{coordinador}', [CoordinadorController::class, 'destroy'])->name('coordinador.destroy');
 
+// Guardar evaluación diario de aprendizaje
+Route::post('evaluacion/diario/{alumno}', [EvaluacionController::class, 'store'])->name('evaluacion.store');
+
+// Guardar evaluación del trabajo en empresa
+Route::post('fichaSeguimiento/{alumno}', [EvaluacionController::class, 'storeTrabajoEmpresa'])->name('trabajo.store');
 
 Route::get('fichaSeguimiento', [FichaSeguimientoController::class, 'index'])->name('ficha.index');
 Route::get('fichaSeguimiento/{id}', [FichaSeguimientoController::class, 'show'])->name('fichaSeguimientoAlumno');
-
 Route::post('ficha_Seguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
 
 Route::get('/tutor/ver-alumnos',  [TempresaController::class, 'verAlumnos'])->name('tempresa.verAlumnos');
