@@ -26,10 +26,10 @@
                                 <!-- Mostramos mediante una tabla la info de todos los coordinadores -->
                                   @if($coordinador)
                                     <tr>
-                                      <td>{ $coordinador->docente->persona->nombre }}</td>
-                                      <td>{ $coordinador->grado->nombre }}</td>
-                                      <td>{ $coordinador->docente->persona->usuario->email }}</td>
-                                      <td>{ $coordinador->docente->persona->telefono }}</td>
+                                      <td>{{ $coordinador->docente->persona->nombre }}</td>
+                                      <td>{{ $coordinador->grado->nombre }}</td>
+                                      <td>{{ $coordinador->docente->persona->usuario->email }}</td>
+                                      <td>{{ $coordinador->docente->persona->telefono }}</td>
                                       <td>
                                         <form method="POST" action="{{ route('coordinador.destroy', [$coordinador->id]) }}">
                                           @csrf

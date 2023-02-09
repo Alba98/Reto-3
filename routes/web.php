@@ -41,7 +41,9 @@ Route::get('registros/alumno', [AlumnoController::class, 'index'])->name('regist
 Route::get('registros/empresa', [EmpresaController::class, 'index'])->name('registrosEmpresa');
 Route::get('registros/tutorEmpresa', [RegistrosController::class, 'tutorEmpresa'])->name('registrosTutorEmpresa');
 Route::get('registros/tutorUniversidad', [TuniversidadController::class, 'index'])->name('registrosTutorUniversidad');
-Route::get('registros/tUni/{id}/alumnos', [TuniversidadController::class, 'show'])->name('tuniversidad.show');
+Route::get('registros/{id}/alumnos', [TuniversidadController::class, 'show'])->name('tuniversidad.show');
+Route::get('registros/empresa/{id}', [TempresaController::class, 'show'])->name('tempresa.show');
+Route::get('registros/empresa/{id}/alumnos', [TempresaController::class, 'showAlumnos'])->name('tempresa.showAlumnos');
 Route::get('registros/coordinador', [CoordinadorController::class, 'index'])->name('registrosCoordinador');
 Route::get('registros/alumnos', [AlumnoController::class, 'alumnosTutorHistorial'])->name('alumnos.tutorHistorial');
 
@@ -91,6 +93,7 @@ Route::get('/alumno/{id}',[AlumnoController::class,'show'])->name('alumno.show')
 
 // Eliminación de registros (solo pueden ser eliminados por el coordinador)
 Route::delete('registros/tutorUniversidad/{tutorUniversidad}', [TuniversidadController::class, 'destroy'])->name('tuniversidad.destroy');
+Route::delete('registros/tutorEmpresa/{tutorEmpresa}', [TempresaController::class, 'destroy'])->name('tEmpresa.destroy');
 Route::delete('registros/alumno/{alumno}', [AlumnoController::class, 'destroy'])->name('alumno.destroy');
 Route::delete('registros/empresa/{empresa}', [EmpresaController::class, 'destroy'])->name('empresa.destroy');
 Route::delete('registros/coordinador/{coordinador}', [CoordinadorController::class, 'destroy'])->name('coordinador.destroy');

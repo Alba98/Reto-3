@@ -40,7 +40,11 @@
                                           </button>
                                         </form>
                                       </td>
-                                      <td><a href="{{ route('tuniversidad.show', $tutor->id_docente)}}" class="btn btn-primary">Ver</a></td>
+                                      @if($fichas->where('id_tuniversidad', $tutor->id)->count() != 0)
+                                        <td><a href="{{ route('tuniversidad.show', $tutor->id_docente)}}" class="btn btn-primary">Ver</a></td>
+                                      @else
+                                        <td></td>
+                                      @endif
                                     </tr>
                                   @endif
                                 @endforeach

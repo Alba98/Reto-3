@@ -38,19 +38,6 @@ class TuniversidadController extends Controller
             'tutores' => $tutores,
             'fichas' => FichaDual::all()
         ]));
-
-
-
-        $tuniversidad = Tuniversidad::all();
-        $ficha = FichaDual::all();
-        $personas = Persona::all();
-        $usuarios = Usuario::all();
-        return response(view('pages.coordinador.registrosAnteriores.t_universidad', [
-            'tuniversidad' => $tuniversidad,
-            'ficha' => $ficha,
-            'personas' => $personas,
-            'usuarios' => $usuarios
-        ]));
     }
     /**
      * Store a newly created resource in storage.
@@ -101,8 +88,9 @@ class TuniversidadController extends Controller
     public function destroy($id)
     {   
         $tuniversidad = Tuniversidad::find($id);
+        
         $tuniversidad->delete();
-        return redirect()->route('registrosTutorUniversidad');
+        return redirect()->route('tuniversidad.show');
     }
 
     public function show($id)
