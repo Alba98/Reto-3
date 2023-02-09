@@ -27,26 +27,25 @@ class AlumnoController extends Controller
     public function index()
     {
         if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
+
             // Comprobas si se ha enviado un nombre por GET
-            $alumnos = [];
+            $personas = Persona::All()->sortBy('nombre');
 
             if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
                 $nombre = $_GET['nombre'];
-                $personas = Persona::where('nombre', 'like', '%' . $nombre . '%')->get();
-                
-                foreach ($personas  as $persona) {
-                    $alumnos[] = Alumno::where('id_persona', $persona->id)->get()->last();
-                }
-            } else {
-                
-                $alumnos = Alumno::all();
-            }
-                return response(view('pages.coordinador.registrosAnteriores.alumnos', [
-                    'alumnos' => $alumnos
-               ]));
+                $personas = Persona::where('nombre', 'like', '%' . $nombre . '%')->get()->sortBy('nombre');
+            }  
             
+            foreach ($personas  as $persona) 
+                if($persona)
+                    $alumnos[] = Alumno::where('id_persona', $persona->id)->get()->last();
+            
+            return response(view('pages.coordinador.registrosAnteriores.alumnos', [
+                 'alumnos' => $alumnos
+            ]));
+
         } else
-        return response(view('errors.403')); 
+            return response(view('errors.403')); 
     }
     /**
      * Store a newly created resource in storage.

@@ -18,7 +18,7 @@ class EmpresaController extends Controller
      */
     public function index()
     {
-        $empresas = Empresa::all();
+        $empresas = Empresa::all()->sortBy('nombre');;
         $tempresa = Tempresa::all();
         return response(view('pages.coordinador.registrosAnteriores.empresas', [
             'empresas' => $empresas,

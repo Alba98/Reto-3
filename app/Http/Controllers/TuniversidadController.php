@@ -23,6 +23,24 @@ class TuniversidadController extends Controller
      */
     public function index()
     {
+        $personas = Persona::All()->sortBy('nombre');
+
+        foreach ($personas  as $persona) 
+            if($persona)
+                $docentes[] = Docente::where('id_persona', $persona->id)->get()->last();
+
+        foreach ($docentes  as $docente)
+            if($docente)
+                $tutores[] = Tuniversidad::where('id_docente', $docente->id)->get()->last();
+
+
+        return response(view('pages.coordinador.registrosAnteriores.t_universidad', [
+            'tutores' => $tutores,
+            'fichas' => FichaDual::all()
+        ]));
+
+
+
         $tuniversidad = Tuniversidad::all();
         $ficha = FichaDual::all();
         $personas = Persona::all();

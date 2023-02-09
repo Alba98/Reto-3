@@ -22,17 +22,19 @@ class CoordinadorController extends Controller
      */
     public function index()
     {
-        $personas = Persona::all();
-        $grados = Grado::all();
-        $coordinadores = Coordinador::all();
-        $usuarios = User::all();
-        $docentes = Docente::all();
+        $personas = Persona::All()->sortBy('nombre');
+
+        foreach ($personas  as $persona) 
+            if($persona)
+                $docentes[] = Docente::where('id_persona', $persona->id)->get()->last();
+
+        foreach ($docentes  as $docente)
+            if($docente)
+                $coordinadores[] = Coordinador::where('id_docente', $docente->id)->get()->last();
+
+
         return response(view('pages.coordinador.registrosAnteriores.coordinadores', [
-            'personas' => $personas,
-            'grados' => $grados,
-            'coordinadores' => $coordinadores,
-            'usuarios' => $usuarios,
-            'docentes' => $docentes
+            'coordinadores' => $coordinadores
         ]));
     }
     /**

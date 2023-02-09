@@ -24,21 +24,23 @@
                               <tbody>
                                 @foreach ($coordinadores as $coordinador)
                                 <!-- Mostramos mediante una tabla la info de todos los coordinadores -->
-                                <tr>
-                                  <td>{{$personas->where('id',$coordinador->docente->id_persona)->value('nombre')}}</td>
-                                  <td>{{$grados->where('id',$coordinador->id_grado)->value('nombre')}}</td>
-                                  <td>{{$usuarios->where('id_persona',$coordinador->docente->id_persona)->value('email')}}</td>
-                                  <td>{{$personas->where('id',$coordinador->docente->id_persona)->value('telefono')}}</td>
-                                  <td>
-                                    <form method="POST" action="{{ route('coordinador.destroy', [$coordinador->id]) }}">
-                                      @csrf
-                                      @method("DELETE")
-                                      <button type="submit" class="btn btn-danger"> 
-                                        Eliminar
-                                      </button>
-                                    </form>
-                                  </td>
-                                </tr>
+                                  @if($coordinador)
+                                    <tr>
+                                      <td>{ $coordinador->docente->persona->nombre }}</td>
+                                      <td>{ $coordinador->grado->nombre }}</td>
+                                      <td>{ $coordinador->docente->persona->usuario->email }}</td>
+                                      <td>{ $coordinador->docente->persona->telefono }}</td>
+                                      <td>
+                                        <form method="POST" action="{{ route('coordinador.destroy', [$coordinador->id]) }}">
+                                          @csrf
+                                          @method("DELETE")
+                                          <button type="submit" class="btn btn-danger"> 
+                                            Eliminar
+                                          </button>
+                                        </form>
+                                      </td>
+                                    </tr>
+                                  @endif
                                 @endforeach
                               </tbody>
                             </table>

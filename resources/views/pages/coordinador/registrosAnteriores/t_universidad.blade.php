@@ -23,24 +23,26 @@
                                 </tr>
                               </thead>
                               <tbody>
-                                @foreach ($tuniversidad as $tuniversidad)
-                                  <tr>
-                                    <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('nombre')}}</td>
-                                    <td>{{$personas->where('id',$tuniversidad->docente->id_persona)->value('telefono')}}</td>
-                                    <td>{{$usuarios->where('id_persona',$tuniversidad->docente->id_persona)->value('email')}}</td>
-                                    <td>{{$ficha->where('id_tuniversidad',$tuniversidad->id)->count()}}</td>
-                                    <td>
-                                      <form method="POST" action="{{ route('tuniversidad.destroy', [$tuniversidad->id]) }}">
-                                        @csrf
-                                        @method("DELETE")
-                      
-                                        <button type="submit" class="btn btn-danger"> 
-                                          Eliminar
-                                        </button>
-                                      </form>
-                                    </td>
-                                    <td><a href="{{ route('tuniversidad.show', $tuniversidad->id_docente)}}" class="btn btn-primary">Ver</a></td>
-                                  </tr>
+                                @foreach ($tutores as $tutor)
+                                  @if($tutor)
+                                    <tr>
+                                      <td>{{$tutor->docente->persona->nombre }}</td>
+                                      <td>{{$tutor->docente->persona->telefono }}</td>
+                                      <td>{{$tutor->docente->persona->usuario->email  }}</td>
+                                      <td>{{$fichas->where('id_tuniversidad', $tutor->id)->count()}}</td>
+                                      <td>
+                                        <form method="POST" action="{{ route('tuniversidad.destroy', [$tutor->id]) }}">
+                                          @csrf
+                                          @method("DELETE")
+                        
+                                          <button type="submit" class="btn btn-danger"> 
+                                            Eliminar
+                                          </button>
+                                        </form>
+                                      </td>
+                                      <td><a href="{{ route('tuniversidad.show', $tutor->id_docente)}}" class="btn btn-primary">Ver</a></td>
+                                    </tr>
+                                  @endif
                                 @endforeach
                               </tbody>
                             </table>
