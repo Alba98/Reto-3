@@ -69,16 +69,18 @@ class FichaSeguimientoController extends Controller
     public function storeFicha(Request $request) {
         if (Gate::allows('tuniversidad')) {
 
-            $diario = new DiarioAprendizaje();
-            $diario->fecha = $request->fecha;
-            $diario->asistentes = $request->asistentes;
-            $diario->tipo_tutoria = $request->tipoT;
-            $diario->objetivos = $request->objetivos;
-            $diario->resumen = $request->resumen;
-            $diario->id_fichadual = $request->id_ficha;
-            $diario->save();
+            $ficha = new FichaSeguimiento();
+            $ficha->fecha = date('Y-m-d');;
+            $ficha->asistentes = $request->asistentes;
+            $ficha->tipo_tutoria = $request->tipoT;
+            $ficha->objetivos = $request->objetivos;
+            $ficha->resumen = $request->resumen;
+            $ficha->id_fichadual = $request->id_ficha;
+            $ficha->save();
             
-            return redirect()->route('diarioAprendizaje');
+            return view('pages.tutor.crearFichaSeg', [
+                "alumno" => $alumno
+            ]);
         }
         else
             return view('errors.403');

@@ -51,14 +51,8 @@
             <div class="card mt-4">
                 <div class="card-header">{{ __('Nueva ficha segimineto') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('fichaSeg.store') }}">
+                    <form method="POST" action="{{ route('fichaSeg.add.store', $alumno) }}">
                         @csrf
-                        <div class="row mb-3">
-                            <label for="fecha" class="col-md-4 col-form-label text-md-end">{{ __('Fecha') }}</label>
-                            <div class="col-md-6">
-                                    <input type="text" class="form-control" placeholder="20/01/2023" name="fecha" id="fecha">
-                            </div>
-                        </div>
                         <div class="row mb-3">
                             <label for="asistentes" class="col-md-4 col-form-label text-md-end">{{ __('Asistentes') }}</label>
                             <div class="col-md-6">
