@@ -12,7 +12,7 @@
 
                 <div class="d-flex align-items-center mb-3 pb-1">
                     <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                    <span class="h1 fw-bold mb-0"><span id="colorAzul">Deusto</span>Dual</span>
+                    <span class="h1 fw-bold mb-0">Deusto<span class="text-primary">Dual<span></span>
                 </div>
 
                 <form method="POST" action="{{ route('login') }}">
