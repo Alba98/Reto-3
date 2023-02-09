@@ -19,16 +19,17 @@
                                   <th><i class="bi bi-file-text"></i> Cif</th>
                                   <th><i class="bi bi-people"></i> Tutores</th>
                                   <th><i class="bi bi-trash"></i> Eliminar</th>
+                                  <th><i class="bi bi-eye"></i> Ver</th>
                                 </tr>
                               </thead>
                               <tbody>
                                 @foreach ($empresas as $empresa)
                                 <!-- Mostramos mediante una tabla la info de todos las empresas -->
                                 <tr>
-                                  <td>{{$empresa->nombre}}</td>
-                                  <td>{{$empresa->sector}}</td>
-                                  <td>{{$empresa->cif}}</td>
-                                  <td>{{$tempresa->where('id_empresa',$empresa->id)->count()}}</td>
+                                  <td>{{ $empresa->nombre }}</td>
+                                  <td>{{ $empresa->sector }}</td>
+                                  <td>{{ $empresa->cif }}</td>
+                                  <td>{{ $tempresa->where('id_empresa',$empresa->id)->count() }}</td>
                                   <td>
                                     <form method="POST" action="{{ route('empresa.destroy', [$empresa->id]) }}">
                                       @csrf
@@ -38,6 +39,12 @@
                                       </button>
                                     </form>
                                   </td>
+                                  @if($tempresa->where('id_empresa',$empresa->id)->count() != 0)
+                                    <td><a href="{{ route('tempresa.show', $empresa->id)}}" class="btn btn-primary">Ver</a></td>
+                                  @else
+                                    <td></td>
+                                  @endif
+                                  
                                 </tr>
                                 @endforeach
                               </tbody>

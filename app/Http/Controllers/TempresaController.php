@@ -12,6 +12,7 @@ use App\Models\Tempresa;
 use App\Models\Docente;
 use App\Models\FichaDual;
 use App\Models\Alumno;
+use App\Models\Empresa;
 use Illuminate\Support\Facades\Hash;
 
 class TempresaController extends Controller
@@ -21,19 +22,26 @@ class TempresaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function show($id)
     {
-        //
-    }
+        $empresa = Empresa::find($id);
+        $personas = Persona::All()->sortBy('nombre');
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        foreach ($personas  as $persona) 
+            if($persona)
+                $docentes[] = Docente::where('id_persona', $persona->id)->get()->last();
+
+        foreach ($docentes  as $docente)
+            if($docente) {
+                $tutores[] = Tempresa::where('id_docente', $docente->id)->where('id_empresa', $empresa->id)->get()->last();
+            }
+
+        return response(view('pages.coordinador.registrosAnteriores.t_empresa', [
+            'empresa' => $empresa->nombre,
+            'tutores' => $tutores,
+            'fichas' => FichaDual::all()
+        ]));
+
     }
 
     /**
@@ -83,4 +91,30 @@ class TempresaController extends Controller
 
         return view('pages.tutor.listarAlumnos', compact('fichas'));
     }
+
+    public function destroy($id)
+    {   
+        $temp = Tempresa::find($id);
+        $temp->delete();
+        return redirect()->route('registrosEmpresa');
+    }
+
+    public function showAlumnos($id)
+    {
+        $docente = Docente::where('id_persona', $id)->first();
+        $fichas = []; //por si este tutor no tiene alumnos asignados
+        if ($docente != null) {
+            $tutor = Tempresa::where('id_docente', $docente->id)->first();
+                
+            if ($tutor != null)
+                $fichas = FichaDual::where('id_tempresa', $tutor->id)->get();
+        }
+
+        //where ficha dual
+        return view('pages.tutor.listarAlumnos', [
+            'fichas' => $fichas 
+        ]);
+
+    }
+    
 }
