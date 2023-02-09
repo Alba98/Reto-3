@@ -66,7 +66,7 @@ Route::post('registrar/tutorUniversidad', [TuniversidadController::class, 'store
 Route::post('registrar/coordinador', [CoordinadorController::class, 'store'])->name('coordinador.store');
 Route::post('evaluacion/diario/{alumno}', [EvaluacionController::class, 'store'])->name('evaluacion.store');
 Route::post('fichaSeguimiento/{alumno}', [EvaluacionController::class, 'storeTrabajoEmpresa'])->name('trabajo.store');
-Route::post('asignarDual', [UserController::class, 'storeDual'])->name('dual.store');
+Route::post('asignarDual', [FichaDualController::class, 'store'])->name('dual.store');
 
 // Ruta hacia las estadisticas
 Route::get('estadisticas', [UserController::class, 'estadisticas'])->name('estadisticas');
