@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <div class="container mt-2">
-    <h1 class="display-3 text-center mt-5">Registros anteriores empresas</h1>
+    <h1 class="display-3 text-center mt-5">Registros empresas</h1>
     <div class="padding mt-4">
         <div class="row container d-flex justify-content-center">
         <div class="col-lg-8 grid-margin stretch-card">

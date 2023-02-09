@@ -28,31 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $notificaciones = Notificaciones::all()->where('id_usuario', Auth::user()->id);
-        // Dependiendo del tipo de usuario, se le muestra una vista u otra
-        switch (Auth::user()->tipo_usuario) {
-            case 'coordinador':
-                return view('pages.coordinador.home', [
-                    'notificaciones' => $notificaciones
-                ]);
-            
-            case 'alumno':
-                return view('pages.alumno.home', [
-                    'notificaciones' => $notificaciones
-                ]);
-            
-            case 'tempresa':
-                return view('pages.tutor.home', [
-                    'notificaciones' => $notificaciones
-                ]);
-            
-            case 'tuniversidad':
-                return view('pages.tutor.home', [
-                    'notificaciones' => $notificaciones
-                ]);
-            
-            default:
-            return view('home');
-        }  
+        return redirect()->route('principal');
     }
 }

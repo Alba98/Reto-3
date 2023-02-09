@@ -38,8 +38,11 @@ class UserController extends Controller
                 ]);
             
             case 'alumno':
+                $persona = Persona::where('id', Auth::user()->id_persona)->first();
+                $alumno = Alumno::where('id_persona', $persona->id)->first();
                 return view('pages.alumno.home', [
-                    'notificaciones' => $notificaciones
+                    'notificaciones' => $notificaciones,
+                    'dual' => ($alumno->fichaDual) ? true : false
                 ]);
             
             case 'tempresa':

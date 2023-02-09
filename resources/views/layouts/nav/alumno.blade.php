@@ -9,33 +9,35 @@
                 </a>
             </li>
         @endif
-        @if (Route::has('diarioAprendizaje'))
-            <li class="nav-item">
-                <a href="{{ route('diarioAprendizaje') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('diarioAprendizaje') ? 'active' : '' }}" aria-current="page">
-                    <i class="fs-4 bi-file-earmark-medical-fill nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Diario Aprendizaje</span>
-                </a>
-            </li>
-        @endif
-        @if (Route::has('notas'))    
-            <li class="nav-item">
-                <a href="{{ route('notas') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('notas') ? 'active' : '' }}">
-                    <i class="fs-4 bi-file-earmark-fill nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Notas</span>
-                </a>
-            </li>
+        @if($dual)
+            @if (Route::has('diarioAprendizaje'))
+                <li class="nav-item">
+                    <a href="{{ route('diarioAprendizaje') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('diarioAprendizaje') ? 'active' : '' }}" aria-current="page">
+                        <i class="fs-4 bi-file-earmark-medical-fill nav_icon"></i>
+                        <span class="ms-1 d-none d-sm-inline nav_name">Diario Aprendizaje</span>
+                    </a>
+                </li>
+            @endif
+            @if (Route::has('notas'))    
+                <li class="nav-item">
+                    <a href="{{ route('notas') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('notas') ? 'active' : '' }}">
+                        <i class="fs-4 bi-file-earmark-fill nav_icon"></i>
+                        <span class="ms-1 d-none d-sm-inline nav_name">Notas</span>
+                    </a>
+                </li>
+            @endif
         @endif
         @if (Route::has('registros'))
             <li class="nav-item">
-                <a href="{{ route('registros') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('registrosAlumno') ? 'active' : '' }}">
+                <a href="{{ route('registros') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('registros') ? 'active' : '' }}">
                     <i class="fs-4 bi-archive-fill nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Registros anteriores</span>
+                    <span class="ms-1 d-none d-sm-inline nav_name">Registros</span>
                 </a>
             </li>
         @endif
         @if (Route::has('notificaciones'))
             <li class="nav-item">
-                <a href="{{ route('notificaciones') }}" class="nav-link px-sm-0 px-2 text-white nav_link">
+                <a href="{{ route('notificaciones') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('notificaciones') ? 'active' : '' }}">
                     <i class="fs-4 bi-bell-fill nav_icon"></i>
                     <span class="ms-1 d-none d-sm-inline nav_name">Notificaciones</span>
                 </a>

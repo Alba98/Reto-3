@@ -28,7 +28,8 @@ class DiarioController extends Controller
                 return redirect()->route('home');
 
             return view('pages.alumno.diarioaprendizaje', [
-                'diarios' => $diarios
+                'diarios' => $diarios,
+                'dual' => ($alumno->fichaDual) ? true : false
             ]);
         }
         else

@@ -24,7 +24,8 @@ class RegistrosController extends Controller
            
             //where ficha dual
             return view('pages.alumno.registros', [
-                'fichas' => $fichas
+                'fichas' => $fichas,
+                'dual' => ($alumno->fichaDual) ? true : false
             ]);
         }
         else if (Gate::any(['tuniversidad', 'tempresa']))

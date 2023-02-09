@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Notificaciones;
+use App\Models\Persona;
+use App\Models\Alumno;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -12,12 +14,14 @@ class NotificacionesController extends Controller
 
     public function index()
     {
-        $id = Auth::User()->id; //id_persona->alumno->id_diario
-        $notificaciones = Notificaciones::all()->where('id_usuario', $id);
+        $notificaciones = Notificaciones::all()->where('id_usuario', Auth::User()->id);
 
+        $persona = Persona::where('id', Auth::user()->id_persona)->first();
+        $alumno = Alumno::where('id_persona', $persona->id)->first();
         return view('pages.notificaciones', [
-           'notificaciones' => $notificaciones
-        ]); 
+            'notificaciones' => $notificaciones,
+            'dual' => ($alumno->fichaDual) ? true : false
+        ]);
     }
 
      /**

@@ -26,7 +26,8 @@ class NotasController extends Controller
                 return redirect()->route('home');
             //where ficha dual
             return view('pages.alumno.notas', [
-                'ficha' => $ficha 
+                'ficha' => $ficha,
+                'dual' => ($alumno->fichaDual) ? true : false
             ]);
         }   
         else

@@ -40,7 +40,7 @@
             <li class="nav-item">
                 <a href="{{ route('alumnos.tutorHistorial') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('alumnos.tutorHistorial') ? 'active' : '' }}">
                     <i class="fs-4 bi-archive-fill nav_icon"></i>
-                    <span class="ms-1 d-none d-sm-inline nav_name">Registros anteriores</span>
+                    <span class="ms-1 d-none d-sm-inline nav_name">Registros</span>
                 </a>
             </li>
         @endif
