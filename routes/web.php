@@ -83,8 +83,8 @@ Route::get('evaluar/{alumno}', [UserController::class, 'evaluar'])->name('evalua
 Route::get('alumnos', [AlumnoController::class, 'alumnosTutor'])->name('alumnos');
 Route::get('fichaAlumno/{alumno}', [AlumnoController::class, 'verAlumno'])->name('fichaAlumno');
 //Route::get('fichaSeguimiento', [UserController::class, 'fichaSeguimiento'])->name('fichaSeguimiento');
-Route::get('evaluacion/diario/{id}', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
-Route::get('evaluacion/ficha/{id}', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
+Route::get('evaluacion/diario/{alumno}', [UserController::class, 'evaluacionDiario'])->name('evaluacionDiario');
+Route::get('evaluacion/ficha/{alumno}', [UserController::class, 'evaluacionFicha'])->name('evaluacionFicha');
 
 //Ver un alumno desde el tutor:
 Route::get('/alumno/{id}',[AlumnoController::class,'show'])->name('alumno.show');
