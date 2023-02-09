@@ -26,45 +26,27 @@ class AlumnoController extends Controller
      */
     public function index()
     {
-        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa'])) {  
+        if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
             // Comprobas si se ha enviado un nombre por GET
+            $alumnos = [];
+
             if (isset($_GET['nombre']) && !empty($_GET['nombre'])) {
                 $nombre = $_GET['nombre'];
-                $alumnos = Alumno::all();
                 $personas = Persona::where('nombre', 'like', '%' . $nombre . '%')->get();
-                $empresas = Empresa::all();
-                $evaluaciones = Evaluacion::all();
-                $ficha = FichaDual::all();
-                $opcion = 1;
-                return response(view('pages.coordinador.registrosAnteriores.alumnos', [
-                    'personas' => $personas,
-                    'alumnos' => $alumnos,
-                    'empresas' => $empresas,
-                    'evaluaciones' => $evaluaciones,
-                    'ficha' => $ficha,
-                    'opcion' => $opcion
-                ]));
-            } else {
-                if (Gate::any(['coordinador', 'tuniversidad', 'tempresa', 'alumno'])) {
-                    $alumnos = Alumno::all();
-                    $empresas = Empresa::all();
-                    $evaluaciones = Evaluacion::all();
-                    $ficha = FichaDual::all();
-                    $personas = 0;
-                    $opcion = 2;
-                    return response(view('pages.coordinador.registrosAnteriores.alumnos', [
-                        'personas' => $personas,
-                        'alumnos' => $alumnos,
-                        'empresas' => $empresas,
-                        'evaluaciones' => $evaluaciones,
-                        'ficha' => $ficha,
-                        'opcion' => $opcion
-                    ]));
+                
+                foreach ($personas  as $persona) {
+                    $alumnos[] = Alumno::where('id_persona', $persona->id)->get()->last();
                 }
-                else
-                    return response(view('errors.403')); 
+            } else {
+                
+                $alumnos = Alumno::all();
             }
-        }
+                return response(view('pages.coordinador.registrosAnteriores.alumnos', [
+                    'alumnos' => $alumnos
+               ]));
+            
+        } else
+        return response(view('errors.403')); 
     }
     /**
      * Store a newly created resource in storage.
