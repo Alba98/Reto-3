@@ -3,7 +3,11 @@
 <div class="container">
         <div class="d-flex justify-content-center align-items-center" style="height: 148px;">
           <div class="text-center">
-            <h1 class="display-4 text-dark">Ficha de seguimiento
+            <h1 class="display-4 text-dark">
+              @if (Auth::user()->tipo_usuario == 'tuniversidad') 
+                <a href="{{ route('fichaSeg.add', $alumno) }}" class="btn btn-primary fs-5 pull-right">Nueva Reunion</a>
+              @endif
+              Ficha de seguimiento
               @if (Auth::user()->tipo_usuario == 'tuniversidad') 
                 <a href="{{ route('evaluacionFicha', $alumno) }}" class="btn btn-primary fs-5 pull-right">Evaluar Ficha</a>
               @endif

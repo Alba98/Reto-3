@@ -54,6 +54,37 @@ class FichaSeguimientoController extends Controller
             return view('errors.403');
 
     }
+
+    public function add(Alumno $alumno)
+    {
+        if (Gate::allows('tuniversidad')) {
+            return view('pages.tutor.crearFichaSeg', [
+                "alumno" => $alumno
+            ]);
+        }
+        else
+            return view('errors.403');
+    }
+
+    public function storeFicha(Request $request) {
+        if (Gate::allows('tuniversidad')) {
+
+            $ficha = new FichaSeguimiento();
+            $ficha->fecha = date('Y-m-d');;
+            $ficha->asistentes = $request->asistentes;
+            $ficha->tipo_tutoria = $request->tipoT;
+            $ficha->objetivos = $request->objetivos;
+            $ficha->resumen = $request->resumen;
+            $ficha->id_fichadual = $request->id_ficha;
+            $ficha->save();
+            
+            return view('pages.tutor.crearFichaSeg', [
+                "alumno" => $alumno
+            ]);
+        }
+        else
+            return view('errors.403');
+    }
 }
     
  

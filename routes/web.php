@@ -101,7 +101,9 @@ Route::delete('registros/coordinador/{coordinador}', [CoordinadorController::cla
 // Rutas fichas de seguimiento
 Route::get('fichaSeguimiento', [FichaSeguimientoController::class, 'index'])->name('ficha.index');
 Route::get('fichaSeguimiento/{id}', [FichaSeguimientoController::class, 'show'])->name('fichaSeguimiento');
-Route::post('ficha_Seguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
+Route::post('fichaSeguimiento', [FichaSeguimientoController::class, 'store'])->name('ficha.store');
+Route::get('fichaSeguimiento/nuevo/{alumno}', [FichaSeguimientoController::class, 'add'])->name('fichaSeg.add');
+Route::post('fichaSeguimiento/nuevo/{alumno}', [FichaSeguimientoController::class, 'storeFicha'])->name('fichaSeg.add.store');
 
 // Actividades del tutor de empresa
 Route::get('/tutor/ver-alumnos',  [TempresaController::class, 'verAlumnos'])->name('tempresa.verAlumnos');
