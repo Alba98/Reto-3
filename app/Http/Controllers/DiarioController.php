@@ -24,8 +24,6 @@ class DiarioController extends Controller
             $ficha = FichaDual::where('id_alumno', $alumno->id)->get()->last();
             if($ficha)
                 $diarios = DiarioAprendizaje::where('id_ficha', $ficha->id)->get()->sortBy('periodo');
-            else
-                return redirect()->route('home');
 
             return view('pages.alumno.diarioaprendizaje', [
                 'diarios' => $diarios,
@@ -54,8 +52,13 @@ class DiarioController extends Controller
 
     public function add()
     {
-        if (Gate::allows('alumno'))
-            return view('pages.alumno.creardiario');
+        if (Gate::allows('alumno')) {
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $alumno = Alumno::where('id_persona', $persona->id)->first();
+            return view('pages.alumno.creardiario', [
+                'dual' => ($alumno->fichaDual) ? true : false
+            ]);
+        }
         else
             return view('errors.403');
     }

@@ -19,12 +19,12 @@
             <div class="card-body">
               <h4 class="card-title">Formulario de seguimiento</h4>
               <p class="card-text">Rellene el formulario de seguimiento</p>
-              <a href="{{ route('ficha.index') }}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Formulario seguimiento</a>
+              <a href="{{-- route('fichaSeg.add') --}}" class="btn btn-primary fs-5"><i class="bi bi-pentagon"></i> Formulario seguimiento</a>
             </div>
           </div>
         </div>
+        @endif
       </div>
-      @endif
   </div>
 
   <!-- Notificaciones -->

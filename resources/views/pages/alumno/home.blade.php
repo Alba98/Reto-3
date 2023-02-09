@@ -4,6 +4,7 @@
     <div class="container">
       <h2 class="text-muted"><i class="bi bi-signpost-fill"></i> Acciones rapidas</h2>
       <div class="row justify-content-md-center">
+        @if($dual)
         <div class="col col-md-6">
           <div class="card">
             <div class="card-body">
@@ -13,6 +14,7 @@
             </div>
           </div>
         </div>
+        @endif
         <div class="col col-md-6">
           <div class="card">
             <div class="card-body">

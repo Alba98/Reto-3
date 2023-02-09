@@ -16,12 +16,19 @@ class NotificacionesController extends Controller
     {
         $notificaciones = Notificaciones::all()->where('id_usuario', Auth::User()->id);
 
-        $persona = Persona::where('id', Auth::user()->id_persona)->first();
-        $alumno = Alumno::where('id_persona', $persona->id)->first();
-        return view('pages.notificaciones', [
-            'notificaciones' => $notificaciones,
-            'dual' => ($alumno->fichaDual) ? true : false
-        ]);
+        if (Gate::allows('alumno')) {
+            $persona = Persona::where('id', Auth::user()->id_persona)->first();
+            $alumno = Alumno::where('id_persona', $persona->id)->first();
+            return view('pages.notificaciones', [
+                'notificaciones' => $notificaciones,
+                'dual' => ($alumno->fichaDual) ? true : false
+            ]);
+        } else {
+            return view('pages.notificaciones', [
+                'notificaciones' => $notificaciones,
+                'dual' => false
+            ]);
+        }
     }
 
      /**

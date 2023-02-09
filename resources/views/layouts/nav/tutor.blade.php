@@ -11,14 +11,14 @@
             </li>
         @endif
         @if (Auth::user()->tipo_usuario == 'tuniversidad')
-            @if (Route::has('ficha_Seguimiento'))   
+            <!-- @if (Route::has('fichaSeg.add'))   
                 <li class="nav-item">
-                    <a href="{{ route('ficha_Seguimiento') }}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('ficha_Seguimiento') ? 'active' : '' }}">
+                    <a href="{{-- route('fichaSeg.add') --}}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('fichaSeg.add') ? 'active' : '' }}">
                         <i class="fs-4 bi-file-earmark-text-fill nav_icon"></i>
                         <span class="ms-1 d-none d-sm-inline nav_name">Ficha seguimiento</span>
                     </a>
                 </li>
-            @endif
+            @endif -->
             <!-- @if (Route::has('evaluar'))
                 <li class="nav-item">
                     <a href="{{-- route('evaluar') --}}" class="nav-link px-sm-0 px-2 text-white nav_link {{ Route::is('evaluar') ? 'active' : '' }}">
