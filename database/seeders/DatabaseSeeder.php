@@ -42,15 +42,27 @@ class DatabaseSeeder extends Seeder
         // COORDINADOR
         $faker = \Faker\Factory::create();
         for($i=1;$i<=5;$i++){
-            DB::table('personas')->insert([
-                'nombre' => $faker->name(),
-                'ape1' => $faker->firstName(),
-                'ape2' => $faker->firstName(),
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
-                'telefono' => $faker->randomNumber(8)
-            ]);
+            if($i == 1) {
+                DB::table('personas')->insert([
+                    'nombre' => 'CoordinadorPrueba',
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            } else {
+                DB::table('personas')->insert([
+                    'nombre' => $faker->name(),
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            }
 
             DB::table('docentes')->insert([
                 'id_persona' => $i,
@@ -92,15 +104,27 @@ class DatabaseSeeder extends Seeder
         // TUTOR EMPRESA
         $faker = \Faker\Factory::create();
         for($i=6;$i<=15;$i++){
-            DB::table('personas')->insert([
-                'nombre' => $faker->name(),
-                'ape1' => $faker->firstName(),
-                'ape2' => $faker->firstName(),
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
-                'telefono' => $faker->randomNumber(8)
-            ]);
+            if($i == 6) {
+                DB::table('personas')->insert([
+                    'nombre' => 'tEmpPrueba',
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            } else {
+                DB::table('personas')->insert([
+                    'nombre' => $faker->name(),
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            }
 
             DB::table('docentes')->insert([
                 'id_persona' => $i,
@@ -142,15 +166,27 @@ class DatabaseSeeder extends Seeder
         // TUTOR UNIVERSIDAD
         $faker = \Faker\Factory::create();
         for($i=16;$i<=25;$i++){
-            DB::table('personas')->insert([
-                'nombre' => $faker->name(),
-                'ape1' => $faker->firstName(),
-                'ape2' => $faker->firstName(),
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
-                'telefono' => $faker->randomNumber(8)
-            ]);
+            if($i == 16) {
+                DB::table('personas')->insert([
+                    'nombre' => 'tUniPrueba',
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            } else {
+                DB::table('personas')->insert([
+                    'nombre' => $faker->name(),
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            }
 
             DB::table('docentes')->insert([
                 'id_persona' => $i,
@@ -190,15 +226,27 @@ class DatabaseSeeder extends Seeder
         // ALUMNOS
         $faker = \Faker\Factory::create();
         for($i=26;$i<=100;$i++){
-            DB::table('personas')->insert([
-                'nombre' => $faker->name(),
-                'ape1' => $faker->firstName(),
-                'ape2' => $faker->firstName(),
-                'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
-                'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
-                'telefono' => $faker->randomNumber(8)
-            ]);
+            if($i == 26) {
+                DB::table('personas')->insert([
+                    'nombre' => 'AlumnoPrueba',
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            } else {
+                DB::table('personas')->insert([
+                    'nombre' => $faker->name(),
+                    'ape1' => $faker->firstName(),
+                    'ape2' => $faker->firstName(),
+                    'created_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'updated_at' => $faker->dateTimeBetween('-1 years', 'now'),
+                    'dni' => $faker->randomNumber(8) . $faker->randomLetter(),
+                    'telefono' => $faker->randomNumber(8)
+                ]);
+            }
 
             DB::table('alumnos')->insert([
                 'id_persona' => $i,
