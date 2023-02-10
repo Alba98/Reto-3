@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Alumno;
 use App\Models\Persona;
+use App\Models\Empresa;
+use App\Models\Grado;
 use App\Models\User;
 use App\Models\FichaDual;
 use App\Models\FichaSeguimiento;
@@ -21,7 +23,7 @@ class FichaSeguimientoController extends Controller
        //dd($alumno);
         $fichaSeguimientos = new FichaSeguimiento();
         $fichaSeguimientos->nombre = $persona->nombre;
-        $fichaSeguimientos->empresa = $empresas->empresa;
+        $fichaSeguimientos->empresa = $empresa->empresa;
         $fichaSeguimientos->curso = $alumno->curso;
         $fichaSeguimientos->grado = $grado->grado;
         $fichaSeguimientos->email = $persona->email;
@@ -66,7 +68,7 @@ class FichaSeguimientoController extends Controller
             return view('errors.403');
     }
 
-    public function storeFicha(Request $request) {
+    public function storeFicha(Request $request, Alumno $alumno) {
         if (Gate::allows('tuniversidad')) {
 
             $ficha = new FichaSeguimiento();
@@ -78,9 +80,13 @@ class FichaSeguimientoController extends Controller
             $ficha->id_fichadual = $request->id_ficha;
             $ficha->save();
             
-            return view('pages.tutor.crearFichaSeg', [
+            $fichaDual = FichaDual::all()->where('id_alumno', $alumno->id)->last();
+            $fichas = FichaSeguimiento::all()->where('id_fichadual', $fichaDual->id);
+            return view('pages.tutor.fichaseguimiento', [
+                'fichas' => $fichas,
                 "alumno" => $alumno
             ]);
+
         }
         else
             return view('errors.403');
