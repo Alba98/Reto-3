@@ -9,7 +9,7 @@
               <div class="card-body">
                 <h4 class="card-title"><i class="bi bi-justify-left"></i> GRADO</h4>
                 <p class="card-text text-muted">Crea un nuevo grado para la Universidad de Deusto.</p>
-                <a href="{{ route('registrarGrado') }}" class="btn btn-primary fs-5">Crear empresa <i class="bi bi-plus-circle"></i></a>
+                <a href="{{ route('registrarGrado') }}" class="btn btn-primary fs-5">Crear grado <i class="bi bi-plus-circle"></i></a>
               </div>
             </div>
           </div>
